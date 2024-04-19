@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Pessoa">
+  <include schemaLocation="Linha_155.xsd"/>
+  <include schemaLocation="Linha_124.xsd"/>
+  <include schemaLocation="Linha_126.xsd"/>
+  <include schemaLocation="Linha_133.xsd"/>
+</schema>

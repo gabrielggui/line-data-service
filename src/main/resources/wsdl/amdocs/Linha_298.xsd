@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.vivo.com.br/MC/Pessoa" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <complexType name="RelacaoContato">
+    <sequence>
+      <element name="codigo" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Codigo que identifica a relacao com o Contato</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="descricao" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Descricao referente a relacao com o contato</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="RelacoesContato">
+    <sequence>
+      <element name="relacoesContato" type="ps:RelacaoContato" maxOccurs="unbounded" minOccurs="0">
+        <annotation>
+          <documentation>Elemento que representa uma lista da entidade
+    					RelacaoContato</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

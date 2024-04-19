@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	28/2/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta">
+  <xs:complexType name="StatusConta">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos status validos para uma conta.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o status da conta,
+						exemplo: ativa, final, aguardando, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla que identifica o status da conta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do status da conta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

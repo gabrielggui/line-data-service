@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:complexType name="OrdemAtivacaoServicos">
+    <xs:sequence>
+      <xs:element name="listaOrdenada">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="codigoServicoSistOrigem">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="20"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

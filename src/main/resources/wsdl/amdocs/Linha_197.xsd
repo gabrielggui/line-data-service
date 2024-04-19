@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.vivo.com.br/MC/Pedido" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ped="http://www.vivo.com.br/MC/Pedido">
+  <include schemaLocation="Linha_194.xsd"/>
+  <complexType name="AgrupadorPedido">
+    <annotation>
+      <documentation>Representa o elemento que contém informações de
+        		agrupamento de pedidos.</documentation>
+    </annotation>
+    <sequence>
+      <element name="codigoAgrupador" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Codigo identificador do agrupamento dos pedidos</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="int"/>
+        </simpleType>
+      </element>
+      <element name="statusAgrupador" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Elemento que representa o status do agrupamento
+                		dos pedidos.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="motivoStatusAgrupador" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Elemento que representa o motivo do status do
+                		agrupador dos pedidos.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="pedidosFilho" maxOccurs="1" minOccurs="0" type="ped:PedidosFilho">
+        <annotation>
+          <documentation>Representa uma lista da entidade PedidosFilho.</documentation>
+        </annotation>
+      </element>
+      <element name="descricaoMotivoStatusAgrupador" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Representa a descrição do motivo do status atual
+                		do agrupador dos pedidos.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="AgrupadoresPedidos">
+    <annotation>
+      <documentation>Representa uma lista do elemento AgrupadorPedido</documentation>
+    </annotation>
+    <sequence>
+      <element name="agrupadoresPedidos" type="ped:AgrupadorPedido" maxOccurs="unbounded" minOccurs="0">
+        <annotation>
+          <documentation>Representa uma lista da entidade AgrupadorPedido</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

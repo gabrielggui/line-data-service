@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:include schemaLocation="Linha_258.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:complexType name="ScriptInteligente">
+    <xs:annotation>
+      <xs:documentation>Cadastro do script inteligente.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo sequencial que identifica unicamente um
+						script inteligente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do script inteligente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="perguntaInicial" type="nfo:PerguntaScriptInteligente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade PerguntaScriptInteligente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ativo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Flag de ativação/desativação. Guarda o valor do
+						status do script. Essa necessidade deu-se para
+						que não seja exluido historicos, ou seja, caso
+						um script não seja mais válido para uso o mesmo
+						tera status N=Não ativo, porém não deve ser
+						excluido da base. Domínio S= Ativo, N=Nao ativo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de expiracao do script.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioCriacao" minOccurs="0" maxOccurs="1" type="sca:UsuarioSCA">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade UsuarioSCA, que é a
+						entidade que reflete o conceito de usuarios de
+						sistemas da Vivo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de Cricao do Script</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioAlteracao" minOccurs="0" maxOccurs="1" type="sca:UsuarioSCA"/>
+      <xs:element name="dataAlteracao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de Alteracao do Script</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ScriptsInteligentes">
+    <xs:annotation>
+      <xs:documentation>Scripts Inteligentes, no contexto da retencao, sao
+				roteiros de atendimento criados para guiar o usuario na
+				tentativa de impedir que um cliente saia da base. Cada
+				script é configurado para ser utilizado por tipo de
+				cliente (PF ou PJ), plataforma (Pos, Pre, Controle),
+				canal de atendimento do usuario (Loja, Call Center),
+				etc. A funcionalidade “Retenção” avalia as
+				características das linhas selecionadas e define qual
+				script (roteiro) será utilizado na tentativa de reter o
+				cliente. Escolhido o script, a funcionalidade trabalha
+				da seguinte forma: Um script inteligente é formado por
+				perguntas, lista de resposta e argumentos (que são as
+				ofertas oferecidas na tentativa de reter o cliente)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="scriptInteligente" type="nfo:ScriptInteligente" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Scripts Inteligentes, no contexto da retencao,
+						sao roteiros de atendimento criados para guiar o
+						usuario na tentativa de impedir que um cliente
+						saia da base. C A funcionalidade “Retenção”
+						avalia as características das linhas
+						selecionadas e define qual script (roteiro) será
+						utilizado na tentativa de reter o cliente.
+						Escolhido o script, a funcionalidade trabalha da
+						seguinte forma: Um script inteligente é formado
+						por perguntas, lista de resposta e argumentos
+						(que são as ofertas oferecidas na tentativa de
+						reter o cliente)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

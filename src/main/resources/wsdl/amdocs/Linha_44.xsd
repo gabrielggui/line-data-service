@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:complexType name="LadoPar">
+    <xs:annotation>
+      <xs:documentation>Contêm número inicial e número final do lado par.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="numeroInicial" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Numero inicial do intervalo de numeracao
+						permitido para o logradouro neste CEP e Bairro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroFinal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Numero final do intervalo de numeracao permitido
+						para o logradouro neste CEP e Bairro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LadoImpar">
+    <xs:annotation>
+      <xs:documentation>Contêm número inicial e número final do lado impar.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="numeroInicial" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Numero inicial do intervalo de numeracao
+						permitido para o logradouro neste CEP e Bairro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroFinal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Numero final do intervalo de numeracao permitido
+						para o logradouro neste CEP e Bairro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

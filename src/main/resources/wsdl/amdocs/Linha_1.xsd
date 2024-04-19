@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <xs:complexType name="CabecalhoVivo" final="restriction">
+    <xs:sequence>
+      <xs:element name="loginUsuario" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="canalAtendimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do canal de atendimento que e enviado
+						pelo SCA.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="32"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoSessao" minOccurs="0" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Codigo da sessao, codigo unico que identifica
+						uma sessao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="256"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeAplicacao" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+            <xs:enumeration value="Vivo360"/>
+            <xs:enumeration value="VivoSolicitacao"/>
+            <xs:enumeration value="VivoSCA"/>
+            <xs:enumeration value="VivoSigan"/>
+            <xs:enumeration value="VivoSPN"/>
+            <xs:enumeration value="VivoAtlys"/>
+            <xs:enumeration value="VivoNGIN"/>
+            <xs:enumeration value="VivoSAP"/>
+            <xs:enumeration value="VivoVivonet"/>
+            <xs:enumeration value="VivoPP"/>
+            <xs:enumeration value="VivoCatalogo"/>
+            <xs:enumeration value="VivoGSIM"/>
+            <xs:enumeration value="VivoSCC"/>
+            <xs:enumeration value="VivoSGP"/>
+            <xs:enumeration value="VivoURA"/>
+            <xs:enumeration value="VivoGRC"/>
+            <xs:enumeration value="VivoRA"/>
+            <xs:enumeration value="VivoMediacao"/>
+            <xs:enumeration value="VivoAGV"/>
+            <xs:enumeration value="VivoPortalFornecedores"/>
+            <xs:enumeration value="VivoE-Business"/>
+            <xs:enumeration value="VivoVol/Tav"/>
+            <xs:enumeration value="VivoLojaVirtual"/>
+            <xs:enumeration value="VivoCI"/>
+            <xs:enumeration value="VivoGestao"/>
+            <xs:enumeration value="VivoContaOnline"/>
+            <xs:enumeration value="VivoContWebNacional"/>
+            <xs:enumeration value="VivoIntegracao"/>
+            <xs:enumeration value="VivoSIM"/>
+            <xs:enumeration value="VivoSMS"/>
+            <xs:enumeration value="VivoWAP"/>
+            <xs:enumeration value="SDP"/>
+            <xs:enumeration value="Callidus"/>
+            <xs:enumeration value="SistemaNaoMapeado"/>
+            <xs:enumeration value="VivoCorp"/>
+            <xs:enumeration value="Engenharia"/>
+            <xs:enumeration value="VivoIVR"/>
+            <xs:enumeration value="VivoGLOBOCOPA"/>
+            <xs:enumeration value="VivoVolE"/>
+            <xs:enumeration value="CSS"/>
+            <xs:enumeration value="SPIC"/>
+            <xs:enumeration value="DM"/>
+            <xs:enumeration value="VivoHRS"/>
+            <xs:enumeration value="VivoPortal"/>
+            <xs:enumeration value="VivoSMAP"/>
+            <xs:enumeration value="VivoMinutrade"/>
+            <xs:enumeration value="VivoConecta"/>
+            <xs:enumeration value="VivoCSS"/>
+            <!--Elemento criado por Dilmara em 17/11/2011-->
+            <xs:enumeration value="STAR"/>
+            <!--Elemento criado por Gisele em 07/03/2012-->
+            <xs:enumeration value="Atis"/>
+            <xs:enumeration value="CSO"/>
+            <xs:enumeration value="UraTVA"/>
+            <xs:enumeration value="UraFixa"/>
+            <!--Elemento criado por Gisele em 19/04/2012-->
+            <xs:enumeration value="SGOE"/>
+            <xs:enumeration value="SGOS"/>
+            <xs:enumeration value="LojaVirtual"/>
+            <!--Elemento criado por Russo em 02/07/2012-->
+            <xs:enumeration value="VivoProcessum"/>
+            <!--Elemento criado por Gisele em 22/08/2012-->
+            <xs:enumeration value="VivoScience"/>
+            <xs:enumeration value="VivoSICS"/>
+            <xs:enumeration value="Serpro"/>
+            <xs:enumeration value="Terus"/>
+            <xs:enumeration value="Sigitm"/>
+            <xs:enumeration value="Fenix"/>
+            <xs:enumeration value="SGDDR"/>
+            <xs:enumeration value="CanalOnline"/>
+            <xs:enumeration value="SIA"/>
+            <xs:enumeration value="ESBOSS"/>
+            <xs:enumeration value="CSS"/>
+            <xs:enumeration value="VivoFWT"/>
+            <!--Elemento criado por Reinaldo Accenture, referente ao projeto SITTEL em 26/06/2013-->
+            <xs:enumeration value="Processum"/>
+            <xs:enumeration value="Sittel"/>
+            <xs:enumeration value="VivoNet"/>
+            <xs:enumeration value="NSPIC"/>
+            <xs:enumeration value="F3IP"/>
+            <xs:enumeration value="TVA"/>
+            <!--Elemento criado por Renzo Petri, referente a melhoria dos canais eletronicos-->
+            <xs:enumeration value="MeuVivo"/>
+            <xs:enumeration value="MeuVivoEmpresas"/>
+            <xs:enumeration value="PortalVivo"/>
+            <xs:enumeration value="GestorDeContatos"/>
+            <xs:enumeration value="Sascar"/>
+            <xs:enumeration value="Minutrade"/>
+            <xs:enumeration value="Staffware"/>
+            <xs:enumeration value="NYX"/>
+            <!--Elemento criado por Caroline Accenture, referente ao projeto CONTROLE N em 17/02/2014-->
+            <xs:enumeration value="M4U"/>
+            <!--Elemento criado por Vinicius Yamauchi, referente a introducao de usuario para Barramento DC-->
+            <xs:enumeration value="BarramentoDC"/>
+            <!--Elementro criado por Denis Vasconcelos - Accenture, referente ao projeto Billing de Dados (33358) em 10/04/2014-->
+            <xs:enumeration value="REMEDY"/>
+            <xs:enumeration value="WebCallDesk"/>
+            <!--Elementro criado por Caroline Costa - Accenture, referente ao projeto Vivo Next (131764) em 29/08/2014-->
+            <xs:enumeration value="ZUP"/>
+            <!--Elementro criado por Claudio Silva - Accenture, referente ao projeto Jasper (114632) em 22/10/2014-->
+            <xs:enumeration value="JASPER"/>
+            <!--Elementro criado por Lucas Basilio em 30/03/2015-->
+            <xs:enumeration value="Platon"/>
+            <xs:enumeration value="CNH"/>
+            <!--Elementro criado por Victor Nagassima em 18/06/2015-->
+            <xs:enumeration value="MVNE"/>
+            <!--Elementos criados por Flavia Araujo 09/09/2015-->
+            <xs:enumeration value="TGestiona"/>
+            <xs:enumeration value="AGV"/>
+            <xs:enumeration value="Celistics"/>
+            <xs:enumeration value="Vivo2"/>
+            <xs:enumeration value="Siebel8Vivo2"/>
+            <xs:enumeration value="PortalVivo2"/>
+            <xs:enumeration value="OauthVivo2"/>
+            <xs:enumeration value="AppVivo2"/>
+            <!--Elementos criado por Ingrid Aparecida 03/02/2016-->
+            <xs:enumeration value="UraVivo2"/>
+            <xs:enumeration value="GPSVivo2"/>
+            <!--Elementos criado por Fernando Nai 12/04/2016-->
+            <xs:enumeration value="Supportcomm"/>
+            <xs:enumeration value="Novitech"/>
+            <!--Elemento criado por Guilherme GonÃ§alves 05/05/2016-->
+            <xs:enumeration value="SalesForce"/>
+            <!--Elemento criado pelo VivoValoriza 28/05/2016-->
+            <xs:enumeration value="AppVivo1"/>
+            <!--Elemento criado por Elsa Raquel - Demanda: E2E 15/06/2016-->
+            <xs:enumeration value="TelefonicaE2ED"/>
+            <!--Elemento criado por Guilherme Amaral - Demanda: MOTF 20/06/2016-->
+            <xs:enumeration value="Amdocs"/>
+            <!--Elemento criado por Lucas Basilio - 24/06/2016-->
+            <xs:enumeration value="LTM"/>
+            <xs:enumeration value="SGRS"/>
+            <!--Elemento criado por Fernando Nai na Demanda 1135170 - 08/08/2016-->
+            <xs:enumeration value="SAS"/>
+            <!--Elemento criado por Ingrid Aparecida na Demanda 1823453 Piloto API Manager - 20/10/2016-->
+            <xs:enumeration value="ApiManager"/>
+            <!--Elemento criado por Comarela na Demanda 1138644 - ReduÃ§Ã£o do Prazo de PrÃ©-AtivaÃ§Ã£o na Loja Online - 13/01/2017-->
+            <xs:enumeration value="Loja Online"/>
+            <xs:enumeration value="hybrisdsv"/>
+            <!--Elemento criado por Alan Oliveira na Demanda 1435636 - Gisele Fase 2 07/03/2017-->
+            <xs:enumeration value="VivoGED"/>
+            <!--Elemento criado por Gisele Mayer na Demanda 2169359 LiberaÃ§Ã£o Mapa de Cobertura-->
+            <xs:enumeration value="MapLink"/>
+            <!--Elementos criado por Alan Oliveira na Demanda 2164216 - SimplificaÃ§Ã£o de Cadastro-->
+            <xs:enumeration value="Gemalto"/>
+            <xs:enumeration value="VivoProscore"/>
+            <!--Elementos criado por Caroline Rodrigues na Demanda 2169362 - TAV Mobile 2Âª via de Conta MÃ³vel - Paliativo-->
+            <xs:enumeration value="TAVMobile"/>
+            <!--Elementos criado por Lucas Basilio na Demanda 2165694 - [DEX Web APP PF] Novo Back-End Meu Vivo APP PF-->
+            <xs:enumeration value="BackEndAPP"/>
+            <!--Elementos criados por Alexandre da Rocha na Demanda 2113 - Score de Credito Antecipado-->
+            <xs:enumeration value="CxPost"/>
+            <xs:enumeration value="ChSSal"/>
+            <xs:enumeration value="UraRec"/>
+            <xs:enumeration value="SPushT"/>
+            <!--Elemento criado por Reginaldo Bracini na Demanda 2169 - VoLTE-VoWIFI Pos Pago-->
+            <xs:enumeration value="RAS"/>
+            <!--Elemento criado por Reginaldo Bracini na Demanda 2215 - TREE-->
+            <xs:enumeration value="TREE"/>
+            <!--Elementos criado por Caroline Rodrigues na Demanda 2113 - Score de Credito Antecipado Fase 2-->
+            <xs:enumeration value="1515"/>
+            <xs:enumeration value="8013"/>
+            <xs:enumeration value="MeuVWeb"/>
+            <xs:enumeration value="MeuVApp"/>
+            <xs:enumeration value="AppStor"/>
+            <xs:enumeration value="Ccenter"/>
+            <xs:enumeration value="PRecWeb"/>
+            <xs:enumeration value="PRecApp"/>
+            <xs:enumeration value="OfGrat"/>
+            <xs:enumeration value="NCredit"/>
+            <xs:enumeration value="NoData"/>
+            <xs:enumeration value="HotSite"/>
+            <xs:enumeration value="SmartCenter"/>
+            <xs:enumeration value="SC_APP_ID"/>
+            <xs:enumeration value="FrameworkSMS"/>
+            <xs:enumeration value="Upstream"/>
+            <xs:enumeration value="EntitlementServer"/>
+            <xs:enumeration value="TIWS"/>
+            <xs:enumeration value="CAM"/>
+            <!--Elemento criado por Luis Claudio Tavares - ProjetoPJ 3500-ELIOT FASE 2 R2-->
+            <xs:enumeration value="HPFMS"/>
+            <xs:enumeration value="OAM"/>
+            <xs:enumeration value="VivoNext"/>
+            <!--Elemento criado por Israel Souza - Projeto PJ 3753 PowerCurve-->
+            <xs:enumeration value="PowerCurve"/>
+            <xs:enumeration value="ApiGateway"/>
+            <xs:enumeration value="BpelFixa"/>
+            <!--Elemento criado por Eluy Martins - Projeto PJ 6994 AceleracaoPrePago-->
+            <xs:enumeration value="URAPRE"/>
+            <!--Elemento criado Projeto PJ 6148-VivoPlay Fixa-->
+            <xs:enumeration value="SavvionBaOnline"/>
+            <xs:enumeration value="SavvionCRM"/>
+            <xs:enumeration value="WiseTool"/>
+            <xs:enumeration value="BlockUnblock"/>
+            <!--Elemento criado por Marcelo Ferreira de Andrade - Projeto TI 7584 RQUAL-->
+            <xs:enumeration value="Rqual"/>
+            <!--Elemento criado por Gleidson Rodrigues - Jira B2B8126-3439 - Input Móvel-->
+            <xs:enumeration value="NCINT"/>
+            <!--Elemento criado por Gleidson Rodrigues - Jira B2B8126-3439 - Input Móvel-->
+            <xs:enumeration value="AVANT"/>
+            <xs:enumeration value="Terra"/>
+            <xs:enumeration value="Hybris"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="token" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="enderecoIP" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoFuncionalidade" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma funcionalidade do
+						sistema. Exemplos de funcionalidade para o
+						sistema Vivo360: Ativacao e desativacao de
+						servicos, Migracao para GSM, Migracao para CDMA,
+						Troca de aparelho CDMA e GSM, Troca de chip,
+						troca de plano e etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataTransacao" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeServico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do servico que foi invocado, exemplo:
+						consultaPessoa, consultaLinha, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Data e hora da transacao</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="versao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Defini a versao do servico que esta sendo
+						invocado. O formato da versao deve sempre ser
+						99.99</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="\d?\d.\d\d?"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="hostname" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome de terminal ou maquina na rede</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="jwt" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Token jwt gerado a partir do OAM</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cabecalhoVivo" type="gr:CabecalhoVivo"/>
+</xs:schema>

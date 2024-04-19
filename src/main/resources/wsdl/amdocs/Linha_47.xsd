@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Sigan" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sg="http://www.vivo.com.br/MC/Sigan">
+  <xs:include schemaLocation="Linha_38.xsd"/>
+  <xs:complexType name="EOTs">
+    <xs:annotation>
+      <xs:documentation>Deve representar uma lista de EOT que</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="eot" type="sg:EOT" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade EOT para representar uma
+						lista de EOTs</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EOT">
+    <xs:annotation>
+      <xs:documentation>Entidade para representar o codigo EOT e suas N
+        		localidades</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="localidades" type="sg:Localidades" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

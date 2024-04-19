@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="Linha_2.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:complexType name="ParametrosDesbloquearLinha">
+    <xs:sequence>
+      <xs:element name="linha" type="ass:Linha"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	28/2/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta">
+  <xs:include schemaLocation="Linha_131.xsd"/>
+  <xs:complexType name="TipoConta">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos tipos de conta validos,
+				classificando por exemplo em pessoa fisica, pessoa
+				juridica, funcionario, governo, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o tipo de conta, exemplos:
+						pessoa fisica, pessoa juridica, funcionario,
+						governo, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoTpContaSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do tipo de conta no sistema Atlys.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla que identifica o tipo da conta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de conta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="subTiposConta" type="ct:SubTiposConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Subtipo da conta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

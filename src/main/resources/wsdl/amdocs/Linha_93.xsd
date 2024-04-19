@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_76.xsd"/>
+  <xs:include schemaLocation="Linha_21.xsd"/>
+  <xs:include schemaLocation="Linha_94.xsd"/>
+  <xs:include schemaLocation="Linha_96.xsd"/>
+  <xs:complexType name="CalculoPreco">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes contendo o valor a ser pago pelo
+				produto baseado na forma e condicao de pagamento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma forma de calculo de
+						preco no sistema catalogo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorProduto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do produto.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="10"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorParcela" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor da parcela. Obtido atraves do calculo do
+						valor do produto e a quatidade de parcelas.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="10"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorLiquidoProduto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor liquido do produto.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="10"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="percentualDesconto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Percentual de desconto possivel de se oferecer.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="6"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorDesconto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do desconto.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="10"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="formaPagamento" type="cat:FormaPagamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade FormaPagamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="condicaoPagamento" type="cat:CondicaoPagamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CondicaoPagamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contratoFidelizacao" type="cat:ContratoFidelizacao" minOccurs="0"/>
+      <xs:element name="valorMinimoParcela" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor minimo da parcela.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="10"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="produtos" type="cat:Produtos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>****ELEMENTO NAO DEVE SER USADO*****</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produtoDesbloqueado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o preco do produto eh para um aparelho
+						desbloqueado ou bloqueado. (S - desbloqueado; N
+						- bloqueado)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorProdutoChip" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do chip dentro de uma matriz de ofertas</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="10"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTotalMesesDesconto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade total de meses de desconto</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdRestanteMesesDesconto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade pendente de meses de desconto</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoDesconto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>1-Definitico
+                        2-Temporario
+                        3-Condicional</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorDescontoVivoRenova" type="xs:decimal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Quando o pedido foi gerado á partir de um
+						resgate de pontos, esse elemento representa 
+						o valor do desconto do Vivo Renova quando utilizados..</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoVoucher" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Quando o pedido foi gerado á partir de um
+						resgate de pontos, esse elemento representa o
+						o número do voucher do Vivo Renova utilizado no resgate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalculosPreco">
+    <xs:sequence>
+      <xs:element name="calculoPreco" type="cat:CalculoPreco" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

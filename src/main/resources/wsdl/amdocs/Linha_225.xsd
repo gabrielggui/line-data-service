@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	18/3/2008--><!--Nessa entidade existem 2(dois)codigos que podem atender as necessidades de
+retorno de um codigo inteiro(codigo) ou de uma string(codigoOperacao)
+Comentario colocado por Dilmara Matos 30/11/2011--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:complexType name="TipoOperacao">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos tipos de operacoes</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o tipo de operacao. como
+						venda aparelho, venda cartao pre-pago fisico ou
+						kit ativacao, venda aparelho debito em conta
+						telefonica, doacao de aparelho ou doacao de
+						cartao. Ativacao de promoção, Retirada massiva
+						do serviço, Suspender a pedido, Suspensão
+						parcial de cartão, Recarga Chip</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla que identifica um tipo de operacao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de operacao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 30/08/2011-->
+      <xs:element name="codigoOperacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o tipo de operacao. como
+						venda aparelho, venda cartao pre-pago fisico ou
+						kit ativacao, venda aparelho debito em conta
+						telefonica, doacao de aparelho ou doacao de
+						cartao. Ativacao de promoção, Retirada massiva
+						do serviço, Suspender a pedido, Suspensão
+						parcial de cartão, Recarga Chip</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TiposOperacao">
+    <xs:sequence>
+      <xs:element name="tipoOperacao" type="cat:TipoOperacao" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

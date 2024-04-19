@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ct="http://www.vivo.com.br/MC/Conta">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:complexType name="AnaliseCreditoParametro">
+    <xs:sequence>
+      <xs:element name="qtdMaximaAssinaturas" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="csa" type="cat:Csa" minOccurs="0"/>
+      <xs:element name="qtdMaximaAsssinaturasCanceladasFraude" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMinimaFaturasPagas" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMaximaContasCobranca" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMaximaDiasVencidos" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorMaximoTotalDivida" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMaximaDiasVencidosSAP" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorMaximoTotalDividaSAP" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AnaliseCreditoParametros">
+    <xs:sequence>
+      <xs:element name="analiseCreditoParametro" type="ct:AnaliseCreditoParametro" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

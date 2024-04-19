@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:con="http://www.vivo.com.br/MC/Conta">
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:complexType name="ParametrosManterTitularidadeLinhaPosPaga">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="linha" type="ass:Linha"/>
+      <xs:element minOccurs="0" name="codigoUsuarioLinha" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

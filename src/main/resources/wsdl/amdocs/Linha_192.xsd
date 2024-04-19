@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	19/3/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:complexType name="ClasseServico">
+    <xs:annotation>
+      <xs:documentation>Tipo da linha fixa (somente para linhas fixas).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo da classe de servico.
+						ex: LIRA, LINA e etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Descricao da classe de servico.
+						ex: LINHA INDIVIDUAL RESIDENCIAL  AUTOMATICA, LINHA INDIVIDUAL NAO RESIDENCIAL AUTOMATICA e etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoAtributo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoAdicional" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma classe de serviço adicional</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" maxOccurs="1" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Sigla da Classe Servico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

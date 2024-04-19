@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Atlys" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:aty="http://www.vivo.com.br/MC/Atlys" xmlns:ct="http://www.vivo.com.br/MC/Conta">
+  <xs:import namespace="http://www.vivo.com.br/MC/Conta" schemaLocation="Linha_234.xsd"/>
+  <xs:complexType name="ValorTotalFatura">
+    <xs:annotation>
+      <xs:documentation>Valores totais de cada item de fatura, como valor
+				recorrente, valor de uso, valor total de pagamentos,
+				valor total de ajustes e outros valores.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="valorRecorrente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total de servicos recorrentes da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorOutros" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total de outros servicos da fatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorUso" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total de chamadas (usage)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorPagamento" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total de pagamentos</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorAjustes" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total de ajustes</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorSaldoEstimado" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor de saldo estimado da fatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorPendenteUso" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor pendente de uso (usage charge)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorOutrosUso" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Outros valores referentes a uso.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorRestricaoLimite" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor de restricao de limite</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ciclo" type="ct:Ciclo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Ciclo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValorTotalFaturas">
+    <xs:sequence>
+      <xs:element name="valorTotalFatura" type="aty:ValorTotalFatura" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

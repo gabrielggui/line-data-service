@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:ger="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="Linha.xsd" namespace="http://www.vivo.com.br/MC/Geral"/>
+  <xs:import schemaLocation="Linha_11.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:complexType name="ResultadoBuscarListaLinhasPorEsn">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="erroConsultaPre" type="ger:ErroInfo"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="erroConsultaPos" type="ger:ErroInfo"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="linhas" type="ass:Linhas"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	5/3/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_14.xsd"/>
+  <xs:complexType name="AreaRegistro">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das areas de registro validas.
+				Exemplos: 11, 12,14, 21,21, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica a area de registro de uma
+						linha (DDD). Exemplos: 11, 12,13,14, 21, 21,
+						etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da area de registro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="uf" type="cat:Uf" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Uf.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AreasRegistro">
+    <xs:sequence>
+      <xs:element name="areaRegistro" type="cat:AreaRegistro" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

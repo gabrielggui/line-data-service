@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_23.xsd"/>
+  <xs:include schemaLocation="Linha_13.xsd"/>
+  <xs:include schemaLocation="Linha_28.xsd"/>
+  <xs:include schemaLocation="Linha_33.xsd"/>
+  <xs:include schemaLocation="Linha_34.xsd"/>
+  <xs:complexType name="Plano">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes sobre os planos de preco.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um plano de preco pos, pre
+						ou controle.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoPlanoSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o plano nos sistemas Atlys
+						ou NGIN.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoPlanoMaster" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do plano de servicos master (somente para
+						NGIN).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoAnatel" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo da anatel para identificar o plano.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do plano de preco</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do plano de servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorAssinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor mensal da assinatura do plano.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMinutosFranquia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de minutos para a franquia.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusPlano" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Status do plano de servico no catalogo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+            <xs:enumeration value="S">
+              <xs:annotation>
+                <xs:documentation>Ativo</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="N">
+              <xs:annotation>
+                <xs:documentation>Inativo</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMinDependentes" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade minima de dependentes, so tera valor
+						se o plano em questao possuir uma relacao de
+						dependencia com outro plano.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMaxDependentes" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade maxima de dependentes. So tera valor
+						se o plano em questao possuir uma relacao de
+						dependencia com outro plano.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="plataforma" type="cat:Plataforma" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Plataforma</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tecnologias" type="cat:Tecnologias" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Tecnologia</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="csa" type="cat:Csa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Csa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sistemas" type="cat:Sistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sistema</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servicosBasicos" type="cat:Servicos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Servico para identificar
+						os servicos basicos de um plano.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servicosOpcionais" type="cat:Servicos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Servico para identificar
+						os servicos opcionais de um plano..</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="planoAssinatura" type="ass:PlanoAssinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade PlanoAssinatura para
+						identificar os elementos proprios do
+						relacionamento do plano com a assinatura.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaTitularDependente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o plano eh titular ou dependente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoPlanoTitularDependente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do plano no atlys. Contera o codigo do
+						plano titular se o indicador
+						indicaTitularDependente for DEP ou contera o
+						codigo do plano dependente se o indicar
+						indicaTitularDependente for TIT.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="aprovisiona" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o plano eh aprovisionavel. S(true) -
+						plano aprovisionavel; N(false) - plano nao
+						aprovisionalvel.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="servicosMembros" type="cat:Servicos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade servicos para identificar
+						a lista de servicos membros de um plano.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="restricaoEquipamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o plano tem ou nao restricao de
+						equipamento: S(true) - Possui restricao de
+						equipamento; N(false) - Nao possui restricao de
+						equipamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="aprovadoAnaliseCredito" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Indica se o plano foi aprovado pelo processo
+							de analise de credito (VivoScore). Se 1
+							(true) - plano aprovado pela analise de
+							credito; 2 (false) - plano reprovado. Caso
+							seja retornado o valor 3 pelo SE, nao
+							retornar o elemento.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoServico" type="cat:TipoServico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoServico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="negociacoesTarifas" type="cat:NegociacoesTarifa">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade NegociacaoTarifa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdDiasExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de dias a partir da data de ativacao do
+						servico na qual o servico sera expirado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="indicaExpiracaoAutomatica">
+        <xs:annotation>
+          <xs:documentation>Determina se a data de expiracao do servico deve
+						ser automaticamente calculada pelo sistema.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdFidelidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de unidades do periodo de contrato que
+						define a duracao total do contrato</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdCarencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica o periodo minimo que a assinatura deve
+						permanecer com o contrato antes de adquirir um
+						novo contrato do mesmo tipo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="periodicidade" type="cat:Periodicidade">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Periodicidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="tipoPlano" type="cat:TipoPlano">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoPlano</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="nomeCategoriaScore" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Nome da categoria do Plano no Score</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoPlanoMasterSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do plano de servicos master de um
+						determinado sistema origem</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="codigoCategoriaScore" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Nome da categoria do Plano no Score</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoIntegracaoSistemaOrigem" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código de Integração que trará informações
+						referentes à Linha do cliente. (Obrigatório)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicador4G" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indicador se o plano possui 4G</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoAssinatura" type="ass:TipoAssinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia entidade TipoAssinatura</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroLinhaTitular" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Número de acesso da assinatura TIT.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaAssinaturaTitularComMultaCancelamento" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de a assinatura titular tem uma Multa
+						de cancelamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="adequaDep" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indentificador para saber se de fato houve
+						adequação de dependente na solicitação.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdDependentesAssociados" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de serviço dependentes associado
+						(considerando somente os planos DEP ativos e com
+						data futura).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdDependentesDisponiveis" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de serviços dependentes disponíveis
+						(diferença entre Dependentes associados e
+						Quantidade maxima de dependentes).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdPlanoDep" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Informa a quantidade de planos</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dadosDependentes" type="cat:DadosDependentes" minOccurs="0"/>
+      <xs:element name="indicaHabilitacaoWeb" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica se a habilitacao foi feita via web
+                		0 - Plano de voz e dados
+                		1 - Plano de dados (via web)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fidelizacao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica se o plano tem fidelizacao
+                		0 - Plano sem fidelizacao
+                		1 - Plano com fidelizacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="multa" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sinaliza o valor da multa referente a atraso/cancelamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="novaPromoCtrl" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da promoção relacionada ao plano</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="txAdesao" type="xs:double" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Taxa de adesão</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadoDependente">
+    <xs:sequence>
+      <xs:element name="numeroLinhaDependente" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Número de accesso do dependente.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoPlanoDependente" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do plano do dependente.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaMotivoBloqueio" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador se o Dependente está bloqueado com
+						motivo DEP sem TIT.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaAssinaturaDependenteComMultaCancelamento" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador se a assinatura dependente tem um
+						serviço de multa de cancelamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Planos">
+    <xs:sequence>
+      <xs:element name="plano" type="cat:Plano" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadosDependentes">
+    <xs:sequence>
+      <xs:element name="dadoDependente" type="cat:DadoDependente" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:sg="http://www.vivo.com.br/MC/Sigan">
+  <xs:include schemaLocation="Linha_12.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:include schemaLocation="Linha_16.xsd"/>
+  <xs:include schemaLocation="Linha_41.xsd"/>
+  <xs:include schemaLocation="Linha_42.xsd"/>
+  <xs:include schemaLocation="Linha_43.xsd"/>
+  <xs:include schemaLocation="Linha_44.xsd"/>
+  <xs:include schemaLocation="Linha_45.xsd"/>
+  <xs:include schemaLocation="Linha_46.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_17.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Sigan" schemaLocation="Linha_38.xsd"/>
+  <xs:complexType name="Endereco">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos enderecos de pessoas (vendedores,
+				clientes, prospects ou usuarios).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o endereco de um
+						cliente/prospect (idpessoaendereco no Vivonet).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoEndSistemaOrigem" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o endereco no sistema
+						origem. Para atlys, essa informacao representa a
+						coluna ADDR_SEQ_NBR da tabela CUST_ADDR.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="25"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="caixaPostal" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero da caixa postal</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="logradouro" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do logradouro</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="60"/> retirado por Dilmara Matos em 05/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numero" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero da residencia</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="10"/> retirado por Dilmara Matos em 18/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="complemento" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Complemento para endereco, como numero do bloco,
+						apartamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="50"/> retirado por Dilmara Matos em 18/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="bairro" nillable="true" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome do bairro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="50"/> retirado por Dilmara Matos em 18/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cidade" nillable="true" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome da cidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="50" /> retirado por Dilmara Matos em 16/08/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cep" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do CEP completo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="11"/> retirado por Dilmara Matos em 18/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="enderecoPreferencial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se o endereco e o preferencial para o
+						cliente, sendo true o endereco preferencial.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCadastro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que o endereco foi cadastrado. Data de
+						inicio de validade do endereco</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaNumeracaoEndereco" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se existe numeracao para o endereco de
+						acordo com o CEP (valores validos, 0, 1 ou 2)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroInicial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero inicial do intervalo de numeracao
+						permitido para o logradouro neste CEP e Bairro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroFinal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero final do intervalo de numeracao permitido
+						para o logradouro neste CEP e Bairro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaLado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a faixa de numeracao se aplica a um
+						lado especifico da rua ou nao. Valores validos:
+						0 - Par e Impar; 1 - Impar; 2 - Par.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoLado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do lado. Valores validos: Par e Impar,
+						Impar ou Par.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataUltimaAlteracao" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoLogradouro" nillable="true" type="ps:TipoLogradouro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoLogradouro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tituloLogradouro" type="ps:TituloLogradouro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TituloLogradouro.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pais" nillable="true" type="ps:Pais" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pais</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="uf" type="cat:Uf" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade UF.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoEndereco" type="ps:TipoEndereco" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoEndereco.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pessoa" type="ps:Pessoa" minOccurs="0"/>
+      <xs:element name="sistemaOrigem" type="cat:Sistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sistema para saber de qual
+						sistema o endereco foi originado, se FO ou
+						Atlys.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="enderecoFiscal" type="ps:EnderecoFiscal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade EnderecoFiscal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="enderecoAssociadoConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag que indica se o endereco do cliente
+						posicionado eh o endereco associado a conta do
+						cliente. true - endereco associado a conta;
+						false - endereco nao associado a conta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroSincronismo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este elemento informa o numero de sincronismo do
+						Altys e o VIVONET</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="municipio" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Municipio do endereco</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="20"/> retirado por Dilmara Matos em 18/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <!--Criado por Dilmara Matos em 04/08/2011-->
+      <xs:element name="pontoReferencia" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o ponto de
+						referencia do endereço</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 02/09/2011-->
+      <xs:element name="cnl" type="sg:CNL" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="usuariosAlteracaoEndereco" type="ps:UsuariosEndereco" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="indicaAreaRisco" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicador de endereço em área de risco.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indEnderecoEntrega" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicador de endereço de entrega</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="desPontoReferencia" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Descrição do ponto de referencia</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contatoEndEntrega" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Contato do ponto de referencia</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoImovel" type="ps:TipoImovel" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade TipoImovel</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bloco" type="ps:Bloco" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Bloco</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoDomicilioSistemaOrigem" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo do domicilio no sistema de origem</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroApartamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Numero do apartamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoLogradouroSistemaOrigem" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo do logradouro no sistema origem</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="latitude" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Latitude do endereco</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="longitude" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Latitude do endereco</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="siglaAreaTelefonica" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Determina a área de instalação da linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusEndereco" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status do endereço cadastrado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="siglaSessaoServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identificação de uma sub-área dentro da Área
+						Telefônica.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoSessaoServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código de identificação de uma sub-área dentro
+						da Área Telefônica.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="siglaTecnologiaCabeamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tecnologia do cabeamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoMovimentacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código de movimentação do endereço.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ladoPar" type="ps:LadoPar" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Contêm número inicial e número final do lado par
+						do endereço que é atendido pela sessão de
+						serviço.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ladoImpar" type="ps:LadoImpar" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Contêm número inicial e número final do lado
+						impar do endereço que é atendido pela sessão de
+						serviço.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="siglaEscritorioServico" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Escritório de Serviço responsável por atender a
+						Ordem de Serviço.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoAreaRegistro" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código de area do endereço posicionado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="areaTelefonica" type="ps:AreaTelefonica" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Area Telefonica (area de instalação da linha que
+						esta relacionado com o endereço de instalação).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="escritorioServico" type="ps:EscritorioServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Escritorio de Servico que atende a linha
+						pesquisada referente ao endereço de instalação.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroDirecaoCalejero" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>CNL + código logradouro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="letraEndereco" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Informação relacionada ao guia de endereços
+						(letra e quadricula indicam ponto exato do
+						endereço).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quadriculaEndereco" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Informação relacionada ao guia de endereços.
+						(letra e quadricula indicam ponto exato do
+						endereço)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="folhaLogradouroEndereco" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Informação relacionada ao guia de endereços.
+						(folha onde se encontra o logradouro no livro
+						guia de endereços).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="microAreaTUP" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Micro área TUP da direção</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="microAreaLinha" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Micro área LINHA da direção</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaNumeracaoIrregular" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicador de logradouro com numeração irregular.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="situacaoLogradouro" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicador de situação do logradouro.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoLocalidade" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo Localidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoLocalidade" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao Localidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoCallejero" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>codigo do mapa da cidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Inicio da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="quantidadeEnderecoPorSistemaOrigem" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <!--Final da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="complementoLogradouro" type="ps:ComplementoLogradouro" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Complemento do logradouro. 7o andar</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeCondominio" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica o nome do condominio do endereco
+						especifico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaEnderecoConta" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de endereco da conta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaEnderecoInstalacao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de endereco de instalacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fatb" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa endereço "Fora da area de Tributacao Basica"</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaAreaConcessao" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica se o endereço é pertencente a uma área de concessão para venda de linha FIXA.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoRegistro" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa o tipo do Registro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subTipoRegistro" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa o sub tipo do Registro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoInformacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa o código da informação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificacaoBloco" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa a identificação do bloco.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoConfirmacaoEletronica" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa o tipo da confirmação eletrônica</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoLogradouro" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa a descrição do logradouro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ibgeDistrito" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do distrito do IBGE</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoCajetin" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo Cajetin do Atis relacionado ao endereco</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="complementosAdicionais" type="ps:ComplementosAdicionais" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Lista de complementos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="inibeValidacaoEndereco" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento indicador inibe validação de endereço.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ComplementosAdicionais">
+    <xs:sequence>
+      <xs:element name="complemento" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Complemento do Endereço.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Enderecos">
+    <xs:sequence>
+      <xs:element name="endereco" minOccurs="0" maxOccurs="unbounded" type="ps:Endereco"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EnderecoFiscal">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes de endereco necessarias para
+				autoridades fiscais e tributacao.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificador de registros de autoridade fiscal
+						no sistema (seqNbr no Atlys)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoBairro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo de bairro para autoridade fiscal</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoNacLocalidade" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="8"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="siglaNacLocalidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla nacional de localidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoIBGE" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="uf" minOccurs="0" maxOccurs="1" type="cat:Uf">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade UF para representar o
+						Codigo de estado para autoridade fiscal de
+						tributacao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoCidade" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo da cidade para autoridade fiscal</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="areaRegistro" minOccurs="0" maxOccurs="1" type="cat:AreaRegistro">
+        <xs:annotation>
+          <xs:documentation>Codigo Local da Área Por ex: São Paulo = 11 Rio
+						de Janeiro = 21 Belo Horizonte = 31 Referencia a
+						entidade AreaRegistro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="localidade" minOccurs="0" maxOccurs="1" type="sg:Localidade">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Localidade para
+						representar a localidade de um determinado
+						endereco, bem como a CNL e etc</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoAtFixa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo da area telefonica referente ao
+						endereço</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoTipoAt" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo da area telefonica referente ao
+						endereco</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsuarioEndereco">
+    <xs:sequence>
+      <xs:element name="loginUsuario" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá indicar o login do usuário que
+                		efetuou a alteração</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="primeiroNomeUsuario" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá indicar o primeiro nome do
+                		usuário que efetuou a alteração</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeMeioUsuario" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá indicar o nome do meio do
+                		usuário que efetuou a alteração</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ultimoNomeUsuario" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá indicar o sobrenome do usuário
+                		que efetuou a alteração</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorAcaoUsuario" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá indicar a ação que o usuário
+						efetuou (alteração ou exclusão)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UsuariosEndereco">
+    <xs:sequence>
+      <xs:element name="usuarioEndereco" type="ps:UsuarioEndereco" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TipoImovel">
+    <xs:sequence>
+      <xs:element name="sigla" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo da estrutura do imovel P – Predio C – Casa
+						N – Não Localizado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de imovel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do Tipo do Imovel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Bloco">
+    <xs:annotation>
+      <xs:documentation>Pode representar um predio</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigoBlocoSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do predio no sistema origem</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do bloco</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ComplementoLogradouro">
+    <xs:annotation>
+      <xs:documentation>Complemento do logradouro. Exemplo 7o andar, Bloco 4
+				Apto 54, Sala Xxx</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="tipoComplemento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo de Complemento. Ex: BL, CS, TR</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorComplemento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Valor do Complemento. Ex: 10, A</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

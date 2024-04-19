@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:complexType name="ParametrosVerificarEstadoBloqueio">
+    <xs:sequence>
+      <xs:element name="numeroLinha" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identificador do numero de Acesso</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoFuncionalidade" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo da Funcionalidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="acao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Ação</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

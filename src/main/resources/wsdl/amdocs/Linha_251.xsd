@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_89.xsd"/>
+  <xs:complexType name="CombinacaoTipoProduto">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastros dos possiveis tipos de produto, como
+				aparelho, kit pre GSM, kit pre CDMA, acessorio,
+				smartphone, etc. E mantem relacionamento dos produtos
+				que pode ser vendidos juntos (apenas produtos do mesmo
+				grupo).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um tipo de produto.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de produto</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoProduto" type="cat:TipoProduto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoProduto do Catalogo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="grupoTipoProduto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica a qual grupo pertence o tipo do produto
+						para poder realizar a validacao para venda de
+						produtos (em uma mesma ordem de venda, nao pode
+						ser vendidos produtos de grupos diferentes.)
+						 - Grupo 1: Aparelho, Placa, Modem, Simcard, Kit
+						Pre CDMA e Kit Pre GSM. 
+						 - Grupo 2: Recarga 
+						 - Grupo 3: Acessorio</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CombinacoesTipoProduto">
+    <xs:sequence>
+      <xs:element name="combinacaoTipoProduto" type="nfo:CombinacaoTipoProduto" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

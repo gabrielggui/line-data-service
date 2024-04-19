@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Portabilidade" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spn="http://www.vivo.com.br/MC/Portabilidade">
+  <xs:complexType name="MotivoCancelamento">
+    <xs:annotation>
+      <xs:documentation>Entidade que identifica os tipos de motivos de
+				cancelamento relacionados a eventos de portabilidade. De
+				acordo com o processo de negocio, o cancelamento de um
+				pedido de portabilidade de mais que dois dias uteis que
+				seguem sua criacao requerem a especificacao desta razao.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que defini uma razao para o cancelamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do motivo de cancelamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MotivosCancelamento">
+    <xs:sequence>
+      <xs:element name="motivoCancelamento" type="spn:MotivoCancelamento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

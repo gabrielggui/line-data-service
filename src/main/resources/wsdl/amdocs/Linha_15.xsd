@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/SCA" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_14.xsd"/>
+  <xs:complexType name="Regional">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastro das regionais. Exemplos: Leste, SP, Sul,
+				Minas Gerais, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da regional.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ufs" minOccurs="0" type="cat:Ufs">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Uf.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma regional</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Elemento comentado por Dilmara Matos em 21/11/2011-->
+            <!--<xs:maxLength value="5"/>-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Regionais">
+    <xs:sequence>
+      <xs:element name="regional" type="sca:Regional" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

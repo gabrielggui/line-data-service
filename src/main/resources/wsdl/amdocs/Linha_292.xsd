@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:complexType name="AvisoSms">
+    <xs:sequence>
+      <xs:element name="smsPromocoes" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a linha recebera sms com informacoes
+						sobre promocoes. 1 - SMS autorizado 0 - SMS nao
+						autorizado null - nao informado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="smsProtocolos" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a linha recebera sms com informacoes
+						sobre protocolos abertos pelo cliente. 1 - SMS
+						autorizado 0 - SMS nao autorizado null - nao
+						informado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="smsServicos" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a linha recebera sms com informacoes
+						sobre servicos disponiveis na Vivo 1 - SMS
+						autorizado 0 - SMS nao autorizado null - nao
+						informado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="smsParceiros" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a linha recebera sms com informacoes
+						sobre parceiros da Vivo. 1 - SMS autorizado 0 -
+						SMS nao autorizado null - nao informado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="bloqueioProcon" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicativo de bloqueio de envio de informacoes
+						pelo PROCON.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indTelemarketing" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicativo para contato via telemarketing.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAlteracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de alteracao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="smsSaldo" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica se a linha recebera sms com informacoes
+						sobre saldos gerais (Saldo credito \ Saldo
+						pontos) pelo cliente. 0 - SMS autorizado 1 - SMS
+						nao autorizado null - nao informado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaEnvioSMS" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicativo para envio de SMS ao efetuar uma
+						atualizacao do status do pedido Loja Conceito.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaPermissaoContato" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicativo para Permissao de Contato.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de Expiracao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

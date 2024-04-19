@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta">
+  <xs:complexType name="InstituicaoFinanceira">
+    <xs:sequence>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da InstituicaoFinanceira.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>codigo da InstituicaoFinanceira.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroContaBancaria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>numero da conta bancaria</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Dilmara em 06/01/2012-->
+      <xs:element name="codigoAgencia" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o Número da agência</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="digitoVerificadorCodigoAgencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Digito verificador do codigo da agencia</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="digitoVerificadorNumeroContaBancaria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Digito verificador do numero da conta bancaria</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Gisele em 24/08/2012-->
+      <xs:element name="indicaValidacaoDigito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valida digito da conta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tamanhoNumeroConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tamanho do número da conta bancária.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Rodrigo Cespede em 07/05/2018-->
+      <xs:element name="validarDigitoVerificador" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento criado para sinalizar que deve ser executado a validação do digito verificador da conta, o elemento indicaValidacaoDigito esta sendo utilizado para validar a presença do digito verificador;</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaCodigoOperacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento criado para sinalizar a necessidade de fornecer o codigo da operação bancaria</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ordemRelevancia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Ordem de relevancia da instituicao financeira (ordenação)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicadorMensagemCustomizada" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento criado para sinalizar a necessidade de apresentar uma notificação customizada referente a instituição financeira</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InstituicoesFinanceiras">
+    <xs:sequence>
+      <xs:element name="instituicaoFinanceira" type="ct:InstituicaoFinanceira" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

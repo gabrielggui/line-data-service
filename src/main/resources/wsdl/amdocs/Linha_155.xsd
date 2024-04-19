@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:sgp="http://www.vivo.com.br/MC/SGP">
+  <xs:include schemaLocation="Linha_12.xsd"/>
+  <xs:include schemaLocation="Linha_157.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SGP" schemaLocation="Linha_156.xsd"/>
+  <xs:include schemaLocation="Linha_158.xsd"/>
+  <xs:complexType name="Usuario">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes exclusivas apenas a usuarios de
+				sistemas.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ps:Pessoa">
+        <xs:sequence>
+          <xs:element name="login" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Login do usuario</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <!--<xs:maxLength value="50" /> Retirado por Dilmara Matos em  13/07/2011-->
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="siteCR" type="ps:SiteCR" minOccurs="0"/>
+          <xs:element name="fornecedorTelemarketing" type="sgp:FornecedorTeleMarketing" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade Fornecedor Tele
+								Marketing</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="identificacaoUsuario" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a identificacao de usuario no
+								sistema Atlys. Como por exemplo uma
+								identificacao de vendedor, ou
+								identificacoes outros usuarios do
+								sistema</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="statusLogin" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Status do Login do usuario. Exemplo: A -
+								Ativo D - Desativado C - Cancelado, ou 0
+								= Inativo e 1 = Ativo</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="motivoStatus" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Representa o motivo no qual o usuario
+								encontra-se no status atual. Por ex:
+								Motivo do status "Desativado": I = tempo
+								de inatividade, W=Digitacao de Senha
+								incorreta, T=ausência temporaria,
+								U=usuario inicial</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="privilegios" type="ps:Privilegios" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="nome" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que irá identificar o nome do
+								usuário</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Dilmara Matos em 13/07/2011-->
+          <xs:element name="dataAlteracaoStatus" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que irá identificar a data da
+								alteração do status de ativo para
+								inativo</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Dilmara Maatos em 25/08/2011-->
+          <xs:element name="loginCoordenador" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>login do coordenador</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Dilmara Maatos em 25/08/2011-->
+          <xs:element name="loginSuperiorImediato" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>login do superior imediato</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Dilmara Maatos em 25/08/2011-->
+          <xs:element name="loginRepresentante" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>login do representante</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="linha" type="ass:Linha" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>linha do usuario.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="inPermissaoEnvio" type="xs:boolean" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Permissao de envio de protocolo.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoUsuarioAlteracao" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Ultimo usuario ao alterar um usuario.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataAlteracao" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Data Ultima Alteracao do Usuario.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="UsuariosPessoa">
+    <xs:complexContent>
+      <xs:extension base="ps:Pessoas">
+        <xs:sequence>
+          <xs:element name="usuario" type="ps:Usuario" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Sigan" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sg="http://www.vivo.com.br/MC/Sigan" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_16.xsd"/>
+  <xs:include schemaLocation="Linha_35.xsd"/>
+  <xs:complexType name="PesquisaNumero">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das pesquisas de numeros realizadas
+				no sistema Sigan.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo da pesquisa.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="localidade" type="sg:Localidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Localidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="categoriaNumero" type="sg:CategoriaNumero" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CategoriaNumero</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pais" type="ps:Pais" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pais</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeros" type="sg:Numeros" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da categoria</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

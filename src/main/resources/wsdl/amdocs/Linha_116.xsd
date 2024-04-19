@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_117.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_143.xsd"/>
+  <xs:include schemaLocation="Linha_12.xsd"/>
+  <xs:include schemaLocation="Linha_144.xsd"/>
+  <xs:include schemaLocation="Linha_145.xsd"/>
+  <xs:include schemaLocation="Linha_146.xsd"/>
+  <xs:include schemaLocation="Linha_147.xsd"/>
+  <xs:include schemaLocation="Linha_151.xsd"/>
+  <xs:include schemaLocation="Linha_24.xsd"/>
+  <xs:include schemaLocation="Linha_159.xsd"/>
+  <xs:include schemaLocation="Linha_160.xsd"/>
+  <xs:include schemaLocation="Linha_161.xsd"/>
+  <xs:include schemaLocation="Linha_164.xsd"/>
+  <xs:include schemaLocation="Linha_166.xsd"/>
+  <xs:complexType name="Atendimento">
+    <xs:annotation>
+      <xs:documentation>Mantem historico das interacoes de atendimento entre
+				Cliente e Vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um atendimento no Vivonet.
+						Esse codigo, antes da aplicacao das regras de
+						SMP era usado tambem como numero de protocolo.
+						Atualmente, o numero de protocolo e um numero
+						composto por 2 ultimos digitos no ano, 2 digitos
+						de mes e sequencial que a cada comeco de ano
+						volta para o numero 1.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="protocoloAtendimento" minOccurs="0" type="ps:ProtocoloAtendimento">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ProtocoloAtendimento que
+						agora mantera as informacoe do protocoloca
+						agrupador.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAbertura" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de abertura do atendimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFechamento" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fechamento do atendimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFechamentoPrevisto" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data prevista para fechamento do atendimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="protocoloSMS" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o cliente deseja receber o numero do
+						protocolo por SMS (true)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="comentario" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do comentario registrado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoOperacao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sera sempre 1 - Palitagem</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="grupoAbertura" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica o grupo de abertura da interacao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoRelacionamento" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se o relacionamento foi realizado
+						para um cliente, prospect ou usuario da linha. 1
+						- Usuario; 2 - Cliente; 3 - Prospect.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoAlerta" nillable="true" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="motivoAtendimento" type="ps:MotivoAtendimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade MotivoAtendimento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusAtendimento" type="ps:StatusAtendimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade StatusAtendimento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subStatusAtendimento" nillable="true" type="ps:SubStatusAtendimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade SubStatusAtendimento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice>
+        <xs:element name="pessoa" type="ps:Pessoa" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Referencia a entidade Pessoa para
+							identificar um cliente ou prospect.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="linha" type="ass:Linha" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Referencia a entidade Linha para identificar
+							o cliente.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="usuario" type="ps:Usuario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Usuario para identificar o
+						atendente que realizou a interacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="canalAtendimento" type="cat:CanalAtendimento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade canalAtendimento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="andamentos" type="ps:AndamentosAtendimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a lista de Andamentos para
+						identificar todos os andamentos por onde o
+						atendimento ja passou.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="procedencia" type="ps:Procedencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Procedencia.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="classificacaoSMS" type="ps:ClassificacaoSMS" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ClassificacaoSMS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoReabertura" type="ps:TipoReabertura" minOccurs="0"/>
+      <xs:element name="faseAbertura" type="ps:AtendimentosNivel" minOccurs="0"/>
+      <xs:element name="faseTratamento" type="ps:AtendimentosNivel" minOccurs="0"/>
+      <xs:element name="faseRetorno" type="ps:AtendimentosNivel" minOccurs="0"/>
+      <xs:element name="objeto" type="ps:Objeto" minOccurs="0"/>
+      <xs:element name="codigoSolicitacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma solicitacao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="atendimentoAnatel" type="ps:AtendimentoAnatel" minOccurs="0"/>
+      <!--Elemento Criado por Dilmara Matos 25/08/2011-->
+      <xs:element name="qtdTempoAtendimento" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a quantidade de tempo
+						em ilha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadores" type="ps:Indicadores" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade indicadores</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mediaIndicadoresPeriodo" type="ps:Indicadores" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade indicadores</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mediaIndicadoresGrupo" type="ps:Indicadores" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade indicadores</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Inicio da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="ordemServico" type="ass:OrdemServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <!--Final da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="motivoCancelamentoLinha" minOccurs="0" type="nfo:MotivoCancelamentoLinha">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade motivoCancelamentoLinha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Atendimentos">
+    <xs:sequence>
+      <xs:element name="atendimento" type="ps:Atendimento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Entidade criada por Dilmara Matos em 25/08/2011-->
+  <!--Entidade que irá indicar os indicadores dos atendimentos dos fornecedores-->
+  <xs:complexType name="Indicadores">
+    <xs:sequence>
+      <xs:element name="indicador" type="ps:Indicador" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Indicador">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>nome do indicador</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valor" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Valor do calculo do indicador</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento alterado o tipo de string para dateTime por Dilmara Matos em 06/10/2011-->
+      <xs:element name="data" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de referencia do calculo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criada por Dilmara Matos em 06/10/2011-->
+      <xs:element name="midia" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar de qual midia foi
+                		extraido o indicador</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criada por Dilmara Matos em 06/10/2011-->
+      <xs:element name="grupo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar de qual grupo foi
+						extraido o indicador</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

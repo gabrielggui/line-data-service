@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/SN/Linha">
+  <xs:complexType name="ParametrosBuscarLinha">
+    <xs:sequence>
+      <xs:element name="idLinhaTelefonica" type="xs:integer"/>
+      <xs:element name="codigoProdutoComercial" type="xs:integer" minOccurs="0"/>
+      <xs:element name="numeroCliente" type="xs:integer" minOccurs="0"/>
+      <xs:element name="idSistemaOrigem" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

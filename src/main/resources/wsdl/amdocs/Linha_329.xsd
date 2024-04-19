@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/SCA" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:include schemaLocation="Linha_330.xsd"/>
+  <xs:complexType name="SubSistema">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastro dos sub sistemas (funcionalidades). Um
+				sub sistema e uma funcionalidade do sistema vivo360 ou
+				um tipo de operacao do catalogo, por exemplo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um sub sistema (funcionalidade)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="secoes" type="sca:Secoes" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Secoes.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubSistemas">
+    <xs:sequence>
+      <xs:element name="subSistema" type="sca:SubSistema" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:include schemaLocation="Linha_133.xsd"/>
+  <xs:include schemaLocation="Linha_132.xsd"/>
+  <xs:complexType name="TipoDocumento">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos tipos de documentos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o tipo de documento, RG,
+						CPF, inscricao estadual etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla que representa um tipo de documento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de documento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="prioridade" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero que representa a prioridade de um
+						documento sobre outro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="classificacao" nillable="true" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Sigla que identifica a classificacao de um
+							tipo de documento</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoPessoa" type="ps:TipoPessoa" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="permiteVisualizar" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o elemento pode ser visualizado. True
+						(1) - permitido visualizar; False (0 ou null) -
+						nao permitido visualizar.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoDocObrigatorio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica qual tipo de documento eh
+						obrigatorio. Y (true) - tipo de documento
+						obrigatorio. N (false) - tipo de documento nao
+						obrigatorio</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoDocPrimario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se o tipo de documento eh primario
+						para o cliente Y (true) - tipo primario; N
+						(false) - tipo nao primario.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento alterado a documentation por Dilmara Matos em 05/10/2011-->
+      <xs:element name="codigoDocumento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o codigo do
+						documento que serão enviados: (1 - Boleto
+						remessa (R); 2 - Envio boleto (SR); 3 - Fatura
+						(B); 4 - Conta detalhada (U); 5 - Comprovante
+						contestação – reservado para o futuro; 6 -
+						Comprovante contestação com boleto remessa –
+						reservado para o futuro; 7 - Entrada de plano de
+						parcelamento (D); 8 - Restabelecimento de
+						crédito manual (RM); 9 - Restabelecimento de
+						crédito automático (RA))</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoSistemaOrigem" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>O código do tipo do documento cadastrado para o cliente (Ex.:RG, Passaporte, Inscrição Estadual e etc).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TiposDocumento">
+    <xs:sequence>
+      <xs:element name="tipoDocumento" type="ps:TipoDocumento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

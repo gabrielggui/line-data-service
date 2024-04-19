@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:pes="http://www.vivo.com.br/MC/Pessoa" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:con="http://www.vivo.com.br/MC/Conta">
+  <xs:import namespace="http://www.vivo.com.br/MC/Conta" schemaLocation="Linha_231.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_155.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:complexType name="ParametrosManterLinhaPosPago">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="linha" type="ass:Linha"/>
+      <xs:element minOccurs="1" name="conta" type="con:Conta"/>
+      <xs:element minOccurs="1" name="pessoa" type="pes:Pessoa"/>
+      <xs:element minOccurs="1" name="usuarioLinha" type="pes:Pessoa"/>
+      <xs:element minOccurs="1" name="usuarioManutencao" type="pes:Usuario"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

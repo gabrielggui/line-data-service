@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Geral" elementFormDefault="qualified" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="SubTipoRede">
+    <xs:annotation>
+      <xs:documentation>Tal entidade possui elementos que descreve os sub tipos de
+        		redes, bem como suas caracteriisticas</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o sub tipo de rede</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Descrição do sub tipo de rede</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubTiposRede">
+    <xs:annotation>
+      <xs:documentation>Representa o conjunto de sub tipos de rede</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="subTipoRede" type="gr:SubTipoRede" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/SCA" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_6.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_11.xsd"/>
+  <xs:include schemaLocation="Linha_326.xsd"/>
+  <xs:include schemaLocation="Linha_328.xsd"/>
+  <xs:include schemaLocation="Linha_331.xsd"/>
+  <xs:include schemaLocation="Linha_332.xsd"/>
+  <xs:complexType name="UsuarioSCA">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastro dos usuarios, podendo ser usuarios
+				de
+				sistemas, vendedores, gerentes, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="matricula" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Matricula do usuario de acordo com a existente
+						no
+						sistema Humanus.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="7"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do usuario</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="login" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Login do sistema ou chave de acesso. Regra de
+						criacao do login: A + YYYYYYY onde YYYYYYY e o
+						numero da matricula
+						do usuario. O primeiro Y
+						identifica o tipo de usuario: 0,1 u 2 -
+						usuario
+						e funcionario Vivo; 3 ou 4 - para dealers; 5 -
+						para
+						terceiros (exceto call center e lojas
+						proprias); 6 ou 7 - para
+						terceiros do call
+						center; 8 - para terceiros das lojas proprias; 9
+						- livre para novas necessidades.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="senha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Senha do usuario criptografada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="gruposSistema" minOccurs="0" type="sca:GruposSistema">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade GruposSistema para
+						identificar os grupos do usuario.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="canalVenda" minOccurs="0" type="sca:CanalVenda">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CanalVenda para
+						identificar
+						o PDV do usuario.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoVendedor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo de comissionamento do sistema GRC para o
+						usuario (codigo adabas).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="grupoVendedor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o grupo do vendedor no
+						sistema SAP.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="celular" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do celular do usuario.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="email" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>E-mail do usuario.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="gestor" type="sca:UsuarioSCA" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Usuario para identificar o
+						login e o nome do gestor do usuario.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusSenha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se a senha esta bloqueada ou nao.
+						Valores validos: Bloqueado ou Desbloqueado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusUsuario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se o usuario esta ativo ou nao.
+						Valores validos: Ativo ou Desativo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracaoUsuario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data a partir da qual o login do usuario sera
+						desativado automaticamente pelo sistema.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cpfUsuario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>CPF do usuario logado (usado, principalmente,
+						pelos servicos do GSS)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="perfis" minOccurs="0" type="sca:Perfis"/>
+      <xs:element name="site" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Site do usuario.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeFornecedor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do Fornecedor</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="siteAtendimento" minOccurs="0" type="sca:Site">
+        <xs:annotation>
+          <xs:documentation>Site de atendimento do usuário.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="perfilAtendente" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Perfil do atendente.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Usuarios">
+    <xs:sequence>
+      <xs:element name="usuario" type="sca:UsuarioSCA" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

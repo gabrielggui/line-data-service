@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:aty="http://www.vivo.com.br/MC/Atlys" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <xs:import schemaLocation="Linha_7.xsd" namespace="http://www.vivo.com.br/MC/Geral"/>
+  <xs:include schemaLocation="Linha_238.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Atlys" schemaLocation="Linha_232.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_12.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_11.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_94.xsd"/>
+  <xs:include schemaLocation="Linha_130.xsd"/>
+  <xs:include schemaLocation="Linha_239.xsd"/>
+  <xs:include schemaLocation="Linha_129.xsd"/>
+  <xs:include schemaLocation="Linha_234.xsd"/>
+  <xs:include schemaLocation="Linha_240.xsd"/>
+  <xs:include schemaLocation="Linha_241.xsd"/>
+  <xs:include schemaLocation="Linha_242.xsd"/>
+  <xs:include schemaLocation="Linha_119.xsd"/>
+  <xs:include schemaLocation="Linha_276.xsd"/>
+  <xs:include schemaLocation="Linha_279.xsd"/>
+  <xs:include schemaLocation="Linha_282.xsd"/>
+  <xs:include schemaLocation="Linha_285.xsd"/>
+  <xs:include schemaLocation="Linha_286.xsd"/>
+  <xs:include schemaLocation="Linha_287.xsd"/>
+  <xs:include schemaLocation="Linha_288.xsd"/>
+  <xs:include schemaLocation="Linha_289.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_51.xsd"/>
+  <xs:include schemaLocation="Linha_290.xsd"/>
+  <xs:include schemaLocation="Linha_291.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_237.xsd"/>
+  <xs:complexType name="Conta">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das conta de clientes e prospects.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma conta no vivonet
+						(idconta).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoContaSistemOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma conta, no sistema
+						origem, por exemplo no Atlys, essa coluna e
+						representada pelo account_id.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de expiracao da conta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataVencimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de vencimento de conta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInicialCiclo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de inicio do ciclo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFinalCiclo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fim do ciclo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAlteracaoStatus" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de alteracao do status de conta. Data de
+						inicio de vigencia de um status.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorUltimaFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor da ultima fatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="contaPorEmail" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se a conta deve ser enviada por
+						e-mail para o cliente. Caso o cliente deseje
+						receber a conta por e-mail, esse indicador
+						estara com o valor 1 (true).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="contaPagadora" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a conta e a conta pagadora (utilizado
+						para hieraquia de contas). Se a conta for
+						pagadora, esse indicador tera o valor 1 (true).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ciclo" nillable="true" type="ct:Ciclo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Ciclo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="classeCredito" nillable="true" type="ct:ClasseCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ClasseCredito</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoConta" nillable="true" type="ct:TipoConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoConta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="layoutConta" nillable="true" type="ct:LayoutConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade LayoutConta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoRelatorio" nillable="true" type="ct:TipoRelatorio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoRelatorio</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sistemaOrigem" nillable="true" type="cat:Sistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sistema</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusConta" nillable="true" type="ct:StatusConta" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade StatusConta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pessoa" nillable="true" type="ps:Pessoa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pessoa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assinaturas" nillable="true" type="ass:Assinaturas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Assinatura</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuarioManutencao" type="ps:Usuario" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Usuario para identificar o
+						usuario que realizou o cadastro de uma nova
+						conta ou para identificar o usuario que fez
+						alguma alteracao no cadastro existente.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="enderecoConta" type="ps:Endereco" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Endereco para identifica
+						qual e o endereco da conta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="smsContaGerada" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Indica se eh enviado SMS de conta gerada (1-
+							true) ou nao (0 - false)</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="smsCodigoBarras" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se eh enviado SMS de codigo de barras (1
+						- true) ou nao (0 - false)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="envioEletronicoFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a conta tem ativo o envio eletronico
+						da fatura (true) ou tem ativo o envio por
+						correio da fatura (false).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdFaturasAbertas" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Quantidade de faturas em aberto para a conta
+							(account)</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorSaldoDevedor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total do saldo devedor de todas as faturas
+						em aberto do cliente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="faturas" type="ct:Faturas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Faturas.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="emailContaGerada" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Indica se eh enviado email de conta gerada
+							(1- true) ou nao (0 - false)</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="enviaBoleto" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Indica se eh enviado email boleto para o
+							cliente (true) ou nao (false)</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="hierarquiaConta" minOccurs="0" type="ct:HierarquiaConta"/>
+      <xs:element name="faltaContatoGestor" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Indica que os gestores de cobranca nao estao
+							configurados como recipientes das
+							notificacoes e nao existe um Gestor de
+							Empresa e/ou Gestor de Relacionamento
+							associado ao CNPJ da conta (aplicavel a
+							contas PJ).true = nao ha contato definido;
+							false = ha contato definido.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de criacao da conta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="csa" type="cat:Csa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CSA</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoLimiteSaldo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica o tipo de limite de saldo, se 0 -
+						nenhum limite, se 2 - possui limite de saldo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataTrocaConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de troca da conta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="processoCobranca" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a conta esta em cobranca.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="metodoPagamento" type="ct:MetodoPagamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade MetodoPagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="estimativaSaldo" type="aty:EstimativaSaldo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade EstimativaSaldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="confiabilidade" type="ct:Confiabilidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Confiabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="grandeConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a conta eh uma grande conta
+						(largeAccountFlag): true (conta grande), false
+						(contas normais).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="contatosSasCar" nillable="true" type="ps:ContatosSasCar" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ContatosSasCar.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusFaturaOnline" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>coloque a seguinte descricao: Indica remocao da
+						conta do cliente do Conta online. Quando esse
+						indicador for true, o servico assume que todos
+						os outros indicadores (enviaBoleto,
+						smsCodigoBarras, emailContaGerada,
+						contaPorEmail) de fatura on line deverao ser
+						falsos</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+            <xs:enumeration value="ALT"/>
+            <xs:enumeration value="DES"/>
+            <xs:enumeration value="ATV"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="formatoConta" type="ct:FormatoConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade FormatoConta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validacaoTitDep" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a validacao TIT DEP esta ligada ou
+						desligada True = Ligada On, False =Desligada Off</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaUnicoCliConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>indica se a conta possui apenas um usuario</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaContaCobranca" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>indica se a conta esta em cobranca</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="atributoConta" nillable="true" type="ct:AtributoConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia atributo Conta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contaBloqueada" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>indica se a conta esta bloqueada por falta de
+						pagamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaPossibilidadeHabilitacaoLinhasFixas" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Avalia se um cliente pode ser apto a ter uma
+						linha pós.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeConta" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome associado à conta pagadora.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="gestores" type="ps:Gestores" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="eventosUso" type="ct:EventosUso" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="identificadorHierarquia" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá Retornará “true” quando a conta
+						pertencer a uma hierarquia. Caso contrário
+						retornará “false”</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroContaPagadora" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>numero da Conta Pagadora</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="novaConta" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicador do status da conta. Por ex: S = Nova
+						Conta N = A Conta cadastrada ou consulta já
+						existia</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criador po Dilmara Matos em 08/09/2011-->
+      <xs:element name="operadoras" type="gr:Operadoras" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá referenciar a entidade
+						operadoras</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criador po Dilmara Matos em 15/09/2011-->
+      <xs:element name="dataCadastroConta" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá identificar a data do
+						cadastramento da conta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 06/01/2012-->
+      <xs:element name="historicoMetodoPagamento" type="ct:MetodosPagamento" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="indicaControlePJ" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a conta é Controle PJ (1 - true) ou
+						nao (0 - false)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Gisele Mayer em 14/05/2012-->
+      <xs:element name="statusPlanoParcelamento" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Status do plano de parcelamento atual. Os
+						valores válidos para o status são: A - Ativo, P
+						– Pendente e B – Faturado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="planoFaturamento" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Plano de Faturamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoContaSistemaOrigem" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Codigo da Conta no Sistema Origem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaMigracaoContaCobros" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica migracao conta cobros</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaMigracaoContaRentas" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica migracao conta rentas</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoEnvio" nillable="true" type="ct:TipoEnvio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Formas Pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="formaPagamento" nillable="true" type="cat:FormaPagamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Formas Pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoModalidadeCobranca" type="ct:TipoModalidadeCobranca" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que representa as informacoes
+						referentes o tipo de modalidade de cobranca da
+						conta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="modalidadeFaturamento" type="ct:ModalidadeFaturamento" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que identifica a modalidade de
+						faturamento da cobranca a ser efetuada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="naturezaConta" type="ct:NaturezaConta" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que representa informacoes da natureza
+						da conta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="segmento" type="ct:SegmentoConta" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que representa informacoes do segmento
+						da conta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subSegmento" type="ct:SegmentoConta" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que representa informacoes da
+						subSegmento da conta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="situacaoAdesao" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Situação da adesão de uma conta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="situacaoDesadesao" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Situação da desadesão de uma conta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="analiseCredito" type="ct:AnaliseCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Análise Crédito.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="grupoCompartilhamento" type="ct:GruposCompartilhamento" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia entidade GrupoCompartilhamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldos" type="ass:Saldos" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia entidade Saldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="diaVencimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Dia de vencimento da Conta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="documentoImpressao" type="ct:DocumentoImpressao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia entidade DocumentoImpressao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdeFaturas" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de faturas</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Contas">
+    <xs:sequence>
+      <xs:element name="conta" type="ct:Conta" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HierarquiaConta">
+    <xs:sequence>
+      <xs:element name="procAssincrono" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Indica que processo para identificar quais
+							contas terao geracao de boletos sera
+							sincrono ou assincrono (se houver mais de
+							100 contas hierarquicas o processo sera
+							assincrono). true = processamento em segundo
+							plano (assincrono); false = processamento
+							online (sincrono).</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusProcessamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o processo assincrono para marcar as
+						contas que serao geradas via boleto ou nao esta
+						em execucao ou ja terminou. 0 - nao esta em
+						processamento; 1 - em processamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Confiabilidade">
+    <xs:sequence>
+      <xs:element name="tempoRelacionamento" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Tempo de relacionamento</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="consumoMedio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Consumo medio</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="concessaoCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de concessao de credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="bomPagador" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de cliente bom pagador</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="possuiDebitoAutomatico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de debito automatico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="faturaOnline" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de fatura online</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="possuiPagamentoAtrasado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de pagamentos atrasados</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="planoParcelado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de plano com parcelamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="possuiInformePagamentoVigente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se a conta possui pendencias
+						financeiras na Vivo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="questoes" type="ct:QuestoesConfiabilidade">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade QuestaoConfiabilidade para
+						listas as perguntas/respostas</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contaInadimplente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a conta esta inadimplente True para
+						Sim ou False para nao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="QuestaoConfiabilidade">
+    <xs:sequence>
+      <xs:element name="pergunta" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>pergunta a ser respondida para determinar
+							confiabilidade</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="resposta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>resposta a pergunta realizada</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pergRespondidaSuscesso" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>identifica se a pergunta foi respondida com
+						sucesso</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="QuestoesConfiabilidade">
+    <xs:sequence>
+      <xs:element name="questaoConfiabilidade" type="ct:QuestaoConfiabilidade" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AtributoConta">
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>codigo do atributo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>nome do atributo da Conta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorAtributo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>valor do atributo da Conta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataEfetivacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>data de efetivacao do atributo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>data de expiracao do atributo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoModalideFaturamentoSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo no sistema origem que identifica a
+						modalidade da faturamento (pre-pago ou pos-pago)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

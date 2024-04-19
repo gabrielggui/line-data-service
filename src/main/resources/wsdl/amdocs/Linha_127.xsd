@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_55.xsd"/>
+  <xs:complexType name="TipoAssinante">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos tipos de assinante validos,
+				classificando por exemplo em pessoa fisica, pessoa
+				juridica, funcionario, governo, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o tipo de conta, exemplos:
+						pessoa fisica, pessoa juridica, funcionario,
+						governo, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de assinante.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoRede" type="gr:TipoRede" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo de rede ao qual o assinante foi atribuído</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

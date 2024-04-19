@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import schemaLocation="Linha_22.xsd" namespace="http://www.vivo.com.br/MC/Catalogo"/>
+  <xs:complexType name="EventoUso">
+    <xs:annotation>
+      <xs:documentation>Informacoes de qualquer o evento de uso, como chamadas,
+				sms, vas, mms, dados, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="dataEvento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data e hora em que o evento ocorreu.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="codigoIdentificador" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o código identificador
+						de cada evento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="descricao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a descrição do evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="descricaoTarifacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a descrição da
+						tarifação utilizada no evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Complex Type criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="detalhesEventoUso" type="ct:DetalhesEventoUso" minOccurs="0" maxOccurs="1"/>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="motivoEvento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o Motivo do Evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="numeroInstanciaBaseDados" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o Número da instância
+						da base de dados em que foi gerada a informação
+						do evento no NGIN</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="statusEvento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o Estado da impugnação
+						do evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="telefoneDestino" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o telefone de Destino
+						do evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="telefoneOrigem" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o telefone de Origem do
+						evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="unidadeTarifacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a Unidade de Tarifação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="valorTotalConsumido" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o valor total consumido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoPlataforma" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o código do DSCP onde
+						foi gerado o CDR (Exemplo: 99004 BA – Salvador,
+						99006 SP - São Paulo)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="identificadorTipoCDR" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a formatação de
+						valores e preenchimento de campos,
+						identificando. EX:CDR de Voz, Dados, Vivo
+						Downloads, Vivo Play.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 15/08/2011-->
+      <xs:element name="siglaUF" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="nomeServico" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="codigoServico" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <!--Elemento criado por Dilmara Matos em 08/08/2011-->
+      <xs:element name="codigoPrestadoUtilizada" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o codigo de seleção de
+						prestadora (CSP)utilizado na chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoTipoTarifa" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o codigo do tipo de
+						tarifa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="comentarioStatus" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o comentariosobre o
+						status do evento na chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataInicioChamada" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a data incio da chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataFimChamada" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a data fim da chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataProcessamentoChamada" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a data do processamento
+						da chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoEventosComsumido" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="descricaoTipoChamada" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a descrição do tipo de
+						chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento alterado por Dilmara Matos em 06/11/2011, o elemento anterior duracaoChamanda/dateTime-->
+      <xs:element name="quantidadeTempoDuracaoChamada" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a quantidade de tempo
+						da duração da chamada em segundos ex: 60s</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="enderecoIP" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o endereço IP</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="informacaoExtra" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar informação extra</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="login" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o login do usuário que
+						efetuou a impugnação(status) da chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeEventos" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá representa a quantidade eventos
+						tarifados ao cliente. (Exemplo: No VivoPlay o
+						usuário comprou uma música será apresentado o
+						valor 1)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeEventosConsumido" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="regiaoOrigem" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a região de origem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="regiaoDestino" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a região de destino</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusChamada" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a impugnação( status)
+						da chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tecnologia" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a Tecnologia</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tempoTotalChamada" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o tempo total da
+						chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento alterado por Dilmara Matos em 06/11/2011, o elemento anterior tempoTarifidoChamada/dateTime-->
+      <xs:element name="quantidadeTempoTarifidoChamada" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a quantidade de tempo
+						tarifado na chamada em segundo ex: 60s</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorChamada" type="xs:decimal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o valor da chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorAdicionalChamada" type="xs:decimal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o valor adicional da
+						chamada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="volumeUtilizado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o volume utilizado na
+						chamada de dados</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="volumeTarifado" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <!--Elemento criado por Dilmara Matos em 12/09/2011-->
+      <xs:element name="dataEventoUso" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data/hora/timeZone em que o evento ocorreu
+						obs:elemento criado com redundancia, elemento
+						similar ao dataEvento com a diferença no tipo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EventosUso">
+    <xs:sequence>
+      <xs:element name="eventoUso" type="ct:EventoUso" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Complex Type criado por Dilmara Matos em 08/08/2011-->
+  <xs:complexType name="DetalheEventoUso">
+    <xs:annotation>
+      <xs:documentation>Entidade que irá manter os detalhes dos eventos</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="tipoSaldoUtilizado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irpa indicra o tipo do saldo
+        				utilizado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento alterado por Dilmara Matos em 06/09/2011 antes era tempoSaldoUtilizado/dateTime-->
+      <xs:element name="quantidadeTempoUtilizado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a quantidade de tempo de
+        				utilização do Saldo em segundo ex: 60s</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorUtilizado" type="xs:decimal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o valor utilizado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldo" type="xs:decimal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o saldo remanescente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DetalhesEventoUso">
+    <xs:annotation>
+      <xs:documentation>Entidade que irá identificar uma lista de detalhes de
+        		eventos utilizados pelo cliente</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="detalheEventoUso" type="ct:DetalheEventoUso" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:complexType name="TipoPlano">
+    <xs:annotation>
+      <xs:documentation>Identifica os tipos de plano existentes, como aquisicao
+				pre, aquisicao pos, retencao, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o tipo de plano no
+						catalogo de produtos e servicos, podendo ser,
+						por exemplo: aquisicao pre, aquisicao pos,
+						retencao etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla que identifica o tipo de plano, podendo
+						ser, por exemplo: AVPS (AQUISICAO VOZ POS), AVPR
+						(AQUISICAO VOZ PRE), AVC (AQUISICAO VOZ
+						CONTROLE), RDPR (RETENCAO DADOS PRE), RDC
+						(RETENCAO DADOS CONTROLE), ADPS (AQUISICAO DADOS
+						POS) ADPR (AQUISICAO DADOS PRE), ADC (AQUISICAO
+						DADOS CONTROLE), RVPS (RETENCAO VOZ POS), RVPR
+						(RETENCAO VOZ PRE), RVC (RETENCAO VOZ CONTROLE)
+						RVPR</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome que identifica o tipo de plano</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

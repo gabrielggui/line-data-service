@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Siebel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sie="http://www.vivo.com.br/MC/Siebel">
+  <xs:complexType name="StatusItemPedidoSiebel">
+    <xs:sequence>
+      <xs:element name="Descricao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Esta entidade devera retornar as seguintes
+										descricoes Aberto,Pendente,Cancelado
+										Portabilidade Agendada,Portabilidade
+										Negada,OV Criada,NF Criada, Item
+										Entregue,Falha API Credito Falha API
+										SPN,Falha API Atlys Falha API SAP,Falha
+										Geral de Comunicacao Servico Instalado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

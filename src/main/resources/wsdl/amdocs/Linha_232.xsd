@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Atlys" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:aty="http://www.vivo.com.br/MC/Atlys" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_12.xsd"/>
+  <xs:include schemaLocation="Linha_233.xsd"/>
+  <xs:include schemaLocation="Linha_235.xsd"/>
+  <xs:complexType name="EstimativaSaldo">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das estimativas de saldo do cliente,
+				contando faturas em aberto, dividas etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="valorEstimadoFaturar" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor estimado a faturas</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorDevidoFaturasAnteriores" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total devido de faturas anteriores.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorTotalDivida" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total devido de faturas anteriores mais
+						valor devido da fatura em aberto.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorReducaoLimiteCredito" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor de reducao de limite de credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorSaldoLimiteCredito" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do saldo para limite de credito.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorTotalFaturas" minOccurs="0" type="aty:ValorTotalFaturas">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ValorTotalFatura para
+						identificar quais os valores totais das duas
+						ultimas faturas do cliente para compor a
+						estimativa de saldo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="periodoDivida" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa periodo da divida.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

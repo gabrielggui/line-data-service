@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Siebel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sie="http://www.vivo.com.br/MC/Siebel" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:include schemaLocation="Linha_58.xsd"/>
+  <xs:complexType name="AtividadePedidoSiebel">
+    <xs:sequence>
+      <xs:element name="codigo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo unico para cada atividade exercida no Pedido o mesmo sera utilizado no Traking do Pedido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoAtividadePedido" maxOccurs="1" minOccurs="0" type="sie:TipoAtividadePedidoSiebel"/>
+      <xs:element name="statusAtividadePedido" maxOccurs="1" minOccurs="0" type="sie:StatusAtividadePedidoSiebel"/>
+      <xs:element name="prioridade" maxOccurs="1" minOccurs="0" type="sie:PrioridadeAtividadePedidoSiebel"/>
+      <xs:element name="motivoAcaoPedidoSiebel" maxOccurs="1" minOccurs="0" type="sie:MotivoAcaoPedidoSiebel"/>
+      <xs:element name="origemProspeccao" maxOccurs="1" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Este Atributo Retorna a Entidade que
+							fidelizou o Cliente</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaAlarmeAplicacao" maxOccurs="1" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Este Atributo deve obter os seguintes Valores Y- Despara um evento na tela da Aplicacao para Rastreamento do Pedido N- o dispositivo permanece desativado</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="acaoPedidoSiebel" maxOccurs="1" minOccurs="0" type="sie:AcaoPedidoSiebel"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AtividadesPedidoSiebel">
+    <xs:sequence>
+      <xs:element name="atividadePedidoSiebel" maxOccurs="unbounded" minOccurs="0" type="sie:AtividadePedidoSiebel"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

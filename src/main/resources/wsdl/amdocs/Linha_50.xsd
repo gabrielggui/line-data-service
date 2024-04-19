@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Siebel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sie="http://www.vivo.com.br/MC/Siebel" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_24.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_12.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_51.xsd"/>
+  <xs:include schemaLocation="Linha_57.xsd"/>
+  <xs:include schemaLocation="Linha_67.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_55.xsd"/>
+  <xs:complexType name="PedidoSiebel">
+    <xs:annotation>
+      <xs:documentation>Esta entidade foi criada retornar o codigo de Revisao
+				que o pedido podera sofrer</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo Identificador do Pedido no Siebel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroPedido" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero sequencial do Pedido gerado pelo Siebel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusPedido" maxOccurs="1" minOccurs="0" type="sie:StatusPedidoSiebel">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Status</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="controleRevisaoPedido" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Esta entidade deve retornar o numero de revisao
+						do Pedido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="prioridadePedido" maxOccurs="1" minOccurs="0" type="sie:PrioridadePedidoSiebel">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Prioridade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaAprovacao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Esta entidade indica se o pedido foi aprovado
+						com o seguinte codigo Y-aprovado e N-Reprovado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorDesconto" maxOccurs="1" minOccurs="0" type="cat:ValorTotal">
+        <xs:annotation>
+          <xs:documentation>Esta entidade devera retornar o valor de
+						desconto do pedido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataVencimento" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de Vencimento do Pedido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCriacaoPedido" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>esta entidade retorna a data de criacao do
+						pedido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="unidadeFederativa" maxOccurs="1" minOccurs="0" type="cat:Uf">
+        <xs:annotation>
+          <xs:documentation>Esta entidade referencia a unidade Federativa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="campanhaMarketing" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o Pedido foi resultado do Trabalho de
+						Marketing, devera ser preenchido Y-Sim ou N-Nao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="protocoloAtendimento" maxOccurs="1" minOccurs="0" type="ps:ProtocoloAtendimento">
+        <xs:annotation>
+          <xs:documentation>Referencia a Enditade Protocolo de Atendimento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pessoa" maxOccurs="1" minOccurs="0" type="ps:Pessoa">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Documento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alcadaGestor" maxOccurs="1" minOccurs="0" type="ps:Gestor">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Gestor.A entidade em
+						questao devera retornar do dado do responsavel
+						que efetuou a aprovacao do pedido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdAltaDados" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Esta entidade devera retornar a quantidade de
+						altas dos servicos de Dados, estes dados serao
+						utilizados no processo e analise de credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAltaVoz" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Esta entidade devera retornar a quantidade de
+						altas dos servicos de Voz,estes dados serao
+						utilizados no processo e analise de credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTrocaVenda" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Esta entidade devera retornar a quantidade de
+						Troca de Venda de Produtos ou Servicos,estes
+						dados serao utilizados no processo e analise de
+						credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTotalAltaDados" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Esta entidade devera retornar a quantidade total
+						de Alta de servico de Dados,estes dados serao
+						utilizados no processo e analise de credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTotalAltaVoz" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Esta entidade devera retornar a quantidade total
+						de Alta de servico de Voz,estes dados serao
+						utilizados no processo e analise de credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTotalTrocaVenda" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Esta entidade devera retornar o total de Troca
+						de Venda de Produtos ou Servicos,estes dados
+						serao utilizados no processo e analise de
+						credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTotalVendaSemLinha" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Esta entidade devera retornar o total de Venda
+						de Recursos Sem Adicao de Nova
+						LinhaTelefonica,estes dados serao utilizados no
+						processo e analise de credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaPortabilidade" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o Pedido foi resultado do Processo de
+						Portabilidade Numerica, devera ser preenchido
+						Y-Sim ou N-Nao, Este flag foi construido como
+						recurso de filtro de retorno da pesquisa do
+						pedido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaAlta" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o Pedido foi resultado do Processo de
+						uma Nova Habilitacao, devera ser preenchido
+						Y-Sim ou N-Nao, Este flag foi construido como
+						recurso de filtro de retorno da pesquisa do
+						pedido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaLoja" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o Pedido foi realizado por uma loja,
+						devera ser preenchido Y-Sim ou N-Nao, Este flag
+						foi construido como recurso de filtro de retorno
+						da pesquisa do pedido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaTrocaTitulariedade" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o Pedido teve troca de Titulariedade
+						Y-Sim ou N-Nao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaTrocaRecurso" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o Pedido teve troca de
+						Plano,Servico,Terminal,Modem Y-Sim ou N-Nao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="itensPedido" maxOccurs="1" minOccurs="0" type="sie:ItensPedidoSiebel">
+        <xs:annotation>
+          <xs:documentation>Referencia uma lista de Itens que o pedido deve
+						herdar</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="atividadesPedido" maxOccurs="1" minOccurs="0" type="sie:AtividadesPedidoSiebel">
+        <xs:annotation>
+          <xs:documentation>Referencia uma lista de atividades do Pedido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAtualizacao" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAltaDadosFixo" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAltaVozFixo" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTrocaVendaFixo" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTotalAltaDadosFixo" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTotalAltaVozFixo" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTotalTrocaVendaFixo" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PedidosSiebel">
+    <xs:sequence>
+      <xs:element name="pedidoSiebel" maxOccurs="unbounded" minOccurs="0" type="sie:PedidoSiebel"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

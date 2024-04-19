@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:complexType name="FamiliaArgumento">
+    <xs:annotation>
+      <xs:documentation>Familia do argumento é uma classificacao de agrupamento
+				dos argumentos. Geralmene usado para efeitos em
+				relatorios do processo de retencao. Dominios exemplos
+				para nomeFamilia: Financeiro, Aparelho. Para 'argumento'
+				vide documentation da entidade
+				ArgumentoScriptinteligente neste mesmo nameSpace</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo numerico da familia do argumento (vide
+						documentation desta entidade)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome da Familia do argumento. Dominios exemplos
+						para nomeFamilia: Financeiro, Aparelho. Para
+						'argumento'</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ativo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Flag de ativação/desativação. Guarda o valor do
+						status da Familia do Argumento que pode ou não
+						ser associado a um argumento que compoem um
+						scriptInteligente. Essa necessidade deu-se para
+						que não seja exluido historicos, ou seja, caso
+						um script não seja mais válido para uso o mesmo
+						tera status N=Não ativo, porém não deve ser
+						excluido da base. Domínio S= Ativo, N=Nao ativo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioCriacao" minOccurs="0" maxOccurs="1" type="sca:UsuarioSCA">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade UsuarioSCA, que é a
+						entidade que reflete o conceito de usuarios de
+						sistemas da Vivo. Esse elemento informa o
+						usuario que criou determinada Familia de
+						argumento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de Criacao da Familia do Argumento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioAlteracao" minOccurs="0" maxOccurs="1" type="sca:UsuarioSCA">
+        <xs:annotation>
+          <xs:documentation>ultimo usuario que relazou alteracao na Familia do
+					Argumento, que caracteriza um argumento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAlteracao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>data da ultima alteracao dos registros de
+                		Familia do Argumento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FamiliasArgumento">
+    <xs:annotation>
+      <xs:documentation>Lista de familias do argumento. Familia do Argumento é
+				uma classificacao de agrupamento dos argumentos.
+				Geralmene usado para efeitos em relatorios do processo
+				de retencao. Dominios exemplos para nomeFamilia:
+				Financeiro, Aparelho. Para 'argumento' vide
+				documentation da entidade ArgumentoScriptinteligente
+				neste mesmo nameSpace</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="familiaArgumento" type="nfo:FamiliaArgumento" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

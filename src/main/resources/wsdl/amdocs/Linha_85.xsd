@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	19/3/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_86.xsd"/>
+  <xs:complexType name="CaracteristicaModelo">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das caracteristicas dos produtos,
+				como camera, agenda, calculadora etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica as possiveis
+						caracteristicas de um produto, como ter camera,
+						agenda, calculadora, jogos, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome das caracteristicas.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Elemento alterado por Dilmara Matos em 03/10/2011-->
+            <!--Foi retirado o tamanho do elemento-->
+            <!--<xs:maxLength value="50"/>-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao das caracteristicas.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Elemento alterado por Dilmara Matos em 03/10/2011-->
+            <!--Foi retirado o tamanho do elemento-->
+            <!--<xs:maxLength value="100"/>-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valoresPossiveis" type="cat:ValoresCaracteristica" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ValorCaracteristica.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo no sistema de origem que identifica as possiveis
+						caracteristicas de um produto, como ter camera,
+						agenda, calculadora, jogos, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CaracteristicasModelo">
+    <xs:sequence>
+      <xs:element name="caracteristicaModelo" type="cat:CaracteristicaModelo" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

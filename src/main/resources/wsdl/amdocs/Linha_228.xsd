@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_22.xsd"/>
+  <xs:complexType name="GrupoServico">
+    <xs:sequence>
+      <xs:element name="nomeGrupoServico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do grupo de servico (svc_group_name no
+						atlys)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="120"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="servicos" minOccurs="0" type="cat:Servicos">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Servico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="nomeServAtivacaoAutomatica" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Nome do Servico de ativacao automatica do combo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="prazoReadesao" minOccurs="0" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Prazo para readesao do combo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indiceConta" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indice da conta relacionada ao GrupoServico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GruposServicos">
+    <xs:sequence>
+      <xs:element name="grupoServico" type="cat:GrupoServico" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

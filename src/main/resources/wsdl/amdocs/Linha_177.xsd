@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Portabilidade" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spn="http://www.vivo.com.br/MC/Portabilidade">
+  <xs:complexType name="TipoPortabilidade">
+    <xs:annotation>
+      <xs:documentation>Entidade que identifica um tipo de portabilidade (Portabilidade). 
+				Os tipos possiveis de Portabilidade podem ser: lspp, lisp.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:string" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um tipo de
+						portabilidade: lspp, lisp.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricao" type="xs:string" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de portabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TiposPortabilidades">
+    <xs:sequence>
+      <xs:element name="tipoPortabilidade" type="spn:TipoPortabilidade" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/OrdemVenda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:sca="http://www.vivo.com.br/MC/SCA" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import schemaLocation="Linha_71.xsd" namespace="http://www.vivo.com.br/MC/Catalogo"/>
+  <xs:include schemaLocation="Linha_68.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_12.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:include schemaLocation="Linha_74.xsd"/>
+  <xs:include schemaLocation="Linha_75.xsd"/>
+  <xs:include schemaLocation="Linha_95.xsd"/>
+  <xs:include schemaLocation="Linha_107.xsd"/>
+  <xs:include schemaLocation="Linha_108.xsd"/>
+  <xs:include schemaLocation="Linha_109.xsd"/>
+  <xs:include schemaLocation="Linha_110.xsd"/>
+  <xs:include schemaLocation="Linha_111.xsd"/>
+  <xs:include schemaLocation="Linha_112.xsd"/>
+  <xs:include schemaLocation="Linha_113.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_40.xsd"/>
+  <xs:complexType name="OrdemVenda">
+    <xs:sequence>
+      <xs:element name="numeroOrdemVenda" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero da ordem de venda gerado pelo sistema
+						SAP.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="14"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInicioContrato" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de inicio de contrato do cliente com a
+						Vivo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFimContrato" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fim de contrato do cliente com a Vivo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pessoa" type="ps:Pessoa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pessoa para identificar as
+						informacoes cadastrais, informacoes de contato,
+						etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produtosOrdemVenda" type="ov:ProdutosOrdemVenda" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ProdutosOdemVenda para
+						identificas quais produtos e quais as
+						quantidades requisitas pelo cliente.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="motivoOrdemVenda" type="ov:MotivoOrdemVenda" minOccurs="0"/>
+      <xs:element name="tipoPedido" type="ov:TipoPedido" minOccurs="0"/>
+      <xs:element name="numeroPedido" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do pedido (VBKD-BSTKD). Devera encaminhar
+						o numero do servico. Para lojas proprias, o SAP
+						devera concatenar esta informacao com o
+						escritorio de vendas. Ex.: 0000000001L111.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="20" /> retirado pela Dilmara Matos em 16/08/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataPedido" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que foi realizado o pedido.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="condicaoExpedicao" type="ov:CondicaoExpedicao" minOccurs="0"/>
+      <xs:element name="tipoRemessa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Deve ser enviado no servico de criacao de OV o
+						parametro C (So e permitida remessa completa)
+						sempre que a tecnologia do produto selecionado
+						for GSM. Diferente disso deve ser enviado o
+						parametro em Branco = Remessa parcial permitida.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="emissor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este campo e obrigatorio, o valor para este
+						campo e X. Para o SAP, o programa devera
+						verificar os dados do cliente desta string, e
+						checar se o mesmo existe ou se os dados sao os
+						mesmos ja cadastrados. Se negativo, criar,
+						modificar ou expandir o cliente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="receptorFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este campo e opcional. Se existir um recebedor
+						da Fatura diferente do emissor, devera existir
+						uma nova string com os dados deste cliente e com
+						o X na opcao Recebedor da Fatura. Para o SAP, se
+						este campo for preenchido devera ser imputado no
+						parceiro Recebedor da Fatura (BP) do cliente
+						Emissor</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pagador" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este campo e opcional. Se existir um pagador
+						diferente do emissor, devera existir uma nova
+						string com os dados deste cliente e com o X na
+						opcao Pagador. Para o SAP, se este campo for
+						preenchido devera ser imputado no parceiro
+						Pagador (PY) do cliente Emissor.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="recebedorMercadoria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este campo e opcional. Se existir um recebedor
+						de mercadoria diferente do emissor, devera
+						existir uma nova string com os dados deste
+						cliente e com o X na opcao Recebedor da
+						Mercadoria. Para o SAP, se este campo for
+						preenchido devera ser imputado no parceiro
+						Recebedor da Mercadoria (WE) do cliente Emissor.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="condicaoEntrega" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sera informado neste campo o nome do
+						responsavel, RG e Telefone para entrega.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nsuCartao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de autorizacao do cartao de credito,
+						normalmente esta informacao vira na modificacao
+						da ordem de vendas.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="bandeiraCartaoCredito" type="ov:BandeiraCartaoCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade BandeiraCartaoCredito.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuario" type="sca:UsuarioSCA" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Usuario para identificar o
+						login dos usuarios de sistemas como NFO,
+						Catalogo, Atlys, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataDeterminacaoPreco" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data para determinacao de preco.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataRemessa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data proposta na qual o cliente deve receber o
+						fornecimento da sua mercadoria.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="observacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Deve ser utilizada a observacao informada na
+						Tela Resumo da Solicitacao de cada
+						funcionalidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="132"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="formaPagamento" type="cat:FormaPagamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade FormaPagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="condicaoPagamento" type="cat:CondicaoPagamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CondicaoPagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorTotal" type="cat:ValorTotal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ValorTotal para
+						identificar os valores das compras de produtos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAbertura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de abertura da ordem de venda</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusPedido" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica os possiveis status do pedido,
+						podendo ser por exemplo: ANALISE DE
+						CANCELAMENTO, AVARIA TOTAL, EM TRANSITO, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="docFaturamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do documento de faturamento, criado apos
+						a geracao da OV.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ordemVendaCorrompida" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de corrupcao da ordem de venda. Se o
+						valor for diferente de 0, os detalhes do pedido
+						nao poderao ser exibidos. Nesse caso, o detalhe
+						do pedido devera ser consultado diretamente no
+						SAP. 0 (false) - ordem de venda OK; 1 (true) -
+						ordem de venda corrompida.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoOrdemVenda" type="ov:TipoOrdemVenda" minOccurs="0"/>
+      <xs:element name="motivoBloqueio" type="ov:MotivoBloqueioOV" minOccurs="0"/>
+      <xs:element name="sistemaOrigem" type="cat:Sistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sistema para identifica o
+						sistema responsavel pela geracao da OV.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="trackingAparelho" type="ov:TrackingAparelho" minOccurs="0"/>
+      <xs:element name="contratoPJ" type="ov:ContratoPJ" minOccurs="0"/>
+      <xs:element name="enderecoOrdemVenda" type="ps:Endereco" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="siglaMotivoOrdem" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Sigla do motivo da Ordem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoMotivoOrdem" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo do motivo da geracao da ordem de venda</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeMotivoOrdem" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>nome ou descricao do motivo da geracao da ordem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="siglaTipoPedido" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mantem possiveis siglas tipos de pedidos
+						validos. Exemplos: BANQ - Projeto Banquinha COAT
+						- Contra Ataque CONC - Concorrencia FIDE -
+						Fidelize LATN - Projeto LATAN</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeTipoPedido" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mantem nomes dos possiveis tipos de pedidos
+						validos no sistema SAP. Exemplos: BANQ - Projeto
+						Banquinha COAT - Contra Ataque CONC -
+						Concorrencia FIDE - Fidelize LATN - Projeto
+						LATAN</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoTipoPedido" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo do tipo de Pedido relacionado Ã¡ ordem de
+						venda</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 16/08/2011-->
+      <xs:element name="dataHoraPedido" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irÃ¡ identificar a data e hora</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 05/08/2011-->
+      <xs:element name="enderecoEntrega" type="ps:Endereco" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Entidade que referencia endereco, essa entidade
+						irÃ¡ identificar o endereÃ§o de entrega da ordem
+						de venda</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Entidade criado por Dilmara Matos em 05/08/2011-->
+      <xs:element name="itensOrdemVenda" type="ov:ItensOrdemVenda" minOccurs="0" maxOccurs="1"/>
+      <!--Entidade criado por Dilmara Matos em 15/08/2011-->
+      <xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irÃ¡ identificar o status da ordem
+						de venda</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 15/08/2011-->
+      <xs:element name="descricaoOrdemVenda" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irÃ¡ identificar a descriÃ§Ã£o da
+						ordem de venda</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 16/08/2011-->
+      <xs:element name="identificacaoCartaoCredito" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar se o cartão de
+						credito utilizado. Ex. Visa tem um código que é
+						o TID o MasterCard tem um código que é o NSU</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 16/09/2011-->
+      <xs:element name="reservas" type="cat:Reservas" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="textoRemessa" minOccurs="0" type="xs:string"/>
+      <xs:element name="entregaCondicionada" minOccurs="0" type="xs:string"/>
+      <xs:element name="codigoMaterial" minOccurs="0" type="xs:string"/>
+      <xs:element name="utilizacao" minOccurs="0" type="xs:string"/>
+      <xs:element name="grupoClientes" minOccurs="0" type="xs:string"/>
+      <xs:element name="dataHoraPistolagem" minOccurs="0" type="xs:dateTime"/>
+      <xs:element name="pertenceAtoCotepe" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador se Ordem Venda pertence ao Ato Cotepe</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdensVenda">
+    <xs:sequence>
+      <xs:element name="ordemVenda" type="ov:OrdemVenda" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TrackingAparelho">
+    <xs:sequence>
+      <xs:element name="dataPicking" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que o aparelho eh separado no estoque.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataConfirmacaoPicking" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data confirmacao de picking.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFornecimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que o aparelho eh separado no estoque.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroPicking" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do picking</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroFornecimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de fornecimento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataSaidaMercadoria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de saida da mercadoria.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContratoPJ">
+    <xs:sequence>
+      <xs:element name="tipoContratoPJ" minOccurs="0" type="ov:TipoContratoPJ">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoContratoPJ</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataInicioVigencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de inicio de vigencia</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFimVigencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fim de vigencia</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Entidade criado por Dilmara Matos em 05/08/2011-->
+  <xs:complexType name="ItemOrdemVenda">
+    <xs:sequence>
+      <xs:element name="codigoProduto" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irÃ¡ identificar o codigo do item do
+            			produto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidade" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irÃ¡ identifica a quantidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valor" type="xs:double" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Entidade criado por Dilmara Matos em 05/08/2011-->
+  <xs:complexType name="ItensOrdemVenda">
+    <xs:sequence>
+      <xs:element name="itemOrdemVenda" type="ov:ItemOrdemVenda" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

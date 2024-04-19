@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:complexType name="LinhaEspecial">
+    <xs:sequence>
+      <xs:element name="numeroLinhaCompleto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Para códigos especiais ( posição 6 até posição 9 do campo NRMIN)
+						Para 0800/0900/0300 com 11 dígitos (posição 6 até posição 15 do campo NRMIN)
+						Para demais números (posição 6 até posição 13 do campo NRMIN)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoSessao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Somente para códigos especiais: posição 10 até 13 do campo NRMIN.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoConjugado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Para códigos especiais e para outros números (exceto 0800/0900/0300 de 11 digitos)  - posição 14 do campo NRMIN</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="digitoVerificador" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Para códigos especiais e para outros números (exceto 0800/0900/0300 de 11 digitos)  - posição 15 do campo NRMIN</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinhasEspeciais">
+    <xs:sequence>
+      <xs:element name="linhaEspecial" type="ass:LinhaEspecial" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:complexType name="FormatoImeiEsn">
+    <xs:annotation>
+      <xs:documentation>Indica se o formato do esn eh decimal ou hexadecimal ou
+				se eh um imei.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica se o formato do esn eh
+						decimal ou hexadecimal ou se eh um imei. Valore
+						possiveis: 01 - esn decimal; 02 - esn
+						hexadecial; 03 - imei.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do formato, decimal, hexadecimal ou
+						imei.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

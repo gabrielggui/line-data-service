@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NGIN" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ngi="http://www.vivo.com.br/MC/NGIN">
+  <xs:complexType name="CustoOperacao">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastro dos custos para cada operacao realizada
+				no pre-pago. Pode ser o custo de uma habilitacao, ou
+				troca de um a aparelho, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="valor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o custo de uma operacao no
+						pre-pago.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="unidadeCusto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Unidade do custo (ex: Reais, Saldo NGIN, etc)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustosOperacao">
+    <xs:sequence>
+      <xs:element name="custoOperacao" type="ngi:CustoOperacao" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

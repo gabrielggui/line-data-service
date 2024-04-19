@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	27/2/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:sgp="http://www.vivo.com.br/MC/SGP">
+  <xs:include schemaLocation="Linha_126.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SGP" schemaLocation="Linha_125.xsd"/>
+  <xs:include schemaLocation="Linha_134.xsd"/>
+  <xs:complexType name="Segmentacao">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes sobre as formas de segmentar um
+				cliente, como Diamante, Rubi, Esmeralda, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o tipo de segmento em que
+						o cliente esta. Exemplos: DIAMANTE1, RUBI1,
+						TOPPREMIUM, BABY.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla que identifica o segmento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do segmento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoCarteira" type="ps:TipoCarteira" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoCarteira.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAtualizacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>data em que ocorreu a atualizacao da segmentacao
+						de um cliente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="beneficios" type="sgp:Beneficios" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Cada Segmentação pode ter uma lista de beneficio
+						especificos. Por ex: Um cliente de segmentacao
+						"VIP" terá os beneficios abaixo: - Atendimento
+						preferencial - Desconto de 50% em determinado
+						servico entre outros.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="periodoCalculo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Determina o periodo de calculo para mudança de
+						segmentacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaCTBC" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Campo Escritório de Telefone (se for igual a AT,
+						SU e NO é telefone da CTBC)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="enviaLinha" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Se preenchido com 2 procura por terminais com LP</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaDthTv" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica se o cliente tem o adicional DTH (Se
+						tiver move 1)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaPMI" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica se o cliente tem o adicional PMI (Se
+						tiver move 1)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorRentabilidade" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o Valor da Rentabilidade que
+						viabiliza sua segmentacao da PESSOA.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataRentabilidade" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica a Data que foi atribuida o
+						valor da rentabilidade a PESSOA.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="subSegmentacoes" type="ps:SubSegmentacoes" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia o complexType
+						SubSegmentacoes que representa a lista de dados da
+						SubSegmentacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Segmentacoes">
+    <xs:sequence>
+      <xs:element name="segmentacao" type="ps:Segmentacao" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

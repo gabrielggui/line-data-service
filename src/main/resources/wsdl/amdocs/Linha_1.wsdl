@@ -1,0 +1,1308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N3="http://www.vivo.com.br/MC/Geral" xmlns:WL5G3N2="http://www.vivo.com.br/MC/Assinatura" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.vivo.com.br/SN/Linha">
+  <wsp:Policy wsu:Id="telefonicaIP_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wssp="http://www.bea.com/wls90/security/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <orasp:customAssertionTelefonica xmlns:orasp="http://schemas.oracle.com/ws/2006/01/securitypolicy"/>
+  </wsp:Policy>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N6="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:snl="http://www.vivo.com.br/SN/Linha" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+      <s:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha.xsd"/>
+      <s:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_1.xsd"/>
+      <s:include schemaLocation="Linha_2.xsd"/>
+      <s:include schemaLocation="Linha_11.xsd"/>
+      <s:include schemaLocation="Linha_317.xsd"/>
+      <s:include schemaLocation="Linha_292.xsd"/>
+      <s:include schemaLocation="Linha_190.xsd"/>
+      <s:include schemaLocation="Linha_324.xsd"/>
+      <s:include schemaLocation="Linha_167.xsd"/>
+      <s:element name="Linha" type="ass:Linha"/>
+      <s:element name="Linhas" type="ass:Linhas"/>
+      <s:element name="Assinatura" type="ass:Assinatura"/>
+      <s:element name="StatusAssinatura" type="ass:StatusAssinatura"/>
+      <s:element name="ListaStatusAssinatura" type="ass:ListaStatusAssinatura"/>
+      <s:element name="AvisoSms" type="ass:AvisoSms"/>
+      <s:element name="Favorito" type="ass:Favorito"/>
+      <s:element name="LinhasBloqueio" type="ass:LinhasBloqueio"/>
+      <s:element name="TiposLinha" type="ass:TiposLinha"/>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N6="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:snl="http://www.vivo.com.br/SN/Linha" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+      <s:import namespace="http://www.vivo.com.br/MC/Geral"/>
+      <s:import namespace="http://www.vivo.com.br/MC/Geral"/>
+      <s:include schemaLocation="Linha_370.xsd"/>
+      <s:include schemaLocation="Linha_371.xsd"/>
+      <s:include schemaLocation="Linha_372.xsd"/>
+      <s:include schemaLocation="Linha_373.xsd"/>
+      <s:include schemaLocation="Linha_374.xsd"/>
+      <s:include schemaLocation="Linha_375.xsd"/>
+      <s:include schemaLocation="Linha_376.xsd"/>
+      <s:include schemaLocation="Linha_377.xsd"/>
+      <s:include schemaLocation="Linha_378.xsd"/>
+      <s:include schemaLocation="Linha_379.xsd"/>
+      <s:include schemaLocation="Linha_380.xsd"/>
+      <s:include schemaLocation="Linha_381.xsd"/>
+      <s:include schemaLocation="Linha_382.xsd"/>
+      <s:include schemaLocation="Linha_383.xsd"/>
+      <s:include schemaLocation="Linha_384.xsd"/>
+      <s:include schemaLocation="Linha_385.xsd"/>
+      <s:include schemaLocation="Linha_386.xsd"/>
+      <s:include schemaLocation="Linha_387.xsd"/>
+      <s:include schemaLocation="Linha_388.xsd"/>
+      <s:include schemaLocation="Linha_389.xsd"/>
+      <s:include schemaLocation="Linha_390.xsd"/>
+      <s:include schemaLocation="Linha_391.xsd"/>
+      <s:include schemaLocation="Linha_392.xsd"/>
+      <s:include schemaLocation="Linha_393.xsd"/>
+      <s:include schemaLocation="Linha_394.xsd"/>
+      <s:include schemaLocation="Linha_395.xsd"/>
+      <s:include schemaLocation="Linha_396.xsd"/>
+      <s:include schemaLocation="Linha_397.xsd"/>
+      <s:include schemaLocation="Linha_398.xsd"/>
+      <s:include schemaLocation="Linha_399.xsd"/>
+      <s:include schemaLocation="Linha_400.xsd"/>
+      <s:include schemaLocation="Linha_401.xsd"/>
+      <s:include schemaLocation="Linha_402.xsd"/>
+      <s:include schemaLocation="Linha_403.xsd"/>
+      <s:include schemaLocation="Linha_404.xsd"/>
+      <s:include schemaLocation="Linha_405.xsd"/>
+      <s:include schemaLocation="Linha_406.xsd"/>
+      <s:include schemaLocation="Linha_407.xsd"/>
+      <s:include schemaLocation="Linha_408.xsd"/>
+      <s:include schemaLocation="Linha_409.xsd"/>
+      <s:include schemaLocation="Linha_410.xsd"/>
+      <s:include schemaLocation="Linha_411.xsd"/>
+      <s:include schemaLocation="Linha_412.xsd"/>
+      <s:include schemaLocation="Linha_413.xsd"/>
+      <s:include schemaLocation="Linha_414.xsd"/>
+      <s:include schemaLocation="Linha_415.xsd"/>
+      <s:include schemaLocation="Linha_416.xsd"/>
+      <s:include schemaLocation="Linha_417.xsd"/>
+      <s:include schemaLocation="Linha_418.xsd"/>
+      <s:include schemaLocation="Linha_419.xsd"/>
+      <s:include schemaLocation="Linha_420.xsd"/>
+      <s:include schemaLocation="Linha_421.xsd"/>
+      <s:include schemaLocation="Linha_422.xsd"/>
+      <s:include schemaLocation="Linha_423.xsd"/>
+      <s:include schemaLocation="Linha_425.xsd"/>
+      <s:include schemaLocation="Linha_426.xsd"/>
+      <s:include schemaLocation="Linha_427.xsd"/>
+      <s:include schemaLocation="Linha_428.xsd"/>
+      <s:include schemaLocation="Linha_429.xsd"/>
+      <s:include schemaLocation="Linha_431.xsd"/>
+      <s:include schemaLocation="Linha_432.xsd"/>
+      <s:include schemaLocation="Linha_433.xsd"/>
+      <s:element name="habilitarNumeroExternoGsmPrePagoResponse"/>
+      <s:element name="habilitarNumeroExternoPrePagoResponse"/>
+      <s:element name="buscarListaLinhasEnvioNGINRequest" type="snl:ParametrosBuscarListaLinhasEnvioNGIN"/>
+      <s:element name="habilitarNumeroExternoGsmPrePagoRequest" type="snl:ParametrosHabilitarNumeroExternoGsmPrePago"/>
+      <s:element name="habilitarNumeroExternoPrePagoRequest" type="snl:ParametrosHabilitarNumeroExternoPrePago"/>
+      <s:element name="buscarContaPrePagoRequest" type="snl:ParametrosBuscarContaPrePago"/>
+      <s:element name="buscarLinhaPreAtivaRequest" type="snl:ParametrosBuscarLinhaPreAtiva"/>
+      <s:element name="buscarStatusAssinaturaPorNumeroRequest" type="snl:ParametrosBuscarStatusAssinaturaPorNumero"/>
+      <s:element name="manterIndicadorDivulgaLinhaRequest" type="snl:ParametrosManterIndicadorDivulgaLinha"/>
+      <s:element name="manterIndicadorDivulgaLinhaResponse"/>
+      <s:element name="alterarPermissoesEnvioSmsRequest" type="snl:ParametrosAlterarPermissoesEnvioSms"/>
+      <s:element name="alterarPermissoesEnvioSmsResponse"/>
+      <s:element name="manterTitularidadeLinhaPrePagaRequest" type="snl:ParametrosManterTitularidadeLinhaPrePaga"/>
+      <s:element name="buscarLinhaRequest" type="snl:ParametrosBuscarLinha"/>
+      <s:element name="buscarLinhaResponse" type="snl:ResultadoBuscarLinha"/>
+      <s:element name="buscarLinhaPorIccidRequest" type="snl:ParametrosBuscarLinhaPorIccid"/>
+      <s:element name="buscarListaLinhasPorEsnRequest" type="snl:ParametrosBuscarListaLinhasPorEsn"/>
+      <s:element name="buscarListaLinhasPorEsnResponse" type="snl:ResultadoBuscarListaLinhasPorEsn"/>
+      <s:element name="buscarQuantidadeLinhasPorPessoaRequest" type="snl:ParametrosBuscarQuantidadeLinhasPorPessoa"/>
+      <s:element name="buscarQuantidadeLinhasPorPessoaResponse" type="snl:ResultadoBuscarQuantidadeLinhasPorPessoa"/>
+      <s:element name="efetuarMigracaoGsmPrePagoRequest" type="snl:ParametrosEfetuarMigracaoGSMPrePago"/>
+      <s:element name="efetuarMigracaoGsmPrePagoResponse"/>
+      <s:element name="buscarPermissoesEnvioSmsRequest" type="snl:ParametrosBuscarPermissoesEnvioSms"/>
+      <s:element name="buscarPermissoesEnvioSmsResponse"/>
+      <s:element name="efetuarMigracaoCdmaPrePagoRequest" type="snl:ParametrosEfetuarMigracaoCdmaPrePago"/>
+      <s:element name="efetuarMigracaoCdmaPrePagoResponse"/>
+      <s:element name="trocarNumeroPrePagoRequest" type="snl:ParametrosTrocarNumeroPrePago"/>
+      <s:element name="trocarNumeroPrePagoResponse"/>
+      <s:element name="buscarListaLinhasPorClienteRequest" type="snl:ParametrosBuscarListaLinhasPorCliente"/>
+      <s:element name="buscarDadosEquipamentoLinhaRequest" type="snl:ParametrosBuscarDadosEquipamentoLinha"/>
+      <s:element name="buscarListaStatusLinhaPorPlataformaRequest" type="snl:ParametrosBuscarListaStatusLinhaPorPlataforma"/>
+      <s:element name="habilitarNumeroPosPagoRequest" type="snl:ParametrosHabilitarNumeroPosPago"/>
+      <s:element name="habilitarNumeroPosPagoResponse" type="snl:ResultadoHabilitarNumeroPosPago"/>
+      <s:element name="buscarListaLinhaPorContaRequest" type="snl:ParametrosBuscarListaLinhaPorConta"/>
+      <s:element name="manterLinhaPosPagoRequest" type="snl:ParametrosManterLinhaPosPago"/>
+      <s:element name="manterLinhaPosPagoResponse" type="snl:ResultadoManterLinhaPosPago"/>
+      <s:element name="manterTitularidadeLinhaPosPagaRequest" type="snl:ParametrosManterTitularidadeLinhaPosPaga"/>
+      <s:element name="manterTitularidadeLinhaPosPagaResponse"/>
+      <s:element name="buscarDetalhesLinhasPorClienteRequest" type="snl:ParametrosBuscarDetalhesLinhasPorCliente"/>
+      <s:element name="buscarDetalhesLinhasPorClienteResponse" type="snl:ResultadoBuscarDetalhesLinhasPorCliente"/>
+      <s:element name="buscarDadosAssinaturaPosPagoRequest" type="snl:ParametrosBuscarDadosAssinaturaPosPago"/>
+      <s:element name="buscarDadosAssinaturaPosPagoResponse" type="snl:ResultadoBuscarDadosAssinaturaPosPago"/>
+      <s:element name="buscarDadosAdicionaisLinhaPosRequest" type="snl:ParametrosBuscarDadosAdicionaisLinhaPos"/>
+      <s:element name="buscarDadosAdicionaisLinhaPosResponse" type="snl:ResultadoBuscarDadosAdicionaisLinhaPos"/>
+      <s:element name="verificarEstadoBloqueioRequest" type="snl:ParametrosVerificarEstadoBloqueio"/>
+      <s:element name="efetuarMigracaoPosParaPreRequest" type="snl:ParametrosEfetuarMigracaoPosParaPre"/>
+      <s:element name="efetuarMigracaoPosParaPreResponse"/>
+      <s:element name="removerSuspensaoLinhaRequest" type="snl:ParametrosRemoverSuspensaoLinha"/>
+      <s:element name="removerSuspensaoLinhaResponse"/>
+      <s:element name="desbloquearLinhaRequest" type="snl:ParametrosDesbloquearLinha"/>
+      <s:element name="desbloquearLinhaResponse" type="snl:ResultadoDesbloquearLinha"/>
+      <s:element name="confirmarMigracaoPosParaPreRequest" type="snl:ParametrosConfirmarMigracaoPosParaPre"/>
+      <s:element name="confirmarMigracaoPosParaPreResponse"/>
+      <s:element name="trocarNumeroControlePosPagoRequest" type="snl:ParametrosTrocarNumeroControlePosPago"/>
+      <s:element name="trocarNumeroControlePosPagoResponse"/>
+      <s:element name="atualizarDadosUsuarioAssinaturaRequest" type="snl:ParametrosAtualizarDadosUsuarioAssinatura"/>
+      <s:element name="atualizarDadosUsuarioAssinaturaResponse"/>
+      <s:element name="buscarListaLinhasPorCPFCNPJRequest" type="snl:ParametrosBuscarListaLinhasPorCPFCNPJ"/>
+      <s:element name="ativarDesativarInterceptacaoLinhaRequest" type="snl:ParametrosAtivarDesativarInterceptacaoLinha"/>
+      <s:element name="ativarDesativarInterceptacaoLinhaResponse"/>
+      <s:element name="buscarListaTipoSubTipoLinhaRequest" type="snl:ParametrosBuscarListaTipoSubTipoLinha"/>
+      <s:element name="buscarDetalhesCentralRequest" type="snl:ParametrosBuscarDetalhesCentral"/>
+      <s:element name="buscarDetalhesCentralResponse" type="snl:ResultadoBuscarDetalhesCentral"/>
+      <s:element name="buscarHistoricoLinhaRequest" type="snl:ParametrosBuscarHistoricoLinha"/>
+      <s:element name="buscarHistoricoLinhaResponse" type="snl:ResultadoBuscarHistoricoLinha"/>
+      <s:element name="buscarLinhasAssociadasRequest" type="snl:ParametrosBuscarLinhasAssociadas"/>
+      <s:element name="buscarLinhasAssociadasResponse" type="snl:ResultadoBuscarLinhasAssociadas"/>
+      <s:element name="consultarEventoPorLinhaRequest" type="snl:ParametrosConsultarEventoPorLinha"/>
+      <s:element name="consultarEventoPorLinhaResponse" type="snl:ResultadoConsultarEventoPorLinha"/>
+      <s:element name="consultarStatusLinhaPosRequest" type="snl:ParametrosConsultarStatusLinhaPos"/>
+      <s:element name="consultarStatusLinhaPosResponse" type="snl:ResultadoConsultarStatusLinhaPos"/>
+      <s:element name="cancelarPortabilidadeLinhaPosRequest" type="snl:ParametrosCancelarPortabilidadeLinhaPos"/>
+      <s:element name="cancelarPortabilidadeLinhaPosResponse"/>
+      <s:element name="consultaOrdemAprovisionamentoRequest" type="snl:ParametrosConsultaOrdemAprovisionamento"/>
+      <s:element name="consultaOrdemAprovisionamentoResponse" type="snl:ResultadoConsultaOrdemAprovisionamento"/>
+      <s:element name="reconciliarAssinaturaRequest" type="snl:ParametrosReconciliarAssinatura"/>
+      <s:element name="reconciliarAssinaturaResponse"/>
+      <s:element name="ativarLinhaPrePagaOrigemMVNERequest" type="snl:ParametrosAtivarLinhaPrePagaOrigemMVNE"/>
+      <s:element name="ativarLinhaPrePagaOrigemMVNEResponse" type="snl:ResultadoAtivarLinhaPrePagaOrigemMVNE"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="buscarListaLinhasEnvioNGINRequest">
+    <wsdl:part name="buscarListaLinhasEnvioNGINRequest" element="WL5G3N1:buscarListaLinhasEnvioNGINRequest"/>
+  </wsdl:message>
+  <wsdl:message name="Linhas">
+    <wsdl:part name="Linhas" element="WL5G3N2:Linhas"/>
+  </wsdl:message>
+  <wsdl:message name="erroInfoFault">
+    <wsdl:part name="erroInfo" element="WL5G3N3:erroInfo"/>
+  </wsdl:message>
+  <wsdl:message name="habilitarNumeroExternoGsmPrePagoRequest">
+    <wsdl:part name="habilitarNumeroExternoGsmPrePagoRequest" element="WL5G3N1:habilitarNumeroExternoGsmPrePagoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="habilitarNumeroExternoGsmPrePagoResponse">
+    <wsdl:part name="habilitarNumeroExternoGsmPrePagoResponse" element="WL5G3N1:habilitarNumeroExternoGsmPrePagoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="habilitarNumeroExternoPrePagoRequest">
+    <wsdl:part name="habilitarNumeroExternoPrePagoRequest" element="WL5G3N1:habilitarNumeroExternoPrePagoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="habilitarNumeroExternoPrePagoResponse">
+    <wsdl:part name="habilitarNumeroExternoPrePagoResponse" element="WL5G3N1:habilitarNumeroExternoPrePagoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarContaPrePagoRequest">
+    <wsdl:part name="buscarContaPrePagoRequest" element="WL5G3N1:buscarContaPrePagoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="Linha">
+    <wsdl:part name="Linha" element="WL5G3N2:Linha"/>
+  </wsdl:message>
+  <wsdl:message name="buscarLinhaPreAtivaRequest">
+    <wsdl:part name="buscarLinhaPreAtivaRequest" element="WL5G3N1:buscarLinhaPreAtivaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarStatusAssinaturaPorNumeroRequest">
+    <wsdl:part name="buscarStatusAssinaturaPorNumeroRequest" element="WL5G3N1:buscarStatusAssinaturaPorNumeroRequest"/>
+  </wsdl:message>
+  <wsdl:message name="StatusAssinatura">
+    <wsdl:part name="StatusAssinatura" element="WL5G3N2:StatusAssinatura"/>
+  </wsdl:message>
+  <wsdl:message name="manterIndicadorDivulgaLinhaRequest">
+    <wsdl:part name="manterIndicadorDivulgaLinhaRequest" element="WL5G3N1:manterIndicadorDivulgaLinhaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="manterIndicadorDivulgaLinhaResponse">
+    <wsdl:part name="manterIndicadorDivulgaLinhaResponse" element="WL5G3N1:manterIndicadorDivulgaLinhaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="alterarPermissoesEnvioSmsRequest">
+    <wsdl:part name="alterarPermissoesEnvioSmsRequest" element="WL5G3N1:alterarPermissoesEnvioSmsRequest"/>
+  </wsdl:message>
+  <wsdl:message name="alterarPermissoesEnvioSmsResponse">
+    <wsdl:part name="alterarPermissoesEnvioSmsResponse" element="WL5G3N1:alterarPermissoesEnvioSmsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="manterTitularidadeLinhaPrePagaRequest">
+    <wsdl:part name="manterTitularidadeLinhaPrePagaRequest" element="WL5G3N1:manterTitularidadeLinhaPrePagaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarLinhaRequest">
+    <wsdl:part name="buscarLinhaRequest" element="WL5G3N1:buscarLinhaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarLinhaResponse">
+    <wsdl:part name="buscarLinhaResponse" element="WL5G3N1:buscarLinhaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarLinhaPorIccidRequest">
+    <wsdl:part name="buscarLinhaPorIccidRequest" element="WL5G3N1:buscarLinhaPorIccidRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarListaLinhasPorEsnRequest">
+    <wsdl:part name="buscarListaLinhasPorEsnRequest" element="WL5G3N1:buscarListaLinhasPorEsnRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarListaLinhasPorEsnResponse">
+    <wsdl:part name="buscarListaLinhasPorEsnResponse" element="WL5G3N1:buscarListaLinhasPorEsnResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarQuantidadeLinhasPorPessoaRequest">
+    <wsdl:part name="buscarQuantidadeLinhasPorPessoaRequest" element="WL5G3N1:buscarQuantidadeLinhasPorPessoaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarQuantidadeLinhasPorPessoaResponse">
+    <wsdl:part name="buscarQuantidadeLinhasPorPessoaResponse" element="WL5G3N1:buscarQuantidadeLinhasPorPessoaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="efetuarMigracaoGsmPrePagoRequest">
+    <wsdl:part name="efetuarMigracaoGsmPrePagoRequest" element="WL5G3N1:efetuarMigracaoGsmPrePagoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="efetuarMigracaoGsmPrePagoResponse">
+    <wsdl:part name="efetuarMigracaoGsmPrePagoResponse" element="WL5G3N1:efetuarMigracaoGsmPrePagoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarPermissoesEnvioSmsRequest">
+    <wsdl:part name="buscarPermissoesEnvioSmsRequest" element="WL5G3N1:buscarPermissoesEnvioSmsRequest"/>
+  </wsdl:message>
+  <wsdl:message name="AvisoSms">
+    <wsdl:part name="AvisoSms" element="WL5G3N2:AvisoSms"/>
+  </wsdl:message>
+  <wsdl:message name="efetuarMigracaoCdmaPrePagoRequest">
+    <wsdl:part name="efetuarMigracaoCdmaPrePagoRequest" element="WL5G3N1:efetuarMigracaoCdmaPrePagoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="efetuarMigracaoCdmaPrePagoResponse">
+    <wsdl:part name="efetuarMigracaoCdmaPrePagoResponse" element="WL5G3N1:efetuarMigracaoCdmaPrePagoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="trocarNumeroPrePagoRequest">
+    <wsdl:part name="trocarNumeroPrePagoRequest" element="WL5G3N1:trocarNumeroPrePagoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="trocarNumeroPrePagoResponse">
+    <wsdl:part name="trocarNumeroPrePagoResponse" element="WL5G3N1:trocarNumeroPrePagoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarListaLinhasPorClienteRequest">
+    <wsdl:part name="buscarListaLinhasPorClienteRequest" element="WL5G3N1:buscarListaLinhasPorClienteRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarDadosEquipamentoLinhaRequest">
+    <wsdl:part name="buscarDadosEquipamentoLinhaRequest" element="WL5G3N1:buscarDadosEquipamentoLinhaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarListaStatusLinhaPorPlataformaRequest">
+    <wsdl:part name="buscarListaStatusLinhaPorPlataformaRequest" element="WL5G3N1:buscarListaStatusLinhaPorPlataformaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ListaStatusAssinatura">
+    <wsdl:part name="ListaStatusAssinatura" element="WL5G3N2:ListaStatusAssinatura"/>
+  </wsdl:message>
+  <wsdl:message name="habilitarNumeroPosPagoRequest">
+    <wsdl:part name="habilitarNumeroPosPagoRequest" element="WL5G3N1:habilitarNumeroPosPagoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="habilitarNumeroPosPagoResponse">
+    <wsdl:part name="habilitarNumeroPosPagoResponse" element="WL5G3N1:habilitarNumeroPosPagoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarListaLinhaPorContaRequest">
+    <wsdl:part name="buscarListaLinhaPorContaRequest" element="WL5G3N1:buscarListaLinhaPorContaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="manterLinhaPosPagoRequest">
+    <wsdl:part name="manterLinhaPosPagoRequest" element="WL5G3N1:manterLinhaPosPagoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="manterLinhaPosPagoResponse">
+    <wsdl:part name="manterLinhaPosPagoResponse" element="WL5G3N1:manterLinhaPosPagoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Favorito">
+    <wsdl:part name="Favorito" element="WL5G3N2:Favorito"/>
+  </wsdl:message>
+  <wsdl:message name="manterTitularidadeLinhaPosPagaRequest">
+    <wsdl:part name="manterTitularidadeLinhaPosPagaRequest" element="WL5G3N1:manterTitularidadeLinhaPosPagaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="manterTitularidadeLinhaPosPagaResponse">
+    <wsdl:part name="manterTitularidadeLinhaPosPagaResponse" element="WL5G3N1:manterTitularidadeLinhaPosPagaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarDetalhesLinhasPorClienteRequest">
+    <wsdl:part name="buscarDetalhesLinhasPorClienteRequest" element="WL5G3N1:buscarDetalhesLinhasPorClienteRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarDetalhesLinhasPorClienteResponse">
+    <wsdl:part name="buscarDetalhesLinhasPorClienteResponse" element="WL5G3N1:buscarDetalhesLinhasPorClienteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarDadosAssinaturaPosPagoRequest">
+    <wsdl:part name="buscarDadosAssinaturaPosPagoRequest" element="WL5G3N1:buscarDadosAssinaturaPosPagoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarDadosAssinaturaPosPagoResponse">
+    <wsdl:part name="buscarDadosAssinaturaPosPagoResponse" element="WL5G3N1:buscarDadosAssinaturaPosPagoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarDadosAdicionaisLinhaPosRequest">
+    <wsdl:part name="buscarDadosAdicionaisLinhaPosRequest" element="WL5G3N1:buscarDadosAdicionaisLinhaPosRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarDadosAdicionaisLinhaPosResponse">
+    <wsdl:part name="buscarDadosAdicionaisLinhaPosResponse" element="WL5G3N1:buscarDadosAdicionaisLinhaPosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="verificarEstadoBloqueioRequest">
+    <wsdl:part name="verificarEstadoBloqueioRequest" element="WL5G3N1:verificarEstadoBloqueioRequest"/>
+  </wsdl:message>
+  <wsdl:message name="LinhasBloqueio">
+    <wsdl:part name="LinhasBloqueio" element="WL5G3N2:LinhasBloqueio"/>
+  </wsdl:message>
+  <wsdl:message name="efetuarMigracaoPosParaPreRequest">
+    <wsdl:part name="efetuarMigracaoPosParaPreRequest" element="WL5G3N1:efetuarMigracaoPosParaPreRequest"/>
+  </wsdl:message>
+  <wsdl:message name="efetuarMigracaoPosParaPreResponse">
+    <wsdl:part name="efetuarMigracaoPosParaPreResponse" element="WL5G3N1:efetuarMigracaoPosParaPreResponse"/>
+  </wsdl:message>
+  <wsdl:message name="desbloquearLinhaRequest">
+    <wsdl:part name="desbloquearLinhaRequest" element="WL5G3N1:desbloquearLinhaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="desbloquearLinhaResponse">
+    <wsdl:part name="desbloquearLinhaResponse" element="WL5G3N1:desbloquearLinhaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="removerSuspensaoLinhaRequest">
+    <wsdl:part name="removerSuspensaoLinhaRequest" element="WL5G3N1:removerSuspensaoLinhaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="removerSuspensaoLinhaResponse">
+    <wsdl:part name="removerSuspensaoLinhaResponse" element="WL5G3N1:removerSuspensaoLinhaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="confirmarMigracaoPosParaPreRequest">
+    <wsdl:part name="confirmarMigracaoPosParaPreRequest" element="WL5G3N1:confirmarMigracaoPosParaPreRequest"/>
+  </wsdl:message>
+  <wsdl:message name="confirmarMigracaoPosParaPreResponse">
+    <wsdl:part name="confirmarMigracaoPosParaPreResponse" element="WL5G3N1:confirmarMigracaoPosParaPreResponse"/>
+  </wsdl:message>
+  <wsdl:message name="trocarNumeroControlePosPagoRequest">
+    <wsdl:part name="trocarNumeroControlePosPagoRequest" element="WL5G3N1:trocarNumeroControlePosPagoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="trocarNumeroControlePosPagoResponse">
+    <wsdl:part name="trocarNumeroControlePosPagoResponse" element="WL5G3N1:trocarNumeroControlePosPagoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="atualizarDadosUsuarioAssinaturaRequest">
+    <wsdl:part name="atualizarDadosUsuarioAssinaturaRequest" element="WL5G3N1:atualizarDadosUsuarioAssinaturaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="atualizarDadosUsuarioAssinaturaResponse">
+    <wsdl:part name="atualizarDadosUsuarioAssinaturaResponse" element="WL5G3N1:atualizarDadosUsuarioAssinaturaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarListaLinhasPorCPFCNPJRequest">
+    <wsdl:part name="buscarListaLinhasPorCPFCNPJRequest" element="WL5G3N1:buscarListaLinhasPorCPFCNPJRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ativarDesativarInterceptacaoLinhaRequest">
+    <wsdl:part name="ativarDesativarInterceptacaoLinhaRequest" element="WL5G3N1:ativarDesativarInterceptacaoLinhaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ativarDesativarInterceptacaoLinhaResponse">
+    <wsdl:part name="ativarDesativarInterceptacaoLinhaResponse" element="WL5G3N1:ativarDesativarInterceptacaoLinhaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarListaTipoSubTipoLinhaRequest">
+    <wsdl:part name="buscarListaTipoSubTipoLinhaRequest" element="WL5G3N1:buscarListaTipoSubTipoLinhaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="TiposLinha">
+    <wsdl:part name="TiposLinha" element="WL5G3N2:TiposLinha"/>
+  </wsdl:message>
+  <wsdl:message name="buscarDetalhesCentralRequest">
+    <wsdl:part name="buscarDetalhesCentralRequest" element="WL5G3N1:buscarDetalhesCentralRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarDetalhesCentralResponse">
+    <wsdl:part name="buscarDetalhesCentralResponse" element="WL5G3N1:buscarDetalhesCentralResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarHistoricoLinhaRequest">
+    <wsdl:part name="buscarHistoricoLinhaRequest" element="WL5G3N1:buscarHistoricoLinhaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarHistoricoLinhaResponse">
+    <wsdl:part name="buscarHistoricoLinhaResponse" element="WL5G3N1:buscarHistoricoLinhaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="buscarLinhasAssociadasRequest">
+    <wsdl:part name="buscarLinhasAssociadasRequest" element="WL5G3N1:buscarLinhasAssociadasRequest"/>
+  </wsdl:message>
+  <wsdl:message name="buscarLinhasAssociadasResponse">
+    <wsdl:part name="buscarLinhasAssociadasResponse" element="WL5G3N1:buscarLinhasAssociadasResponse"/>
+  </wsdl:message>
+  <wsdl:message name="consultarEventoPorLinhaRequest">
+    <wsdl:part name="consultarEventoPorLinhaRequest" element="WL5G3N1:consultarEventoPorLinhaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="consultarEventoPorLinhaResponse">
+    <wsdl:part name="consultarEventoPorLinhaResponse" element="WL5G3N1:consultarEventoPorLinhaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="consultarStatusLinhaPosRequest">
+    <wsdl:part name="consultarStatusLinhaPosRequest" element="WL5G3N1:consultarStatusLinhaPosRequest"/>
+  </wsdl:message>
+  <wsdl:message name="consultarStatusLinhaPosResponse">
+    <wsdl:part name="consultarStatusLinhaPosResponse" element="WL5G3N1:consultarStatusLinhaPosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="cancelarPortabilidadeLinhaPosRequest">
+    <wsdl:part name="cancelarPortabilidadeLinhaPosRequest" element="WL5G3N1:cancelarPortabilidadeLinhaPosRequest"/>
+  </wsdl:message>
+  <wsdl:message name="cancelarPortabilidadeLinhaPosResponse">
+    <wsdl:part name="cancelarPortabilidadeLinhaPosResponse" element="WL5G3N1:cancelarPortabilidadeLinhaPosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="consultaOrdemAprovisionamentoRequest">
+    <wsdl:part name="consultaOrdemAprovisionamentoRequest" element="WL5G3N1:consultaOrdemAprovisionamentoRequest"/>
+  </wsdl:message>
+  <wsdl:message name="consultaOrdemAprovisionamentoResponse">
+    <wsdl:part name="consultaOrdemAprovisionamentoResponse" element="WL5G3N1:consultaOrdemAprovisionamentoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="reconciliarAssinaturaRequest">
+    <wsdl:part name="reconciliarAssinaturaRequest" element="WL5G3N1:reconciliarAssinaturaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="reconciliarAssinaturaResponse">
+    <wsdl:part name="reconciliarAssinaturaResponse" element="WL5G3N1:reconciliarAssinaturaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ativarLinhaPrePagaOrigemMVNERequest">
+    <wsdl:part name="ativarLinhaPrePagaOrigemMVNERequest" element="WL5G3N1:ativarLinhaPrePagaOrigemMVNERequest"/>
+  </wsdl:message>
+  <wsdl:message name="ativarLinhaPrePagaOrigemMVNEResponse">
+    <wsdl:part name="ativarLinhaPrePagaOrigemMVNEResponse" element="WL5G3N1:ativarLinhaPrePagaOrigemMVNEResponse"/>
+  </wsdl:message>
+  <wsdl:message name="cabecalhoVIVO">
+    <wsdl:part name="cabecalhoVIVO" element="WL5G3N3:cabecalhoVivo"/>
+  </wsdl:message>
+  <wsdl:portType name="LinhaSOAP">
+    <wsdl:operation name="buscarListaLinhasEnvioNGIN">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:buscarListaLinhasEnvioNGINRequest"/>
+      <wsdl:output message="WL5G3N1:Linhas"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="habilitarNumeroExternoGsmPrePago">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:habilitarNumeroExternoGsmPrePagoRequest"/>
+      <wsdl:output message="WL5G3N1:habilitarNumeroExternoGsmPrePagoResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="habilitarNumeroExternoPrePago">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:habilitarNumeroExternoPrePagoRequest"/>
+      <wsdl:output message="WL5G3N1:habilitarNumeroExternoPrePagoResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarContaPrePago">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:buscarContaPrePagoRequest"/>
+      <wsdl:output message="WL5G3N1:Linha"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarLinhaPreAtiva">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:buscarLinhaPreAtivaRequest"/>
+      <wsdl:output message="WL5G3N1:Linha"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarStatusAssinaturaPorNumero">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:buscarStatusAssinaturaPorNumeroRequest"/>
+      <wsdl:output message="WL5G3N1:StatusAssinatura"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="manterIndicadorDivulgaLinha">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:manterIndicadorDivulgaLinhaRequest"/>
+      <wsdl:output message="WL5G3N1:manterIndicadorDivulgaLinhaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="alterarPermissoesEnvioSms">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:alterarPermissoesEnvioSmsRequest"/>
+      <wsdl:output message="WL5G3N1:alterarPermissoesEnvioSmsResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="manterTitularidadeLinhaPrePaga">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:manterTitularidadeLinhaPrePagaRequest"/>
+      <wsdl:output message="WL5G3N1:Linha"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarLinha">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:buscarLinhaRequest"/>
+      <wsdl:output message="WL5G3N1:buscarLinhaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarLinhaPorIccid">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:buscarLinhaPorIccidRequest"/>
+      <wsdl:output message="WL5G3N1:Linha"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaLinhasPorEsn">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:buscarListaLinhasPorEsnRequest"/>
+      <wsdl:output message="WL5G3N1:buscarListaLinhasPorEsnResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarQuantidadeLinhasPorPessoa">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:buscarQuantidadeLinhasPorPessoaRequest"/>
+      <wsdl:output message="WL5G3N1:buscarQuantidadeLinhasPorPessoaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="efetuarMigracaoGsmPrePago">
+      <WL5G3N0:documentation/>
+      <wsdl:input message="WL5G3N1:efetuarMigracaoGsmPrePagoRequest"/>
+      <wsdl:output message="WL5G3N1:efetuarMigracaoGsmPrePagoResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPermissoesEnvioSms">
+      <wsdl:input message="WL5G3N1:buscarPermissoesEnvioSmsRequest"/>
+      <wsdl:output message="WL5G3N1:AvisoSms"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="efetuarMigracaoCdmaPrePago">
+      <wsdl:input message="WL5G3N1:efetuarMigracaoCdmaPrePagoRequest"/>
+      <wsdl:output message="WL5G3N1:efetuarMigracaoCdmaPrePagoResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="trocarNumeroPrePago">
+      <wsdl:input message="WL5G3N1:trocarNumeroPrePagoRequest"/>
+      <wsdl:output message="WL5G3N1:trocarNumeroPrePagoResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaLinhasPorCliente">
+      <wsdl:input message="WL5G3N1:buscarListaLinhasPorClienteRequest"/>
+      <wsdl:output message="WL5G3N1:Linhas"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDadosEquipamentoLinha">
+      <wsdl:input message="WL5G3N1:buscarDadosEquipamentoLinhaRequest"/>
+      <wsdl:output message="WL5G3N1:Linha"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaStatusLinhaPorPlataforma">
+      <wsdl:input message="WL5G3N1:buscarListaStatusLinhaPorPlataformaRequest"/>
+      <wsdl:output message="WL5G3N1:ListaStatusAssinatura"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="habilitarNumeroPosPago">
+      <wsdl:input message="WL5G3N1:habilitarNumeroPosPagoRequest"/>
+      <wsdl:output message="WL5G3N1:habilitarNumeroPosPagoResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaLinhaPorConta">
+      <wsdl:input message="WL5G3N1:buscarListaLinhaPorContaRequest"/>
+      <wsdl:output message="WL5G3N1:Linhas"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="manterLinhaPosPago">
+      <wsdl:input message="WL5G3N1:manterLinhaPosPagoRequest"/>
+      <wsdl:output message="WL5G3N1:manterLinhaPosPagoResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaLinhasPosFavoritosOuIntraGrupo">
+      <wsdl:input message="WL5G3N1:Favorito"/>
+      <wsdl:output message="WL5G3N1:Favorito"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="manterTitularidadeLinhaPosPaga">
+      <wsdl:input message="WL5G3N1:manterTitularidadeLinhaPosPagaRequest"/>
+      <wsdl:output message="WL5G3N1:manterTitularidadeLinhaPosPagaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDetalhesLinhasPorCliente">
+      <wsdl:input message="WL5G3N1:buscarDetalhesLinhasPorClienteRequest"/>
+      <wsdl:output message="WL5G3N1:buscarDetalhesLinhasPorClienteResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDadosAssinaturaPosPago">
+      <wsdl:input message="WL5G3N1:buscarDadosAssinaturaPosPagoRequest"/>
+      <wsdl:output message="WL5G3N1:buscarDadosAssinaturaPosPagoResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDadosAdicionaisLinhaPos">
+      <wsdl:input message="WL5G3N1:buscarDadosAdicionaisLinhaPosRequest"/>
+      <wsdl:output message="WL5G3N1:buscarDadosAdicionaisLinhaPosResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="verificarEstadoBloqueio">
+      <wsdl:input message="WL5G3N1:verificarEstadoBloqueioRequest"/>
+      <wsdl:output message="WL5G3N1:LinhasBloqueio"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="efetuarMigracaoPosParaPre">
+      <wsdl:input message="WL5G3N1:efetuarMigracaoPosParaPreRequest"/>
+      <wsdl:output message="WL5G3N1:efetuarMigracaoPosParaPreResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="desbloquearLinha">
+      <wsdl:input message="WL5G3N1:desbloquearLinhaRequest"/>
+      <wsdl:output message="WL5G3N1:desbloquearLinhaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="removerSuspensaoLinha">
+      <wsdl:input message="WL5G3N1:removerSuspensaoLinhaRequest"/>
+      <wsdl:output message="WL5G3N1:removerSuspensaoLinhaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="confirmarMigracaoPosParaPre">
+      <wsdl:input message="WL5G3N1:confirmarMigracaoPosParaPreRequest"/>
+      <wsdl:output message="WL5G3N1:confirmarMigracaoPosParaPreResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="trocarNumeroControlePosPago">
+      <wsdl:input message="WL5G3N1:trocarNumeroControlePosPagoRequest"/>
+      <wsdl:output message="WL5G3N1:trocarNumeroControlePosPagoResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="atualizarDadosUsuarioAssinatura">
+      <wsdl:input message="WL5G3N1:atualizarDadosUsuarioAssinaturaRequest"/>
+      <wsdl:output message="WL5G3N1:atualizarDadosUsuarioAssinaturaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaLinhasPorCPFCNPJ">
+      <wsdl:input message="WL5G3N1:buscarListaLinhasPorCPFCNPJRequest"/>
+      <wsdl:output message="WL5G3N1:Linhas"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="ativarDesativarInterceptacaoLinha">
+      <wsdl:input message="WL5G3N1:ativarDesativarInterceptacaoLinhaRequest"/>
+      <wsdl:output message="WL5G3N1:ativarDesativarInterceptacaoLinhaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaTipoSubTipoLinha">
+      <wsdl:input message="WL5G3N1:buscarListaTipoSubTipoLinhaRequest"/>
+      <wsdl:output message="WL5G3N1:TiposLinha"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDetalhesCentral">
+      <wsdl:input message="WL5G3N1:buscarDetalhesCentralRequest"/>
+      <wsdl:output message="WL5G3N1:buscarDetalhesCentralResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarHistoricoLinha">
+      <wsdl:input message="WL5G3N1:buscarHistoricoLinhaRequest"/>
+      <wsdl:output message="WL5G3N1:buscarHistoricoLinhaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="buscarLinhasAssociadas">
+      <wsdl:input message="WL5G3N1:buscarLinhasAssociadasRequest"/>
+      <wsdl:output message="WL5G3N1:buscarLinhasAssociadasResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="consultarEventoPorLinha">
+      <wsdl:input message="WL5G3N1:consultarEventoPorLinhaRequest"/>
+      <wsdl:output message="WL5G3N1:consultarEventoPorLinhaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="consultarStatusLinhaPos">
+      <wsdl:input message="WL5G3N1:consultarStatusLinhaPosRequest"/>
+      <wsdl:output message="WL5G3N1:consultarStatusLinhaPosResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="cancelarPortabilidadeLinhaPos">
+      <wsdl:input message="WL5G3N1:cancelarPortabilidadeLinhaPosRequest"/>
+      <wsdl:output message="WL5G3N1:cancelarPortabilidadeLinhaPosResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="consultaOrdemAprovisionamento">
+      <wsdl:input message="WL5G3N1:consultaOrdemAprovisionamentoRequest"/>
+      <wsdl:output message="WL5G3N1:consultaOrdemAprovisionamentoResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="reconciliarAssinatura">
+      <wsdl:input message="WL5G3N1:reconciliarAssinaturaRequest"/>
+      <wsdl:output message="WL5G3N1:reconciliarAssinaturaResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="ativarLinhaPrePagaOrigemMVNE">
+      <wsdl:input message="WL5G3N1:ativarLinhaPrePagaOrigemMVNERequest"/>
+      <wsdl:output message="WL5G3N1:ativarLinhaPrePagaOrigemMVNEResponse"/>
+      <wsdl:fault name="erroInfoFault" message="WL5G3N1:erroInfoFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LinhaSOAP" type="WL5G3N1:LinhaSOAP">
+    <WL5G3N4:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference URI="#telefonicaIP_policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+    <wsdl:operation name="buscarListaLinhasEnvioNGIN">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarListaLinhasEnvioNGINRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="Linhas"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="habilitarNumeroExternoGsmPrePago">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="habilitarNumeroExternoGsmPrePagoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="habilitarNumeroExternoGsmPrePagoResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="habilitarNumeroExternoPrePago">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="habilitarNumeroExternoPrePagoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="habilitarNumeroExternoPrePagoResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarContaPrePago">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarContaPrePagoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="Linha"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarLinhaPreAtiva">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarLinhaPreAtivaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="Linha"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarStatusAssinaturaPorNumero">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarStatusAssinaturaPorNumeroRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="StatusAssinatura"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="manterIndicadorDivulgaLinha">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="manterIndicadorDivulgaLinhaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="manterIndicadorDivulgaLinhaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="alterarPermissoesEnvioSms">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="alterarPermissoesEnvioSmsRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="alterarPermissoesEnvioSmsResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="manterTitularidadeLinhaPrePaga">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="manterTitularidadeLinhaPrePagaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="Linha"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarLinha">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarLinhaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="buscarLinhaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarLinhaPorIccid">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarLinhaPorIccidRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="Linha"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaLinhasPorEsn">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarListaLinhasPorEsnRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="buscarListaLinhasPorEsnResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarQuantidadeLinhasPorPessoa">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarQuantidadeLinhasPorPessoaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="buscarQuantidadeLinhasPorPessoaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="efetuarMigracaoGsmPrePago">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="efetuarMigracaoGsmPrePagoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="efetuarMigracaoGsmPrePagoResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPermissoesEnvioSms">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarPermissoesEnvioSmsRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="AvisoSms"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="efetuarMigracaoCdmaPrePago">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="efetuarMigracaoCdmaPrePagoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="efetuarMigracaoCdmaPrePagoResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="trocarNumeroPrePago">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="trocarNumeroPrePagoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="trocarNumeroPrePagoResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaLinhasPorCliente">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarListaLinhasPorClienteRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="Linhas"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDadosEquipamentoLinha">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarDadosEquipamentoLinhaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="Linha"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaStatusLinhaPorPlataforma">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarListaStatusLinhaPorPlataformaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="ListaStatusAssinatura"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="habilitarNumeroPosPago">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="habilitarNumeroPosPagoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="habilitarNumeroPosPagoResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaLinhaPorConta">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarListaLinhaPorContaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="Linhas"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="manterLinhaPosPago">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="manterLinhaPosPagoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="manterLinhaPosPagoResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaLinhasPosFavoritosOuIntraGrupo">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="Favorito"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="Favorito"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="manterTitularidadeLinhaPosPaga">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="manterTitularidadeLinhaPosPagaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="manterTitularidadeLinhaPosPagaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDetalhesLinhasPorCliente">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarDetalhesLinhasPorClienteRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="buscarDetalhesLinhasPorClienteResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDadosAssinaturaPosPago">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarDadosAssinaturaPosPagoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="buscarDadosAssinaturaPosPagoResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDadosAdicionaisLinhaPos">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarDadosAdicionaisLinhaPosRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="buscarDadosAdicionaisLinhaPosResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="verificarEstadoBloqueio">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="verificarEstadoBloqueioRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="LinhasBloqueio"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="efetuarMigracaoPosParaPre">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="efetuarMigracaoPosParaPreRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="efetuarMigracaoPosParaPreResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="desbloquearLinha">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="desbloquearLinhaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="desbloquearLinhaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removerSuspensaoLinha">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="removerSuspensaoLinhaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="removerSuspensaoLinhaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="confirmarMigracaoPosParaPre">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="confirmarMigracaoPosParaPreRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="confirmarMigracaoPosParaPreResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="trocarNumeroControlePosPago">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="trocarNumeroControlePosPagoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="trocarNumeroControlePosPagoResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="atualizarDadosUsuarioAssinatura">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="atualizarDadosUsuarioAssinaturaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="atualizarDadosUsuarioAssinaturaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaLinhasPorCPFCNPJ">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarListaLinhasPorCPFCNPJRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="Linhas"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ativarDesativarInterceptacaoLinha">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="ativarDesativarInterceptacaoLinhaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="ativarDesativarInterceptacaoLinhaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarListaTipoSubTipoLinha">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarListaTipoSubTipoLinhaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="TiposLinha"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDetalhesCentral">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarDetalhesCentralRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="buscarDetalhesCentralResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarHistoricoLinha">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarHistoricoLinhaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="buscarHistoricoLinhaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="buscarLinhasAssociadas">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="buscarLinhasAssociadasRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="buscarLinhasAssociadasResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultarEventoPorLinha">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="consultarEventoPorLinhaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="consultarEventoPorLinhaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultarStatusLinhaPos">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="consultarStatusLinhaPosRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="consultarStatusLinhaPosResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelarPortabilidadeLinhaPos">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="cancelarPortabilidadeLinhaPosRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="cancelarPortabilidadeLinhaPosResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="consultaOrdemAprovisionamento">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="consultaOrdemAprovisionamentoRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="consultaOrdemAprovisionamentoResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="reconciliarAssinatura">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="reconciliarAssinaturaRequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="reconciliarAssinaturaResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ativarLinhaPrePagaOrigemMVNE">
+      <WL5G3N4:operation/>
+      <wsdl:input>
+        <WL5G3N4:header message="WL5G3N1:cabecalhoVIVO" part="cabecalhoVIVO" use="literal"/>
+        <WL5G3N4:body use="literal" parts="ativarLinhaPrePagaOrigemMVNERequest"/>
+      </wsdl:input>
+      <wsdl:output>
+        <WL5G3N4:body use="literal" parts="ativarLinhaPrePagaOrigemMVNEResponse"/>
+      </wsdl:output>
+      <wsdl:fault name="erroInfoFault">
+        <WL5G3N4:fault name="erroInfoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LinhaSOAPQSService">
+    <wsdl:port name="LinhaSOAPQSPort" binding="WL5G3N1:LinhaSOAP">
+      <WL5G3N4:address location="http://alsb3-soa:80/Linha"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/NGIN" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ngi="http://www.vivo.com.br/MC/NGIN">
+  <xs:include schemaLocation="Linha_347.xsd"/>
+  <xs:include schemaLocation="Linha_345.xsd"/>
+  <xs:include schemaLocation="Linha_348.xsd"/>
+  <xs:include schemaLocation="Linha_350.xsd"/>
+  <xs:include schemaLocation="Linha_351.xsd"/>
+  <xs:include schemaLocation="Linha_349.xsd"/>
+  <xs:include schemaLocation="Linha_352.xsd"/>
+</xs:schema>

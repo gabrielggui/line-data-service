@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.vivo.com.br/MC/Geral" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <complexType name="Sistema">
+    <annotation>
+      <documentation>Tipo complexo que contem informacoes que identificam o
+				sistema.</documentation>
+    </annotation>
+    <sequence>
+      <element name="codigo" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Codigo que identifica o sistema.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="integer"/>
+        </simpleType>
+      </element>
+      <element name="sigla" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Sigla que identifica o sistema.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="nome" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Nome do sistema.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="disponibilidade" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Indica se o sistema esta disponivel para ser
+						usado (true) ou indisponivel (false). 1 - true /
+						0 - false</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="boolean"/>
+        </simpleType>
+      </element>
+      <element name="identificadorIP" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Identificador do IP no momento da criacao do
+						Pedido</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="identificadorURL" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Identificador da URL do sistema.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="descricao" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Descrição do sistema.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="Sistemas">
+    <annotation>
+      <documentation>Tipo complexo que representa uma lista de sistemas do
+				tipo complexo Sistema.</documentation>
+    </annotation>
+    <sequence>
+      <element name="sistema" type="gr:Sistema" maxOccurs="unbounded" minOccurs="0"/>
+    </sequence>
+  </complexType>
+</schema>

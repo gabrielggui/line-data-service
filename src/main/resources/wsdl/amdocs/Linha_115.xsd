@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Portabilidade" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spn="http://www.vivo.com.br/MC/Portabilidade" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:sg="http://www.vivo.com.br/MC/Sigan" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_116.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_167.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_7.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_82.xsd"/>
+  <xs:include schemaLocation="Linha_170.xsd"/>
+  <xs:include schemaLocation="Linha_171.xsd"/>
+  <xs:include schemaLocation="Linha_172.xsd"/>
+  <xs:include schemaLocation="Linha_173.xsd"/>
+  <xs:include schemaLocation="Linha_174.xsd"/>
+  <xs:include schemaLocation="Linha_175.xsd"/>
+  <xs:include schemaLocation="Linha_176.xsd"/>
+  <xs:include schemaLocation="Linha_177.xsd"/>
+  <xs:include schemaLocation="Linha_178.xsd"/>
+  <xs:include schemaLocation="Linha_179.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Sigan" schemaLocation="Linha_38.xsd"/>
+  <xs:complexType name="Portabilidade">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das transacoes de portabilidade,
+				indicando quais numeros sofreram portin, ou portout.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="protocolo" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do protocolo gerado para a transacao de
+						portabilidade (SOA).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="protocoloReferencia" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do protocolo de referencia gerado para a
+						transacao de portabilidade (SOA).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoProtocoloReferencia" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o protocolo de referencia e : A -
+						Agrupador; F - Fraude; E - Erro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataJanelaMigracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da janela de migracao de portabilidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataStatusPortabilidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data que ocorreu mudanca de status da transacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCriacaoProtocolo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de criacao do protocolo de portabilidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataProcessamentoTransacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de processamento da transacao de
+						portabilidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCriacaoProcPortabilidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de criacao do processo de portabilidade
+						pelo provedor de servico receptor.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de criacao da portabilidade.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="existeRestricaoFraude" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Identifica se existe alguma restricao de
+							fraude para o registro. S - ha restricao de
+							fraude (true); N ou Nulo - nao ha restricao
+							de fraude.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="justificativaFraude" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Texto que justifica alguma possivel fraude no
+						registro de portabilidade. Essa informacao so
+						existira se o elemento existeRestricaoFraude for
+						true.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="justificativaErro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Texto aberto para justificar a ocorrencia de
+						algum problema durante o processo de
+						portabilidade.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoMensagem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificador unico atribuido a mensagem. Note
+						que este valor sempre se junta a um simples par
+						de pedido/resposta. Nao se pretende usar atraves
+						de pedidos separados para o mesmo registro de
+						portabilidade.(invoke_id)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAgendamentos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de agendamentos que podem ser
+						realizados pela entidade.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoErro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do erro ocorrido durante o processo de
+						portabilidade numerica.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="operadoraReceptora" nillable="true" type="gr:Operadora" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo EOT que identifica uma operadora (Vivo,
+						Tim, Claro, Oi, etc). Identifica a operadora que
+						recebeu o novo numero.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operadoraDoadora" type="gr:Operadora" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo EOT que identifica uma operadora (Vivo,
+						Tim, Claro, Oi, etc). Identifica a operadora que
+						doou o numero.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusPortabilidade" type="spn:StatusPortabilidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o status em que esta a
+						transacao de portabilidade. Exemplos: Waiting
+						PORTIN, Waiting PORTOUT, Aguardando Janela, Em
+						processo, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="atendimento" type="ps:Atendimento" minOccurs="0"/>
+      <xs:element name="tipoTransacao" type="spn:TipoTransacao" minOccurs="0"/>
+      <xs:element name="linha" type="ass:Linha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Linha para identificar o
+						codigo do assinante, tipo de assinante e numero
+						da linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusVersao" type="spn:StatusVersao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade StatusVersao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="motivoCancelamento" type="spn:MotivoCancelamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade MotivoCancelamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="acao" type="spn:Acao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Acao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuarioTransacao" type="sca:UsuarioSCA" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade UsuarioSCA para
+						identificar o login do usuario que gerou a
+						transacao de portabilidade.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sistemaOrigemPortIn" type="cat:Sistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade sistema para identificar o
+						sistema que originou o port in</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="periodoJanela" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a janela sera manha, tarde, noite ou
+						madrugada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoCancelamento" type="spn:TipoCancelamento" minOccurs="0"/>
+      <xs:element name="novaLocalidade" type="sg:CNL" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>CNL da nova Localidade de uma uma linha que
+						sofreu portabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linhaProvisoria" type="ass:Linha" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica o número provisório da linha no processo
+						da portabilidade (o código do telefone
+						provisório para ativação temporaria de uma linha
+						portada). Esse campo representa os dados do
+						cdAssinante</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validacoesPortabilidade" type="spn:ValidacoesPortabilidade" minOccurs="0"/>
+      <xs:element name="codigoFraude" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do BP original relacionado a fraude</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoErroFraude" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de erro da fraude</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaGeracaoCodigoGrupo" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Informa EA que deve ser criado um protocolo 
+      					agrupador para ser associado a outras portabilidades</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoGrupo" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Informa EA protocolo agrupador</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaFixoEspecial" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador Fixo Especial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaDataExtensao" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica que o cliente foi responsavel pela 
+						selecao da ativacao da janela alem do 
+						periodo de portabilidade normal de no 
+						máximo de 5 dias</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="confirmaDocumentacao" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador que Informa que os documentos foram apresentados</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacaoEspecifica" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Solicitação de uma data especifica de janela</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacaoInicial" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data inicial de um intervalo de dias (duracaoDias) 
+						para janela</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeDuracaoDias" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Intervalo de dias para janela a partir da data 
+						inicial (dataCriacaoInicial)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="proximaDataValida" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Proxima janela disponivel</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaPortabilidadeOriginal" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica que numero esta retornando para origem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="rn1" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este campo especifica o número RN1 da portabilidade.
+						Esse deveria ser o único número RN1 associado ao
+						Provedor Receptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dadosOpcionais" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Dados opcionais da Portabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoLinha" type="ass:TipoLinha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoLinha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoPortabilidade" type="spn:TipoPortabilidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoPortabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="blocoLinha" type="spn:BlocoLinha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade BlocoLinha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="protocoloSistemaOrigem" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Protocolo do Sistema de Origem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="protocoloCancelamentoSistemaOrigem" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Protocolo Cancelamento do Sistema de Origem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="notificacoesEventoPortabilidade" type="spn:NotificacoesEventoPortabilidade" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Informações de notificação do eventos de Portabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificadorFimOrdemServico" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>identificador da mensagem FIMOS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificadorOrigemBroadcast" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>identificador da mensagem SVCreateDownload - Sophia(GVT)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Portabilidades">
+    <xs:sequence>
+      <xs:element name="portabilidade" type="spn:Portabilidade" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/SCA" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA" xmlns:pes="http://www.vivo.com.br/MC/Pessoa" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_40.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_39.xsd"/>
+  <xs:complexType name="Site">
+    <xs:annotation>
+      <xs:documentation>Mantém informações dos sites de atendimento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>Código do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Nome do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="altitude" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Altitude do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="areaTerciaria" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Area terciaria do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="areaTotal" minOccurs="0" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>Area total do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="centroCusto" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Centro de custo do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="siteCorrelato" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Site correlato a outro Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAquisicao" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Data de aquisicao do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataDesativacao" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Data de desativacao do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataDistrato" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Data de distrato do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="areaTarifacao" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Area de tarifacao do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="equipamentosMonitorados" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Area de tarifacao do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fronteiraInternacional" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Fronteira internacional do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificadorDetentora" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Identificador detentora do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificadorFinanceiro" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Identificador financeiro do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="inicioOperacao" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Data inicio da operacao do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroPep" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Numero do projeto no Sap</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operacaoSite" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Operacao responsavel pelo site. 
+					Os valores possiveis sao: "MOVEL", "FIXA" e "MOVEL/FIXA".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="proprietario" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Proprietario do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sigla" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Sigla do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="siglaAntiga" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Sigla antiga do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="situacao" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Situacao do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="situacaoRegularizacao" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Situacao de regularizacao do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoConstrucao" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Tipo de construcao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoContrato" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Tipo do contrato</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoEstrutura" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Tipo de estrutua</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="utilizacaoSite" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Utilizacao do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endereco" minOccurs="0" type="pes:Endereco">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia a entidade Endereco.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="siteCritico" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Flag que identifica se o Site é critico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sitar" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome da licenca de funcionamento do Site</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="municipio" type="nfo:Municipio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia a entidade Municipio.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Sites">
+    <xs:sequence>
+      <xs:element name="site" type="sca:Site" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/OrdemVenda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda">
+  <xs:complexType name="TipoContratoPJ">
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um tipo de contrato pj, como comodato, contrato de venda, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoSAP" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do SAP que identifica um contrato PJ, por
+						exemplo: Comodato -Sem Multa; Contrato de
+						Comodato 12; Contrato de Venda 06.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao que identifica um tipo de contrato pj.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TiposContratosPJ">
+    <xs:sequence>
+      <xs:element name="tipoContratoPJ" type="ov:TipoContratoPJ" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

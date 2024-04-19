@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Catalogo" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:complexType name="Equipamento">
+    <xs:annotation>
+      <xs:documentation>Recurso fisico</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="quantidadePortaDisponivelATM" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de portas disponiveis no equipamento
+						para a tecnologia ATM</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:long"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="quantidadePortaDisponivelETH" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de portas disponiveis no equipamento
+						para a tecnologia ETH (Ethernet)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:long"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identificação do equipamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="localInstalacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Local de instalação do equipamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoLocal" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo do local</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoPorta" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identificação da porta do equipamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoSlot" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identificação do Slot do equipamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoFibra" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identificação da Fibra</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="modelo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome do modelo do equipamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fabricante" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome do fabricante do equipamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="siglaFabricante" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Sigla do Fabricante do equipamento. Ex: HUA,
+						ERI, ALC</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo de Equipamento. Ex: - MDU - TERMINAL OPTICO
+						- SPLITTER - CTO</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroLote" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Número do Lote de Classificação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="posicao" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="transformador" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="distancia" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="splitter" type="cat:Splitter" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="ipPlataformaRede" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Numero do IP da Plataforma BHS ou plataforma de
+						rede. LISTA DE ATÉ 8 ELEMENTOS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="idPortaONU" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identificação da Porta ONU ou porta cliente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataGarantia" maxOccurs="1" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Data de Garantia do equipamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataContrato" maxOccurs="1" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Data de contrato do equipamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="documentoEquipamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica o documento de criação do equipamento. (Exemplo: ATP 0025/2009)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificacaoPlaca" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica o nome da Placa. (Exemplo: PT16X2M)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="modeloPlaca" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica o modelo de fabricação da Placa. (Exemplo: T16X2M)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="localizacaoSubBastidor" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Composto das informações de Sub/[intervalo]/pos concatenados, separados por '/' e ‘[ ]’. (Exemplo: 0055/[060-064]/01)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="localizacaoPlacaEquipamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Composto das informações de Rack/Sub-rack/Slot concatenados, separados por '/'. Exemplo: 1//0009</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="porta" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica a Porta tributária da Placa ou do Equipamento onde está associado o Sistema Exemplo: 1</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="macAddress" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa macAddress do equipamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ipv6PlataformaRede" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Numero do IPV6 da plataforma de
+						rede. LISTA DE ATÉ 8 ELEMENTOS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Equipamentos">
+    <xs:sequence>
+      <xs:element name="equipamento" type="cat:Equipamento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Splitter">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="localInstalacao" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="tipoLocal" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="complemento" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="endereco" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="numeroFibra" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="numeroCabo" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

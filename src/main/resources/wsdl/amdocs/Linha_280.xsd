@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta">
+  <xs:include schemaLocation="Linha_231.xsd"/>
+  <xs:include schemaLocation="Linha_274.xsd"/>
+  <xs:include schemaLocation="Linha_246.xsd"/>
+  <xs:include schemaLocation="Linha_281.xsd"/>
+  <xs:complexType name="DocumentoFaturamento">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos Documentos atribuidos aos
+				pagamentos de uma Conta</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="dataAtribuicao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data e hora da atribuicao. ("AAAA-MM-DDTHH:MM:SS")</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoDocFaturamento" type="ct:TipoDocFaturamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade TipoDocFaturamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mesReferenciaDoc" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de referencia do documento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="reversao" type="ct:Reversao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade TipoDocFaturamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorOriginal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>O valor do recebivel na moeda principal.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="12"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorAtribuido" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>O valor pago na moeda principal que foi pago</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="12"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorAtual" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>O valor atual pago</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="12"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="seqNumeroDocumento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de sequencia do Documento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataVencimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data do vencimento do Documento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataVencimentoAtraso" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Dara de vencimento do documento utilizada para 
+						verificar se o pagamento foi feito com atraso.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="conta" type="ct:Conta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Conta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoBarras" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo da barras da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusDocumentoFaturamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica o status do Documento, se Pago, ou nao Pago.
+						Essa informacao e obtida apartir da conferencia
+						do valor remanescente com o valor total do
+						documento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ciclo" type="ct:Ciclo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Ciclo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataEmissao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de Emisssao do Documento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFechamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fechamento do Documento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentosFaturamento">
+    <xs:sequence>
+      <xs:element name="documentoFaturamento" type="ct:DocumentoFaturamento" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

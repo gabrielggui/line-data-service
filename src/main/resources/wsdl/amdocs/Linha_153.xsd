@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:complexType name="GrupoAtendimento">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos grupos de atendimentos validos.
+				Um grupo de atendimento pode ser: Pos pago, Pre pago,
+				Retencao, Promocoes, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo numerico que identifica o grupo de atendimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do grupo de atendimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GruposAtendimento">
+    <xs:sequence>
+      <xs:element name="grupoAtendimento" type="ps:GrupoAtendimento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

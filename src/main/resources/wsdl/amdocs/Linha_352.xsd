@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NGIN" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ngi="http://www.vivo.com.br/MC/NGIN">
+  <xs:complexType name="InstanciaEstoque">
+    <xs:annotation>
+      <xs:documentation>Estoque de premios dentro do ngin. Nao tem vinculo com
+				loja nem distribuidor. Por exemplo, temos 1 estoque de
+				premios para determindada promocao que sera lancada
+				agora primeiramente. Se a vivo quiser lancar outra
+				promocao na sequencia, os premio sao colocados em um
+				segundo estoque, e assim por diante.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica a instancia de estoque</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao da instancia de estoque</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InstanciasEstoque">
+    <xs:sequence>
+      <xs:element name="instanciaEstoque" type="ngi:InstanciaEstoque" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

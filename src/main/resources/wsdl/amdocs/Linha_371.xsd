@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:import schemaLocation="Linha_11.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:import schemaLocation="Linha_76.xsd" namespace="http://www.vivo.com.br/MC/Catalogo"/>
+  <xs:import schemaLocation="Linha_29.xsd" namespace="http://www.vivo.com.br/MC/NFO"/>
+  <xs:complexType name="ParametrosEfetuarMigracaoCdmaPrePago">
+    <xs:sequence>
+      <xs:element name="assinatura" type="ass:Assinatura"/>
+      <xs:element name="aparelho" type="cat:Produto"/>
+      <xs:element name="usuario" type="sca:UsuarioSCA"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="observacao" type="xs:string"/>
+      <xs:element name="motivoOperacao" type="nfo:MotivoOperacao"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

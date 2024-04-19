@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_76.xsd"/>
+  <xs:complexType name="RegraMatriz">
+    <xs:annotation>
+      <xs:documentation>Lista de dados do produto, recuperados da matriz de regras</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código do produto gerado e controlado na extração.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="propriedadeEquipamento" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Propriedade do equipamento(modem). Este campo indicará quem é o proprietário do equipamento.
+						Ex.:
+						T = Terceiro
+						C = Comodato</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaDistancia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de distância.
+						Ex.: S = Sim
+						       N = Não</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaInstalacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de  instalação do equipamento(modem).
+						Ex.: S = Sim
+						       N = Não</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaConfiguracaoEquipamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de configuração do equipamento(modem).
+						Ex.: S = Sim
+						       N = Não</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaRetiradaEquipamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de retirada do equipamento(modem).
+						Ex.: S = Sim
+						       N = Não</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaGeracaoIRLA" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de geração de tarefa IRLA.
+						Ex.: S = Sim
+						       N = Não</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaGeracaoDG" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de geração de tarefa DG.
+						Ex.: S = Sim
+						       N = Não</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaGeracaoES" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de geração de tarefa ES.
+						Ex.: S = Sim
+						       N = Não</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="retiradaNotaFiscal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Ação Nota Fiscal – Somente poderá receber 0, 1, 2, 3 ou nulo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoNotaFiscal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código da nota fiscal – Somente poderá receber 1, 2, 3, 4, 5 ou nulo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="movimentoMaterial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de movimento de material. Somente poderá receber 0, 1 e nulo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="retiradaNotaFiscalModem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Retirada nota fiscal modem - Somente poderá receber 0, 1 e nulo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaApoioTecnicoOpcional" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de apoio técnico opcional.
+						Ex.: S = Sim
+						       N = Não</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoAgenda" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de agenda configurada. Poderá vir vazio quando o campo necessita agenda for igual a 'N'.
+						Ex.:10 = SCAI</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoTipoAgenda" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descrição do tipo de agenda recuperado. Se código tipo agenda corresponder ao SCAI, 
+						este será o valor que o campo irá conter.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoOperacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de operação. Se 1 SPEEDY-OS -> ALTA DE PRODUTO</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaNecessidadeAgendamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de necessidade de agenda. Este campo irá informar a necessidade de agendamento para o produto.
+						Ex.:S = Sim
+						      N = Não</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoModem" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Equipamento Modem. Este campo conterá o Modem recuperado para determinado speedy consultado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RegrasMatriz">
+    <xs:sequence>
+      <xs:element name="regraMatriz" type="cat:RegraMatriz" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

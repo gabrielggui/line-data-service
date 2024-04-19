@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:Q1="http://www.vivo.com.br/MC/Pessoa">
+  <xs:import schemaLocation="Linha_24.xsd" namespace="http://www.vivo.com.br/MC/Pessoa"/>
+  <xs:include schemaLocation="Linha_11.xsd"/>
+  <xs:include schemaLocation="Linha_190.xsd"/>
+  <xs:include schemaLocation="Linha_191.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_22.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_81.xsd"/>
+  <xs:complexType name="ServicoAssinatura">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes do relacionamento da assinatura com
+				os possiveis servicos que a assinatura pode ter.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="dataInicioServico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da ativação do serviço para a assinatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracaoServico" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da Expiração do serviço para a assinatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="contratoCliente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificador numerico unico da subscricao de um
+						servico pelo cliente, utilizado para
+						diferenciar, por exemplo, a subscricao de um
+						pacote de minutos 2 vezes pelo menos cliente).
+						Caso o servico nao esteja ativado para a linha,
+						o contrato vira zerado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="servicoDefault" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o servico e default. 1 = true =
+						servico default; 0 = false = servico nao
+						default.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="validadePacote" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Parametro que indica a validade do pacote de
+							servicos</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="quantidadePacote" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica a quantidade de minutos, sms, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="servicoControleGrupo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o servico eh controlado pelo grupo
+						(utilizado apenas no gestao) 1 = true = controle
+						pelo grupo 0 = false = nao eh controlado pelo
+						grupo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="operacaoPermitida" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica a operacao que eh permitida sobre o
+						servico. ACT - ativacao/subscricao do servico
+						DES - desativacao/cancelamento do servico DESO -
+						desativacao obrigatoria (nova operacao a ser
+						criada sera utilizada para os casos de servicos
+						incompativeis com o novo plano informado nulo -
+						nenhuma operacao eh permitida</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ordemServico" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Esse elemento indica em qual ordem os
+							servicos devem ser ativados ou desativados
+							nos legados.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="status" nillable="true" minOccurs="0" type="ass:StatusServico">
+        <xs:annotation>
+          <xs:documentation>Indica se o encargo esta ativo, novo ou
+						expirado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="seqServicoAssinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero Sequencial da Sali.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="assinatura" type="ass:Assinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Assinatura</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="precisaVlrDeposito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag indicador que um deposito precisa ser pago
+						True = Necessita de Deposito False = Nao
+						necessita</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="servico" type="cat:Servico" minOccurs="0"/>
+      <xs:element name="canalAtendimento" type="cat:CanalAtendimento" minOccurs="0"/>
+      <xs:element name="statusServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status do servico em relacao a uma linha ou
+						assinatura por ex: PRE – Pre Ativo ACT -Ativo na
+						linha\assinatura SUS - Supenso da linha CAN -
+						Cancelado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataStatus" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>data do ultimo status atribuido ao servico em
+						relacao á uma linha</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="limiteMaximoCredito" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Limite maximo de credito que determinado servico
+						pode conceder á uma assinatura\linha</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="limiteTransacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Limite maximo de credito concedito pela vivo que
+						determinado servico permite que uma assinatura
+						consuma por transacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="servicoElegivel" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Campo que especifica se o Serviço Assinatura
+						esta Elegivél ou não para a Linha ou Assinatura.
+						S-> Sim ou N->Não</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento "codigoTransacao" criado por Dilmara Matos 18/07/2011-->
+      <xs:element name="codigoTransacao" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o codigo da
+						transação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento "identificadorAtivacao" criado por Dilmara Matos 18/07/2011-->
+      <xs:element name="identificadorAtivacaoTransacao" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicada se o usuário autorizou ou não a
+						utilização do serviço</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linhas" type="ass:Linhas" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServicosAssinatura">
+    <xs:sequence>
+      <xs:element name="servicoAssinatura" type="ass:ServicoAssinatura" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

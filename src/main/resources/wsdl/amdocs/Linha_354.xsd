@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:include schemaLocation="Linha_343.xsd"/>
+  <xs:complexType name="RecargasEventuais">
+    <xs:sequence>
+      <xs:element name="RecargaEventual" type="ass:RecargaEventual" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RecargaEventual">
+    <xs:annotation>
+      <xs:documentation>Recarga Eventual trata-se de recargas creditadas numa
+        		linha pré-paga apenas, porém o débito deve ocorrer na
+        		fatura de um pós-pago que é chamado de "linha pai pos"
+        		ou "linha patrocinadora". O Elemento linhaPatrocinadora
+        		existente na entidade Recarga é de caracteristica apenas
+        		dessa entidade(RecargaEventual), porém foi criado em
+        		Recarga antes da data atual Entidade criada em 10/2010,
+        		para atendimenro de "23689 - Recarga na linha"</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ass:Recarga">
+        <xs:sequence>
+          <xs:element name="limiteDiarioCliente" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Limite diario de recarga por cliente de
+								uma eventual recarga. retornado somente
+								quando existir um limite diário
+								configurado para o cliente
+								informado.(caracteristica de uma recarga
+								eventual, por isso foi realizado uma
+								especializacao)</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="limiteMensalCliente" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Limite mensal de recarga por cliente de
+                        		uma eventual recarga. Retornado somente
+                        		quando existir um limite mensal definido
+                        		para o cliente informado (caracteristica
+                        		de uma recarga eventual, por isso foi
+                        		realizado uma especializacao)</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="limiteDiarioClasseCredito" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Limite diario de recarga por
+                        		classeCredito de uma eventual recarga.
+                        		Retornado somente nas pesquisas por
+                        		número de acesso for informado e um
+                        		limite diário estiver configurado para a
+                        		classe de crédito da conta pagadora
+                        		associada a este número. (caracteristica
+                        		de uma recarga eventual, por isso foi
+                        		realizado uma especializacao)</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="limiteMensalClasseCredito" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Limite Mensal de recarga por
+                        		classeCredito de uma eventual recarga.
+                        		Retornado somente nas pesquisas por
+                        		número de acesso for informado e um
+                        		limite mensal estiver configurado para a
+                        		classe de crédito da conta pagadora
+                        		associada a este número. (caracteristica
+                        		de uma recarga eventual, por isso foi
+                        		realizado uma especializacao)</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta">
+  <xs:complexType name="DadosComplementaresPagamento">
+    <xs:sequence>
+      <xs:element name="IdSistemaGerenciador" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>ID do sistema de gerenciamento (FTM).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="IdSistemaExterno" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>ID da transação fornecido pelo sistema externo (Pasarela).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="idAgenciaCobranca" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>ID da transação fornecido pelo solicitante (agência de cobrança).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

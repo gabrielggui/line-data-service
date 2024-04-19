@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <complexType name="dadosIPTV">
+    <sequence>
+      <element name="qtdPontosTV" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="qtdTVService" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="listTVServices" type="ass:listTVServices" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="qtdVODService" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="listVODService" type="ass:listVODService" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="limitVODPurchases" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="limitPPVPurchases" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="limitUserBonusPurchases" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="userType" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="listDefinitionTV" type="ass:listDefinitionTV" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="listStbIPs" type="ass:listStbIPs" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="tvhd" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="listStbMascIP" type="ass:listStbMascIP" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="listStbDefaultGateway" type="ass:listStbDefaultGateway" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="listStbDNS" type="ass:listStbDNS" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="recebido" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="listTVServices">
+    <sequence>
+      <element name="TVService" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="listVODService">
+    <sequence>
+      <element name="VODService" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="listDefinitionTV">
+    <sequence>
+      <element name="definitionTv" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="listStbIPs">
+    <sequence>
+      <element name="StbIP" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="listStbMascIP">
+    <sequence>
+      <element name="stbMascIP" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="listStbDefaultGateway">
+    <sequence>
+      <element name="stbDefaultGateway" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="listStbDNS">
+    <sequence>
+      <element name="stbDNS" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+</schema>

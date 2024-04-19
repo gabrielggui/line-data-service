@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Version = 1.0--><!--Create by Dilmara Matos--><!--Date create = 24/05/2011--><!--Entidade Utilizada para Associar o Gestor aos Agrupamento--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:annotation>
+    <xs:documentation>Manter Agrupamento</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="Agrupamento">
+    <xs:annotation>
+      <xs:documentation>Funcionalidades de acesso para gestores com permissão de
+        		acesso do tipo = "A";</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="siglaGrupoAcesso" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>sigla do grupo(para gestores com permissão = "A"</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeGrupoAcesso" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>nome do grupo(para gestores com permissão = "A"</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoGrupoAcesso" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>descrição do grupo(para gestores com permissão =
+						"A"</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Agrupamentos">
+    <xs:sequence>
+      <xs:element name="agrupamentos" type="ps:Agrupamento" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

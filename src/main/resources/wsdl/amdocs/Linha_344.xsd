@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/OrdemPagamento" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:op="http://www.vivo.com.br/MC/OrdemPagamento" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:ngi="http://www.vivo.com.br/MC/NGIN" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:import schemaLocation="Linha_2.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:import schemaLocation="Linha_345.xsd" namespace="http://www.vivo.com.br/MC/NGIN"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_12.xsd"/>
+  <xs:complexType name="OrdensPagamento">
+    <xs:sequence>
+      <xs:element name="ordemPagamento" type="op:OrdemPagamento" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdemPagamento">
+    <xs:sequence>
+      <xs:element name="codigoRetorno" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o codigo do status da
+						solicitação de pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mensagemRetorno" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o Mensagem de retorno do
+						status da solicitação de pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dadosPedidoPagamento" type="op:DadosPedidoPagamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Entidade que irá identificar os dados do Pedido
+						de Solicitação para Instituição Financeira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dadosInstituicoesFinanceiras" type="op:DadosInstituicoesFinanceiras" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Entidade que irá identificar os dados da
+						instituição financeira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dadosOrdens" type="op:DadosOrdens" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="informacoesAdicionais" type="op:InformacoesAdicionais" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="codigo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o codigo do envio
+						do pagamento ex: o envio de um pacote com varias
+						requisições pedidos de pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 14/09/2011-->
+      <xs:element name="limiteCreditoRecarga" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o limite de credito de
+						recarga(soma do valor de recargas/período para o
+						cliente efetuar o pagamento com cartão de
+						credito)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 14/09/2011-->
+      <xs:element name="limiteDisponivelRecarga" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o limite de credito
+						disponivel de recarga(soma do valor de
+						recargas/período, para o cliente efetuar o
+						pagamento com cartão de credito.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 14/09/2011-->
+      <xs:element name="quantidadeLimiteTransacao" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a quantidade limite de
+						transações (quantidade de recargas
+						permitidas/período),para o cliente efetuar o
+						pagamento com cartão de credito.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 14/09/2011-->
+      <xs:element name="quantidadeLimiteTransacaoDisponivel" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a quantidade limite
+						disponivel de transações (quantidade de recargas
+						permitidas/período),para o cliente efetuar o
+						pagamento com cartão de credito.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 15/09/2011-->
+      <xs:element name="valorMaximoTransacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá identificar o valor maximo de
+						trasações de recarga que se pode ter. ex: por
+						dia somente é possivel fazer uma transação
+						recarga igual a 10</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadoPedidoPagamento">
+    <xs:sequence>
+      <xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o status do pedido
+						de pagamento retornado pela instituição
+						financeira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mensagem" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a mensagem de
+						status do pedido de pagamento retornado pela
+						instituição financeira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="urlPedido" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a URL de
+						redirecionamento no caso de processamento
+						assíncrono.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar ID do pedido de
+						pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="analiseScore" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o analise do score do
+						peddo de ordem pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadosPedidoPagamento">
+    <xs:sequence>
+      <xs:element name="dadoPedidoPagamento" type="op:DadoPedidoPagamento" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadosInstituicaoFinanceira">
+    <xs:sequence>
+      <xs:element name="codigoPagamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o ID do pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoRetorno" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Código retornado
+						pela instituição financeira.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoRetornoTransformado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Código retornado
+						pela instituição financeira Transformado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mensagemRetorno" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a mensagem de
+						retorno da instituição financeira.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeMetodoPagamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Método de
+						pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeMetodoPagtoTransformado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Método de
+						pagamento Transformado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeParcelas" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a quantidade de
+						parcelas</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorFormaPagamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar valor cobrado nesta
+						forma de pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorOriginal" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o valor original,
+						antes do cálculo de juros.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoTransacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o tipo de transação
+						ex: 0 – Venda, 1 – Reembolso / Cancelamento de
+						Venda, 2 – Pré-Autorização, 3 – Captura de
+						Pré-Autorização, 4 – Cancelamento de
+						Pré-Autorização, 5 – Cancelamento de Captura de
+						Pré- Autorização</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroCartaoCriptografado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o número do cartão
+						crédito no formato criptografado(hash)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroCartaoCredito" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o número do cartão
+						de crédito mascarado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bandeiraCartao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a bandeira do
+						cartão</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="titularCartaoCredito" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o titular do cartão
+						de crédito</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoAuxiliarFinanceira" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar Id auxiliar da
+						instituição financeira (NSU TEF, etc)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoAutorizacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o código de
+						autorização</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoInstituicaoFinanceira" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Id da instituição
+						financeira (Comprovante, NSU, tid, etc)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataHoraTransacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a data e hora da
+						transação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataExpiracaoPagamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a data de expiração
+						da forma de pagamento. Usado para boletos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="informacoesAdicionais" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar as informações
+						adicionais enviadas pela instituição financeira.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCreditoLoja" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a Data na qual o
+						valor deve ser (foi) creditado na na conta da
+						loja.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="historicosPagamento" type="op:HistoricosPagamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a(s) Última
+						tentative de pagamento feita com sucesso ou
+						insucesso.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Emento criado por Dilmara Matos em 14/09/2011-->
+      <xs:element name="dataCadastroCartaoCredito" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá identificar a data/hora que o
+						cartão foi cadastrado na instituição finaceira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataMensagemRetorno" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="EmissorCartaoCredito" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o emissor do cartão de
+						credito ex:(Vivo Itaucard, Outros)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Emento criado por Dilmara Matos em 14/09/2011-->
+      <xs:element name="segurancasToken" type="op:SegurancasToken" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá referencia a entidade
+						SegurancasToken</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Emento criado por Dilmara Matos em 14/09/2011-->
+      <!--Emento criado por Dilmara Matos em 15/09/2011-->
+      <xs:element name="statusCartaoCredito" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o status do cartão
+						de credito na instituição financeira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nsuCartao" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="tidCartao" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadosInstituicoesFinanceiras">
+    <xs:sequence>
+      <xs:element name="dadoInstituicaoFinanceira" type="op:DadosInstituicaoFinanceira" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HistoricosPagamento">
+    <xs:annotation>
+      <xs:documentation>Código retornado pela instituição financeira.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="historicoPagamento" type="op:HistoricoPagamento" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HistoricoPagamento">
+    <xs:sequence>
+      <xs:element name="codigoRetorno" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Código retornado
+						pela instituição financeira.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoRetornoTransformado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o código
+						transformado de retornado pela instituição
+						financeira.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mensagemRetorno" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a mensagem de
+						retorno da instituição financeira.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeParcelas" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a quantidade de
+						parcelas</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorFormaPagamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o valor cobrado
+						nesta forma de pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorOriginal" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o valor original,
+						antes do cálculo de juros.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoTransacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Tipo de transação
+						ex:0 – Venda, 1 – Reembolso / Cancelamento de
+						Venda, 2 – Pré-Autorização, 3 – Captura de
+						Pré-Autorização, 4 – Cancelamento de
+						Pré-Autorização, 5 – Cancelamento de Captura de
+						Pré-Autorização</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroCartaoCriptografado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o hash do número do
+						cartão crédito</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroCartaoCredito" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o número do cartão
+						de crédito mascarado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bandeiraCartao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a bandeira do
+						cartão</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="titularCartaoCredito" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o titular do cartão
+						de crédito</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoAuxiliarFinanceira" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Id auxiliar da
+						instituição financeira (NSU TEF, etc)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoAutorizacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o código de
+						autorização</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoInstituicaoFinanceira" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Id da instituição
+						financeira (Comprovante, NSU, tid, etc)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataHoraTransacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a data e hora da
+						transação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataExpiracaoPagamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a data de expiração
+						da forma de pagamento. Usado para boletos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="informacoesAdicionais" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar as informações
+						adicionais enviadas pela instituição financeira.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tiposRecarga" type="ngi:TiposRecarga" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="linhas" type="ass:Linhas" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InformacoesAdicionais">
+    <xs:sequence>
+      <xs:element name="informacaoAdicional" type="op:InformacaoAdicional" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InformacaoAdicional">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o nome do campo
+                		extra</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Valor(Descrição)
+                		do campo extra</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadosOrdem">
+    <xs:sequence>
+      <xs:element name="dadosPedidoPagamento" type="op:DadosPedidoPagamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Entidade que irá identificar os Dados do Pedido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dadosInstituicoesFinanceiras" type="op:DadosInstituicoesFinanceiras" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Entidade que irá identificar os Dados
+                		Instituição Financeira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dadosCobranca" type="ps:Pessoas" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Entidade que irá identificar os Dados de
+						Cobrança</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadosOrdens">
+    <xs:sequence>
+      <xs:element name="dadosOrdem" type="op:DadosOrdem" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--ComplexType criado por Dilmara Matos em 14/09/2011-->
+  <xs:complexType name="SegurancaToken">
+    <xs:sequence>
+      <!--Elemento criado por Dilmara Matos em 14/09/2011-->
+      <xs:element name="statusTokenSeguranca" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o Status do token
+	    					(Aguardando validação, validado, erro,
+	    					regerado, etc.)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 14/09/2011-->
+      <xs:element name="numeroTentativaValidacao" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a Quantidade de
+                		tentativas para validar o token</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 14/09/2011-->
+      <xs:element name="dataGeracaoToken" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="statusEnvioBonus" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SegurancasToken">
+    <xs:sequence>
+      <xs:element name="segurancaToken" type="op:SegurancaToken" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

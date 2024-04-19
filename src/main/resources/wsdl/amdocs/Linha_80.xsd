@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_81.xsd"/>
+  <xs:include schemaLocation="Linha_83.xsd"/>
+  <xs:complexType name="Deposito">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos depositos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do Deposito.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla do Deposito.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="canalAtendimento" minOccurs="0" type="cat:CanalAtendimento">
+        <xs:annotation>
+          <xs:documentation>Canal de Atendimento do VivoNet a qual o Deposito esta relacionado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="organizacoesVenda" minOccurs="0" type="cat:OrganizacoesVenda">
+        <xs:annotation>
+          <xs:documentation>Organizacao de Vendas onde o Centro Deposito pode ou nao estar disponivel para atendimento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Depositos">
+    <xs:sequence>
+      <xs:element name="deposito" type="cat:Deposito" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

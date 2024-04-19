@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/SN/Linha" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import schemaLocation="Linha_2.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:import schemaLocation="Linha_5.xsd" namespace="http://www.vivo.com.br/MC/SCA"/>
+  <xs:complexType name="ParametrosEfetuarMigracaoPosParaPre">
+    <xs:sequence>
+      <xs:element name="linha" type="ass:Linha"/>
+      <xs:element name="usuarioSCA" type="sca:UsuarioSCA"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

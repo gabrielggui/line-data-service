@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* Entidade apresenta dados e informacoes do cliente, bem como participacoes em programas Vivo
+	* Author:		Michelle Vaz Alves Teixeira
+	* Version:		2.0
+	* Date Updated:	19/04/2011--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:pp="http://www.vivo.com.br/MC/ProgramaPontos" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:sca="http://www.vivo.com.br/MC/SCA" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:import schemaLocation="Linha_2.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:import schemaLocation="Linha_119.xsd" namespace="http://www.vivo.com.br/MC/Conta"/>
+  <xs:include schemaLocation="Linha_12.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/ProgramaPontos" schemaLocation="Linha_122.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:include schemaLocation="Linha_124.xsd"/>
+  <xs:include schemaLocation="Linha_135.xsd"/>
+  <xs:include schemaLocation="Linha_136.xsd"/>
+  <xs:include schemaLocation="Linha_137.xsd"/>
+  <xs:include schemaLocation="Linha_138.xsd"/>
+  <xs:complexType name="Clientes">
+    <xs:complexContent>
+      <xs:extension base="ps:Pessoas">
+        <xs:sequence>
+          <xs:element name="cliente" type="ps:Cliente" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Cliente">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes cadastrais exclusivas de clientes
+				vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ps:Pessoa">
+        <xs:sequence>
+          <xs:element name="codigoClienteSistemaOrigem" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo que identifica um cliente. Para o
+								Atlys o codigo e o cust_id, para o NGIN,
+								o codigo e o account.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="255"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="qtdLinhasAtivas" nillable="true" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Quantidade de linhas ativas que o
+								cliente possui.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:decimal">
+                <xs:totalDigits value="6"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="segmentacao" nillable="true" type="ps:Segmentacao" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade Segmentacao</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="churn" nillable="true" type="ps:Churn" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade Churn</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="probabilidadeInadimplencia" nillable="true" type="ps:ProbabilidadeInadimplencia" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade
+								ProbabilidadeInadimplencia</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element maxOccurs="1" name="pontos" nillable="true" type="pp:Pontos" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade ProgramaPontos.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="qtdContas" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Quantidade de contas que o cliente
+								possui.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:integer">
+                <xs:totalDigits value="6"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="usuarioSCA" type="sca:UsuarioSCA" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade UsuarioSCA para
+								identificar o codigo adabas
+								(salesChnlId) relacionado ao usuario.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="pontuacaoCredito" type="ps:PontuacaoCredito" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade PontuacaoCredito
+								(credit score)</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="respPagamentoConta" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica se o cliente eh responsavel pelo
+								pagamento de alguma conta. Se true,
+								indica cliente responsavel pelo
+								pagamento de alguma conta. Default eh
+								false.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="csa" type="cat:Csa" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade CSA para
+								identificar a que mercado o cliente
+								pertence.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="multContas" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica se o cliente tem mais de uma
+								conta vinculada a ele. Se true, indica
+								que cliente tera mais de uma conta.
+								Default eh false.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="tipoRelacionamento" type="ps:TipoRelacionamento" minOccurs="0"/>
+          <xs:element name="indicaCadCliente" minOccurs="0">
+            <xs:simpleType>
+              <xs:annotation>
+                <xs:documentation>true - para cadastro de pessoa
+									fisica, false - para cadastro de
+									organizacao</xs:documentation>
+              </xs:annotation>
+              <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="segmentacaoAnterior" type="ps:Segmentacao" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>referencia a entidade segmentacao para
+								representar a segmentacao anterior de um
+								cliente</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="faturamentoMedio" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="programaPontosParticipacao" type="xs:date" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>data de adesao ou exclusado de um
+								cliente ao programa de pontos</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="programaPontosAntiguidade" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>data de ativacao da primeira linha do
+								cliente no programa de pontos</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="programaPontosStatus" type="xs:int" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Status do cliente em relacao a
+								participacao ao programa de Pontos. 0 =
+								Cancelado 1 = Ativo 2 = Suspenso
+
+								Excluido é quando o cliente pede para
+								exclui-lo do programa de pontos. Ao ser
+								excluido o elemento
+								programaPontosParticipacao informa a
+								data de exclusao do mesmo</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="programaPontosValor" type="xs:decimal" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Valor em reais gastos pelo cliente para
+								pontuar.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="programaPontosPontos" type="xs:int" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Quantidade de Pontos lançados no PP a
+								cada valor gasto em reais</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="statusDuplicidade" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>O Elemento statusDuplicidade indica se o
+								cliente esta em duplicidade</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="statusCliente" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>O Elemento statusCliente identifica se o
+								client esta ATIVO/INATIVO</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="statusOrigemSistemaSiebel" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>O Elemento statusOrigemSistemaSiebel
+								identifica se o cliente foi criado pelo
+								Siebel</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="calculoSegmento" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Indica se o calculo do segmento foi
+								indicado (via mailing) ou se foi
+								calculado.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Tipo do elemento alterado de int para string por Dilmara Matos em 29/08/2011-->
+          <xs:element name="linhaMaster" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Dentre as N linhas que um cliente pode
+								ter, uma linha unica pode ser a linha
+								master.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="recebeExtrato" type="xs:int" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>indicador se a linha master do cliente
+								recebe extrato de saldo de pontos por
+								email</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoTransacao" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>codigo da transacao que garante
+								unicidade de uma acao de consulta ou
+								cadastramento do cliente. Geralmente
+								formado pela concatenacao da data da
+								acao e codigo da mensagem do barramento</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoClientePagador" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indenficador unico do cliente pagador</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="novoCliente" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica o status de um novo Cliente. Por
+								ex: S = pode indicar que é um novo
+								cliente, N = Cliente inserido ou
+								consultado já existia anteriormente</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Dilmara Matos em 15/08/2011-->
+          <xs:element name="vivoScore" type="ct:VivoScore" minOccurs="0" maxOccurs="1"/>
+          <!--Elemento que ja a entidade Linhas criado por Dilmara Matos em 01/09/2011-->
+          <xs:element name="linhas" type="ass:Linhas" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="situacaoComercial" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="situacaoFinanceira" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="faturamentoMedioMensal" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Valor do Faturamento Médio Mensal</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="mesReferenciaFaturamento" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica o mês de referencia utilizado
+								para o calculo do Faturamento Médio
+								Mensal.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="flagAnatel" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Indica se o cliente tem reclamação na
+								Anatel</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="flagPlanos" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Move S "Sim" se o cliente tem restrição
+								no ATIS</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="restricoes" type="ps:Restricoes" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="tipoClientePermanencia" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica se o cliente é novo ou da base.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaElegivelDesconto" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica se o cliente é elegivel a ter
+								desconto</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="indClienteTI" type="xs:boolean" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Indica se o cliente é VCP/TI</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="grupoEconomico" type="ps:GrupoEconomico" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>referencia a entidade grupoEconomico
+								para representar o grupo economico de um
+								cliente</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="clienteFilial" type="ps:Cliente" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Cliente Filial associado ao cliente</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="tipoCliente" type="ps:TipoCliente" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Elemento referencia a entidade
+								TipoCliente.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaMovelFixa" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto da Operadora Móvel e Fixa.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaVozMovel" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Voz Móvel</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaFWTFixa" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Fixo Móvel (FWT) oriundo da operadora fixa</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaBandaLarga3G" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Banda Larga Modem 3G</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaTvOnTv" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto TV ON TV</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaVozFixa" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Voz Fixa</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaFWTMovel" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Fixo Móvel (FWT) oriundo da operadora movel</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaBandaLargaADSL" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Banda Larga ADSL (Speedy)</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaBandaLargaFibra" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Banda Larga Fibra</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaBandaLargaCabo" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Banda Larga Cabo</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaBandaLargaPopular" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Banda Larga Popular</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaTvDTH" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto TV da DTH</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaTvCabo" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto TV a cabo</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaTvFibra" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto TV fibra</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaTvaFone" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Fone TVA</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaVivoBox" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente possui produto Vivo Box</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaBlackList" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador se o cliente está na BlackList</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaQtdeLinhaPermitida" type="xs:boolean" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica quantidade de linha permitida para cadastrar para o cliente.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dsSegmento" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Descrição do segmento do cliente</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoSegmento" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Elemento representa codigo do segmento</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaClienteResponsavelPagtoConta" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Elemento indica se cliente é responsável pelo pagamento de alguma conta</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Marcelo Pires em 02/2017 para a demanda 1143150 – SmartCenter 2.0-->
+          <xs:element name="organizacao" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Nome da organização do cliente M2M no CRM da Vivo</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="divisao" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Nome do setor econômico que classifica o cliente M2M</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Restricoes">
+    <xs:sequence>
+      <xs:element name="restricao" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

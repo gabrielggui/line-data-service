@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Pessoa" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <!--Entidade criado por Dilmara matos em 13/09/2011-->
+  <!--O objetivo dessa entidade é de indicar os motivos pelo qual estão sendo enviados 
+     os dados casdastrais do cliente-->
+  <xs:complexType name="MotivoEnvioCadastro">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Codigo do motivo
+                		do envio dos Dados Cadastrais. EX:
+                		A,B,C,G,Branco</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Descrição do
+    					motivo do envio dos Dados Cadastrais . Ex:
+    					Desistência do Faturamento conjunto,
+    					Inadimplência, Contestação,Decurso de
+    					Prazo(chamdas rejeitadas no clicli de
+    					faturamento) e Cadastro de assinantes(inválido
+    					para cobilling)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MotivosEnvioCadastro">
+    <xs:sequence>
+      <xs:element name="motivoEnvioCadastro" type="ps:MotivoEnvioCadastro" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

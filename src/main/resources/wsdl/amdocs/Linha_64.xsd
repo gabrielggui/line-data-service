@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Siebel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sie="http://www.vivo.com.br/MC/Siebel">
+  <xs:complexType name="AcaoPedidoSiebel">
+    <xs:sequence>
+      <xs:element name="descricao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do Codigo da Acao exercida no pedido
+						Aprovado,Reprovado,Cancelado,Visualizacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation/>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/SN/Linha" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:snl="http://www.vivo.com.br/SN/Linha" xmlns:pes="http://www.vivo.com.br/MC/Pessoa" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:snc="http://www.vivo.com.br/MC/Conta" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_118.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Conta" schemaLocation="Linha_231.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_22.xsd"/>
+  <xs:complexType name="ResultadoHabilitarNumeroPosPago">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cliente" type="pes:Cliente"/>
+      <xs:element minOccurs="0" name="usuario" type="pes:Usuario"/>
+      <xs:element minOccurs="0" name="linha" type="ass:Linha"/>
+      <xs:element minOccurs="0" name="conta" type="snc:Conta"/>
+      <xs:element minOccurs="0" name="servicos" type="cat:Servicos"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/SCA" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_6.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:include schemaLocation="Linha_5.xsd"/>
+  <xs:include schemaLocation="Linha_327.xsd"/>
+  <xs:include schemaLocation="Linha_15.xsd"/>
+  <xs:complexType name="CanalVenda">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastro dos canais de venda (lojas propria ou
+				dealers)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do canal ou ponto de venda.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoCanalVenda" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo de comissionamento do sistema GRC (codigo
+						adabas)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="canalAtendimento" minOccurs="0" type="cat:CanalAtendimento">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CanalAtendimento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cnpj" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do CNPJ da loja ou dealer.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="14"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="horarioDisponibilidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Defini o horario limite de realizacao do login
+						pelo grupo do sistema.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ipsAutorizados" minOccurs="0" type="sca:IPs">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade IPs para definir quais os
+						ips autorizados para o grupo. Essa informacao
+						sera utilizada oara validar se o IP do local de
+						realizacao do login confere com o IP configurado
+						para o grupo associado ao usuario.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="regionais" type="sca:Regionais" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Regionais.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="uf" type="cat:Uf" minOccurs="0"/>
+      <xs:element name="codigoGSS" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma loja no sistema GSS.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="escritorioVendas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma loja ou dealer no
+						sistema SAP.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="canalDistribuicao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um canal de atendimento no
+						sistema SAP.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="centroDistribuicao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um centro de distribuicao
+						de equipamentos (aparelhos, simcards etc),
+						podendo ser lojas, estoques etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="organizacaoVendas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica uma organizacao de venda, podendo ser
+						uma regional por exemplo, dentro do sistema SAP.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="filaAutomatica" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a fila eh automatica. S - true N -
+						false</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="grupoComercial" type="sca:GrupoComercial" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia o tipo GrupoComercial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CanaisVenda">
+    <xs:sequence>
+      <xs:element name="canalVenda" type="sca:CanalVenda" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrupoComercial">
+    <xs:annotation>
+      <xs:documentation>Tipo que referencia informacoes do grupo comercial
+        		associado ao canal venda</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do Grupo Comercial</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do Grupo Comercial</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

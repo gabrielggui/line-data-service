@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_11.xsd"/>
+  <xs:complexType name="GrupoCompartilhamento">
+    <xs:annotation>
+      <xs:documentation>Informações do Grupo de Compartilhamento</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="numeroGrupo" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do Grupo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoGrupo" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do Grupo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assinaturas" type="ass:Assinaturas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Assinatura</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GruposCompartilhamento">
+    <xs:sequence>
+      <xs:element name="grupoCompartilhamento" type="ct:GrupoCompartilhamento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

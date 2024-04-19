@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/OrdemVenda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda">
+  <xs:complexType name="MotivoOrdemVenda">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastros dos motivos de ordem de venda validos
+				no sistema SAP. Exemplos: 
+					ALB - Alta Blindagem
+					ALC - Alta Captacao 
+					ALF - Alta Fidelizacao 
+					ALR - Alta Retencao</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o motivo da ordem de venda
+						no sistema SAP.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do motivo da ordem de venda.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MotivosOrdensVenda">
+    <xs:sequence>
+      <xs:element name="motivoOrdemVenda" type="ov:MotivoOrdemVenda" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

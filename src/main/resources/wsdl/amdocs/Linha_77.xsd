@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/ProgramaRelacionamento" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pro="http://www.vivo.com.br/MC/ProgramaRelacionamento">
+  <xs:complexType name="Ponto">
+    <xs:annotation>
+      <xs:documentation>Pontos referentes ao programa de relacionamento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="quantidadePontos" minOccurs="0" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Quantidade de pontos associada ao resgate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeAnteriorPontos" minOccurs="0" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Quantidade de pontos anterior ao resgate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorPonto" minOccurs="0" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Valor monetário por cada ponto que foi aplicado no resgate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorDescontoPontos" minOccurs="0" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Valor monetário do desconto derivado da quantidade de pontos aplicados ao resgate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorTotalVenda" minOccurs="0" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Valor monetário da venda desconsiderando a aplicação de pontos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorVendaDesconto" minOccurs="0" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Valor monetário de venda com o desconto derivado de pontos aplicado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Pontos">
+    <xs:annotation>
+      <xs:documentation>Mantem os motivos de rejeicao para a nota fiscal
+				eletronica.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ponto" maxOccurs="unbounded" minOccurs="0" type="pro:Ponto">
+        <xs:annotation>
+          <xs:documentation>Solicitacao relativa ao resgate de pontos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

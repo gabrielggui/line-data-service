@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/NFO" elementFormDefault="qualified" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:complexType name="RespostaScriptInteligente">
+    <xs:annotation>
+      <xs:documentation>resposta que pode estar associada a uma pergunta que
+				compoem um scriptInteligente. Cada ID dessa entidade
+				significa o identificador de uma resposta, Nota: Para
+				'scriptInteligente' vide documentation da entidade
+				ScriptInteligente.xsd</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>ID de uma resposta associada a uma pergunta que
+						compoem um scriptInteligente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descritivo da resposta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ativo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Flag que identifica se a resposta está ativo ou
+                		inativa. Dominios: S - resposta ativa N -
+                		resposta inativa.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioCriacao" type="sca:UsuarioSCA" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Login do usuário que fez a criação da resposta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de criacao a resposta que compoem um
+                		scriptInteligente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioAlteracao" type="sca:UsuarioSCA" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Login do usuário que fez qualquer alteracao na
+                		resposta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAlteracao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de alteracao da resposta que compoem um
+                		scriptInteligente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RespostasScriptInteligente">
+    <xs:annotation>
+      <xs:documentation>lista de respostas que podem estar associadas a uma
+				pergunta que compoem um scriptInteligente. Cada ID dessa
+				entidade significa o identificador de uma lista de
+				respostas, ou seja, as respostas nao sao registradas
+				separadamente; sao registrada em lista com um unico ID
+				para cada lista. Para 'scriptInteligente' vide
+				documentation da entidade ScriptInteligente.xsd</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="respostaScriptInteligente" type="nfo:RespostaScriptInteligente" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:pr="http://www.vivo.com.br/MC/ProgramaRelacionamento">
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/ProgramaRelacionamento" schemaLocation="Linha_77.xsd"/>
+  <xs:include schemaLocation="Linha_13.xsd"/>
+  <xs:include schemaLocation="Linha_78.xsd"/>
+  <xs:include schemaLocation="Linha_31.xsd"/>
+  <xs:include schemaLocation="Linha_72.xsd"/>
+  <xs:include schemaLocation="Linha_84.xsd"/>
+  <xs:include schemaLocation="Linha_91.xsd"/>
+  <xs:include schemaLocation="Linha_92.xsd"/>
+  <xs:include schemaLocation="Linha_97.xsd"/>
+  <xs:include schemaLocation="Linha_98.xsd"/>
+  <xs:include schemaLocation="Linha_99.xsd"/>
+  <xs:include schemaLocation="Linha_100.xsd"/>
+  <xs:include schemaLocation="Linha_101.xsd"/>
+  <xs:include schemaLocation="Linha_102.xsd"/>
+  <xs:include schemaLocation="Linha_103.xsd"/>
+  <xs:include schemaLocation="Linha_104.xsd"/>
+  <xs:include schemaLocation="Linha_105.xsd"/>
+  <xs:complexType name="Produto">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos equipamentos como,
+				aparelhos,
+				acessorios e simcards.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um produto (aparelho,
+						simcar, acessorio, etc).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoSAP" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o produto no sistema SAP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeSAP" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do produto no sistema SAP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="produtoAtivo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o produto esta ativo (true) ou inativo
+						(false). S - produto ativo / N - produto inativo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Descricao do produto.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="iccid" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do ICCID</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="imei" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do IMEI (de aparelhos GSM)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="17"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="esnDecimal" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero o ESN (para aparelhos CDMA).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="17"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="esnHexadecimal" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero o ESN em hexadecimal (para aparelhos
+						CDMA).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="17"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="siglaSetorAtividade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do setor de atividade no SAP.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="modeloProduto" type="cat:ModeloProduto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ModeloProduto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeParcelas" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de parcelas.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="plataforma" type="cat:Plataforma" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Plataforma.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="gama" type="cat:Gama" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Gama.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="estoques" type="cat:EstoquesProduto" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade EstoqueProduto para
+						identificar as quantidades de produto em estoque
+						por centro de
+						distribuicao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="precos" type="cat:PrecosProduto" nillable="true" minOccurs="0"/>
+      <xs:element name="linha" type="ass:Linha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Linha para identificar o
+						numero de telefone para kits cdma e kits gsm.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaIphone" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o aparelho eh um Iphone. True -
+						aparelho eh um Iphone; False - qualquer outro
+						aparelho menos Iphone</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="listaBrancaSerialEquip" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A lista branca indica que o serial PODE ser
+						utilizado para planos e servicos que possuem
+						restricao de
+						equipamento (por exemplo, Plano
+						Vivo Residencial).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="listaNegraSerialEquip" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>A lista negra indica que o serial NAO pode ser
+						utilizado para planos e servicos que possuem
+						restricao de
+						equipamento (por exemplo, Plano
+						Vivo Residencial). O valor eh
+						requerido quando o
+						elemento listaBrancaSerialEquip eh false.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoSDP" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo do Produto no SDP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="21"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeSDP" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome do produto no SDP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1500"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="grupoProduto" type="cat:GrupoProduto" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade GrupoProduto, que
+						representa a que grupo de produto um determinato
+						produto (como por
+						ex: aparelho) pertence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoProduto" type="cat:TipoProduto" minOccurs="0" maxOccurs="1"/>
+      <!--Elemento ofertas criado por Dilmara Matos em 03/08/2011-->
+      <xs:element name="ofertas" type="cat:OfertaServicos" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="escritorioServico" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="codigoClasseProduto" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoPerfilProduto" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="siglaFamiliaProduto" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="aptoInstalacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaNecessidadeVisitaTecnica" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoProdutoSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo no sistema origem que identifica um
+						produto (aparelho, simcar, acessorio, etc).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoTipoRede" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo no tipo de rede do Produto, onde T –
+						Todos, M = Móvel, F - Fixo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoUsuarioAlteracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do usuário que realizou a ultima alteração
+						no processo de Device Manager.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataUltimaAlteracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da ultima alteração no processo de Device
+						Manager.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valor" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>valor do produto.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="classeEquipamento" type="cat:ClasseEquipamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código do SVA que está sendo incluído ou
+						retirado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="marcaEquipamento" type="cat:MarcaEquipamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A marca do equipamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoEquipamento" type="cat:TipoEquipamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo do equipamento do SVA.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeEquipamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Quantidade de equipamentos instalados ou
+						retirados.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoApas" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código que identifica em poder de quem ficou a
+						aparelhagem retirada por
+						ocasião da mudança de endereço: Não = aparelhagem foi recolhida pela
+						empresa; Sim = aparelhagem ficou em poder do assinante</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="propriedadeEquipamento" type="cat:PropriedadeEquipamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A quem pertence o equipamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusProduto" type="cat:StatusProduto" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status do produto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="motivoValidacao" type="cat:MotivoValidacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Validações realizadas que impedem a venda do
+						Speedy.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validacaoProduto" type="cat:ValidacaoProduto" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Lista das validações registradas.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="regraMatriz" type="cat:RegraMatriz" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Lista de dados do produto, recuperados da matriz
+						de regras.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sigla" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A sigla de um acessório (produto do tipo
+						acessório)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="serial" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>O serial de um acessório (produto do tipo
+						acessório)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="imsi" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>IMSI (endereco de Rede) associado ao Chip</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaIMEIEmUso" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicador de IMEI em uso.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoTopologiaProduto" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de topologia do serviço, podendo ser ADSL,
+						FIBRA, RTB, etc</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dtAtivacao" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de ativação do produto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dtCancelamento" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de cancelamento do produto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sgCombo" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla do combo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dsCombo" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descrição do combo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoOrigemProduto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo de identificação da origem do produto
+						(M - movel, F - fixa, T - TV, B - Banda Larga).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ponto" minOccurs="0" type="pr:Ponto">
+        <xs:annotation>
+          <xs:documentation>Detalhamento dos pontos utilizados em caso de resgate de 
+						equipamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fabricante" minOccurs="0" type="cat:Fabricante">
+        <xs:annotation>
+          <xs:documentation>Fabricante do produto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataInicioVigencia" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de inicio de vigencia do produto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataFimVigencia" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fim de vigencia do produto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Produtos">
+    <xs:sequence>
+      <xs:element name="produto" type="cat:Produto" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

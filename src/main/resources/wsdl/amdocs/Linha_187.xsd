@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:complexType name="Parametro">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos parametros das APIs do GSIM.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="chave" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Chave que identificacao do parametro
+						ex:MSISDN</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valor" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Valor do parametro
+						ex:11911112222</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Parametros">
+    <xs:sequence>
+      <xs:element name="parametro" type="ass:Parametro" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="reservado01" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="reservado02" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="reservado03" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="reservado04" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="reservado05" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="reservado06" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="reservado07" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="reservado08" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="reservado09" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="reservado10" type="xs:string" maxOccurs="1" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

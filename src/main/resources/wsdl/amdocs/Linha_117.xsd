@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda">
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_118.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_82.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_139.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/OrdemVenda" schemaLocation="Linha_108.xsd"/>
+  <xs:include schemaLocation="Linha_140.xsd"/>
+  <xs:include schemaLocation="Linha_141.xsd"/>
+  <xs:include schemaLocation="Linha_142.xsd"/>
+  <xs:complexType name="OrdemServico">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das ordens de serviços
+				realizadas pelo cliente.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigoOrdemServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>O número da Ordem de Serviço.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataPrevista" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Na abertura da Ordem de Serviço, será a previsão
+						de atendimento. No fechamento da Ordem de
+						Serviço, será a data do fechamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAberturaOrdemServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data em que a Ordem de Serviço foi emitida pelo
+						atendente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataVigenciaOrdemServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data que marca a vigência da Ordem de Serviço.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInicialEvento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data que marca o início do evento associado à
+						ordem de serviço. Ex: linhas de locação.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="horaInicialEvento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Hora que marca o início do evento associado à
+						ordem de serviço. Ex: linhas de locação.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataSolicitacaoOrdemServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data em que o cliente solicitou a ordem de
+						serviço.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataTerminoEvento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data que marca o término do evento associado à
+						ordem de serviço. Ex: linhas de locação.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="horaTerminoEvento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Hora do término do evento associado à Ordem de
+						Serviço. Ex: linhas de locação.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="distanciaForaDeArea" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Distância em km da área de tarifa básica.
+						Utilizado para cobrar ao cliente pelo
+						atendimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="motivoAnteriorOrdemServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Registra o histórico de modificação do código de
+						motivo. Registra somente o código, sem a
+						descrição.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoMotivoProvidenciaOrdemServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código do Motivo e a descrição da Providência
+						que está sendo tomada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="observacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Campo de observações genéricas sobre a Ordem de
+						Serviço que é registrada na abertura da mesma.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAgendamentoOrdemServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referente ao agendamento da Ordem de Serviço.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoReferencia" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Especifica o argumento que foi utilizado para a
+						pesquisa, exemplo: número do NRC, número do NRF,
+						número da linha telefônica, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="movimentoOrdemServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica se é uma inclusão ou uma retirada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFaturamentoOrdemServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data em que a Ordem de Serviço foi recebida pelo
+						faturamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="naturezaOrdemServico" type="ass:NaturezaOrdemServico" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="situacaoOrdemServico" type="ass:SituacaoOrdemServico" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="tipoTarifaOrdemServico" type="ass:TipoTarifaOrdemServico" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="clientes" type="ps:Clientes" minOccurs="0" maxOccurs="1"/>
+      <!--Inicio da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sistemaOrigem" type="cat:Sistema" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <!--Final da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="motivo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descreve o motivo atual da Ordem de Servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioAberturaOrdemServico" type="ps:Usuario" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>RE do usuário que abriu a OS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoCorrecaoTelRede" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Para correção de Tel-Rede sem alteração do Nº da
+
+						Linha, deve ser informado um dos valores (CA =
+
+						Corte de área ou SG = Segregação ou LB = Linha
+
+						Busca) no campo na emissão da SUBNUM (Por
+
+						Compatibilidade Tecnológica)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="protocolo" type="gr:Protocolo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade Protocolo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificadorOrdemServico" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>O número da Ordem de Serviço em formato string.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoPedido" type="ov:TipoPedido" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que retorna dados dos tipos de ordens de serviços</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdensServico">
+    <xs:sequence>
+      <xs:element name="ordemServico" type="ass:OrdemServico" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Atlys" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:aty="http://www.vivo.com.br/MC/Atlys" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_221.xsd"/>
+  <xs:complexType name="ProgramaMarketing">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos programas de marketing oferecidos
+				para os clientes pos-pagos. Um programa de marketing
+				pode ser uma promocao ou um desconto de assinatura ou
+				algum beneficio oferecido ao cliente.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um programa de marketing.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do programa de marketing</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="prgmRealTime" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica o tipo do programa de marketing. Y (true)
+						- programa real time. N (false) - programa
+						baseado em ciclo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="csaProgramaMarketing" type="aty:CSAProgramaMarketing" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProgramasMarketing">
+    <xs:sequence>
+      <xs:element name="programaMarketing" type="aty:ProgramaMarketing" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CSAProgramaMarketing">
+    <xs:annotation>
+      <xs:documentation>Informacoes do programa de marketing apos ter sido
+				disponibilizada na CSA.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="csa" minOccurs="0" type="cat:Csa">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CSA</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataEfetivacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de efetivacao do programa de marketing na
+						csa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de expiracao do programa de marketing</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

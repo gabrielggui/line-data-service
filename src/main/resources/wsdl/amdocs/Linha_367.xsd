@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:complexType name="TipoContratoComercial">
+    <xs:annotation>
+      <xs:documentation>Tipo do contrato comercial da linha. Residencial e não residencial.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo do Tipo do contrato comercial da linha. Residencial e não residencial. 
+						ex: 01</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Descricao do Tipo do contrato comercial da linha. Residencial e não residencial. 
+						ex: NAO AUTOFINANCIADO CLASSE RESIDENCIAL</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

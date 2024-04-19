@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_17.xsd"/>
+  <xs:include schemaLocation="Linha_22.xsd"/>
+  <xs:include schemaLocation="Linha_205.xsd"/>
+  <xs:include schemaLocation="Linha_19.xsd"/>
+  <xs:include schemaLocation="Linha_33.xsd"/>
+  <xs:include schemaLocation="Linha_220.xsd"/>
+  <xs:complexType name="ContratoFidelizacao">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastro dos possiveis tempos de permanecia (1
+				ano, 2 anos, etc), para os contratos de fidelizacao
+				entre o cliente e a Vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o tempo de permanencia
+						para o contrato de fidelizacao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoAtlys" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o contrato de fidelizacao
+						no sistema Atlys</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descriacao do contrato de fidelizacao, pode
+						identificar o tempo de permanencia (1 ano, 2
+						anos etc).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorMulta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor corrente da multa de cancelamento do
+						contrato</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMesesFidelidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>NAO USAR ESSE ELEMENTO</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMesesCarencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>NAO USAR ESSE ELEMENTO</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoContrato" type="cat:TipoServico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoServico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="atributosContrato" type="cat:AtributosServico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade AtributoServico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="negociacoesTarifas" type="cat:NegociacoesTarifa">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade NegociacaoTarifa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdFidelidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de unidades do periodo de contrato que
+						define a duracao total do contrato</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdCarencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica o periodo minimo que a assinatura deve
+						permanecer com o contrato antes de adquirir um
+						novo contrato do mesmo tipo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdDiasExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de dias a partir da data de ativacao do
+						serviço na qual o servico sera expirado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="indicaExpiracaoAutomatica">
+        <xs:annotation>
+          <xs:documentation>Determina se a data de expiracao do servico deve
+						ser automaticamente calculada pelo sistema.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="periodicidade" type="cat:Periodicidade">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Periodicidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoMultaContrato" type="cat:TipoMultaContrato" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Periodicidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoContratoFidelizacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo do Contrato. Ex: Contrato EQ</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContratosFidelizacao">
+    <xs:sequence>
+      <xs:element name="contrato" type="cat:ContratoFidelizacao" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

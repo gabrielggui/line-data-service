@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:aty="http://www.vivo.com.br/MC/Atlys" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:est="http://www.vivo.com.br/MC/Estabelecimento" xmlns:ger="http://www.vivo.com.br/MC/Geral" xmlns:por="http://www.vivo.com.br/MC/Portabilidade" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_12.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Conta" schemaLocation="Linha_231.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Atlys" schemaLocation="Linha_235.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_315.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_193.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Atlys" schemaLocation="Linha_232.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Portabilidade" schemaLocation="Linha_170.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_264.xsd"/>
+  <xs:include schemaLocation="Linha_2.xsd"/>
+  <xs:include schemaLocation="Linha_127.xsd"/>
+  <xs:include schemaLocation="Linha_317.xsd"/>
+  <xs:include schemaLocation="Linha_318.xsd"/>
+  <xs:include schemaLocation="Linha_23.xsd"/>
+  <xs:include schemaLocation="Linha_292.xsd"/>
+  <xs:include schemaLocation="Linha_319.xsd"/>
+  <xs:include schemaLocation="Linha_320.xsd"/>
+  <xs:include schemaLocation="Linha_321.xsd"/>
+  <xs:include schemaLocation="Linha_322.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_40.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Estabelecimento" schemaLocation="Linha_316.xsd"/>
+  <xs:include schemaLocation="Linha_325.xsd"/>
+  <xs:complexType name="Assinatura">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das assinaturas de clientes e
+				prospects da Vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma linha no vivonet
+						(idlinhatelefonica)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoAssinaturaSistemaOrigem" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica a assinatura no sistema
+						origem, podendo ser o subscription_id no atlys
+						ou o account_id no
+						ngin. Para a segunda fase do
+						plano controle, esse codigo tera a
+						identificacao
+						da linha no atlys, subscription_id e a
+						identificacao
+						da linha no pre-pago estara no
+						atributo codigoLinhaControle.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAtivacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de ativacao da assinantura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCancelamento" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de cancelamento da assinantura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAlteracaoStatus" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que ocorreu a mudanca de status da
+						linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="motivoAlteracaoStatus" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do motivo para alteracao do status da
+						assinatura do cliente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInicioContrato" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de inicio de vigencia do contrato de
+						fidelizacao. ***** Nao deve ser usado *****</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFimContrato" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de termino de contrato de fidelizacao.
+						*****
+						Nao deve ser usado *****</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorMulta" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor da multa em caso de quebra de contrato de
+						fidelizacao. ***** Nao deve ser usado *****</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="plano" nillable="true" type="cat:Plano" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Plano</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="planoAnterior" nillable="true" type="cat:Plano" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Plano para identificar o
+						plano anterior do cliente.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servicos" nillable="true" type="cat:Servicos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Servico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusAssinatura" nillable="true" type="ass:StatusAssinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade StatusAssinatura</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoAssinatura" nillable="true" type="ass:TipoAssinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoAssinatura</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sistemaOrigem" nillable="true" type="cat:Sistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sistema.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="conta" nillable="true" type="ct:Conta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Conta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pessoa" nillable="true" type="ps:Pessoa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pessoa para identificar o
+						cliente master da conta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuarioAssinatura" nillable="true" type="ps:Pessoa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pessoa para identificar o
+						usuario da assinatura, que pode ser diferente do
+						cliente.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuarioManutencao" type="ps:Usuario" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Usuario para identificar o
+						usuario que realizou o cadastro de uma nova
+						assinatura ou para
+						identificar o usuario que fez
+						alguma alteracao no cadastro.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cluster" type="ass:Cluster" minOccurs="0"/>
+      <xs:element name="statusAnteriorAssinatura" nillable="true" type="ass:StatusAssinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade StatusAssinatura pra
+						identificar o status anterior que a linha
+						possuia.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataStatusAnterior" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em iniciou o status anterior da linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataProximoStatus" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que o proximo status da linha ira
+						iniciar.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="contratosFidelizacao" type="ass:ContratosLinha" minOccurs="0"/>
+      <xs:element name="tipoTrocaPlano" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica, na funcionalidade de troca de plano, se
+						a
+						troca ocorreu de uma das seguintes maneiras:
+						downgrade, upgrade ou
+						equivalencia.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="segmentacao" type="ps:Segmentacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pessoa/Segmentacao.xsd</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="csa" type="cat:Csa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CSA.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdDiasRemanescentes" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao de dias restantes.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoAssinante" type="ass:TipoAssinante" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoAssinante
+						(subscriptionType no atlys)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="programasMarketing" type="aty:ProgramasMarketingAssinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ProgramaMarketing para
+						identificar os beneficios adquiridos para os
+						clientes pos-pagos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="possuiCaixaPostal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Verifica no sistema Platon se a Linha Possui o
+						servico de caixaPostal habilitada (true) Possui
+						servico (false) nao
+						possui servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="enderecoTributacao" type="ps:Endereco" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Endereco de tributacao é o endereco associado
+						para cada assinatura para tribitacao, diferente
+						de endereco de
+						correspondencia do cliente. Por
+						ex: a Assinatura X deve sofrer a
+						tributacao de
+						SVA, ou qualquer outro servico com valores do uf
+						do
+						seu endereco de tributacao e não de
+						correspondencia. Uma assinatura
+						possui um
+						endereco de tributacao, apesar de um cliente
+						poder possui
+						varias assinaturas</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="clasificacaoCredito" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indice de classificacao de credito de uma
+						assinatura\linha. Com base nesse indice de
+						classificacao é definido
+						o valor de credito que
+						Vivo pode conceder a um cliente. Esse Indice
+						é
+						definido após a analise periodica de recargas em
+						uma assinatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Michelle 18/08/2011-->
+      <xs:element name="restricaoMigracao" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Esse elemento deve indicar se existe alguma
+						restrição de migração da assinatura. ex: Fixa
+						para móvel ou Móvel
+						para fixa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 13/09/2011-->
+      <xs:element name="numeroLinhaAnterior" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o numeo da linha
+						anterior do cliente (antes da portabilidade),
+						com o CNL/DDD/Numero
+						Telefone</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 13/09/2011-->
+      <xs:element name="dataTrocaLinhaAnterior" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a data da troca da
+						linha
+						anterior do cliente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoIntegracaoSistemaOrigem" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código de Integração que trará informações
+						referentes à Linha do cliente. (Obrigatório)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoOperadoraReceptora" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código da operadora receptora, exemplo: 021</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="flagPeriodoSpeedy" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica se o Speedy é novo ou não</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataVenda" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da venda da Assinatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdServicos" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de Serviços instalados no Parque do
+						Cliente (Atende à telefonia Fixa)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="empresasParceiras" maxOccurs="1" minOccurs="0" type="est:EmpresasParceiras">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade
+						EmpresasParceiras</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subTipo" maxOccurs="1" minOccurs="0" type="ass:SubTipo">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade SubTipo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaAtivacaoRecente" maxOccurs="1" minOccurs="0" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica ativação recente da assinatura(true indicará que a
+						ativação é recente e false que não é).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaBloqueioRecente" maxOccurs="1" minOccurs="0" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Elemento indicador de bloqueio recente (true indicará que houve um
+						bloqueio recente).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroPonto" type="xs:string" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Número do ponto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroMesesRemanescentes" type="xs:string" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Número de meses remanescentes</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cnlAssinatura" type="xs:string" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>CNL da assinatura (ATIS)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroAcessoAtis" type="xs:string" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Número de acesso (ATIS)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="idAssinaturaSistemaExterno" type="xs:string" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>ID da assinatura no sistema externo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mensagemRetorno" type="ger:MensagemRetorno" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade Mensagem
+						Retorno.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linha" type="ass:Linha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade Linha.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadores" type="ger:Indicadores" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade Indicadores.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assinaturasDesconto" type="ass:Assinaturas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade
+						assinaturasDesconto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linhaHotLine" type="ass:LinhaHotLine" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade LinhaHotLine.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="estimativaSaldo" type="aty:EstimativaSaldo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade
+						EstimativaSaldo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusPortabilidade" type="por:StatusPortabilidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade
+						StatusPortabilidade.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servicoAssinatura" type="ass:ServicoAssinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade
+						ServicoAssinatura.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoCancelamento" type="nfo:TipoCancelamentoRetencao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade tipoCancelamentoRetencao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="equipamento" type="cat:Equipamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade Equipamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeArquivo" type="xs:string" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do arquivo gerado como retorno, contendo dados de assinatura.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorTipoAcesso" type="cat:CategoriaServico" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica tipo acesso. Referencia entidade CategoriaServico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificaOperacaoAdicional" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa indicador  de operação adicional.
+						Valores válidos: E – Todos os serviços exceto o plano básico serão expirados automaticamente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Assinaturas">
+    <xs:sequence>
+      <xs:element name="assinatura" type="ass:Assinatura" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

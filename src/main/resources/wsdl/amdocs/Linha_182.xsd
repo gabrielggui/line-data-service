@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:sca="http://www.vivo.com.br/MC/SCA" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <xs:include schemaLocation="Linha_185.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_15.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_183.xsd"/>
+  <xs:include schemaLocation="Linha_186.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_55.xsd"/>
+  <xs:include schemaLocation="Linha_2.xsd"/>
+  <xs:include schemaLocation="Linha_187.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_184.xsd"/>
+  <xs:complexType name="Iccid">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes do iccid</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>identificador único do equipamento/produto</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="iccid" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do ICCID (Identificador Unico do SimCard)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="puk1" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do Puk</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="puk2" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do Puk</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tamanho" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica o tamanho, se 64K, 128K etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoChip" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo do chip, exemplos: 64KB PRE/POS-PJ (SEM
+						BLISTER), 64KB PRE/POS-PF (COM BLISTER), 64KB
+						PREPOS PF ST ( COM OU SEM BLISTER).Mesma
+						informacao existente no catalogo de produto:
+						ModeloProduto.nome quanto o tipo do modelo for
+						chip.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusIccid" type="ass:StatusIccid" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade StatusIccid</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pin1" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do Pin</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:maxExclusive value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pin2" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do Pin</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:maxExclusive value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="algoritmoCompressao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>trata-se do Algoritmo que define o perfil do
+						simCard. Por ex: Algoritmo de Compressao A38</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="caminhoHLR" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>O Path do HLR</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="256"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="imsi" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>IMSI (endereco de Rede) associado ao Chip</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="imsiRoaming" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Imsi (endereco de Rede ) associado ao IccId
+						(SimCard) para uso de Roaming Internacional</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="regional" type="sca:Regional" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Regional para qual o ICCID será habilitado
+						referencia a entidade "Regional"</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="categoriaServico" type="cat:CategoriaServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade "CategoriaServico" para
+						representar o tipo de servico do chip. Um Chip
+						pode ser valido para servicos de dados, voz, voz
+						e dados, e etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="perfilEletrico" type="ass:PerfilIccid" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade PerfilIccid para
+						representar o perfil de um Iccid. Por ex:
+						residencial, FWT, Padrão entre outros.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoRede" type="gr:TipoRede" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoRede para representar
+						o Tipo de Rede suportado pelo Perfil ( F=Fixo ou
+						M=Movel)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroLinha" type="ass:Linha" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>representa o msisdn associado a um simCard (Se
+						houver)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="plataformaHabilitacaoRemota" type="ass:plataformaHabilitacaoRemota" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Para habilitacao remota é possivel um iccid
+						estar associado ao imsi fake. Esse elemento deve
+						deve referenciar a um complexType que ilustra se
+						o Iccid possui um imsi que esta associado a uma
+						plataforma real ou fake</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="autenticacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica se um IMSI necessita de autenticacao
+						no caso de ser fake ou real</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <!--Inicio - Inclusao do elemento para atender solicitacao LET/4G-->
+      <xs:element name="modeloCartao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Dominio : 0 – SIM (utilizado apenas para 2 e 3G
+						– nunca para 4G) 1 – USIM (novo perfil de chip,
+						que pode ser utilizado para qualquer tipo de
+						plano, mas devido a limitações de capacidade e
+						decisão estratégica, a principio, será
+						utilizando apenas para 4G) 2 – AMBOS / 3 - 5G USIM / 4 - 5G eSIM</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <!--Final - Inclusao do elemento para atender solicitacao LET/4G-->
+      <xs:element name="chaveAprovisionamento" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Representacao do KI (Authentication Key) do
+						Iccid também descrito como chave de
+						aprovisionamento do Iccid</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="chaveTransporte" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica a chave de transporte do Iccid</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="caminhoATR" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Representa o caminho ATR do Iccid</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCriacao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificador da data de criacao do Iccid</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fsetind" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificador da chave de criptografia do Iccid,
+						aplica-se somente aos modelos novos de
+						SimCard(Iccid)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroLote" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Representa o numero do lote do Iccid</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:int"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="opc" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Originating Point Code - Representa o codigo
+						identificador da plataforma de rede</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaProprietarioRede" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica se a rede é interna ou
+                		externa (parceiro). Para rede interna = false,
+                		para rede externa = true.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="aplicacaoParceira" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o nome da aplicação
+						parceira.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="parametros" type="ass:Parametros" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Prametros representando as informacoes do sistema GSIM</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operadoraMovelVirtual" type="gr:OperadoraMovelVirtual" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia entidade OperadoraMovelVirtual</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificadorCombo" minOccurs="0" maxOccurs="1" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>Id do Combo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pinRecarga" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Numero do Pin de recarga</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorCombo" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identificar um Simcard Combo Chip</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="plataformaHabilitacaoRemota">
+    <xs:annotation>
+      <xs:documentation>Para habilitacao remota é possivel um iccid estar
+        		associado ao imsi fake. Esse elemento deve deve
+        		referenciar a um complexType que ilustra se o Iccid
+        		possui um imsi que esta associado a uma plataforma real
+        		ou fake</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Para habilitacao remota é possivel um iccid
+        				estar associado ao imsi fake. Esse elemento deve
+        				deve retornar o codigo da plataforma de
+        				habilitacao remota. Dominios: R=Real, F=Fake</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Para habilitacao remota é possivel um iccid
+        				estar associado ao imsi fake. Esse elemento deve
+        				deve retornar a descricao da plataforma de
+        				habilitacao remota. Dominios: R=Real, F=Fake</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Iccids">
+    <xs:sequence>
+      <xs:element name="iccid" type="ass:Iccid" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

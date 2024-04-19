@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Geral" elementFormDefault="qualified" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="Linha_56.xsd"/>
+  <xs:complexType name="TipoRede">
+    <xs:annotation>
+      <xs:documentation>Tal entidade possui elementos que descreve os tipos de
+        		redes, bem como suas caracteriisticas</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o tipo de rede, que pode
+        				ser referencia de uma linha, csa, produto ou
+        				outros. Dominio: F, M</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Descrição do tipo de rede, que pode ser
+        				referencia de uma linha, csa, produto ou outros.
+        				Dominio: Fixo, Movel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="subTipoRede" minOccurs="0" maxOccurs="1" type="gr:SubTipoRede">
+        <xs:annotation>
+          <xs:documentation>Dados do sub tipo da rede</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

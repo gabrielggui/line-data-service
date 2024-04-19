@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:sg="http://www.vivo.com.br/MC/Sigan" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:Q1="http://www.vivo.com.br/MC/NFO">
+  <xs:include schemaLocation="Linha_334.xsd"/>
+  <xs:include schemaLocation="Linha_335.xsd"/>
+  <xs:include schemaLocation="Linha_336.xsd"/>
+  <xs:include schemaLocation="Linha_337.xsd"/>
+  <xs:import schemaLocation="Linha_3.xsd" namespace="http://www.vivo.com.br/MC/Pessoa"/>
+  <xs:include schemaLocation="Linha_324.xsd"/>
+  <xs:import schemaLocation="Linha_4.xsd" namespace="http://www.vivo.com.br/MC/Pessoa"/>
+  <xs:import schemaLocation="Linha_30.xsd" namespace="http://www.vivo.com.br/MC/NFO"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Conta" schemaLocation="Linha_231.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_333.xsd"/>
+  <xs:include schemaLocation="Linha_11.xsd"/>
+  <xs:include schemaLocation="Linha_204.xsd"/>
+  <xs:include schemaLocation="Linha_338.xsd"/>
+  <xs:include schemaLocation="Linha_341.xsd"/>
+  <xs:include schemaLocation="Linha_342.xsd"/>
+  <xs:include schemaLocation="Linha_185.xsd"/>
+  <xs:include schemaLocation="Linha_292.xsd"/>
+  <xs:include schemaLocation="Linha_343.xsd"/>
+  <xs:include schemaLocation="Linha_355.xsd"/>
+  <xs:include schemaLocation="Linha_356.xsd"/>
+  <xs:include schemaLocation="Linha_357.xsd"/>
+  <xs:include schemaLocation="Linha_358.xsd"/>
+  <xs:include schemaLocation="Linha_359.xsd"/>
+  <xs:include schemaLocation="Linha_360.xsd"/>
+  <xs:include schemaLocation="Linha_192.xsd"/>
+  <xs:include schemaLocation="Linha_361.xsd"/>
+  <xs:include schemaLocation="Linha_362.xsd"/>
+  <xs:include schemaLocation="Linha_363.xsd"/>
+  <xs:include schemaLocation="Linha_364.xsd"/>
+  <xs:include schemaLocation="Linha_365.xsd"/>
+  <xs:include schemaLocation="Linha_366.xsd"/>
+  <xs:include schemaLocation="Linha_367.xsd"/>
+  <xs:include schemaLocation="Linha_368.xsd"/>
+  <xs:include schemaLocation="Linha_167.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Sigan" schemaLocation="Linha_38.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_55.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_184.xsd"/>
+  <xs:include schemaLocation="Linha_369.xsd"/>
+  <xs:complexType name="Linha">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das linhas.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ass:Assinatura">
+        <xs:sequence>
+          <xs:element name="codigoLinhaControle" nillable="true" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo que identifica a linha no sistema
+								NGIN (account_id) apenas usado para
+								linhas do plano controle. Campo
+								necessario para a segunda fase do
+								projeto controle.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="15"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="seqNumeroLinha" nillable="true" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo sequencial usado para identificar
+								uma associacao entre o numero e a
+								assinatura no Atlys. No vivonet essa
+								informacao encontra-se na coluna
+								LINHA.LINHABASE.IDNUMEROSISTEMAORIGEM e
+								no Atlys e a coluna
+								ACCESS_LINE_NBR_ASGM.ACCESS_LINE_SEQ_NBR.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="15"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="numeroLinha" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Numero do telefone do cliente (DDD +
+								numero da linha) - Alterado o MaxLength
+								de 10 para 21 para atender necessidade
+								do SDP (Open Vivo) Numero do telefone do
+								cliente pode iniciar pelo codigo do pais</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="21"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="imeiEsn" nillable="true" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Numero do IMEI (de aparelhos GSM) ou do
+								ESN (para aparelhos CDMA).</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="17"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="iccid" nillable="true" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Numero do ICCID</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="20"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="statusIccid" type="ass:StatusIccid" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade StatusIccid</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="divulgacao" nillable="true" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica se a linha pode ser divulgada em
+								uma lista telefonica. False - linha nao
+								pode ser divulgada; True - linha pode
+								ser divulgada.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="dataAutorizacaoDivulgacao" nillable="true" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Data em que o cliente autorizou a
+								divulgacao da linha em lista telefonica.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:dateTime"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="avisoSms" type="ass:AvisoSms" minOccurs="0"/>
+          <xs:element minOccurs="0" name="saldos" type="ass:Saldos">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade Saldo</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="recargas" type="ass:Recargas" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade Recarga para
+								identificar as recargas que o assinante
+								realizou.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ofertas" type="cat:Ofertas">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade MatrizOferta</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="promocoesLinha" type="ass:PromocoesLinha" minOccurs="0"/>
+          <xs:element name="atributosLinha" type="ass:AtributosLinha" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade AtributosLinha
+								para identificar os atributos (IMEI,
+								ESN, ICCID, etc) que ja passaram pela
+								linha.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="uf" type="cat:Uf" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade Uf para
+								identificar qual eh a Uf associada ao
+								DDD da linha.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="possuiOfertaDisponivel" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica se a linha possui ofertas
+								disponiveis.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="indicaPortOut" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica se a linha esta em processo de
+								portOut. 0 - false - linha nao esta em
+								portout; 1 - true - linha esta em
+								processo de portout.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="aparelhosLinha" type="ass:AparelhosLinha" minOccurs="0"/>
+          <xs:element name="indicaRetencaoPendente" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Valores possiveis true e false. Indica
+								se a linha possui retencao pendente
+								(false=nao possui).</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="dataSolicitacao" minOccurs="0">
+            <xs:simpleType>
+              <xs:annotation>
+                <xs:documentation>data de solicitacao</xs:documentation>
+              </xs:annotation>
+              <xs:restriction base="xs:dateTime"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="statusVinculo" type="ass:StatusVinculo" minOccurs="0"/>
+          <xs:element name="localidade" type="sg:Localidade" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="tipoRede" type="gr:TipoRede" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade Tiporede parar
+								identificar o tipo de rede de uma linha.
+								Por ex: Rede Fixa, Rede Movel</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="palavraSeguranca" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que irá armazenar a palavra
+								chave da linha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="operacoes" type="Q1:Operacoes" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="programaRelacionamento" type="ps:ProgramaRelacionamento" minOccurs="0" maxOccurs="1"/>
+          <!--Elemento criado por Dilmara Matos em 02/09/2011-->
+          <xs:element name="linhasBloqueio" type="ass:LinhasBloqueio" minOccurs="0" maxOccurs="1"/>
+          <!--Elemento criado por Dilmara Matos em 02/09/2011-->
+          <xs:element name="codigoSigilo" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>elemento que irá identificar o codigo do
+								sigilo ex:1,2,3,4 onde 1= Não tem sigilo
+								2= Sigilo de Terminal 3= Sigilo de Dados
+								Pessoas 4= Sigilo de Terminal e de dados
+								pessoais</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Dilmara Matos em 13/09/2011-->
+          <xs:element name="motivosEnvioCadastro" type="ps:MotivosEnvioCadastro" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>elemento que referencia a entidade
+								MotivosEnvioCadastro</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Dilmara Matos em 13/09/2011-->
+          <xs:element name="linhasPublica" type="ass:LinhasPublica" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>elemento que referencia a entidade
+								LinhasPublicas</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Dilmara Matos 13/09/2011-->
+          <xs:element name="indicadorPortabilidade" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que irá identificar se há
+								portabilidade ex: 0 não e 1 = sim</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Dilmara Matos 15/09/2011-->
+          <xs:element name="identificadorLinhaCobranca" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que irá identificar qual linha
+								será utilizada como ponto de cobrança.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Elemento criado por Dilmara Matos 15/09/2011-->
+          <xs:element name="categoriaLinha" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que irá identificar a categoria
+								da Linha ex: Residencial (RES), Não
+								Residencial (NRES), Tronco(PABX),
+								TUP(Orelhão)</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataCadastroPalavraSeguranca" type="xs:dateTime" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Data de Cadastro da Palavra de
+								Seguranca.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataAlteracaoPalavraSeguranca" type="xs:dateTime" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Data da ultima alteração da Palavra de
+								Seguranca.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaFiguracaoListaTelefonica" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica se a linha esta em figuracao em
+								lista telefonica</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataDesligamento" type="xs:dateTime" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Data de desligamento da linha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dadosIPTV" type="ass:dadosIPTV" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="DadosRedeFTTx" type="ass:DadosRedeFTTx" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="DadosRedeMetalica" type="ass:DadosRedeMetalica" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="conjugado" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="digitoVerificador" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Digito verificador</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ipFixoPlus" type="xs:string" minOccurs="0" maxOccurs="1"/>
+          <!--Everis 03/12/12-->
+          <xs:element name="classeServicoAtual" type="ass:ClasseServico" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Tipo da linha fixa (somente para linhas
+								fixas).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="classeServicoAnterior" type="ass:ClasseServico" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Tipo da linha fixa anterior ao pedido de
+								mudança de classe.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="condicaoParticularContratoComercialAtual" type="ass:CondicaoParticularContratoComercial" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Condicoes particulares do contrato
+								comercial.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="condicaoParticularContratoComercialAnterior" type="ass:CondicaoParticularContratoComercial" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Condições particulares do contrato
+								comercial. Qualificação do terminal
+								(tipo linha).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="condicaoTecnicaPrestacaoServico" type="ass:CondicaoTecnicaPrestacaoServico" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Informa a condição técnica de prestação
+								de serviço (depende das informações da
+								localidade e área de atendimento do
+								terminal).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="nomeFiguracaoListaTelefonica" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Nome associado ao terminal na lista
+								telefônica.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="enderecosLinha" type="ps:Enderecos" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Enderecos referentes a linha telefonica
+								(Ex: linha de instalacao, linha de
+								extensao).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="quantidadeLinhasTronco" type="xs:integer" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>QTL é exclusivo de linhas tronco e
+								especifica quantas linhas há (em número)
+								abaixo da linha principal.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="classeServicoExpansao" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>É a classe do plano de expansão migrado
+								para outra localidade, com a classe
+								‘Residencial’ ou ‘Negócios’ ("S" ou
+								"N").</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="condicaoFiguracao" type="ass:CondicaoFiguracao" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Condição da figuração do assinante na
+								lista.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="classificacaoListaTelefonica" type="ass:ClassificacaoListaTelefonica" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Código de identificação do assinante na
+								lista telefônica.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoPlataforma" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Codigo do terminal para consulta da
+								Plataforma.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroTerminalPlataforma" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Nº de terminal para consulta da
+								Plataforma.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoPlataformaCaixaPostal" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Codigo do terminal para consulta da
+								Plataforma da Caixa Postal (Somente para
+								correspondência).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroTerminalPlataformaCaixaPostal" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Nº de terminal para consulta da
+								Plataforma da Caixa Postal (Somente para
+								correspondência).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="classeLinhaTroncoChave" type="ass:ClasseServico" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Classe de linha do tronco chave.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataLimiteLinhaLocacao" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Data limite de funcionamento da linha no
+								caso de uma linha de locação</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="situacaoComercial" type="ass:SituacaoComercial" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Situacao comercial do terminal.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="participacoesFinanceiraAdicional" type="ass:ParticipacoesFinanceiraAdicional" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Participação Financeira Adicional</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroPlanoExpansao" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Nº do Plano de Expansão.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataLimitePlanoExpansao" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>A mudança de endereço de um terminal
+								comprado no plano de expansão só poderá
+								ocorrer após a data limite.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="tipoContratoComercial" type="ass:TipoContratoComercial" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Codigo do Tipo do contrato comercial da
+								linha. Residencial e não residencial.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataSolicitacaoLinhaTelefonica" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Data em que a linha telefônica foi
+								solicitada.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoJustificativaTransferenciaAssinatura" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Código da Justificativa da Transferência
+								de Assinatura.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="classeServicoAdicional" type="ass:ClasseServico" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Classe do produto no CSO.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="pacote" type="ass:Pacote" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Indicador que a linha pertence a um
+								pacote de Bundles.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroEncaminhamentoTecnicoTerminal" type="xs:integer" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Numero de encaminhamento técnico do
+								terminal (apenas para terminais
+								portados).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="linhaCompartilhada" type="ass:LinhasCompartilhada" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Numero do terminal associado à linha
+								compartilhada.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroLinhaSistemaOrigem" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Terminal CSO com 15 dígitos (5 de
+								Localidade + 8 de telefone + 1 de
+								conjugado + 1 de dígito verificador).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroConjugado" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Número do conjugado da linha.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroLinhaTroncoChave" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Linha principal de um conjunto de
+								ramais.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataInstalacaoLinha" type="xs:date" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Data da instalação da linha.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="situacaoFinanceira" type="ass:SituacaoFinanceira" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Situacao financeira do terminal.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ramoAtividade" type="ass:RamoAtividade" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Situacao financeira do terminal.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataUltimaOrdemAberta" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Data da abertura da última Ordem de
+								Serviço.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataUltimaOrdemRetirada" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Data da retirada da última Ordem de
+								Serviço.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataUltimaTransferenciaAssinatura" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Data da última Transferência de
+								Assinatura realizada.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataMudancaEnderecoExpansao" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Data da mudança de endereço no plano de
+								expansão.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Fim Everis 03/12/12-->
+          <!--Inicio da inclusão de elementos CRM Massivo //Renato Russo-->
+          <xs:element name="faturas" type="ct:Faturas" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>elemento que referencia a entidade
+								Faturas</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Final da inclusão de elementos-->
+          <!--Inicio da inclusão de elementos CRM Massivo //Alvaro Zerbini-->
+          <xs:element name="codigoCategoriaLinha" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo Categoria Linha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="descricaoCategoriaLinha" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Descricao Categoria Linha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoConcorrencia" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Descricao Categoria Linha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="siglaAreaConcorrencia" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Sigla Area Concorrencia</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="descricaoAreaConcorrencia" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Descricao Area Concorrencia</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoMotivoStatusLinha" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo Motivo Status Linha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="descricaoMotivoStatus" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Descricao Motivo Status Linha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroRegistroComercial" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Numero registro Comercial</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoCondicaoTecnica" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>codigo Condicao Tecnica</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="descricaoCondicaoTecnica" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>descricao Condicao Tecnica</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaMigracaoLinhaAtisAC" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>indica Migracao Linha Atis AC</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="qtdLinhasAssociadas" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Quantidade Linhas Associadas</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="qtdRamaisAssociados" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Quantidade Ramais Assiciados</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoLinhaBaseTroncoChave" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo Linha Base Tronco de Chave</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoLinhaChave" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo Linha Chave</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoClassificacaoLista" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo Classificacao Lista</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="siglaClassificacaoLista" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Sigla Classificacao Lista</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="descricaoClassificacaoLista" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Descricao Classificacao Lista</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="nomeClienteLista" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Nome Classificacao Lista</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroCompletoLinha" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Numero Completo Linha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoSequencialEnderecoInstalacao" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo Sequencial Endereco Instalacao</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoLocalidadeLinha" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo Localidade Linha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroLinhaLegado" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Numero Linha Legado</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="secaoCodigoEspecial" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Secao Codigo Especial</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="nomeServicoBL" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Nome Servico BL</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="nomeServicoTV" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Nome Servico TV</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Final da inclusão de elementos-->
+          <!--Inicio da inclusão de elementos CRM Massivo //Renato Russo-->
+          <xs:element name="nomeServicoBandaLarga" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Nome do serviço de banda larga que a
+								linha possa ter</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroConjugadoLinha" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Conjugado para linhas fixas, exceto para
+								código especial, que no caso terá o
+								número da seção do código especial. Para
+								linhas móveis, o campo é nulo.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeroSegmentoSistemaOrigem" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation/>
+            </xs:annotation>
+          </xs:element>
+          <!--Final da inclusão de elementos-->
+          <!--Inicio da inclusão de elementos CRM Massivo //Alvaro Zerbini-->
+          <xs:element name="codigoLinhaSistemaOrigem" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo de Linha Sistema Origem.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="siglaSistemaOrigem" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Sigla do Sistema Origem.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Final da inclusão de elementos-->
+          <!--Inicio da inclusão de elementos CRM Massivo //Renato Russo-->
+          <xs:element name="numeroDigitoLinha" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Numero do digito da Linha.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Inicio da inclusão de elementos CRM Massivo // Rodrigo Cespede-->
+          <xs:element name="tipoLinha" type="ass:TipoLinha" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Tipo de linha.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="linhaEspecial" type="ass:LinhaEspecial" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Linha Especial.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Final da inclusão de elementos CRM Massivo // Rodrigo Cespede-->
+          <xs:element name="indicaSpeedy" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Indica se o cliente tem Speedy ou não</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="codigoAreaRegistro" type="xs:integer" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Código de area.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="quantidadeDiasDesdeAtivacao" type="xs:integer" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Quantidade de dias desde a ativação da
+								linha.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dataDesconexao" maxOccurs="1" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:dateTime"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="dadosRede" type="ass:DadosRede" maxOccurs="unbounded" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Dados da rede</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="observacao" maxOccurs="1" minOccurs="0">
+            <xs:simpleType>
+              <xs:annotation>
+                <xs:documentation>Observação referente a linha.</xs:documentation>
+              </xs:annotation>
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="codigoSolicitacaoSistemaOrigem" maxOccurs="1" minOccurs="0">
+            <xs:simpleType>
+              <xs:annotation>
+                <xs:documentation>Elemento que irá identificar qual o
+									sistema enviou a mensagem, ID da
+									solicitação enviado no request do
+									sistema solicitante do serviço.
+									Identificador único da solicitação.</xs:documentation>
+              </xs:annotation>
+              <xs:restriction base="xs:integer"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="operadoraVirtual" maxOccurs="1" minOccurs="0">
+            <xs:simpleType>
+              <xs:annotation>
+                <xs:documentation>Elemento indicador de operadora
+									virtual.</xs:documentation>
+              </xs:annotation>
+              <xs:restriction base="xs:boolean"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="codigoExpiracao" maxOccurs="1" minOccurs="0">
+            <xs:simpleType>
+              <xs:annotation>
+                <xs:documentation>Codigo de expiracao da linha.</xs:documentation>
+              </xs:annotation>
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="subTipoSegmento" type="xs:string" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identificação do subtipo de segmento da
+								linha.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="operadoraMovelVirtual" type="gr:OperadoraMovelVirtual" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Operadora Móvel Virtual</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaNumeroVivo" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica se o numero da linha de uma habilitacao
+								ou troca de numero eh vivo ou portado.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="cotas" type="ass:Cotas" minOccurs="0"/>
+          <xs:element name="imsi" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica o numero imsi do cartão.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="tecnologiaAcessoVoz" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Tecnologia de acesso a voz.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="tecnologiaAcessoBandaLarga" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Tecnologia de acesso a banda larga.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="planosAdicionais" type="ass:PlanosAdicionais" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Lista de Planos.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicaValidacaoLinhaPai" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>true = Indica que o sistema não deve
+								realizar validações de existência e
+								reavaliação de assinatura pai,
+								false: Indica que o sistema deve realizar
+								validações de existência e reavaliação
+								de assinatura pai.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicadorLinhaPai" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicador para assinatura SmartVivo Corporate – “P” para assinatura pai ou “F” para assinatura filha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Inclusão de elementos Interceptacao Pre Pago // Alexandre da Rocha-->
+          <xs:element name="interceptacao" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Flag que indica se Linha deve ser interceptada</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="pid" type="xs:integer" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Flag Pid</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--Final da inclusão de elementos Interceptacao Pre Pago // Alexandre da Rocha-->
+          <!--4791 - Requisitos Warrom B2B 2018 - Lucas Galera-->
+          <xs:element name="indicaTrocaConta" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica se havera troca de conta.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PlanosAdicionais">
+    <xs:sequence>
+      <xs:element name="plano" type="cat:Plano" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Plano da Linha.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Cotas">
+    <xs:sequence>
+      <xs:element name="cota" type="ass:Cota" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Cota">
+    <xs:sequence>
+      <xs:element name="numeroLinha" type="xs:string" minOccurs="0"/>
+      <xs:element name="valorCota" nillable="true" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="indicaAntiServico" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Linhas">
+    <xs:complexContent>
+      <xs:extension base="ass:Assinaturas">
+        <xs:sequence>
+          <xs:element name="linha" type="ass:Linha" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

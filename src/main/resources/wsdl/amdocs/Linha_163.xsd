@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Workflow" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wfw="http://www.vivo.com.br/MC/Workflow">
+  <xs:complexType name="AtividadeWorkflow">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastro das atividades do workflow (etapas),
+				como: Abrir, Agendar, Fechar, Concluir Analise, ou
+				ativar SIGAN, buscar ICCID no GSIM e tc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma atividade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao da atividade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="status" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status da execução de determinada
+                		etapa/atividade ( Por ex: Em processo, Erro
+                		,Concluido)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de criação da etapa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="comentario" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Observacoes ou considerações referentes a
+                		determinada atividade/etapa de um fluxo ou
+                		workflow</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Comentarios gerais referente a determinada
+                    		etapa/atividade de um fluxo ou workflow</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AtividadesWorkflow">
+    <xs:annotation>
+      <xs:documentation>Representa uma lista de atividades de um um workflow
+        		(lista de etapas). Referencia a entidade
+        		Atividadeworkflow que mantêm cadastro das atividades do
+        		workflow (etapas), como: Abrir, Agendar, Fechar,
+        		Concluir Analise, ou ativar SIGAN, buscar ICCID no GSIM
+        		e tc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="atividadeWorkflow" type="wfw:AtividadeWorkflow" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

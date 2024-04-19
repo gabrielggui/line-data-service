@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.vivo.com.br/MC/Pedido" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ped="http://www.vivo.com.br/MC/Pedido" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:agp="http://www.vivo.com.br/MC/OrdemVenda" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_81.xsd"/>
+  <include schemaLocation="Linha_197.xsd"/>
+  <include schemaLocation="Linha_198.xsd"/>
+  <include schemaLocation="Linha_199.xsd"/>
+  <include schemaLocation="Linha_200.xsd"/>
+  <import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_40.xsd"/>
+  <import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_169.xsd"/>
+  <import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_195.xsd"/>
+  <complexType name="Pedido">
+    <annotation>
+      <documentation>Entidade criada com o intuito de conter informacoes
+				genericas de Pedido, podendo ser especializada para os
+				diversos tipos de pedido que fazer sentido ao negócio.
+				Por exemplo: Pedido de compras, Pedido de serviço,
+				Pedido de Ordem Venda entre outros.</documentation>
+    </annotation>
+    <sequence>
+      <element name="motivoCancelamento" type="ped:MotivoCancelamento" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Elemento que faz referencia a entidade
+						MotivoCancelamento</documentation>
+        </annotation>
+      </element>
+      <element name="sistemaOrigem" maxOccurs="1" minOccurs="0" type="gr:Sistema">
+        <annotation>
+          <documentation>Este elemento será utilizado para identificar se
+						o sistema que originou a solicitação está
+						relacionado à Fixa ou Móvel.</documentation>
+        </annotation>
+      </element>
+      <element name="naturezaPedido" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Elemento que indica a natureza do pedido.
+						Exemplo: INSHAB, que representa a alta
+						(instalação) de uma linha.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="sequenciaPedido" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Sequência do pedido gerado.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="int"/>
+        </simpleType>
+      </element>
+      <element name="canalAtendimento" type="cat:CanalAtendimento" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Indica o canal onde foi feito o atendimento ao
+						cliente (Loja)</documentation>
+        </annotation>
+      </element>
+      <element name="pedidosFilho" type="ped:PedidosFilho" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Pedidos Filhos são pedidos associados ao pedido
+						principal da solicitação.</documentation>
+        </annotation>
+      </element>
+      <element name="agrupadoresPedido" type="ped:AgrupadoresPedidos" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Ao haver mais de um pedido na solicitação,
+						deverá ser possível agrupá-los.</documentation>
+        </annotation>
+      </element>
+      <element name="tipoProduto" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>tipo do produto oferecido no atendimento</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="grupoComercial" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Grupo Comercial (canal de venda)</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="codigoSolicitacaoSistemaOrigem" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Código da Soliciação associada ao sistema Origem</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="linha" maxOccurs="1" minOccurs="0" type="ass:Linha">
+        <annotation>
+          <documentation>Numero da Linha</documentation>
+        </annotation>
+      </element>
+      <element name="produtosPedido" type="ped:ProdutosPedido" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Indica o produto relacionado ao pedido</documentation>
+        </annotation>
+      </element>
+      <element name="protocoloReservaOSS" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Protocolo para identificar a reserva de porta no
+						Sistema OSS</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="etapasPedido" type="ped:EtapasPedido" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Etapas do Pedido.</documentation>
+        </annotation>
+      </element>
+      <element name="entregas" type="ped:Entregas" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Controle de entregas</documentation>
+        </annotation>
+      </element>
+      <element name="nomeCliente" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Nome do cliente</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="codigoProduto" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>código do produto</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="enderecoEntregaPedido" type="ps:Endereco" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>endereço de entrega do pedido (Pode ou não ser o
+						endereço do cliente)</documentation>
+        </annotation>
+      </element>
+      <element name="enderecoCliente" type="ps:Endereco" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>endereço do cliente</documentation>
+        </annotation>
+      </element>
+      <element name="servicos" type="ped:ServicosPedido" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>serviços relacionados ao pedido</documentation>
+        </annotation>
+      </element>
+      <element name="codigo" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Numero do pedido</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="integer"/>
+        </simpleType>
+      </element>
+      <element name="qtdServicos" maxOccurs="1" minOccurs="0">
+        <simpleType>
+          <annotation>
+            <documentation>Quantidade de Serviços associados a pedidos
+							com erro ou a pedidos em Voo</documentation>
+          </annotation>
+          <restriction base="integer"/>
+        </simpleType>
+      </element>
+      <element name="tipoPedido" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Tipo do pedido.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="statusProcessamento" type="ped:StatusProcessamento" minOccurs="0">
+        <annotation>
+          <documentation>Informações sobre status de processamento da solicitação</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="ProdutosPedido">
+    <sequence>
+      <element name="produtoPedido" type="ped:ProdutoPedido" maxOccurs="unbounded" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="ProdutoPedido"/>
+  <complexType name="ServicosPedido">
+    <sequence>
+      <element name="servicoPedido" type="ped:ServicoPedido" maxOccurs="unbounded" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="ServicoPedido">
+    <sequence>
+      <element name="nomeServico" type="string" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>nome do Serviço associado ao Pedido</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="PedidosFilho">
+    <sequence>
+      <element name="pedidoFilho" type="ped:PedidoFilho" maxOccurs="unbounded" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="PedidoFilho">
+    <sequence>
+      <element name="categoria" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Categoria do pedido filho</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="centroVenda" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Centro de venda do pedido filho</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="codigo" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Código do pedido filho</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="int"/>
+        </simpleType>
+      </element>
+      <element name="codigoFormaPagamento" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Codigo que referencia a forma de pagamento do
+						pedido filho</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="int"/>
+        </simpleType>
+      </element>
+      <element name="cpfCliente" maxOccurs="1" minOccurs="0" type="ps:Documento">
+        <annotation>
+          <documentation>CPF do cliente</documentation>
+        </annotation>
+      </element>
+      <element name="entrega" maxOccurs="1" minOccurs="0" type="ped:Entrega">
+        <annotation>
+          <documentation>data de entrega do produto</documentation>
+        </annotation>
+      </element>
+      <element name="dataInclusao" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>data da inclusão do produto na base</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="dateTime"/>
+        </simpleType>
+      </element>
+      <element name="motivoOrdem" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>motivo de abertura da OS</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="nomeProduto" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>nome do produto</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="nomeServico" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>nome do Serviço associado ao Pedido</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="numeroOrdem" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>número da Ordem de Serviço</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="int"/>
+        </simpleType>
+      </element>
+      <element name="numeroRemessa" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>número da remessa</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="observacao" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>campo de preenchimento aberto. Podem ser
+						inseridas observações relacionadas ao pedido</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="permiteCancelar" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Indica se é possível cancelar o pedido</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="int"/>
+        </simpleType>
+      </element>
+      <element name="permiteConfirmar" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>indica se é possível confirmar o pedido</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="int"/>
+        </simpleType>
+      </element>
+      <element name="plano" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>plano</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="siglaProduto" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>sigla do produto</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="siglaServico" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>sigla do servico</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="tecnologia" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>tecnologia</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="tipoPedido" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>tipo do pedido</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="codigoProduto" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>codigo do produto</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="siglaAcessorio" maxOccurs="1" minOccurs="0" type="string">
+        <annotation>
+          <documentation>sigla do acessorio</documentation>
+        </annotation>
+      </element>
+      <element name="descricaoAcessorio" maxOccurs="1" minOccurs="0" type="string">
+        <annotation>
+          <documentation>descrição do acessorio</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="StatusProcessamento">
+    <sequence>
+      <element name="mensagemInformativa" type="string" minOccurs="0">
+        <annotation>
+          <documentation>Mensagem informativa sobre status de processamento da solicitação da consulta de uso assíncrono</documentation>
+        </annotation>
+      </element>
+      <element name="dataHoraSolicitacao" type="dateTime" minOccurs="0">
+        <annotation>
+          <documentation>Data e hora da solicitação</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="Pedidos">
+    <sequence>
+      <element name="pedido" type="ped:Pedido" maxOccurs="unbounded" minOccurs="0"/>
+    </sequence>
+  </complexType>
+</schema>

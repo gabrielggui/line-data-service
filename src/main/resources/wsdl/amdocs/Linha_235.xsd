@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Atlys" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:aty="http://www.vivo.com.br/MC/Atlys">
+  <xs:include schemaLocation="Linha_236.xsd"/>
+  <xs:complexType name="ProgramaMarketingAssinatura">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos programas de marketing existentes
+				para uma assinatura de cliente pos-pago.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="programaMarketing" minOccurs="0" type="aty:ProgramaMarketing">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ProgramaMarketing.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAtivacaoPrograma" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que o cliente aderiu ao programa de
+						marketing</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProgramasMarketingAssinatura">
+    <xs:sequence>
+      <xs:element name="programaMarketingAssinatura" type="aty:ProgramaMarketingAssinatura" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

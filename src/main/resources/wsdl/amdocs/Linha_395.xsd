@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/SN/Linha">
+  <xs:complexType name="ParametrosBuscarListaLinhaPorConta">
+    <xs:sequence>
+      <xs:element name="codigoConta" type="xs:integer"/>
+      <xs:element name="nrPagina" type="xs:integer"/>
+      <xs:element name="qtdRegistrosPagina" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

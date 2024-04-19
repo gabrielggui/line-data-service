@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_11.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_247.xsd"/>
+  <xs:complexType name="AparelhoLinha">
+    <xs:annotation>
+      <xs:documentation>Representa a associacao de um aparelho a uma linha,
+				mantendo informacoes do historico desses equipamentos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que representa a associacao do aparelho
+						com a linha (eqp_id no atlys).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInicioVigencia" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data e hora de inicio de vigencia do aparelho na
+						linha</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFimVigencia" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data e hora de fim de vigencia do aparelho na
+						linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="aparelhoAtual" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag que indica qual aparelho eh o atual. Essa
+						informacao eh gerada via servico de negocio
+						apartir da dataFimVigencia. true - aparelho
+						atual false ou vazio - aparelhos antigos da
+						linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="produto" type="cat:Produto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade produto para identificar o
+						modelo do produto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="motivoOperacao" type="nfo:MotivoOperacao" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="dataRoubo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que o aparelho foi roubado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataRecuperacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de recuperacao de equipamento roubado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AparelhosLinha">
+    <xs:sequence>
+      <xs:element name="aparelhoLinha" type="ass:AparelhoLinha" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

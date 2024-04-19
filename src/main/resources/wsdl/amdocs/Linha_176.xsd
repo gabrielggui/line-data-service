@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Portabilidade" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spn="http://www.vivo.com.br/MC/Portabilidade">
+  <xs:complexType name="ValidacaoPortabilidade">
+    <xs:annotation>
+      <xs:documentation>Entidade que identifica os tipos de validacao de
+				portabilidade. Domínios: SOLICITACAO, ATIS, CSO, SPNC</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="tipoValidacao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>define o tipo da validação.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="validacaoExecutada" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag que determina se a validacao foi executada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValidacoesPortabilidade">
+    <xs:sequence>
+      <xs:element name="validacaoPortabilidade" type="spn:ValidacaoPortabilidade" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

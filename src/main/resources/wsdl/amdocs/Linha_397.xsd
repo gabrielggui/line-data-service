@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:con="http://www.vivo.com.br/MC/Conta" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:import schemaLocation="Linha_231.xsd" namespace="http://www.vivo.com.br/MC/Conta"/>
+  <xs:import schemaLocation="Linha_2.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:complexType name="ResultadoManterLinhaPosPago">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="linha" type="ass:Linha"/>
+      <xs:element minOccurs="0" name="conta" type="con:Conta"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

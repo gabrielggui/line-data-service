@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="RetencaoLinhaStatus">
+    <xs:annotation>
+      <xs:documentation>Identifica quais sao os possiveis status do processo de retencao de uma linha, como: retida, cancelada ou pendente de cancelamento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o status do processo de retencao da linha, R - retida; C - cancelada; PC - Pendente de Cancelamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="descricao">
+        <xs:annotation>
+          <xs:documentation>Descricao do status de retencao da linha</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

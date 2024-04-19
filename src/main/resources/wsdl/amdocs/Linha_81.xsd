@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* Entidade apresenta elementos de Canais de Atendimento da Vivo. 
+	  Por ex: Canal Internet (Meu Vivo), Dealers (CI), URA ou qualquer 
+	  outro canal sistemico usado para atendimento ao cliente
+	* Author:		Michelle Vaz Alves Teixeira
+	* Version:		2.0
+	* Date Updated:	19/04/2011--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_82.xsd"/>
+  <xs:complexType name="CanalAtendimento">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos canais de atendimento validos,
+				como loja propria, dealer, ura, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o canal de atendimento,
+						como loja propria, dealer, URA, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do canal de atendimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="70"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sistema" type="cat:Sistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sistema</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="resgateDisponivel" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>representa a disponibilidade\liberalidade de um
+						canal realizar resgates de pontos. Por ex: Se o
+						elemento apresentar '0' o resgate está liberado
+						para o canal, se '1' o resgate esta bloqueado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="resgateSenha" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica se é obrigatorio a inserção de senha
+						a cada resgate por determinado canal. A senha
+						pode ser enviada por sms ao cliente e deve ser
+						inserido no canal (Meu Vivo, Dealers) 0 = Senha
+						não obrigatoria 1 = Senha obrigatoria</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="resgateSimcard" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica se é obrigatorio que determinado
+						canal comercialize um SIMCARD a cada resgate.
+						Isso deve ser uma acao pra reter um cliente,
+						onde a cada resgate pode ser habilitado uma nova
+						linha. Ex: 1=Obrigatorio que determinado canal
+						comercialize o SIMCARD 2 = Opcional, o canal não
+						precisa comercializar o Sim (Meu Vivo - Canal
+						Internet) 3 = Indisponivel</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoDealer" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="senha" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CanaisAtendimento">
+    <xs:sequence>
+      <xs:element name="canalAtendimento" type="cat:CanalAtendimento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

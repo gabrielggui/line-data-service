@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	4/3/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:include schemaLocation="Linha_152.xsd"/>
+  <xs:include schemaLocation="Linha_153.xsd"/>
+  <xs:include schemaLocation="Linha_154.xsd"/>
+  <xs:include schemaLocation="Linha_155.xsd"/>
+  <xs:complexType name="AndamentoAtendimento">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos andamentos dos
+				atendimentos,identificando cada passo por onde o
+				atendimento passou.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um andamento no vivonet.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAndamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que ocorreu os andamentos do
+						atendimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="observacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Detalhe do andamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="atividadeAtendimento" type="ps:AtividadeAtendimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade AtividadeAtendimento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuario" type="ps:Usuario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Usuario para identificar
+						qual atendente fez o andamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusAtendimento" type="ps:StatusAtendimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade StatusAtendimento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subStatusAtendimento" nillable="true" type="ps:SubStatusAtendimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade SubStatusAtendimento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="grupoAtendimento" type="ps:GrupoAtendimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade GrupoAtendimento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="motivoAndamento" type="ps:MotivoAndamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade MotivoAndamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AndamentosAtendimento">
+    <xs:sequence>
+      <xs:element name="andamentoAtendimento" type="ps:AndamentoAtendimento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

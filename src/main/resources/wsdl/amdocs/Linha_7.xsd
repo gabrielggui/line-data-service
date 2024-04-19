@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <xs:complexType name="Operadora">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das operadoras da Vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma operadora.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="4" /> Retirado por Dilmara Matos em 08/09/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla que identifica a operadora Uma operadora é
+						a unidade federativa da conta. Por ex: SP, RJ,
+						MG e etc</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da operadora.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="60" /> Retirado por Dilmara Matos em 08/09/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="possuiParceria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a operadora de longa distancia possui
+						uma parceria com a empresa..</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="exibir" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a operadora deve ser exibida em tela.
+						S (true) - deve exibir; N (false) - nao exibir.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeFantasia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome Fantasia da Operadora</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indVivoTelefonica" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se a operadora é do grupo
+						Vivo/Telefônica. Informar 1, caso a operadora
+						seja da Vivo/Telefônica. Caso contrário,
+						informar 0.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoLocalidade" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código de localidade da operadora receptora, exemplo: 11000</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alcanceAtuacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificador de alcance de atuação da operadora:
+						'LOCAL'
+						'TLOCAL'
+						'NAOPERM'</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Operadoras">
+    <xs:sequence>
+      <xs:element name="operadora" type="gr:Operadora" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

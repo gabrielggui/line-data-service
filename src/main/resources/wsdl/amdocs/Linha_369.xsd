@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <complexType name="DadosRede">
+    <annotation>
+      <documentation>DadosRede armazena os dados de uma rede</documentation>
+    </annotation>
+    <sequence>
+      <element name="numero" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Número da rede</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="numeroEncaminhamento" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Número de encaminhamento da rede</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="dataAprovisionamento" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Data de aprovisionamento da rede</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="dateTime"/>
+        </simpleType>
+      </element>
+      <element name="tipoNumeroEncaminhamento" type="string" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Tipo do numero do encaminhamento da rede</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

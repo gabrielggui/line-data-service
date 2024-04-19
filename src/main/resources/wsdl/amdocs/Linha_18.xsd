@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	18/3/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:complexType name="AtributoServicoValor">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos possiveis valores validos para os
+				parametros de um servico.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o valor de um parametro do
+						servico.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorPossivel" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valores possiveis que o parametro pode receber.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="default" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se o valor e o padrao para o
+						atributo. true - valor e default e false - valor nao
+						default.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Inicio da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="nome" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <!--Final da inclusão de elementos para contemplar CRM Massivo // RSR-->
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValoresAtributosServ">
+    <xs:sequence>
+      <xs:element name="valorAtributo" type="cat:AtributoServicoValor" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

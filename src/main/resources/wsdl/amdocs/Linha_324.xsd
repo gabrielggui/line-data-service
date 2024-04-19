@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_256.xsd"/>
+  <xs:include schemaLocation="Linha_323.xsd"/>
+  <xs:complexType name="LinhaBloqueio">
+    <xs:sequence>
+      <xs:element name="motivoHotLine" type="ass:MotivoHotLine" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade MotivoHotline</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="prioridade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao da HotLine</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="motivoSuspensao" type="nfo:MotivoSuspensao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade MotivosSuspensao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataSuspensao" minOccurs="0" type="xs:dateTime" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data/Hora efetiva da suspensao do numero
+						solicitada pelo cliente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaBloqueioParticular" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este indicador exibe se a assinatura foi
+						bloqueada por motivos particulares ou nao.
+						Valores validos são Y ou N. Se o indicador for
+						preenchido com Y entao significa que a
+						assinatura foi suspensa por motivo particular.
+						Se o status da assinatura for igual a E, H ou S
+						entao o atributo pvtReasonBlockFlag nao ira
+						aparecer no XML de saida.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mensagemBloqueio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao de Bloqueio para o Atendente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaImpeditivo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica Bloqueio impeditivo para o Atendente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFimSuspensao" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data/Hora fim da suspensao do numero solicitada
+						pelo cliente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 13/09/2011-->
+      <xs:element name="dataInicioBloqueio" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a data de inicio de
+						Bloqueio: Exemplo de Bloqueio - inadiplência</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 13/09/2011-->
+      <xs:element name="dataFimBloqueio" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a data de fim de
+						Bloqueio: Exemplo de Bloqueio - inadiplência</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 13/09/2011-->
+      <xs:element name="indicadorSuspensao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar que o cliente efetuou a
+						solicitação de suspensão</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaPermitirSuspensao" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica se será permitido suspender
+						a assinatura caso ela já tenha sido suspensa nos
+						últimos 365 dias, na plataforma Pós-Pago.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Indra em 17/12/2012-->
+      <xs:element name="tipoBloqueio" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo bloqueio</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nivelRestricao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nivel Restricao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoServSistemaOrigem" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o codigo Sistema Origem.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoGrupoGestao" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o código do Grupo de
+						Gestão</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoGrupoGestao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá descrever o Grupo de Gestão</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinhasBloqueio">
+    <xs:sequence>
+      <xs:element name="linhaBloqueio" type="ass:LinhaBloqueio" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

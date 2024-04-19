@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:ger="http://www.vivo.com.br/MC/Geral" xmlns:tns="http://www.vivo.com.br/SN/Linha" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="Linha_2.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:import schemaLocation="Linha.xsd" namespace="http://www.vivo.com.br/MC/Geral"/>
+  <xs:complexType name="ResultadoBuscarDadosAdicionaisLinhaPos">
+    <xs:sequence>
+      <xs:element name="dadoLinha" type="tns:DadoLinha" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadoLinha">
+    <xs:sequence>
+      <xs:element name="linha" type="ass:Linha" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="erroBuscarDadosAdicionaisLinha" type="ger:ErroInfo" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

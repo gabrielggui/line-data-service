@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:include schemaLocation="Linha_12.xsd"/>
+  <xs:include schemaLocation="Linha_52.xsd"/>
+  <xs:include schemaLocation="Linha_53.xsd"/>
+  <xs:include schemaLocation="Linha_54.xsd"/>
+  <xs:complexType name="Gestor">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes exclusivas apenas para gestores de
+				conta e empresa.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ps:Pessoa">
+        <xs:sequence>
+          <xs:element name="tipoRelacionamento" type="ps:TipoRelacionamento" minOccurs="0"/>
+          <xs:element name="idGestor" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo do Gestor no Vivonet</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="15"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="codigoGestor" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Codigo que identifica um gestor no
+								sistema origem</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="260"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="alcada" maxOccurs="1" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="30"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="usuarioFornecedor" type="ps:Usuario" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Referencia a entidade usuarioFornecedor</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="nomeDepartamento" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Nome do departamento</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="100"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="tipoGestor" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Gestor responsável pela conta "R" ou
+								Gestor com Permissão de acesso "P"</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="100"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="codigoTipoGestor" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>"CG" Gestor de Conta o "GM" Gestor
+								Master</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="100"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="permissao" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>permissÃµes de acesso para a conta (L,
+								LR, A)</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="100"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="agrupamentos" type="ps:Agrupamentos" minOccurs="0" maxOccurs="1"/>
+          <xs:element name="loginCRPrincipal" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que armazenará o login do
+								Consultor de relacionamento principal
+								que atende o gestor</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="loginCRSecundario" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que armazenará o login do
+								consultor de relacionamento secundario
+								que atende o gestor</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="descricaoSiteCRPrincipal" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que armazenará a descrição do
+								Site do Consultor de Relacionamento
+								Principal que atende o gestor</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="descricaoSiteCRSecundario" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que armazenará a descrição do
+								Site do Consultor de Relacionamento
+								Secundario que atende o gestor</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicadorSenha" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Elemento que irá armazenar o indicador
+								se possui senha ou não Ex: 0 - Não
+								possui senha; 1 - Possui senha</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indicadorGerarSenha" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indica que o gestor possui autorização
+								para geração de senha Valores possíveis
+								para este campo: 0 - Não 1 - Sim</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="documentosAssociados" type="ps:Documentos" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Representa uma lista de documentos
+								(CNPJ) associados ao Gestor</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="senha" type="ps:Senha" maxOccurs="1" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Representa as informações referentes a
+								senha do gestor</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="escopoProduto" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Escopo do Produto</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="indPermissaoEnvioProtocolo" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Elemento indica permissao de envio de protocolo</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Gestores">
+    <xs:complexContent>
+      <xs:extension base="ps:Pessoas">
+        <xs:sequence>
+          <xs:element name="gestor" type="ps:Gestor" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

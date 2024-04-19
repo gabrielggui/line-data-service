@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ped="http://www.vivo.com.br/MC/Pedido" xmlns:sol="http://www.vivo.com.br/MC/Solicitacao" xmlns:ger="http://www.vivo.com.br/MC/Geral" xmlns:cta="http://www.vivo.com.br/MC/Conta">
+  <xs:import schemaLocation="Linha_23.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:import schemaLocation="Linha_192.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:import schemaLocation="Linha_193.xsd" namespace="http://www.vivo.com.br/MC/Geral"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pedido" schemaLocation="Linha_194.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Solicitacao" schemaLocation="Linha_202.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_204.xsd"/>
+  <xs:include schemaLocation="Linha_13.xsd"/>
+  <xs:include schemaLocation="Linha_205.xsd"/>
+  <xs:include schemaLocation="Linha_207.xsd"/>
+  <xs:include schemaLocation="Linha_208.xsd"/>
+  <xs:include schemaLocation="Linha_28.xsd"/>
+  <xs:include schemaLocation="Linha_33.xsd"/>
+  <xs:include schemaLocation="Linha_76.xsd"/>
+  <xs:include schemaLocation="Linha_81.xsd"/>
+  <xs:include schemaLocation="Linha_209.xsd"/>
+  <xs:include schemaLocation="Linha_210.xsd"/>
+  <xs:include schemaLocation="Linha_211.xsd"/>
+  <xs:include schemaLocation="Linha_212.xsd"/>
+  <xs:include schemaLocation="Linha_213.xsd"/>
+  <xs:include schemaLocation="Linha_214.xsd"/>
+  <xs:include schemaLocation="Linha_215.xsd"/>
+  <xs:include schemaLocation="Linha_218.xsd"/>
+  <xs:include schemaLocation="Linha_219.xsd"/>
+  <xs:complexType name="Servico">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos servicos validos que sao
+				oferecidos pela Vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um servico.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="codigoServSistemaOrigem">
+        <xs:annotation>
+          <xs:documentation>Codigo do servico no sistema origem, Atlys ou
+						Ngin.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="codigoAnatel" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um servico pela anatel.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="nome" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Nome do servico.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="servicoAtivo" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Status do servico, indica se esta ativo, true,
+						ou esta inativo, false.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="valor" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Valor de um servico, que pode ser uma tarifa
+						(valor unico cobrado para o servico) ou uma
+						assinatura (valor cobrado mensalmente).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="possuiAtributos">
+        <xs:annotation>
+          <xs:documentation>Indica se o servico possui atributos/parametros.
+						1 = true = servico possui parametros/atributos 0
+						= false = servico nao tem lista associada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="permitidoModificarParametros">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Identifica se e permitido modificar os
+							parametros/atributos do servico. 1 = true =
+							permitido modificar parametros 0 = false =
+							nao e permitido a alteracao.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="pacoteServico">
+        <xs:annotation>
+          <xs:documentation>Indica se e um pacote de servico 1 = true = eh
+						pacote; 0 = false = nao eh pacote.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="tipoTarifa" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de tarifa. Ex.: Mensal,
+						Degustacao, Avulso</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="descricao">
+        <xs:annotation>
+          <xs:documentation>Descricao do servico.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="50"/> retirado por Dilmara Matos em  12/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="unidadeCusto">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Indica qual eh unidade de custo do servico,
+							se reais, se unidade, etc.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="mensagemAlerta">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Mensagem de alerta apresentada na
+							confirmacao da operacao</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="categoriaServico" nillable="true" type="cat:CategoriaServico">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CategoriaServico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="atributos" nillable="true" type="cat:AtributosServico">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade AtributoServico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="csas" nillable="true" type="cat:Csas">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Csa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="sistemas" nillable="true" type="cat:Sistemas">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sistema.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="tecnologias" nillable="true" type="cat:Tecnologias">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Tecnologia.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="servicoAssinatura" type="ass:ServicoAssinatura"/>
+      <xs:element minOccurs="0" name="tipoServico" type="cat:TipoServico">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoServico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataEfetivacao">
+        <xs:annotation>
+          <xs:documentation>Data em que o servico fica disponivel para venda</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataExpiracao">
+        <xs:annotation>
+          <xs:documentation>Data em que o servico nao podera mais ser
+						vendido.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="tipoRelacionamento">
+        <xs:annotation>
+          <xs:documentation>Indica o tipo de Relacionamento do servico com o
+						Plano. R - Requerido; O - Opcional; A -
+						Auto-Expiravel.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="codigoServicoPai">
+        <xs:annotation>
+          <xs:documentation>Codigo do Servico Pai. Utilizado para plataforma
+						pos-paga que possui associacao de servicos x
+						servicos (em N niveis).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="qtdMaximaAtivacao">
+        <xs:annotation>
+          <xs:documentation>Quantidade maxima de ativacoes desse servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="disponivelGestao">
+        <xs:annotation>
+          <xs:documentation>Indica se o servico esta disponivel para contas
+	gestao.
+	S(true)-Disponivel;N(false)-Indisponivel.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="aprovisiona">
+        <xs:annotation>
+          <xs:documentation>Indica se o plano eh aprovisionavel. S(true) -
+						plano aprovisionavel; N(false) - plano nao
+						aprovisionalvel.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="tarifas" type="cat:Tarifas">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Tarifa para listar as
+						tarifas possiveis de um servico, seja pre ou
+						pos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="cobraMulta">
+        <xs:annotation>
+          <xs:documentation>Identifica se o servico cobra a multa, true -
+						servico cobra multa; false - servico nao cobra
+						multa.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="qtdAtivacoesPadrao">
+        <xs:annotation>
+          <xs:documentation>Quantidade padrao de ativacoes</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="classificacaoServico" type="cat:ClassificacaoServico">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ClassificacaoServico
+						identificando se o servico eh admin, suplementar
+						ou basico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="servicosMembros" type="cat:Servicos">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Servicos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="possuiListaNumero">
+        <xs:annotation>
+          <xs:documentation>Este atributo indicara se o servico possuira uma
+						lista de numeros favoritos ou intra-grupos
+						associada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="restricaoEquipamento">
+        <xs:annotation>
+          <xs:documentation>Indica se o plano tem ou nao restricao de
+						equipamento: S(true) - Possui restricao de
+						equipamento; N(false) - Nao possui restricao de
+						equipamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="indicaServicoCompartilhado">
+        <xs:annotation>
+          <xs:documentation>Indica se o servico do tipo Favorito eh
+						compartilhado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="favorito" type="ass:Favorito"/>
+      <xs:element minOccurs="0" name="servicosBasicos" type="cat:Servicos">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Servicos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="plataforma" type="cat:Plataforma">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Plataforma.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="indicaPlano">
+        <xs:annotation>
+          <xs:documentation>true - Plano false - nao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="negociacoesTarifas" type="cat:NegociacoesTarifa">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade NegociacaoTarifa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="qtdDiasCarencia">
+        <xs:annotation>
+          <xs:documentation>Numero de dias apos os quais o servico pode
+						expirar. Os dias sao contados a partir da
+						criacao do servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="possuiAtributosObrigatorios">
+        <xs:annotation>
+          <xs:documentation>Indica se o servico possui atributos/parametros
+						Obrigatorios. 1 = true = servico possui
+						parametros/atributos 0 = false = servico possui
+						atributo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdDiasExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de dias a partir da data de ativacao do
+						serviço na qual o servico sera expirado ou
+						quantidade dias que o servico permanecera ativo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="indicaExpiracaoAutomatica">
+        <xs:annotation>
+          <xs:documentation>Determina se a data de expiracao do servico deve
+						ser automaticamente calculada pelo sistema.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdFidelidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de unidades do periodo de contrato que
+						define a duracao total do contrato</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdCarencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica o periodo minimo que a assinatura deve
+						permanecer com o contrato antes de adquirir um
+						novo contrato do mesmo tipo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="periodicidade" type="cat:Periodicidade">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Periodicidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="cobrarServDesativado">
+        <xs:annotation>
+          <xs:documentation>true se o servico possui encargos a serem
+						calculados somente para um dia, false se nao ha
+						encargos a serem calculados para o servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="servicoMestre" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag de servico mestre. Esta flag identificara
+						se o serviço e mestre para a correspondente CSA.
+						Ou seja, sera retornado true quando o servico
+						for mestre. Caso o servico nao seja mestre, este
+						atributo nao e retornado True = Servico Mestre
+						ou False = Servico nao e mestre</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="splitBillingSvcTit" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o serviço de split billing e um sevico
+						Titular ou um servico Dependente True = Titular
+						ou False = Servico Dependente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mensSvcSplitBilling" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>indicara o criterio definido para a mensalidade
+						do servico split billing True = Fixo ou False =
+						Proporcional</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="rateFactor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do Fator de tarifacao unico associado ao
+						servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="planoTitular">
+        <xs:annotation>
+          <xs:documentation>true - Titular false - Dependente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="qtdMaxDependentes">
+        <xs:annotation>
+          <xs:documentation>Indica o numero maximo de dependentes permitido
+						caso o servico seja um plano TIT - DEP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="produtos" type="cat:Produtos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Produtos</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="novoTitServico">
+        <xs:annotation>
+          <xs:documentation>true - Indica que o servico podera ser indicado
+						como novo titular false - Indica que o servico
+						nao podera ser indicado como novo titular</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fornecedores" type="cat:Fornecedores" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Fornecedores</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="shortCode" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um servico. Tambem
+						conhecido como Large Account Criado para
+						identificacao dos servicos SDP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="21"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="url" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>URL do serviço a ser contratado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="classificacaoCredito" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indice de classificacao de credito para ser
+						usado como base na concessao de credito a uma
+						assinatura. Toda assinatura possui uma
+						classificacao de credito, e um servico pode
+						possuir uma classificacao para servir de valor
+						medio para viabilizar a concessão de credito.
+						Por Ex: Classificacao de credito da linha ser
+						maior que a classificacao de credito do servico
+						é viavel conceder um credito de R$X,xx á
+						assinatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 19/10/2011-->
+      <xs:element name="horaExecucaoServico" type="xs:time" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a hora que o serviço
+						foi efetuado tanto para ativação como
+						desativação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servicoCorrespondente" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que identifica o servico correspondente
+						do Vivo Direto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeCategoriaScore" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome da categoria do Servico no Score</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoGrauSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="servicoCobrado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoCategoriaScore" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo da categoria do Servico no Score</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaEmpresaTarifacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento indica a empresa responsável para a
+						tarifação do Servico. B – TBRASIL, D – TDATA, T
+						- Ambos</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parametrosServicos" type="cat:ParametrosServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia uma lista de parametros
+						de servico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaStatusAnaliseCredito" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo de status: Aprovado, Reprovado, Retornar
+						todos</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="iDOnt" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="observacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Observação do Cadastro.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaPostoDeTrabalho" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Posto de Trabalho. (S/N)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoIntegracaoSistemaOrigem" minOccurs="0" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>Código de Integração que irá trazer informações
+						de serviço</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Inicio da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="classeServico" type="ass:ClasseServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorPrecificacaoLegado" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorPreFactibilidade" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorPosFactibilidade" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="percentualProbabilidadeAuditoria" type="xs:decimal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoSyscom" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoNota" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorVigencia" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="familiaServico" type="cat:FamiliaServico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia uma lista da familia de
+						servico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sequenciaPedido" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="solicitacoesComerciais" type="cat:SolicitacoesComerciais" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="desconto" type="cat:Desconto" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaApoioTecnico" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="disponibilidade" type="cat:Disponibilidade" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ordemAtendimento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="percentualAuditoria" type="xs:decimal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaIsencaoServico" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica a isenção do serviço.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoScore" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código do Score do SERASA.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Final da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="valorComDesconto" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este é o valor do Serviço com o desconto já
+						aplicado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="emailProvedor" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>É o email do provedor cadastrado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pedido" type="ped:Pedido" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>É o pedido do serviço contratado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="taxaHabilitacao" type="sol:TaxaHabilitacao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia as informacoes de taxa de habilitacao
+						para o servico especificado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeCodigoEntrada" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeProdutoRetomado" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorCaracteristica" type="cat:ValorCaracteristica" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Mantem informacoes dos possiveis valores para caracteristicas, como lista de cores para a
+					caracteristica cor, ou lista de mega pixel para caracteristica camera, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servicoMulta" type="cat:Servico" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referente a multa nos serviços
+						fornecidos pela Vivo, em caso do contratante
+						descumprir o estipulado em contrato.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorAtivacaoPreDesconto" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica se o serviço terá ativação
+						de pré desconto convergente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="beneficio" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento contem as informações de beneficio atrelado ao serviço</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicadores" type="ger:Indicadores" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento responsavel por abstrair qualquer indicador</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataConclusao" maxOccurs="1" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Data conclusao do servico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="equipamento" type="cat:Equipamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Equipamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="oferta" type="cat:Oferta" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Contém as informações da oferta à qual o serviço está vinculado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servicosBandaLarga" type="cat:ServicosBandaLarga" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia entidade ServicoBandaLarga</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produtoContratado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa produto contratado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="consumoSaldosDados" type="cat:ConsumoSaldosDados" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa serviço de dados</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaReducaoVelocidade" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica reducao de velocidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaBloqueioDados" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica bloqueio de dados</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorPontos" type="xs:decimal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa valor pontos</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaTetoGasto" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica quais os serviços devem ser validado o teto de gasto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConsumoSaldosDados">
+    <xs:sequence>
+      <xs:element name="consumoSaldoDados" type="cat:DadosConsumo" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadosConsumo">
+    <xs:sequence>
+      <xs:element name="mesReferencia" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mês referente aos dados apresentados</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoRede" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de rede utilizada. Movel ou Fixo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoCliente" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo do cliente. Pré-Pago, Pós-Pago, Controle PJ e Controle PF</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoServico" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo do serviço acessado. Ex. "Dados"</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="totalConsumido" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Somatória do valor consumido, mensurado de acordo com o tipo de serviço acessado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="volumeTotalFranquiaDados" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Volume em Mb da franquia de dados compartilhados, em Mb, incluindo a soma dos pacotes avulsos contratados, caso houver</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataProximoCicloFranquiaSaldoDados" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da próxima virada de ciclo da franquia de saldo compartilhado de dados</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldo" type="ass:Saldo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia entidade Saldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoOrigem" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica onde o produto deve ser revalidado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contrato" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do contrato efetivo do Produto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ciclo" type="cta:Ciclo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia entidade Ciclo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Servicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="servico" type="cat:Servico"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

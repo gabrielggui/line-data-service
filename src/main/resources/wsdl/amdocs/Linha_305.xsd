@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	27/2/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:include schemaLocation="Linha_12.xsd"/>
+  <xs:complexType name="Prospect">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes exclusivas apenas para prospects.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ps:Pessoa"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

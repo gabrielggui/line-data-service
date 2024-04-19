@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Siebel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sie="http://www.vivo.com.br/MC/Siebel">
+  <xs:include schemaLocation="Linha_59.xsd"/>
+  <xs:include schemaLocation="Linha_60.xsd"/>
+  <xs:include schemaLocation="Linha_61.xsd"/>
+  <xs:include schemaLocation="Linha_62.xsd"/>
+  <xs:include schemaLocation="Linha_63.xsd"/>
+  <xs:include schemaLocation="Linha_64.xsd"/>
+  <xs:include schemaLocation="Linha_65.xsd"/>
+  <xs:include schemaLocation="Linha_66.xsd"/>
+</xs:schema>

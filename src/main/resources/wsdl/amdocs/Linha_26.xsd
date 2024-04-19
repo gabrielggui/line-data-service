@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:sg="http://www.vivo.com.br/MC/Sigan" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:sie="http://www.vivo.com.br/MC/Siebel" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:wfw="http://www.vivo.com.br/MC/Workflow">
+  <xs:import schemaLocation="Linha_27.xsd" namespace="http://www.vivo.com.br/MC/Catalogo"/>
+  <xs:include schemaLocation="Linha_181.xsd"/>
+  <xs:include schemaLocation="Linha_182.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Sigan" schemaLocation="Linha_35.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_12.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Siebel" schemaLocation="Linha_50.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_22.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Workflow" schemaLocation="Linha_163.xsd">
+    <xs:annotation>
+      <xs:documentation>Representa as etapas/atividades de um determinado evento
+				associado ao protocolo dessa entidade. Por ex: O evento
+				'ativar', pode ter as atividade/etapas 'buscar nr no
+				SIGAN', 'ativar linha no Atlys' entre outras. E a etapa
+				buscar nr no SIGAN está com status 'em processo'.</xs:documentation>
+    </xs:annotation>
+  </xs:import>
+  <xs:complexType name="Rastreamento">
+    <xs:annotation>
+      <xs:documentation>Entidade rsponsavel por armazenar dados de solicitação
+				do DENATRAN/SERPRO, referente a ativação dos serviços</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="protocolo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do protocolo da ativacao do servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoTiv" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tecnologia de Informacao Veicular,Empresa
+						Prestadora de Seguros de Rastreamento e
+						Gerenciamento de Risco (seguradora)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:maxExclusive value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="iccidSolicitante" type="ass:Iccid" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade iccid(componente do
+						SimCard)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="iccidOperadora" type="ass:Iccid" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade iccid(componente do
+						SimCard)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="imsiOperadora" type="ass:ImeiEsn" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade imei (GSM) ou esn (CDMA)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="telefone" type="sg:Numero" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade numero para representar o
+						numero da linha no formato (1122221111) que
+						sofreu o evento ou tipo da operacao (ativacao /
+						desativacao).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="centralSms" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>SMS Center ao qual o Chip usara para comunicacao
+						via SMS</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="24"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAcessoServDenatran" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>informa a quantidade de vezes que o servico
+						Denatran foi acionado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoTransacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Essa entidade armazena todas as informações de
+						ativação de linha pelo Denatran/SERPRO Esse
+						elemento "codigoTransação" trata-se de um
+						elemento que armazene as informações de
+						identificacao da mensagem enviada pela SERPRO. A
+						cada requisicao de ativacao de linha haverá um
+						codigo pra essa transacao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="evento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo da operacao ou Evento do protocolo
+						Denatran. Domínio: Ativação, Desativação</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pedidoSiebel" type="sie:PedidoSiebel" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade PedidoSiebel, onde
+						representa os dados de um pedido cadastrado no
+						SIEBEL</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status do protocolo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cliente" type="ps:Pessoa" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pessoa que é a
+						generalização da especificação Cliente. Essa
+						referencia pode representar CNPJ, razaoSocial
+						entre outros elementos da entidade
+						(Cliente(Pessoa)). Um cliente respresenta o
+						cliente associado a um protocolo DENATRAN</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de abertura/criação protocolo do DENATRAN</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="servicos" type="cat:Servicos" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Servicos, para representar
+						os servicos que sofreu o evento na linha sob um
+						número de protocolo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="atividadesWorkflow" type="wfw:AtividadesWorkflow" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade AtividadeWorkFlow, para
+						representar etapas/atividades de um processo que
+						esse protocolo está associado, bem como o status
+						de uma determinada etapa/atividade e etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="plano" type="cat:Plano" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Rastreamentos">
+    <xs:sequence>
+      <xs:element name="rastreamento" type="ass:Rastreamento" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>lista da entidade Rastreamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

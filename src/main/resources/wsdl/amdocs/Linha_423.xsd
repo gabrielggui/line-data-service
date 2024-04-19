@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:ped="http://www.vivo.com.br/MC/Pedido" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="Linha_424.xsd" namespace="http://www.vivo.com.br/MC/Pedido"/>
+  <xsd:complexType name="ResultadoConsultarEventoPorLinha">
+    <xsd:sequence>
+      <xsd:element name="notificacoesEventoPedido" type="ped:NotificacoesEventoPedido"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

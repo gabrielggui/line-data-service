@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:ngi="http://www.vivo.com.br/MC/NGIN" xmlns:sca="http://www.vivo.com.br/MC/SCA" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:op="http://www.vivo.com.br/MC/OrdemPagamento">
+  <xs:import schemaLocation="Linha_344.xsd" namespace="http://www.vivo.com.br/MC/OrdemPagamento"/>
+  <xs:include schemaLocation="Linha_11.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/NGIN" schemaLocation="Linha_346.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_247.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_353.xsd"/>
+  <xs:include schemaLocation="Linha_354.xsd"/>
+  <xs:complexType name="Recarga">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos historicos de movimentos
+				(consulta de recargas)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="valorRecarga" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor de recarga.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="12"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataRecarga" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data do movimento (data da recarga)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataProcRecarga" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de processamento da recarga.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="origemRecarga" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica como a recarga foi realizada, se via
+						servcel, ou via alguma entidade financeira,
+						cartao fisico, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de expiracao da recarga.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdDiasValidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de dias de validade dos creditos.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusRecarga" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se a recarga foi processada ou nao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="unidadeTarifacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Unidade de tarifacao da recarga</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorRecSaldoNegativo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor de recuperacao de saldo negativo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="12"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataTransferencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que o cliente fez transferencia de valor
+						de recarga para outro numero vivo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioTransferencia" minOccurs="0" type="sca:UsuarioSCA">
+        <xs:annotation>
+          <xs:documentation>Usuario que realizou transferencia.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cartaoFisico" type="ngi:CartaoFisico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CartaoFisico para
+						identificar as informacoes do cartao fisico caso
+						a recarga tenha sido feita via cartao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linha" type="ass:Linha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Linha para identificar a
+						linha que realizou a recarga.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="motivoOperacao" type="nfo:MotivoOperacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade MotivoOperacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoRecarga" type="ngi:TipoRecarga" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoRecarga</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="canalRecarga" type="ngi:CanalRecarga" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CanalRecarga</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldos" minOccurs="0" type="ass:Saldos"/>
+      <xs:element name="usuarioSCA" type="sca:UsuarioSCA" minOccurs="0"/>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do servico de recarga</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="diaProcRecarga" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de processamento da recarga.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoSeguranca" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo de Seguranca da Recarga</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="linhaPatrocinadora" type="ass:Linha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>referencia o elemento Linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCancelamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data do cancelamento da recarga</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="processoAtendimento" minOccurs="0" type="ps:ProcessoAtendimento">
+        <xs:annotation>
+          <xs:documentation>processoAtendimento referencia a entidade
+						ProcessoAtendimento do target Pessoa.
+						ProcessoAtendimento possui elementos que podem
+						referenciar um vendedor, um canal entre outros.
+						Elemento criado para referenciar um vendedor que
+						em ProcessoAtendimento ele é fo tipo Pessoa
+						(criado para demanda 23689 - Recarga no Celular)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mesReferenciaRecarga" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data em que o cliente fez transferencia de valor
+						de recarga para outro numero vivo. Formato
+						string de seis posicoes MMYYYY. Necessário para
+						demanda 23869.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Dilmara em 14/09/2011-->
+      <xs:element name="ordensPagamento" type="op:OrdensPagamento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá fazer referencia a entidade
+						ordemPagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Recargas">
+    <xs:sequence>
+      <xs:element name="recarga" type="ass:Recarga" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

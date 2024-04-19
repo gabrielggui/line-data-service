@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wfw="http://www.vivo.com.br/MC/Workflow" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:import namespace="http://www.vivo.com.br/MC/Workflow" schemaLocation="Linha_162.xsd"/>
+  <xs:include schemaLocation="Linha_153.xsd"/>
+  <xs:complexType name="AtendimentoNivel">
+    <xs:annotation>
+      <xs:documentation>Lista contendo os niveis relacionados com a fase do
+				processo de atendimento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="grupoAtendimento" type="ps:GrupoAtendimento" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade GrupoAtendimento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="acaoWorkflow" type="wfw:AcaoWorkflow" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade AtividadeWorkflow.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" minOccurs="0" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Status associado ao nivel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AtendimentosNivel">
+    <xs:sequence>
+      <xs:element name="atendimentoNivel" type="ps:AtendimentoNivel" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

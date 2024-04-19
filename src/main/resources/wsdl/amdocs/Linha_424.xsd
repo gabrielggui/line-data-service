@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pedido" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:ped="http://www.vivo.com.br/MC/Pedido" xmlns:spn="http://www.vivo.com.br/MC/Portabilidade">
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Portabilidade" schemaLocation="Linha_115.xsd"/>
+  <xs:include schemaLocation="Linha_194.xsd"/>
+  <xs:complexType name="NotificacaoEventoPedido">
+    <xs:annotation>
+      <xs:documentation>Entidade criada com o intuito de conter informacoes
+				genericas de eventos de notificacao de pedidos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigoEvento" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo para identificacao do evento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataProcessamentoEvento" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data/hora de processamento do evento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pedido" type="ped:Pedido" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Pedido vinculado ao evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linha" type="ass:Linha" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Linha vinculada ao evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="portabilidade" type="spn:Portabilidade" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Informacoes de portabilidade vinculadas ao evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataPromessaEvento" type="xs:dateTime" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data/hora acordada para a solucao do evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusEvento" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mantem informacoes dos status do evento, como
+						acionado, solucionado, finalizado, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NotificacoesEventoPedido">
+    <xs:sequence>
+      <xs:element name="notificacaoEventoPedido" type="ped:NotificacaoEventoPedido" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

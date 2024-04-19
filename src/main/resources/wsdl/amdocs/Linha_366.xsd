@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	16/7/2012--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:complexType name="ParticipacaoFinanceiraAdicional">
+    <xs:annotation>
+      <xs:documentation>Participação Financeira Adicional (pagamento adicional para mudança de uma linha comercial)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigoPfa" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo da Participação Financeira Adicional.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCompraPfa" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data da Participação Financeira Adicional.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipacoesFinanceiraAdicional">
+    <xs:sequence>
+      <xs:element name="participacaoFinanceiraAdicional" type="ass:ParticipacaoFinanceiraAdicional" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

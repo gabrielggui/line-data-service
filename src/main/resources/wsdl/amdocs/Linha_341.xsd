@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	12/05/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:include schemaLocation="Linha_11.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_326.xsd"/>
+  <xs:include schemaLocation="Linha_23.xsd"/>
+  <xs:complexType name="AtributoLinha">
+    <xs:annotation>
+      <xs:documentation>Representa a associacao de um atributo de uma linha, que
+				pode ser ESN, MDN, ACCESS_NBR, ICCID e IMEI com a Linha.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nomeAtributo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do atributo. Aceita os valores ESN, MDN,
+						ACCESS_NBR, ICCID e IMEI.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInicioVigencia" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de inicio de vigencia do ESN, ou IMEI, ou
+						ICCID para a linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFimVigencia" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fim de vigencia do ESN, ou IMEI, ou
+						ICCID para a linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="canalVenda" nillable="true" minOccurs="0" type="sca:CanalVenda">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade canal de venda para
+						identificar o dealer que fez a venda do
+						equipamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produto" type="cat:Produto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade produto para identificar o
+						modelo do produto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AtributosLinha">
+    <xs:sequence>
+      <xs:element name="atributoLinha" type="ass:AtributoLinha" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

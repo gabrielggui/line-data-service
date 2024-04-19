@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.vivo.com.br/MC/Conta" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta">
+  <complexType name="TipoModalidadeCobranca">
+    <sequence>
+      <element name="codigo" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Codigo do Tipo de Modalidade de Cobranca</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+      <element name="descricao" maxOccurs="1" minOccurs="0">
+        <annotation>
+          <documentation>Descricao do Tipo de Modalidade de Cobranca</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string"/>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="TiposModalidadeCobranca">
+    <sequence>
+      <element name="tiposModalidadeCobranca" type="ct:TipoModalidadeCobranca" maxOccurs="unbounded" minOccurs="0"/>
+    </sequence>
+  </complexType>
+</schema>

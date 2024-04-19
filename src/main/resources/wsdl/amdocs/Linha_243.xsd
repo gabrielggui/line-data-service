@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_244.xsd"/>
+  <xs:include schemaLocation="Linha_245.xsd"/>
+  <xs:include schemaLocation="Linha_246.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_94.xsd"/>
+  <xs:complexType name="Pagamento">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos pagamentos das faturas</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="dataPagamento" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Data do pagamento da fatura.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorPagamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor pago pela fatura que pode ser diferente do
+						valor da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoPagamento" minOccurs="0" type="ct:TipoPagamento">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoPagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataReversaoPagamento" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Data da reversao de pagamento(NAO USAR ESSE
+							ELEMENTO PASSAR A USAR REVERSAO)</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorReversaoPagamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor da reversao do pagamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pgmtRevertidoFundoInsuficiente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag que indica se o pagamento foi revertido por
+						fundo insuficiente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificador do registro de pagamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pagamentoFaturado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag que indica se o pagamento foi incluido no
+						ultimo faturamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataPagamentoRecebido" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="formaPagamento" minOccurs="0" type="cat:FormaPagamento">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade FormaPagamento do Catalogo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataToleranciaPagamento" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Data de tolerancia do pagamento.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mesReferenciaPagamento" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Mes de Referencia de Pagamento.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="instituicaoFinanceira" type="ct:InstituicaoFinanceira" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade InstituicaoFinanceira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="autenticacao" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorRemanescente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor Remanescente do ajuste.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorAtribuido" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor Remanescente do ajuste.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="reversao" type="ct:Reversao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Reversao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 15/09/2011-->
+      <xs:element name="indicadorInsecaoTributaria" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a inseção de tributária</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 15/09/2011-->
+      <xs:element name="percentualInsecaoTributaria" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o percentual de inseção
+						de tributária</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 15/09/2011-->
+      <xs:element name="retencaoTributaria" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar se existe retencao
+						de tributos federais ex: IR, CSLL, PIS e COFINS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataRecebimentoArquivo" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de recebimento dos arquivos dos bancos com os dados de efetivação dos pagamentos realizados.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoCaixaPagamentoFatura" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo de caixa que foi registrado o pagamento da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Pagamentos">
+    <xs:sequence>
+      <xs:element name="pagamento" type="ct:Pagamento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

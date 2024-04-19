@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:include schemaLocation="Linha_231.xsd"/>
+  <xs:include schemaLocation="Linha_243.xsd"/>
+  <xs:include schemaLocation="Linha_274.xsd"/>
+  <xs:include schemaLocation="Linha_273.xsd"/>
+  <xs:include schemaLocation="Linha_275.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_12.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_155.xsd"/>
+  <xs:complexType name="Fatura">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das faturas mensais.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="conta" type="ct:Conta" minOccurs="0"/>
+      <xs:element name="dataEmissaoFatura" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Data de emissao da fatura.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mesReferenciaFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mes de referencia no formato MMYYYY</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInicioPeriodo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de inicio do periodo da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFimPeriodo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fim de periodo da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataVencimentoFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de vencimento da Fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorTotalFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pagamento" type="ct:Pagamento" minOccurs="0"/>
+      <xs:element name="imagemFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Imagem da fatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="totalPaginas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Total de paginas da fatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoBarras" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo da barras da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="informacaoPagamentoFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag que indica que a fatura foi marcada como
+						paga</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoFaturaSistOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica um documento de fatura (doc_seq_nbr)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica o status da Fatura, se Paga, ou nao Paga.
+						Essa informacao eh obtida apartir da conferencia
+						do valor
+						remanescente com o valor total da
+						fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorAPagarFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor remanescente da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInforme" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da geração do Informe na Fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracaoInforme" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data do fim do informe na Fatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorTotalContestacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total Contestado na fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorTotalAjustes" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total do Ajuste na fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="layoutFatura" type="ct:LayoutFatura" minOccurs="0"/>
+      <!--Elemento criado por Dilmara Matos em 19/10/2011-->
+      <xs:element name="diaVencimentoFatura" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar o dia do vencimento da
+						fatura ex: DIA de Vencimento da Fatura - DD</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="empresa" type="ps:Pessoa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Pessoa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="filial" type="ps:Pessoa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Pessoa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="itensFatura" type="ct:ItensFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do Layout da Fatura se a fatura no modelo novo ou nao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="loteBancario" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica o Nº e digito do lote bancário da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeLoteBancario" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica o Nome do lote bancário da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataProcessamentoFatura" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data da baixa (processamento) no sistema
+						Telefônica/VIVO.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoSolicitacaoConta" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identificador da solicitação da conta. Recebe 'D' para conta detalhada e 'E'
+						para extrato.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExecucaoMovimentacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data em que foi executada a movimentação/desconto/parcelamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroParcelasPaga" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Numero da parcela que esta sendo paga e quantidade de parcelas em que
+						foi feito.
+						Exemplo: Quando o parcelamento for em 05x, o formato do campo aparecerá
+						01/05.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoComplementarSistOrigem" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Texto para complementar a descrição do codigo de fatura (CCM).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioSolicitanteParcelamento" type="ps:Usuario" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Número do RE do atendente que abriu a solicitação
+						de parcelamento dos creditos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuarioSolicitanteAlteracao" type="ps:Usuario" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Número do RE do atendente que efetuou a
+						alteração.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="situacaoRegistro" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Informação importante referente ao crédito ou desconto do assinante.
+						Ele indica se o crédito/desconto já foi faturado ou ainda está
+						pendente.
+						Recebe "I", para Incluso, "A" - Alterado; "S" - Sem Correspondência,
+						"E" - Excluído e "T" - Tarifado. Destes valores, somente o Tarifado
+						indica que já foi para a conta do cliente.
+						Os valores "I" e "A" estão pendentes aguardando o vencimento do
+						cliente; e "S" e "E" não serão tarifados.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroDocumento" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Numero do documento inserido pelo usuário para
+						identificação da inclusão.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="periodoFaturamento" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>O campo periodoFaturamento faz referência ao
+						ciclo de faturamento de uma conta telefônica fixa.
+						Ele é um número de dois dígitos que representa qual o período do mês
+						em que a conta é concluída para ser faturada.
+						Atualmente existem períodos de faturamento para residencial e grandes contas
+						e, portanto, não é possível calcular pela
+						data de início e fim de faturamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Inicio da inclusão de elementos CRM Massivo //Renato Russo-->
+      <xs:element name="dataHoraTransacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Informação de data e hora de retorno da
+						transação. Campo utilizado para rastreabilidade e facilitador de
+						análises.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mesAnoContaFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mês e ano referente a fatura retornada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor em moeda local, referente a fatura que se
+						encontra pendente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaDebitoAutomatico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a conta está em débito automático.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoBanco" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código do banco cadastrado para débito
+						automático.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoCaixaPagamentoFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de caixa que foi registrado o pagamento da
+						fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataPagamentoFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data do pagamento que foi realizado o pagamento
+						da fatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataRetornoBancario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de recebimento dos arquivos dos bancos com
+						os dados de efetivação dos pagamentos realizados.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataBaixaSistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da baixa (processamento) no sistema
+						Telefônica/VIVO.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeBanco" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do banco relacionado ao pagamento da fatura
+						e ao código informado anteriormente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoNRC" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Número que identifica unicamente um terminal no
+						CSO.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código numérico com status da conta no sistema.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cicloFaturamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Ciclo do faturamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Número de Documento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoCiclo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código do ciclo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoDocFaturamento" type="ct:TipoDocFaturamento" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="publicacaoFinanceira" type="ct:PublicacaoFinanceira" minOccurs="0" maxOccurs="1"/>
+      <!--Inicio da recuperação de elementos apos erro no merge-->
+      <xs:element name="indicaFaturaUnica" type="xs:string" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se Fatura é apta ou não a adesão de fatura
+								  única.
+								  Contém ‘A’ ou ‘N’</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaFaturaUnicaDescricao" type="xs:string" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do motivo pelo qual a assinatura é apta
+								  ou inapta.
+								  Contém ‘A’ ou ‘N’</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAdesao" type="xs:date" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de adesão a Fatura Única</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataEfetivacao" type="xs:date" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de efetivação a Fatura Única</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataVencimentoOriginal" minOccurs="0" type="xs:date" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Data do Vencimento Original</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoFatura" type="ct:TipoFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de Fatura.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Fim da recuperação de elementos apos erro no merge-->
+      <!--devido a um erro ocorrendo no ContaDigital Informe de pagamento APP - Demanda 1020829-->
+      <xs:element name="dataVigencia" type="xs:date" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de vidência.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldoAnterior" type="xs:decimal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Saldo anterior.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="outrasCobrancas" type="ct:OutrasCobrancas" minOccurs="0"/>
+      <xs:element name="codigoImagem" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>código utilizado para interpretar a imagem da fatura.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mensagensFatura" type="ct:MensagensFatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mensagens a serem exibidas na fatura</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LayoutFatura">
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do Layout da Fatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do Layout da Fatura se a fatura no modelo
+						novo ou nao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Faturas">
+    <xs:sequence>
+      <xs:element name="Fatura" type="ct:Fatura" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItemFatura">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigoTipoItemFaturaSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo no sistema origem do item da fatura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tiposEvento" type="ct:TiposEvento" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItensFatura">
+    <xs:sequence>
+      <xs:element name="itemFatura" type="ct:ItemFatura" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TipoEvento">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="motivo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descrição do tipo de evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoTrafego" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de trafego.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdeUtilizada" type="xs:decimal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade utilizada para cada tipo de trafego</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TiposEvento">
+    <xs:sequence>
+      <xs:element name="tipoEvento" type="ct:TipoEvento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OutraCobranca">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="eventoCobranca" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OutrasCobrancas">
+    <xs:sequence>
+      <xs:element name="outraCobranca" type="ct:OutraCobranca" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MensagensFatura">
+    <xs:sequence>
+      <xs:element name="mensagem" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

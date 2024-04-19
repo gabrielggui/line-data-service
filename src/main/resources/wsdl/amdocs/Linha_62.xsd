@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Siebel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sie="http://www.vivo.com.br/MC/Siebel">
+  <xs:complexType name="TipoAtividadePedidoSiebel">
+    <xs:sequence>
+      <xs:element name="descricao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do codigo dos tipos de atividades do
+						pedido Analise Credito Manual,Analise Credito
+						Automatico,Analise Fraude Analise
+						Logistica,Analise Backoffice Visita,Atualizacao
+						Janela Portabilidade Portabilidade
+						Negada,Portabilidades Concluidas,Cancelamento
+						Portabilidade Cancelamento reserva
+						Aparelhos,Cancelamento Reserva Numeros Entrega
+						infrutifera,Devolver Pedido Pistolagem,Geracao
+						de NF,Entrega com sucesso,Erros Cadastro Cliente
+						ou Conta Erro Ativacoes,Erro Ordem de Venda
+						Conhecimento,Outras</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Assinatura" elementFormDefault="qualified" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PerfisIccid">
+    <xs:sequence>
+      <xs:element name="perfilIccid" type="ass:PerfilIccid" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerfilIccid">
+    <xs:annotation>
+      <xs:documentation>PerfilIccid descreve o perfil elético de um SimCard. Por
+    			ex: residencial, FWT, Padrão entre outros.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>PerfilIccid descreve o perfil elético de um
+                		SimCard. Por ex: residencial, FWT, Padrão entre
+                		outros.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>PerfilIccid descreve o perfil elético de um
+                		SimCard. Por ex: residencial, FWT, Padrão entre
+                		outros.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Codigo do perfil de um Iccid ("V" =
+                    		Voz/Dados ou "D" = Dados )</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="18"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

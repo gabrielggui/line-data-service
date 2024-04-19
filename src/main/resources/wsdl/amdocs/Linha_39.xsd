@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:sg="http://www.vivo.com.br/MC/Sigan" xmlns:pes="http://www.vivo.com.br/MC/Pessoa">
+  <xs:import namespace="http://www.vivo.com.br/MC/Sigan" schemaLocation="Linha_38.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_40.xsd"/>
+  <xs:complexType name="Municipio">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastros dos municipios carregados na base de
+				referencia do NFO.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um municipio (codigo
+						nacional de localidade)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="5"/> retirado por Dilmara Matos 05/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do municipio</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="50"/> retirado por Dilmara Matos 05/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoNacionalLocalidadePrincipal" type="sg:CNL" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia ao complexType CNL da entidade
+						Localidade para representar o codigo nacional de
+						localidade principal de um municipio. Sua
+						descricao pode ser encontrada em alguns legados
+						como CNLMunicipio.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sigla" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa sigla do municipio.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadePopulacaoRural" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa quantidade da populacao
+						rural.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadePopulacaoUrbana" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa quantidade da populacao
+						urbana.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoIEBT" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa codigo IEBT.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoAreaTarifacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa area de tarifacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="distrito" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa nome do Distrito.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sequencialDistrito" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento representa codigo do Distrito.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endereco" type="pes:Endereco" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia entidade Endereco.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Municipios">
+    <xs:sequence>
+      <xs:element name="municipio" type="nfo:Municipio" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

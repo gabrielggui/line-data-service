@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/SGP" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sgp="http://www.vivo.com.br/MC/SGP">
+  <xs:annotation>
+    <xs:documentation>@Deprecated(Utilizar a nova entidade criada no path Oferta)</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="FornecedorTeleMarketing">
+    <xs:annotation>
+      <xs:documentation>@Deprecated(Utilizar a nova entidade criada no path
+				Oferta)
+
+
+				Identifica os possiveis fornecedores de telemarketing
+				que atendem a vivo, como Dedic, Tivit, Atento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do fornecedor de telemarketing.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeRepresentante" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que identifica o nome do representande
+						do fornecedor telemarketing</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeSupervisor" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que identifica o nome do supervisordo
+						fornecedor telemarketing</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 06/10/2011-->
+      <xs:element name="relatorioGrid" type="sgp:Relatorio" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--ComplexType criado por Dilmara Matos em 06/10/2011-->
+  <!--Esse complexType foi criado para mostrar a quantidade de linhas e colunas
+     para ser montado o grid de informações-->
+  <xs:complexType name="Relatorio">
+    <xs:sequence>
+      <xs:element name="quantidadeColuna" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica a quantidade de colunas do
+                		cursor de representante para ser montado o grid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeLinha" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica a quantidade de linhas do
+                		cursor de representante para ser montado o grid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeColunaConsolidado" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica a quantidade de colunas
+                		consolidado do cursor de representante para ser
+                		montado o grid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeLinhaConsolidado" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica a quantidade de linhas
+                		consolidado do cursor de representante para ser
+                		montado o grid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeColunaConsolidadoGrupo" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica a quantidade de colunas
+                		consolidado do grupo do cursor de representante
+                		para ser montado o grid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeLinhaConsolidadoGrupo" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica a quantidade de linhas
+						consolidado do grupo do cursor de representante
+						para ser montado o grid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

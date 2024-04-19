@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="Linha_430.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xsd:complexType name="ResultadoConsultaOrdemAprovisionamento">
+    <xsd:sequence>
+      <xsd:element name="ordemAprovisionamento" type="ass:OrdemAprovisionamento"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

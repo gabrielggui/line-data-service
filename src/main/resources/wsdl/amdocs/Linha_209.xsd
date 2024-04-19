@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:complexType name="Fornecedores">
+    <xs:annotation>
+      <xs:documentation>Essa entidade representa o Service Provider ou
+        		Fornecedor do servico. Examplos de service provider:
+        		Movile (Torpedo Info) Huawei (Message+) Onmobile(RBT)
+
+        		Essa entidade esta sendo contruida pela necessidade do
+        		Open Vivo. Os servicos geralmente representam servicos
+        		disponibilizados na plataforma SDP</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="fornecedor" type="cat:Fornecedor" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Fornecedor">
+    <xs:annotation>
+      <xs:documentation>Essa entidade representa o Service Provider ou
+        		Fornecedor do servico. Examplos de service provider:
+        		Movile (Torpedo Info) Huawei (Message+) Onmobile(RBT)
+
+        		Essa entidade esta sendo contruida pela necessidade do
+        		Open Vivo. Os servicos geralmente representam servicos
+        		disponibilizados na plataforma SDP</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigoFornecedor" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Representa o identificador do service provider
+    					ou fornecedor do servico. OBS: Tal entidade foi
+    					criada pela necessidade do Open Vivo. Sendo
+    					assim a priori esse elemento representa o codigo
+    					do fornecedor no SDP. Por exemplo: huawei,
+    					Movile e etc</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="8"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Representa o nome do service provider ou
+    					fornecedor do servico. OBS: Tal entidade foi
+    					criada pela necessidade do Open Vivo. Sendo
+    					assim a priori esse elemento representa o nome
+    					do fornecedor no SDP. Por exemplo: huawei,
+    					Movile e etc</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Representa a descricao do service provider ou
+    					fornecedor do servico. OBS: Tal entidade foi
+    					criada pela necessidade do Open Vivo. Sendo
+    					assim a priori esse elemento representa a
+    					descricao do fornecedor no SDP. Por exemplo:
+    					huawei, Movile e etc</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

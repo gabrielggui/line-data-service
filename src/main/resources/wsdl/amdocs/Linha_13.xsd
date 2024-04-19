@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created with Liquid XML Studio Developer Edition (Trial) 8.0.2.1941 (http://www.liquid-technologies.com)--><xs:schema targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="Linha_12.xsd" namespace="http://www.vivo.com.br/MC/Pessoa"/>
+  <xs:include schemaLocation="Linha_14.xsd"/>
+  <xs:include schemaLocation="Linha_17.xsd"/>
+  <xs:include schemaLocation="Linha_18.xsd"/>
+  <xs:include schemaLocation="Linha_19.xsd"/>
+  <xs:include schemaLocation="Linha_21.xsd"/>
+  <xs:include schemaLocation="Linha_94.xsd"/>
+  <xs:include schemaLocation="Linha_96.xsd"/>
+  <xs:include schemaLocation="Linha_93.xsd"/>
+  <xs:include schemaLocation="Linha_82.xsd"/>
+  <xs:include schemaLocation="Linha_81.xsd"/>
+  <xs:include schemaLocation="Linha_79.xsd"/>
+  <xs:include schemaLocation="Linha_86.xsd"/>
+  <xs:include schemaLocation="Linha_85.xsd"/>
+  <xs:include schemaLocation="Linha_183.xsd"/>
+  <xs:include schemaLocation="Linha_221.xsd"/>
+  <xs:include schemaLocation="Linha_78.xsd"/>
+  <xs:include schemaLocation="Linha_89.xsd"/>
+  <xs:include schemaLocation="Linha_88.xsd"/>
+  <xs:include schemaLocation="Linha_91.xsd"/>
+  <xs:include schemaLocation="Linha_87.xsd"/>
+  <xs:include schemaLocation="Linha_72.xsd"/>
+  <xs:include schemaLocation="Linha_31.xsd"/>
+  <xs:include schemaLocation="Linha_83.xsd"/>
+  <xs:include schemaLocation="Linha_92.xsd"/>
+  <xs:include schemaLocation="Linha_84.xsd"/>
+  <xs:include schemaLocation="Linha_76.xsd"/>
+  <xs:include schemaLocation="Linha_22.xsd"/>
+  <xs:include schemaLocation="Linha_27.xsd"/>
+  <xs:include schemaLocation="Linha_216.xsd"/>
+  <xs:include schemaLocation="Linha_215.xsd"/>
+  <xs:include schemaLocation="Linha_222.xsd"/>
+  <xs:include schemaLocation="Linha_224.xsd"/>
+  <xs:include schemaLocation="Linha_223.xsd"/>
+  <xs:include schemaLocation="Linha_225.xsd"/>
+  <xs:include schemaLocation="Linha_226.xsd"/>
+  <xs:include schemaLocation="Linha_227.xsd"/>
+  <xs:include schemaLocation="Linha_228.xsd"/>
+  <xs:include schemaLocation="Linha_229.xsd"/>
+  <xs:include schemaLocation="Linha_203.xsd"/>
+  <xs:include schemaLocation="Linha_230.xsd"/>
+</xs:schema>

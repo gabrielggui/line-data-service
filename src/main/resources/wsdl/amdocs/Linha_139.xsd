@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Geral" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Protocolo">
+    <xs:annotation>
+      <xs:documentation>Define protocolo gerado pelo retorno da consulta.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="numeroProtocolo" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que representa o numero do protocolo gerado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que representa o status do protocolo gerado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataProtocolo" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que representa a data em que protocolo foi gerado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="historicoEnviosProtocolo" type="gr:historicoEnviosProtocolo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que representa o numero do protocolo gerado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroProtocoloLegado" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do protocolo de atendimento do legado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="historicoEnvioProtocolo">
+    <xs:sequence>
+      <xs:element name="inPermissaoEnvio" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de permissão de envio . false = Não Envia - true = Envia.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataUltimaAlteracao" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da ultima persistencia do protocolo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuarioAlteracao" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Usuário responsável pela ultima persistência no registro.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoEnvio" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo e envio. Ex.: 1 = Por SMS - 2 = Por E-mail - 3 = Ambos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoAreaRegistro" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código de área destino da mensagem de envio.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroLinha" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Número da linha destino da mensagem.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="email" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>E-mail destino da mensagem.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoMensagemEnvio" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mensagem que será enviada.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoErroEnvio" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mensagem que será enviada.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="inReenvio" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de reenvio, envio ou ambos (1 = reenvio / 0 = envio).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="historicoEnviosProtocolo">
+    <xs:sequence>
+      <xs:element name="historicoEnvioProtocolo" type="gr:historicoEnvioProtocolo" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Protocolos">
+    <xs:sequence>
+      <xs:element name="protocolo" type="gr:Protocolo" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:include schemaLocation="Linha_149.xsd"/>
+  <xs:include schemaLocation="Linha_150.xsd"/>
+  <xs:complexType name="SubFormularioAtendimento">
+    <xs:annotation>
+      <xs:documentation>Mantem informcoes dos sub formularios de atendimento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um sub formulario</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do subformulario</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoSubFormulario" type="ps:TipoSubFormulario" minOccurs="0"/>
+      <xs:element name="camposSubFormulario" type="ps:CamposFormulario" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubFormulariosAtendimento">
+    <xs:sequence>
+      <xs:element name="subFormularioAtendimento" type="ps:SubFormularioAtendimento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

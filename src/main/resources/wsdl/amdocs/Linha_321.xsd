@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:include schemaLocation="Linha_23.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_29.xsd"/>
+  <xs:complexType name="ContratoLinha">
+    <xs:sequence>
+      <xs:element name="contrato" nillable="true" minOccurs="0" type="cat:ContratoFidelizacao">
+        <xs:annotation>
+          <xs:documentation>Indica se a linha recebera sms com informacoes
+						sobre promocoes. 1 - SMS autorizado 0 - SMS nao
+						autorizado null - nao informado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contratoLinha" type="ass:ServicoAssinatura" minOccurs="0"/>
+      <xs:element name="valorContrato" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do contrato em R$</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorMulta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor corrente da multa de cancelamento do
+						contrato</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="diasRemanescentes" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Duracao restante do contrato em dias</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="periodoCarencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Periodo de carencia restante em dias</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="isencaoFalecimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o cliente foi isento da multa de
+						fidelizacao por motivo de falecimento. (true -
+						isento por falecimento; false - sem isencao)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="plano" type="cat:Plano" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Plano</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="motivoOperacao" type="nfo:MotivoOperacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade MotivoOperacao para
+						indicar o motivo para cobranca da multa.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="calculoManual" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o atendente efetuou o calculo manual
+						da multa para o cliente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cobrancaMulta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o evento (expiracao, migracao
+						controle, migracao de tecnologia ou troca de
+						plano) causa cobranca de multa. Valores validos
+						true (Y) ou false (N)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContratosLinha">
+    <xs:sequence>
+      <xs:element name="contratoLinha" type="ass:ContratoLinha" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

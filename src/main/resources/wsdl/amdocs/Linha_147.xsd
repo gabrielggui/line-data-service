@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:include schemaLocation="Linha_148.xsd"/>
+  <xs:include schemaLocation="Linha_149.xsd"/>
+  <xs:complexType name="MotivoAtendimento">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos motivos de
+				interacoes/atendimentos (contato/contatofolha)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um motivo de atendimento
+						(idcontato no vivonet).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do motivo de atendimento (nmContato no
+						vivonet)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaFolha" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o no de contato e uma folha ou uma
+						pasta (true).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="enviaSms" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se para o contato sera necessario o envio
+						de sms e se for devera ser aberto para o cliente
+						a opcao de nao querer receber o sms.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="textoSms" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Texto que sera enviado via SMS para o cliente
+						caso o contato exija um SMS.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="protocoloCanalEletronico" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o contato sera apresentado no
+						historico de protoclo nos Canais Eletronicos
+						(inProtocolo no Vivonet)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="exibeMensagemAlerta" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o contato exibira mensagem de alerta
+						sobre o numero de protocolo (inExibeProtocolo no
+						Vivonet).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descCanalEletronico" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao exibida para o contato no historico de
+						relacionamento/protocolo nos Canais Eletronicos</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mensagemExcecao" nillable="true" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoMensagemAviso" nillable="true" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descMensagemAviso" nillable="true" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="url" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>URL que contem informacao a respeito do item de
+						contato</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do motivo de atendimento (nmpath do
+						vivonet)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoNomeContato" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um nome de contato
+						(IdNomeContato no vivonet)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="urlFuncionalidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>URL da funcionalidade associada ao item de
+						contato</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoPai" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do motivo de contato Pai.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="camposFormulario" type="ps:CamposFormulario" minOccurs="0"/>
+      <xs:element name="subFormulariosAtendimento" type="ps:SubFormulariosAtendimento" minOccurs="0"/>
+      <xs:element name="indicaBilheteLegado" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se possui um bilhete legado, 0 - Nenhum 1 - OS e 2 BD.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MotivosAtendimento">
+    <xs:sequence>
+      <xs:element name="motivoAtendimento" type="ps:MotivoAtendimento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

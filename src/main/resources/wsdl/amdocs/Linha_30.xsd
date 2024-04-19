@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:Q1="ass">
+  <xs:import schemaLocation="Linha_23.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:import schemaLocation="Linha_22.xsd" namespace="http://www.vivo.com.br/MC/Catalogo"/>
+  <xs:include schemaLocation="Linha_29.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_31.xsd"/>
+  <xs:complexType name="Operacao">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastros das operacoes validas nos sistemas
+				origens. Exemplos operacoes NGIN: 1 - criacao kit via
+				SAP 2 - criacao kit via tela 3 - criacao de celular
+				avulso Exemplos operacoes Atlys: ASRV - adicao de
+				servicos ESNSW - troca de equipamento CSVC - mudanca de
+				servico.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma operacao no sistema
+						origem.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="5" /> retirado por Dilmara Matos em 12/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao da operacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="plataforma" type="cat:Plataforma" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Plataforma do Catalogo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="motivosOperacao" type="nfo:MotivosOperacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a lista MotivosOperacao para
+						identificas todos os motivos de uma operacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoIdentificado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar o código
+                		identificador de cada operação no NGIN</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificadorBaseDados" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar o identificador da
+                		base de dados onde foi gerada a informação da
+                		operação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Alterado por Dilmara Matos em 12/09/2011 de dateTime para string-->
+      <xs:element name="data" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar a data da operação
+                		realizada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoTarifacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar a descrição da
+                		tarifação utilizada na operação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="detalhesOperacao" type="nfo:DetalhesOperacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que referencia a entidade Detalhes
+            			Operações</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroInstanciaBaseDados" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar o número da instância
+                		da base de dados em que foi gerada a informação
+                		da operação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusOperacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar o status da
+                		impugnação da operação ex: Impugnada ou
+                		Contestada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servicos" type="cat:Servicos" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá representar o serviço de
+                		telecomunicações utilizado na operação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="unidadeTarifacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar a Unidade de
+                		tarifação utilizada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorTotalConsumido" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar o valor total
+                		consumido pela operação.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Operacoes">
+    <xs:sequence>
+      <xs:element name="operacao" type="nfo:Operacao" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DetalheOperacao">
+    <xs:sequence>
+      <xs:element name="descricao" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="valorDetalhe" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DetalhesOperacao">
+    <xs:sequence>
+      <xs:element name="detalheOperacao" type="nfo:DetalheOperacao" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

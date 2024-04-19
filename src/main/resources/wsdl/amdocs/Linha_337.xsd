@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Assinatura" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <!--Entidade criada por Dilmara Matos em 13/09/2011-->
+  <!--Essa entidade tem a finalidade de identificar as linhas Publicas(orelhão), 
+       os locais onde elas se encontra e que tipos de chamadas podem efetuar-->
+  <xs:complexType name="LinhasPublica">
+    <xs:sequence>
+      <xs:element name="linhaPublica" type="ass:LInhaPublica" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LInhaPublica">
+    <xs:sequence>
+      <xs:element name="codigoTipoLinhaPublica" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá identificar o codigo do tipo da
+    					linha publica(orelhão). ex: 1,2,3,4,5,6</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoEstabelecimentoLinhaPublica" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que ira identificar o codigo do
+    					estabelecimento onde estão as linhas
+    					publicas(Orelhão) ex:1,2,3,4,5,6,99</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoTipoLinhaPublica" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que irá identificar a descricao do tipo
+    					da linha publica(orelhão). ex: PERMITE ORIGINAR
+    					E RECEBER CHAMADA LOCAL; PERMITE ORIGINAR E
+    					RECEBER CHAMADA LOCAL E DDD; PERMITE ORIGINAR E
+    					RECEBER CHAMADA LOCAL, DDD E DDI; PERMITE
+    					ORIGINAR E NÃO RECEBER CHAMDA LOCAL; PERMITE
+    					ORIGINAR E NÃO RECEBER CHAMDA LOCAL E DDD;
+    					PERMITE ORIGINAR E NÃO RECEBER CHAMDA LOCAL, DDD
+    					E DDI</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoEstabelecimentoLinhaPublica" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>elemento que ira identificar o descrição do
+    					estabelecimento onde estão as linhas
+    					publicas(Orelhão). ex:VIAS PÚBLICAS,
+    					INSTITUIÇÕES DE ENSINO, INSTITUIÇÕES DE SAÚDE,
+    					AEROPORTOS, ESTÁDIOS, TERMINAIS
+    					RODO-FERROVIÁRIOS, OUTROS ENDEREÇOS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorLinhaPublica" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a Linha
+    					Publica(orelhão). ex: 1,2 Onde 1 =INTERNO e 2 =
+    					EXTERNO</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

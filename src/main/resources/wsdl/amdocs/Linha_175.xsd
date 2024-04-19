@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Portabilidade" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spn="http://www.vivo.com.br/MC/Portabilidade">
+  <xs:complexType name="TipoCancelamento">
+    <xs:sequence>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de cancelamento, podendo ser
+						port_request ou disconnect_request.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+            <xs:enumeration value="port_request"/>
+            <xs:enumeration value="disconnect_request"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

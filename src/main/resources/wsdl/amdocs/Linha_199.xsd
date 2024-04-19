@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.vivo.com.br/MC/Pedido" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:ped="http://www.vivo.com.br/MC/Pedido">
+  <import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_82.xsd"/>
+  <import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_12.xsd"/>
+  <complexType name="EtapaPedido">
+    <sequence>
+      <element name="dataEtapa" type="dateTime" maxOccurs="1" minOccurs="0"/>
+      <element name="dataAtualizacao" type="dateTime" maxOccurs="1" minOccurs="0"/>
+      <element name="tipoOcorrencia" type="string" maxOccurs="1" minOccurs="0"/>
+      <element name="descricao" type="string" maxOccurs="1" minOccurs="0"/>
+      <element name="observacao" type="string" maxOccurs="1" minOccurs="0"/>
+      <element name="sistemaOrigem" type="cat:Sistema" maxOccurs="1" minOccurs="0"/>
+      <element name="usuarioEtapa" type="ps:Pessoa" maxOccurs="1" minOccurs="0"/>
+    </sequence>
+  </complexType>
+  <complexType name="EtapasPedido">
+    <sequence>
+      <element name="etapaPedido" type="ped:EtapaPedido" maxOccurs="unbounded" minOccurs="0"/>
+    </sequence>
+  </complexType>
+</schema>

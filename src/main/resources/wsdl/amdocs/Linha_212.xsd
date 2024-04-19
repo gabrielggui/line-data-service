@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_203.xsd"/>
+  <xs:complexType name="SolicitacaoComercial">
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="prazoMaximoAtendimento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="prazoVigenciaProduto" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tarifas" type="cat:Tarifas" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoSolicitacaoComercial" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo da solicitacao comercial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoOperacao" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo da operação comercial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeOperacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome da operação comercial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nome" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome da solicitacao comercial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoTipoSolicitacaoComercial" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do tipo da solicitacao comercial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeTipoSolicitacaoComercial" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do tipo da solicitacao comercial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoTipoOperacaoComercial" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do tipo da operacao comercial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SolicitacoesComerciais">
+    <xs:sequence>
+      <xs:element name="solicitacaoComercial" type="cat:SolicitacaoComercial" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:complexType name="GrauParentesco">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos graus de parentesco alimentadas por 
+				uma paramétrica do Vivonet.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo do Parentesco
+						exemplo: A1 - CONJUGE</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sigla" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Sigla do grau de parentesco
+						exemplo: OT - OUTROS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Descticao do grau de parentesco
+						exemplo: A6 - PAIS           
+								 CL - Proprio cliente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrausParentesco">
+    <xs:sequence>
+      <xs:element name="grauParentesco" type="ps:GrauParentesco" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

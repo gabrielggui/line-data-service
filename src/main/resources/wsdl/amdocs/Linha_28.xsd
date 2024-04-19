@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created with Liquid XML Studio Developer Edition (Trial) 8.0.2.1941 (http://www.liquid-technologies.com)--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="Linha_29.xsd" namespace="http://www.vivo.com.br/MC/NFO"/>
+  <xs:include schemaLocation="Linha_13.xsd"/>
+  <xs:complexType name="NegociacaoTarifa">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das negociacoes feitas com o cliente
+				para a tarifa a ser cobrada pelos servicos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tarifa" type="cat:Tarifa">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade tarifa para identificar a
+						tarifa que foi negociada.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="tipoNegociacao" type="cat:TipoNegociacao">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoNegociacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="motivoOperacao" nillable="true" type="nfo:MotivoOperacao">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoEncargo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="csa" type="cat:Csa">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade csa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="valorNegociado" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Valor da tarifa negociada para o servico.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="8"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="percentualValorNegociado" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Valor que representa a negociacao feita em
+						porcentagem.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataEfetivacao">
+        <xs:annotation>
+          <xs:documentation>Data de efetivacao da negociacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataExpiracao">
+        <xs:annotation>
+          <xs:documentation>Data de expiracao da negociacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="autoRecalculo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este campo deve ser fornecido apenas quando a
+						negociacao for do tipo valor absoluto (negotType
+						= A). O opcao true indica que a negociacao é em
+						valor absoluto, mas seu valor deve ser
+						recalculado caso haja reajuste da tarifa. Caso
+						esse atributo nao seja fornecido, a API assume o
+						valor false como valor padrao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NegociacoesTarifa">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tarifa" type="cat:NegociacaoTarifa"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

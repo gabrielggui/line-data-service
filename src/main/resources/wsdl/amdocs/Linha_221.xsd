@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:sg="http://www.vivo.com.br/MC/Sigan">
+  <xs:import namespace="http://www.vivo.com.br/MC/Sigan" schemaLocation="Linha_35.xsd"/>
+  <xs:include schemaLocation="Linha_17.xsd"/>
+  <xs:complexType name="Csa">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das areas de negocio validas.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica as areas de servico da
+						vivo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome das area de servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="areaRegistro" minOccurs="0" type="cat:AreaRegistro">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade AreaRegistro.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="localidade" minOccurs="0" type="sg:Localidade">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Localidade do Sigan para
+						ser possivel fazer o mapeamento de de-para entre
+						as CSAs do Atlys e as Localidade do Sigan.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Csas">
+    <xs:sequence>
+      <xs:element name="csa" type="cat:Csa" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

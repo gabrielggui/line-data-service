@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	10/3/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:complexType name="Cnae">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das classificacoes economicas validas
+				(CNAE)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica a classificacao nacional
+						de atividades economicas.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="7"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao da classificacao nacional de
+						atividades economicas (CNAE)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataUltimaAlteracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da ultima alteracao do registro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoRegistro" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificação do tipo do registro.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subTipoRegistro" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificação do sub tipo do registro.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoInformacao" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificação do código da informação.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificacaoBloco" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificação do bloco.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoConfirmacaoEletronica" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificação do tipo de confirmação eletrônica.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cnaeSecundario" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificação do Cnae secundário.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="segmentoCnaeSecundario" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificação do segmento do Cnae secundário.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

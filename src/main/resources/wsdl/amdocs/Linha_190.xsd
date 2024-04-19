@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:sg="http://www.vivo.com.br/MC/Sigan">
+  <xs:import namespace="http://www.vivo.com.br/MC/Sigan" schemaLocation="Linha_35.xsd"/>
+  <xs:complexType name="Favorito">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das linhas Vivo de mesmo DDD para
+				onde o cliente pode fazer chamadas com desconto. Para
+				pos-pago pode ser colocado um telefone fixo e 4 linhas
+				vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="numerosFavoritos" nillable="true" minOccurs="0" type="ass:NumerosFavoritos">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Numeros para identificar o
+						numero das linhas favoritas do cliente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataLimitePreferencial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data limite ate quando o usuario pode fazer as
+						alteracoes de numero preferencial sem custo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAlteracoesEfetuadas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de alteracoes ja efetuadas. Apresenta o
+						numero total de alteracoes efetuadas pelo
+						celular</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAlteracoesGratuitas" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de alteracoes gratuitas. Quando nao
+						houver limite de alteracoes para cobranca
+						(sempre gratuitas), este parametro retornara o
+						valor 999</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMaximaFavoritos" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero maximo de numeros preferenciais
+						permitidos</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorFavorito" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor a ser cobrado caso seja adicionado ou
+						alterado o Numero Preferencial. Caso ainda nao
+						tenha extrapolado o numero de mudancas</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="12"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoFavSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um servico favorito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Descricao do servico de favoritos</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorAlteracaoPreferencial" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Valor a ser cobrado caso seja adicionado ou
+						alterado o Número Preferencial.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="status" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identificador do status do servico de favoritos</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Favoritos">
+    <xs:sequence>
+      <xs:element name="favorito" type="ass:Favoritos" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NumeroFavorito">
+    <xs:sequence>
+      <xs:element name="numero" type="sg:Numero" minOccurs="0"/>
+      <xs:element name="dataCriacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de criacao do numero favorito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="direcao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Direcao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de expiracao de um numero favorito.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NumerosFavoritos">
+    <xs:sequence>
+      <xs:element name="numeroFavorito" type="ass:NumeroFavorito" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="OrdemAprovisionamento">
+    <xs:annotation>
+      <xs:documentation>Entidade que contêm dados do status da última ordem de serviço de uma
+				determinada assinatura.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="dataCriacao" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data e hora da criação da ordem de serviço de aprovisionamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="transacao" type="ass:Transacao" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status da ordem de aprovisionamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Transacao">
+    <xs:annotation>
+      <xs:documentation>Entidade que contêm dados do transação.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código da transação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status da transação</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdensAprovisionamento">
+    <xs:annotation>
+      <xs:documentation>Lista de Ordens de Aprovisionamento</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ordemAprovisionamento" type="ass:OrdemAprovisionamento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

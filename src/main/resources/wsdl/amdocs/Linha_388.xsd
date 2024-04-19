@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:tns="http://www.vivo.com.br/SN/Linha" xmlns:xdt="http://www.w3.org/2004/07/xpath-datatypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ResultadoBuscarQuantidadeLinhasPorPessoa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="QTLINHAS" type="xs:integer"/>
+      <xs:element minOccurs="0" name="QTLINHASATIVAS" type="xs:integer"/>
+      <xs:element minOccurs="0" name="QTLINHASCANCELADAS" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

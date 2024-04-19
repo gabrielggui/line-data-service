@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.vivo.com.br/SN/Linha" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="ParametrosBuscarListaLinhasEnvioNGIN">
+    <xsd:sequence>
+      <xsd:element name="codigoPessoaDePara" minOccurs="0" type="xsd:integer"/>
+      <xsd:element name="codigoEndereco" minOccurs="0" type="xsd:integer"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

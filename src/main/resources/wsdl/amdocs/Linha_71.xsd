@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Catalogo" elementFormDefault="qualified" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="Linha_72.xsd"/>
+  <xs:complexType name="Reservas">
+    <xs:sequence>
+      <xs:element name="reserva" type="cat:Reserva" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Esse complexType deve representar as reservas de
+						produtos efetuadas por determinado cliente. Deve
+						apresentar também o produto reservado e o
+						atendendente que efetivou a reserva.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Reserva">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>identificador unico da reserva</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoFabricante" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>codigo do fabricante do produto/material
+						reservado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoLojaReserva" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>codigo da Loja em que o cliente solicitou a
+						reserva de determinado produto\recurso</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoLojaResgate" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>codigo da Loja em que o cliente efetivou o
+						resgate do produto reservado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoProduto" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo do Produto\Material reservado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cpf" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>cpf do cliente que solicitou a reserva de um
+						produto\recurso</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataExpira" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data e hora que uma determinada reserva
+						realizada expira.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataReserva" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data e hora em que determinada reserva foi
+						realizada/solicitada. Por ex: Na data de
+						23-05-2011 foi feito a reserva de um produto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="horarioAgendado" type="xs:time" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>hora minuto segundo agendado para retirada do
+						produto\recurso reservado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="loginOperador" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Login do operador\atendente que cadastrou a
+						reserva solicitada por um cliente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeFabricante" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome do Fabricante do produto\recurso reservado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeModelo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>nome do modelo do Produto\Recurso reservado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeProduto" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>nome do Produto\Recurso reservado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeLojaReserva" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>nome da Loja em que o cliente solicitou a
+						reserva de determinado produto\recurso</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeLojaResgate" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>nome da Loja em que o cliente efetivou o resgate
+						do produto reservado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="origem" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>ORIGEM referencia como determinada reserva e
+						agendamento foi originado. Por ex: Pre
+						Atendimento, Agendamento via Call Center entre
+						outros.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidade" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>quantidade de determinado produto\recurso
+						reservado. Por ex: Reserva de QUATRO aparelhos
+						Nokia E5</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento retirado por Dilmara Matos em 31/08/2011,não fazer mais parte da procedure-->
+      <!--<xs:element name="regional" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+				<xs:documentation>
+				Nome da Regional da loja em que um cliente
+				solicitou uma reserva. Por ex: O Cliente A
+				solicitou uma reserva de aparelho da loja 001
+				que pertence a regional "SUL". Os dominios podem
+				ser SUL, CON, LESTE entre outros
+				</xs:documentation>
+				</xs:annotation>
+				</xs:element>-->
+      <xs:element name="resgateEfetuado" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>indica se determinado produto/recurso reservado
+						já sofreu o resgate. Esse atributo nao possui
+						relacionamento com sistema de fidelidade,
+						refere-se apenas a retirada do produto em loja</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status da reserva. Os dominios podem ser
+						EXPIRADA, CANCELADA, ATIVA, entre outros</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos-->
+      <xs:element name="siglaUf" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Sigla UF</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tecnologia" type="cat:Tecnologia" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="quantidadeHorasExpiracao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa quantidade de horas de
+						expiracao da Reserva</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

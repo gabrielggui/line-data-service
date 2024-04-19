@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	18/3/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:complexType name="CategoriaServico">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das categorias de servicos validas,
+				como servico de dados, voz, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica a categoria de um servico,
+						indicando se o servico e de dados, voz, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoCatSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo da Categoria no Atlys/NGIN</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da categoria do servico.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="categoriaAtiva" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a categoria esta ativa (true) ou
+						inativa (false). Servico de enablement retorna S
+						para ativo e N para inativo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Inicio da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="descricao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <!--Final da inclusão de elementos para contemplar CRM Massivo // RSR-->
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CategoriasServico">
+    <xs:sequence>
+      <xs:element name="categoriaServico" type="cat:CategoriaServico" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

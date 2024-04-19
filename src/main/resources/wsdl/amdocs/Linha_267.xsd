@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created with Liquid XML Studio - 30 Day Trial Edition 7.1.6.1440 (http://www.liquid-technologies.com)--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:include schemaLocation="Linha_259.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:include schemaLocation="Linha_268.xsd"/>
+  <xs:complexType name="ArgumentoScriptInteligente">
+    <xs:annotation>
+      <xs:documentation>Cadastro dos argumentos (lista de ofertas). Argumentos
+				podem ser, por exemplo: Efetuar uma troca de
+				aparelho,Realizar uma adequacao de plano, Verificar o
+				servico instalado, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo">
+        <xs:annotation>
+          <xs:documentation>Codigo sequencial que identifica unicamente um
+						argumento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="descricao">
+        <xs:annotation>
+          <xs:documentation>Descritivo do argumento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="acao" type="nfo:AcaoArgScriptInteligente">
+        <xs:annotation>
+          <xs:documentation>Identifica as acoes que um argumento aciona ao
+						ser executado, podendo ser um link externo ou
+						uma funcionalidade do Vivo360</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="dadosInadimplencia" type="nfo:TipoInadimplencia">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoInadimplencia"</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ativo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Flag que representa se determinado argumento
+						encontra-se ativo para retencao. (para
+						'argumento' vide documentation dessa entidade )
+						Dominio: 'S' ' Ativo, 'N' ' Nao Ativo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioCriacao" type="sca:UsuarioSCA" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referecia a entidade UsuarioSCA (que é a
+						entidade padrao para referenciar usuarios de
+						sistemas). usuarioCriacao trata-se do usuario
+						sistemico que criou o argumento (para
+						'argumento' vide documentation dessa entidade )</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de criacao do argumento (para 'argumento'
+						vide documentation dessa entidade )</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioAlteracao" type="sca:UsuarioSCA" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referecia a entidade UsuarioSCA (que é a
+						entidade padrao para referenciar usuarios de
+						sistemas). UsuarioAlteracao trata-se do usuario
+						sistemico que alteracao de alguma forma o
+						argumento (para 'argumento' vide documentation
+						dessa entidade )</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAlteracao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de alteracao do argumento (para 'argumento'
+						vide documentation dessa entidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="familiaArgumento" minOccurs="0" maxOccurs="1" type="nfo:FamiliaArgumento">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade familiaArgumento.xsd
+						Familia do argumento é uma classificacao de
+						agrupamento dos argumentos. Geralmene usado para
+						efeitos em relatorios do processo de retencao.
+						Dominios exemplos para nomeFamilia: Financeiro,
+						Aparelho. Para 'argumento' vide documentation da
+						entidade ArgumentoScriptinteligente neste mesmo
+						nameSpace</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoArgumento" type="nfo:TipoArgumento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoArgumento. A entidade
+						TipoArgumento caracteriza um argumento. Um tipo
+						de argumento poder ser, por exemplo: Puro,
+						Migrado, Suspenso, etc</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArgumentosScriptInteligente">
+    <xs:annotation>
+      <xs:documentation>Lista de argumentos que compoem um script Inteligente
+        		(Vide documentation de ScriptInteligente.xsd neste mesmo
+        		NameSpace) Argumentos sao ofertas oferecidas ao cliente
+        		na intencao de reter o cliente (processo de retencao). O
+        		argumento a oferecer ao cliente é decidido com base nas
+        		respostas dadas ao script que o atendente aplica.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="argumentoScriptInteligente" type="nfo:ArgumentoScriptInteligente"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AcaoArgScriptInteligente">
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código da ação</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>nome da acao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="descricao">
+        <xs:annotation>
+          <xs:documentation>Texto que identifica a acao que sera acionada
+						pelo argumento. Se o tipo de atalho for Vivo360,
+						esse campo contera o link para a funcionadade do
+						Vivo360 que sera obtida atraves da base de
+						referencia. Caso o tipo de atalho seja URL, esse
+						campo contera a URL externa para acesso, por
+						exemplo www.serasa.com.br.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="300"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="tipoAtalho">
+        <xs:annotation>
+          <xs:documentation>Identifica o tipo de atalho: Vivo360 - indica
+						que o argumento ira acionar funcionalidades do
+						sistema Vivo360 URL - indica que o argumento ira
+						acionar URLs externas</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TipoInadimplencia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tipoInadimplencia">
+        <xs:annotation>
+          <xs:documentation>Identifica se o argumento pode ser usado para
+						casos de inadimplencia. INADIMP - pode ser usado
+						para casos de inadimplencia; NINADIMP - pode ser
+						usado para casos onde nao ocorre inadimplencia.
+						AMBOS - pode ser usado para ambos os casos.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="descricao">
+        <xs:annotation>
+          <xs:documentation>Descritivo da mensagem de inadimplencia.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="300"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

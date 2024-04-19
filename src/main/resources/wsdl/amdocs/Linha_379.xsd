@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/SN/Linha" elementFormDefault="qualified" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pes="http://www.vivo.com.br/MC/Pessoa">
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:import schemaLocation="Linha_155.xsd" namespace="http://www.vivo.com.br/MC/Pessoa"/>
+  <xs:complexType name="ParametrosAlterarPermissoesEnvioSms">
+    <xs:sequence>
+      <xs:element name="linha" type="ass:Linha"/>
+      <xs:element name="usuario" type="pes:Usuario"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

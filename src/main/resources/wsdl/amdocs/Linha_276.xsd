@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda">
+  <xs:include schemaLocation="Linha_244.xsd"/>
+  <xs:include schemaLocation="Linha_245.xsd"/>
+  <xs:include schemaLocation="Linha_277.xsd"/>
+  <xs:include schemaLocation="Linha_278.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/OrdemVenda" schemaLocation="Linha_95.xsd"/>
+  <xs:complexType name="MetodoPagamento">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos metodos de pagamentos possiveis
+				para a conta.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="tipoPagamento" minOccurs="0" type="ct:TipoPagamento">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoPagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataEfetivacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de efetivacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de expiracao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoAutorizacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>codigo de autorizacao Metodo Pagamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAutorizacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de Autorizacao do Metodo de Pagamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataRejeicao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de Rejeicao do Metodo de Pagamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaPreNotificacao" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Indicador de pre-notificacao</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataSupensaoMetodo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de suspensao do metodo de pagamento Debito
+						Automatico.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataSolicitacaoMetodo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de Solicitacao do metodo de pagamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataReversaoSolMetodo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de Reversao da Solicitacao do metodo de
+						pagamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="IndicaRegMetodoPgto" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Identifica o status do registro de um metodo
+							de pagamento debito automatico. Valores
+							possiveis: S (estabelecido), P (pendente) e
+							N (negado).</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="instituicaoFinanceira" type="ct:InstituicaoFinanceira" minOccurs="0"/>
+      <xs:element name="statusDebitoAutomatico" minOccurs="0" type="xs:string"/>
+      <xs:element name="bandeiraCartaoCredito" type="ov:BandeiraCartaoCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>codigo de autorizacao Metodo Pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroCartaoCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataValidadeCartaoCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dadosComplementaresPagamento" type="ct:DadosComplementaresPagamento" minOccurs="0"/>
+      <xs:element name="adquirente" type="ct:Adquirente" minOccurs="0"/>
+      <xs:element name="motivoRejeicao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>descricao do motivo de rejeicao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataProximoVencimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Próxima data de vencimento que terá esta forma de pagamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataUltimoVencimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Ultima data de vencimento que terá esta forma de pagamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataPrevistaResposta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data prevista de resposta do banco</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataPrimeiroDebitoAutomatico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data do primeiro debito automatico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MetodosPagamento">
+    <xs:sequence>
+      <xs:element name="metodoPagamento" type="ct:MetodoPagamento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

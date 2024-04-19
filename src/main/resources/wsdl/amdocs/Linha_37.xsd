@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Sigan" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sg="http://www.vivo.com.br/MC/Sigan">
+  <xs:complexType name="CategoriaNumero">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das categorias de numeros validos no
+				Sigan, como Normal, Bonito, Corporativo etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma categoria, como
+						normal, bonito, corporativo, caixa-postal, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da categoria</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMaxRetorno" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade maxima de retorno de numeros por categoria.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tempoBloqueio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica o tempo de bloqueio para cada pesquisa de numero.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CategoriasNumero">
+    <xs:sequence>
+      <xs:element name="categoriaNumero" type="sg:CategoriaNumero" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

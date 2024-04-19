@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* Project: MVNO * Version: 1.0 * Date Created: 07/11/2013 * Author : Terezinha Lima--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Geral" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="Linha_7.xsd"/>
+  <xs:complexType name="OperadoraMovelVirtual">
+    <xs:annotation>
+      <xs:documentation>Lista das operadoras virtuais moveis</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nome" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome MVNO</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo MVNO</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCriacao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data Criação</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="status" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Status se esta ativa ou desativada</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="operadora" type="gr:Operadoras" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Faz referencia a entidade Operadora</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dadoRetornoHabilitacao" type="gr:DadoRetorno" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Faz referência a retorno da habilitação de uma linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dadoRetornoCancelamento" type="gr:DadoRetorno" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Faz referência a retorno do cancelamento de uma linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OperadorasMovelVirtual">
+    <xs:sequence>
+      <xs:element name="operadoraMovelVirtual" type="gr:OperadoraMovelVirtual" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DadoRetorno">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:string" minOccurs="0"/>
+      <xs:element name="descricao" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

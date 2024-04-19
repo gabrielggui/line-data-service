@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created with Liquid XML Studio - 30 Day Trial Edition 7.1.6.1440 (http://www.liquid-technologies.com)--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="Linha_267.xsd"/>
+  <xs:include schemaLocation="Linha_269.xsd"/>
+  <xs:complexType name="RetencaoArgumentacao">
+    <xs:annotation>
+      <xs:documentation>Lista os argumentos que foram oferecidos para o cliente durante o processo de retencao.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="argumentoScriptInteligente" type="nfo:ArgumentoScriptInteligente">
+        <xs:annotation>
+          <xs:documentation>Refencia a entidade ArgumentoScriptInteligente para identificar a lista de argumentos oferecidas para o cliente no processo de retencao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="tipoAceiteOferta" type="nfo:TipoAceiteOferta">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoAceiteOferta para identificar se o cliente aceitou, rejeitou ou vai pensar na oferta oferecida.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RetencaoArgumentacoes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="retencaoArgumentacao" type="nfo:RetencaoArgumentacao"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

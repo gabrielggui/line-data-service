@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Sigan" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sg="http://www.vivo.com.br/MC/Sigan" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_17.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_39.xsd"/>
+  <xs:include schemaLocation="Linha_47.xsd"/>
+  <xs:complexType name="Localidade">
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma localidade no sistema
+						SIGAN</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao da localidade.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="areaRegistro" type="cat:AreaRegistro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade area de registro.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="siglaAreaLocal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Sigla que representa uma area Local de uma
+						localidade. Por ex: ATM, SPO, SIM</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cnl" type="sg:CNL" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>referencia ao complexType CNL para representar o
+						Código Nacional da Localidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="municipio" type="nfo:Municipio" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Municipio a qual pertence determinada localidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="eot" type="sg:EOT" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade EOT para representar o
+						codigo da operadora EOT que uma localidade
+						pertence</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaValidacaoLocalidade" maxOccurs="1" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Elemento que indica se o registro é
+                    		Quadra/Lote ou Zona(QL ou Z).</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Localidades">
+    <xs:sequence>
+      <xs:element name="localidade" type="sg:Localidade" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CNL">
+    <xs:annotation>
+      <xs:documentation>Uma localidade possui um CNL (Codigo Nacional de
+				Localidade), e um CNL sempre pertencerá a uma
+				localidade. CNL é uma localidade</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigoNacionalLocalidade" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo Nacional de Localidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="siglaNacionalLocalidade" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Sigla Nacional de Localidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dddLocalidade" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>DDD</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CNLs">
+    <xs:annotation>
+      <xs:documentation>Lista de CNL (Codigo Nacional de Localidade)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigoNacionalLocalidade" type="sg:CNL" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CNL, para representar uma
+						lista de CNL. OBS. Um Municipio pode ter N
+						Localidades e uma localidade pertence a uma CNL</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

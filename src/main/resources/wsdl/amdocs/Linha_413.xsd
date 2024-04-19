@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ParametrosBuscarListaLinhasPorCPFCNPJ">
+    <xs:sequence>
+      <xs:element name="numeroCPFCNPJ" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="codigoConta" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="plataforma" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="statusLinha" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="numeroLinha" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="tipoLinha" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="N"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtRegsPorPagina" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="nrPagina" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="codigoTipoLinha" type="xs:integer" minOccurs="0"/>
+      <xs:element name="codigoSubTipoLinha" type="xs:integer" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

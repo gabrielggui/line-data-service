@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta">
+  <xs:include schemaLocation="Linha_120.xsd"/>
+  <xs:include schemaLocation="Linha_121.xsd"/>
+  <xs:complexType name="VivoScore">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes do VivoScore do Clinte</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="cor" minOccurs="0" type="ct:CorVivoScore">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CorVivoScore</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="resultadoVivoScore" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Resultado da analise do vivoscore (plano de
+						acao)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoResultadoVivoScore" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o plano de acao do
+						VivoScore, por exemplo: 01 - OFERTA DE PRE-PAGO;
+						02 - OFERTA VIVO
+						CONTROLE; 03 - POS: VIVO
+						ECONOMICO; 04 - POS: VIVO ESCOLHA 50.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="02"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="restricaoCredito" minOccurs="0" type="ct:RestricaoCredito">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade RestricaoCredito.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusAnaliseCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o cliente foi A - Aprovado / R -
+						Reprovado durante o processo de analise de
+						credito.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorScore" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Score do cliente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataConsultaScore" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que foi realizada a consulta de analise
+						de credito via VivoScore</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nivelScore" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero que indica o nivel do score</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoPlanoBureauCredito" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomePlanoBureauCredito" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="resultadoAnaliseCreditoExterna" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="analiseCreditoExternaExecutada" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaReprovacaoFraude" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica reprovacao em fraude</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaProtestoSerasa" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica protesto no Serasa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdeProtestos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de protestos no Serasa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaDividaFixa" type="xs:boolean" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica se cliente possui divida na fixa.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaParcelamentoFixa" type="xs:boolean" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica se cliente possui parcelamento de
+						divida.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaDividaInternaMovel" type="xs:boolean" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica se cliente possui divida na movel.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaParcelamentoDividaMovel" type="xs:boolean" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica se cliente possui divida na fixa.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaDividaExterna" type="xs:boolean" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica se cliente possui divida externa(Exemplo: SPC, Serasa ...)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataValidade" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de validade do score</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorCredito" type="xs:decimal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do score retornado pelo parceiro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorTaxa" type="xs:decimal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor da taxa do score retornado pelo parceiro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoParceiro" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código do parceiro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeParceiro" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do parceiro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoAcao" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de ação a ser realizada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="rastreamento" type="ct:Rastreamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia o complexType Rastreamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Rastreamento">
+    <xs:sequence>
+      <xs:element name="codigoPacote" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código de rastreamento de um cell_package de uma campanha especifica</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tratamentos" type="ct:Tratamentos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia o complexType Tratamentos</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Tratamentos">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Código de rastreamento de um treatment de uma campanha especifica</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

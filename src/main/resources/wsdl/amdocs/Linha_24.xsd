@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import schemaLocation="Linha_25.xsd" namespace="http://www.vivo.com.br/MC/Catalogo"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:include schemaLocation="Linha_155.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:include schemaLocation="Linha_188.xsd"/>
+  <xs:include schemaLocation="Linha_116.xsd"/>
+  <xs:include schemaLocation="Linha_189.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_26.xsd"/>
+  <xs:complexType name="ProtocoloAtendimento">
+    <xs:annotation>
+      <xs:documentation>Mantem historico dos protocolos (protocolo agrupador).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="protocolo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de protocolo de atendimento, composto por
+						2 ultimos digitos do ano, 2 digitos de mes e
+						sequencial que a cada comeco de ano volta para o
+						numero 1.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="atendimentos" type="ps:Atendimentos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Atendimento para
+						identificar todos os processos existentes no
+						protocolo agrupador.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroLinhaSMS" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de telefone (DDD+numero da linha) que
+						recebera o SMS de Protocolo no caso que nao seja
+						informado o numero de linha no registro da
+						interacao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAbertura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de abertura do protocolo de atendimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFechamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de encerramento do protocolo de
+						atendimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusProtocolo" type="ps:StatusProtocoloAtendimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade
+						StatusProtocoloAtendimento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdAtendimentos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de processos (atendimentos) que um
+						protocolo possui.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdProtocolos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de protocolos que um cliente possui.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioAbertura" type="ps:Usuario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Usuario para identifica o
+						usuario de criacao do protocolo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuarioFechamento" type="ps:Usuario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Usuario para identifica o
+						usuario que fechou o protocolo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sistemaOrigem" type="cat:Sistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sistema.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroTelefoneOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de telefone que originou a chamada
+						associado ao numero de protocolo, composto pode
+						ddd/fone</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeContato" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do contato associado ao protocolo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="128"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoUltimaLinhaPosicionada" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo da ultima linha posicionada associado ao
+						protocolo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoAberturaProtocolo" type="ps:TipoAberturaProtocolo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoAberturaProtocolo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="protocoloDenatran" type="ass:Rastreamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Rastreamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorAnexoMensagem" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá sinalizar se existe uma
+						mensagens de chat ou email trocadas entre
+						clientes e representantes(vivo) ou anexo enviado
+						por email ex: 0 = Mensagens e 1 =
+						Anexos|Mensagens</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mensagens" type="ps:Mensagens" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Mensagens que irá
+						armazenar o historico de texto trocados entre o
+						cliente e o atendente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="midias" type="cat:Midias" minOccurs="0" maxOccurs="1"/>
+      <!--Elemento criado por Dilmara Matos em 04/09/2011-->
+      <xs:element name="numeroCpf" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o cpf associado ao
+						protocolo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 04/09/2011-->
+      <xs:element name="numeroCnpj" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o cnpj associado ao
+						protocolo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 04/09/2011-->
+      <xs:element name="numeroRg" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o rg associado ao
+						protocolo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="complementosSMS" type="ps:ComplementosSMS" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="protocoloSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de protocolo de atendimento gerado no
+						sistema de origem</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="turno" type="ps:Turno" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="prazoAtendimento" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="indicaProtocoloAssociado" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica protocolo associado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoBilhete" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo bilhete</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoBilhete" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo bilhete</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoOrigemProtocolo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo origem protocolo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaProtocoloSup" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica protocolo sup</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoOrdemServico" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="agrupador" type="xs:int" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="contrato" type="xs:int" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="indicaProtocoloMigrado" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica protocolo Migrado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuarioEnvioProtocolo" type="ps:Usuario" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Dados do usuario que enviou o protocolo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="solucaoAtendimento" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="protocoloExistente" type="xs:boolean" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag que indica se o protocolo existe nos sistemas da Telefonica.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProtocolosAtendimento">
+    <xs:sequence>
+      <xs:element name="protocoloAtendimento" type="ps:ProtocoloAtendimento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Mensagem">
+    <xs:annotation>
+      <xs:documentation>A funcionalidade dessa entidade é de armazenar o
+				historico do texto entre o cliente e o atendente pelas
+				midias chat, email ou sms</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="dataEnvioMensagem" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar a data e hora em que
+						a mensagem foi enviada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="emailCliente" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar o e-mail do cliente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linhaCliente" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar o DDD+LINHA do
+						cliente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="login" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar o Login do
+						representante no formato SITE+Login (exemplos:
+						CAS63003, GNA47002)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mensagem" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá armazenar o texto da mensagem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 26/10/2011-->
+      <xs:element name="codigoSistemaOrigem" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar qual o sistema
+						enviou a mensagem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Mensagens">
+    <xs:sequence>
+      <xs:element name="mensagem" type="ps:Mensagem" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ComplementosSMS">
+    <xs:sequence>
+      <xs:element name="complementoSMS" type="ps:ComplementoSMS" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ComplementoSMS">
+    <xs:annotation>
+      <xs:documentation>Mantem os dados do Complemento que é utilizado na
+				mensagem SMS, após o numero do protocolo cujo conteúdo é
+				um estímulo ao uso de outros canais de atendimento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que representa o codigo do complemento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>0 - Inativo, 1- Ativo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricao" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descrição da mensagem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usarioCriacao" type="ps:Usuario" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Usuario que realizou a criação do complemento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacao" type="xs:date" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de criação do complemento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuarioAlteracao" type="ps:Usuario" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Usuario que realizou a alteração do complemento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAlteracao" type="xs:date" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de alteração do complemento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="siglaSistemaOrigem" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla do sistema origem que o cliente irá receber a mensagem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Turno">
+    <xs:sequence>
+      <xs:element name="sigla" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

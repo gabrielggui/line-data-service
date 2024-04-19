@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:complexType name="ListaSubTipo">
+    <xs:sequence>
+      <xs:element name="subTipo" type="ass:SubTipo" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubTipo">
+    <xs:annotation>
+      <xs:documentation>Armazena os dados de SubTipos de Assinatura</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do subTipo do Assinante</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do subTipo do Assinante</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

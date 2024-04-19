@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:include schemaLocation="Linha_219.xsd"/>
+  <xs:include schemaLocation="Linha_212.xsd"/>
+  <xs:include schemaLocation="Linha_72.xsd"/>
+  <xs:include schemaLocation="Linha_205.xsd"/>
+  <xs:include schemaLocation="Linha_219.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_192.xsd"/>
+  <xs:complexType name="ServicoBandaLarga">
+    <xs:annotation>
+      <xs:documentation>Servico banda larga</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do servico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nome" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do servico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricao" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do servico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoTecnologia" type="cat:TipoTecnologia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoTecnologia.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="solicitacoesComerciais" type="cat:SolicitacoesComerciais" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia entidade SolicitacaoComercial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoServico" type="cat:TipoServico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia entidade TipoServico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="equipamento" type="cat:Equipamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia entidade Equipamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="classeServico" type="ass:ClasseServico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia entidade ClasseServico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServicosBandaLarga">
+    <xs:sequence>
+      <xs:element name="servicoBandaLarga" type="cat:ServicoBandaLarga" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

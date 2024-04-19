@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/SN/Linha">
+  <xs:complexType name="ParametrosAtivarLinhaPrePagaOrigemMVNE">
+    <xs:sequence>
+      <xs:element name="msisdn" type="xs:string"/>
+      <xs:element name="iccid" type="xs:string"/>
+      <xs:element name="imsi" type="xs:string" minOccurs="0"/>
+      <xs:element name="imei" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoEquipamento" type="xs:string"/>
+      <xs:element name="nomeCliente" type="xs:string"/>
+      <xs:element name="numeroDocumento" type="xs:string"/>
+      <xs:element name="observacao" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoDistribuidor" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoMotivo" type="xs:string"/>
+      <xs:element name="codigoPerfilAssinante" type="xs:string"/>
+      <xs:element name="indicaNumeroVivo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

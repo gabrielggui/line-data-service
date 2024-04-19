@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_76.xsd"/>
+  <xs:include schemaLocation="Linha_85.xsd"/>
+  <xs:include schemaLocation="Linha_87.xsd"/>
+  <xs:include schemaLocation="Linha_88.xsd"/>
+  <xs:include schemaLocation="Linha_72.xsd"/>
+  <xs:include schemaLocation="Linha_90.xsd"/>
+  <xs:complexType name="ModeloProduto">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos modelos dos produtos existentes,
+				como V3, V8, N95, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o modelo dos produtos.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do modelo do produto.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fabricante" type="cat:Fabricante" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Fabricante</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoProduto" type="cat:TipoProduto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoProduto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="imagens" type="cat:ImagensModelo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ImagemModelo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="caracteristicas" type="cat:CaracteristicasModelo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CaracteristicasModelo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tecnologiasPai" type="cat:Tecnologias" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Tecnologias para
+						identificar se os modelos sao GSM ou CDMA.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subTecnologias" type="cat:Tecnologias" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Tecnologias identificando
+						as tecnologias 1XRTT/EVDO,WCDMA, etc</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produtos" type="cat:Produtos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Produtos para identificar
+						a lista de produtos do modelo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="modeloProdutoCor" type="cat:ModeloProdutoCor" minOccurs="0"/>
+      <xs:element name="urlManual" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Url do manual do modelo do aparelho.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroModelo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>elemento alfanumerico criado para atender a
+						necessidade do Atlys</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que representa a descrição do Modelo Produto.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo no sistema origem que identifica o modelo dos produtos.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ModelosProduto">
+    <xs:sequence>
+      <xs:element name="modeloProduto" type="cat:ModeloProduto" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ModeloProdutoCor">
+    <xs:annotation>
+      <xs:documentation>Relacionamento entre o modelo do produto e as cores
+				disponiveis para venda.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do relacionamento entre o modelo do
+						aparelho e a cor</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="corProduto" type="cat:CorProduto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CorProduto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoCorPadrao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo  da cor padrão do modelo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:long"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

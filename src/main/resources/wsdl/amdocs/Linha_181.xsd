@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:complexType name="ImeiEsn">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes sobre imei (GSM) ou esn (CDMA)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="imeiEsn" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do IMEI (de aparelhos GSM) ou do ESN
+						(para aparelhos CDMA).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="17"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataDesbloqueio" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de desbloqueio de aparelhos GSM</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoDesbloqueio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo de desbloqueio SIMLock.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="chaveCriptografia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Chave de descriptografia(KI) em formato
+						hexadecimal. Deve ser convertida para formato
+						decimal antes de ser utilizada para
+						descriptografar o codigo de desbloqueio de
+						simLock.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="chaveAdm" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Chave Administrativa que e utilizada para
+                		acesso local ao cartao, por exemplo ler as
+                		informacoes do cartao num leitor de cartao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="16"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="chaveOp" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Chave de descriptografia(OP para 3G) em formato
+						hexadecimal. Deve ser convertida para formato
+						decimal antes de ser utilizada para
+						descriptografar o codigo de desbloqueio de
+						simLock.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:maxExclusive value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="chaveTk" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Chave de descriptografia(Tk para GSM) em formato
+						hexadecimal. Deve ser convertida para formato
+						decimal antes de ser utilizada para
+						descriptografar o codigo de desbloqueio de
+						simLock.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:maxExclusive value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

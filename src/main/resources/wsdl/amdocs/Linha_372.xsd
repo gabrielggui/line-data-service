@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:lin="http://www.vivo.com.br/MC/Assinatura" xmlns:sca="http://www.vivo.com.br/MC/SCA" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="Linha_5.xsd" namespace="http://www.vivo.com.br/MC/SCA"/>
+  <xs:import schemaLocation="Linha_2.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:import schemaLocation="Linha_29.xsd" namespace="http://www.vivo.com.br/MC/NFO"/>
+  <xs:complexType name="ParametrosTrocarNumeroPrePago">
+    <xs:sequence>
+      <xs:element name="linhaAtual" type="lin:Linha"/>
+      <xs:element name="linhaNova" type="lin:Linha"/>
+      <xs:element name="usuario" type="sca:UsuarioSCA"/>
+      <xs:element name="motivoOperacao" type="nfo:MotivoOperacao"/>
+      <xs:element name="avisoTrocaNumero" type="xs:boolean"/>
+      <xs:element name="indicaPortabilidade" type="xs:boolean"/>
+      <xs:element name="indicaNumeroVivo" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

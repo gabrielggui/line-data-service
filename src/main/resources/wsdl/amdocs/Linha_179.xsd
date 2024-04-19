@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Portabilidade" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spn="http://www.vivo.com.br/MC/Portabilidade" xmlns:ger="http://www.vivo.com.br/MC/Geral">
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha.xsd"/>
+  <xs:complexType name="NotificacaoEventoPortabilidade">
+    <xs:annotation>
+      <xs:documentation>Entidade que identifica a notificacao de evento de uma portabilidade</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigoEvento" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do evento da portabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataProcessamentoEvento" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de processamento do evento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroBilhetePortabilidade" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do bilhete de portabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataJanela" type="xs:dateTime" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da janela da portabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="erro" type="ger:ErroInfo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Erro ocorrido no evento da portabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="instanceId" type="xs:integer" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Id da instancia que ocorreu o evento da portabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NotificacoesEventoPortabilidade">
+    <xs:sequence>
+      <xs:element name="notificacaoEventoPortabilidade" type="spn:NotificacaoEventoPortabilidade" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

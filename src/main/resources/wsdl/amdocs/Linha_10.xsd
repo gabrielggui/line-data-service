@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <xs:complexType name="ControlePolling">
+    <xs:annotation>
+      <xs:documentation>Usado como saida de operacoes que serao utilizados como
+				polling.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="estadoPolling" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se a operacao deve ser executada
+						novamente ou nao pela atividade de integracao. 
+						0 - sucesso; 
+						1 - re-tentar.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mensagem" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

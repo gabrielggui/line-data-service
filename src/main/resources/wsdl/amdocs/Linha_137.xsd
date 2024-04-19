@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:complexType name="PontuacaoCredito">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes de analise de credito do cliente.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="valorPontuacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor da pontuacao de credito (Credit Score)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataPontuacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da pontuacao de credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroReferencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero que identifica unicamente uma aplicacao
+						de credito. Deve ser preechido apenas se o
+						Credit Score for diferente de 0.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

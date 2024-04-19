@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:complexType name="CampoFormulario">
+    <xs:annotation>
+      <xs:documentation>Identifica as informacoes necessarias para montar os
+				campos dinamicamente dos formulatios de atendimento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um campo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do campo, como: Valor Procedente, Valor
+						Pago, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoDado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do tipo de dados associado ao campo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="layoutApresentacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Layout de apresentacao do campo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mascaraApresentacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mascara de preenchimento do campo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tamanho" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de caracteres que podem ser
+						informados no campo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor associado ao campo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valoresCampoFormulario" type="ps:ValoresCampoFormulario" minOccurs="0"/>
+      <xs:element name="possuiDominio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o campo possui dominio de valores ou
+						nao. Usado internamente para determinar se a
+						lista de valores de dominio deve ou nao ser
+						obtida durante o processamento do SE. 1 - true;
+						0 - false.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="realizarPesquisa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se deve ser realizada uma pesquisa para
+						que sejam obtidos os valores possiveis, atraves
+						do formulario de pesquisa associado ao nome do
+						campo (inpesquisa = 1). 1 - true; 0 - false</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nivel" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nivel do campo. Usado apenas para campos
+						dependentes. Sempre igual a 1.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="campoObrigatorio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o campo eh obrigatorio ou nao. 1 -
+						true; 0 - false.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoCampoValorFormulario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica um relacionamento entre o campo e o
+						formulario (idFormularioCampoValor)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CamposFormulario">
+    <xs:sequence>
+      <xs:element name="campoFormulario" type="ps:CampoFormulario" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValorCampoFormulario">
+    <xs:annotation>
+      <xs:documentation>Valores possiveis para os campos do formulario de
+				atendimento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um valor possivel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor possivel do campo do formulario</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValoresCampoFormulario">
+    <xs:sequence>
+      <xs:element name="valorCampoFormulario" type="ps:ValorCampoFormulario" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

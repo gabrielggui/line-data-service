@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:pes="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="Linha_118.xsd" namespace="http://www.vivo.com.br/MC/Pessoa"/>
+  <xs:complexType name="ParametrosBuscarDetalhesLinhasPorCliente">
+    <xs:sequence>
+      <xs:element name="cliente" type="pes:Cliente"/>
+      <xs:element name="qtRegsPorPagina" type="xs:integer"/>
+      <xs:element name="nrPagina" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <xs:complexType name="BoletimOcorrencia">
+    <xs:sequence>
+      <xs:element name="numeroBoletimOcorrencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do BO</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cidadeBoletimOcorrencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Cidade onde foi registrado o BO</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ufBoletimOcorrencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Uf de onde foi registrado o BO.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="delegaciaBoletimOcorrencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da delegacia onde o BO foi registrado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataBoletimOcorrencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de ocorrencia do BO.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="possuiBoletimOcorrencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se o cliente possui boletim de
+						ocorrencia. 
+						true - possui boletim de ocorrencia;
+						false - nao possui boletim de ocorrencia.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

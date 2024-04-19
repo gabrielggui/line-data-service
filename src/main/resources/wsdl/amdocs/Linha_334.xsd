@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <complexType name="DadosRedeMetalica">
+    <sequence>
+      <element name="NoNISIP" type="string" maxOccurs="1" minOccurs="0"/>
+      <element name="NomeNISIP" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="Endippc" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="EndIPModemLan" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="MascModemLan" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="EndIPModemWan" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="MascModemWan" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="EndIPGateway" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="MascGateway" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="EndIPLoopBackWan" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="MascIPLoopBackWan" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="MaskEndIPPC" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+</schema>

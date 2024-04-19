@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Sigan" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sg="http://www.vivo.com.br/MC/Sigan" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <xs:include schemaLocation="Linha_36.xsd"/>
+  <xs:include schemaLocation="Linha_37.xsd"/>
+  <xs:include schemaLocation="Linha_38.xsd"/>
+  <xs:include schemaLocation="Linha_48.xsd"/>
+  <xs:include schemaLocation="Linha_49.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_16.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_7.xsd"/>
+  <xs:complexType name="Numero">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos numeros disponiveis para a Vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="numeroTelefone" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do telefone.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pais" type="ps:Pais" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pais.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="localidade" type="sg:Localidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Localidade.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="categoriaNumero" type="sg:CategoriaNumero" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CategoriaNumero para
+						identifica a qual categoria o numero pertence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operadora" type="gr:Operadora" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Operadora para identificar
+						a qual operadora o numero pertence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusNumero" type="sg:StatusNumero" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade StatusNumero.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroVivo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador do destino do numero(esta na VIVO ou nao):
+						0(False)-Nao VIVO, 1(True)-VIVO</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="redeMovel" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>indica o tipo da Rede de Telefonia, True para Movel e False para Fixa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="prioridade" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do telefone.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:short"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Numeros">
+    <xs:sequence>
+      <xs:element name="numero" type="sg:Numero" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

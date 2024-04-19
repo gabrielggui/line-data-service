@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	27/2/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:include schemaLocation="Linha_132.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_127.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Conta" schemaLocation="Linha_128.xsd"/>
+  <xs:include schemaLocation="Linha_133.xsd"/>
+  <xs:complexType name="TipoCarteira">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos tipos de carteiras validos.
+				Exemplos: CLIENTE NACIONAL, GDE CONTA, GC GOV MUNICIPAL,
+				etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica os tipos de carteiras validos para a
+						vivo. Exemplos: CLIENTE NACIONAL, GDE CONTA, GC
+						GOV MUNICIPAL, etc</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoTpCarteiraSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica a classe do cliente (a
+						carteira) no sistema Atlys</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla que identifica o tipo da carteira.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="25"/> Retirado por Dilmara Matos em 01/09/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="corporativo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o tipo de carteira e usado para
+						clientes corporativos ou fisicos, sendo true
+						para clientes corporativos e false para clientes
+						fisicos. 1 - true / 0 - false</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="peso" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do peso da classificacao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de carteira.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="50"/> Retirado por Dilmara Matos em 01/09/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoPessoa" type="ps:TipoPessoa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoPessoa para
+						identificar se e cliente PF ou PJ.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoCliente" type="ps:TipoCliente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoCliente para
+						identificar o tipo do cliente existente no
+						sistema.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="classeCredito" type="ct:ClasseCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ClasseCredito</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoConta" type="ct:TipoConta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoConta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoAssinante" type="ass:TipoAssinante" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoAssinante</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCarteirizacao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica a data da carteirizacao
+						implementada para esta PESSOA</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TiposCarteira">
+    <xs:sequence>
+      <xs:element name="tipoCarteira" type="ps:TipoCarteira" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

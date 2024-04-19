@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Siebel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sie="http://www.vivo.com.br/MC/Siebel" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda" xmlns:spn="http://www.vivo.com.br/MC/Portabilidade">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/OrdemVenda" schemaLocation="Linha_68.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/OrdemVenda" schemaLocation="Linha_113.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Portabilidade" schemaLocation="Linha_115.xsd"/>
+  <xs:include schemaLocation="Linha_59.xsd"/>
+  <xs:include schemaLocation="Linha_180.xsd"/>
+  <xs:complexType name="ItemPedidoSiebel">
+    <xs:annotation>
+      <xs:documentation>Referencia a Entidade Entrega, Este atributo e o vivoStatusEntrega este dados sera utilizado no processo de NF.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>RowId do item do pedido no Siebel. Esse valor e informado no envio do Pedido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation/>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="linha" maxOccurs="1" minOccurs="0" type="ass:Linha">
+        <xs:annotation>
+          <xs:documentation>Este Atributo Referencia a entidade Linha. Nesse campo
+				deve ser informado o Subscription Id do Atlys quando da
+				criacao de uma assinatura, No Siebel este campo Chama se
+				IntegrationId</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="notaFiscal" maxOccurs="1" minOccurs="0" type="ov:NotaFiscal">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade canonica nota fiscal</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="observacao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este atributo retornara observacoes do usuario do
+				sistema</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="250"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="doacao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag que indica se o recurso foi Doado, Este atributo e
+				VivoDoacao no Siebel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="portabilidade" maxOccurs="1" minOccurs="0" type="spn:Portabilidade">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade Portabilidade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusItemPedido" maxOccurs="1" minOccurs="0" type="sie:StatusItemPedidoSiebel">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade status do item do Pedido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusEntrega" maxOccurs="1" minOccurs="0" type="ov:Entrega">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade entrega onde temos a entidade
+				status de entrega do pedido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusFaturamento" maxOccurs="1" minOccurs="0" type="sie:StatusFaturamentoSiebel"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ItensPedidoSiebel">
+    <xs:sequence>
+      <xs:element name="itemPedidoSiebel" maxOccurs="unbounded" minOccurs="0" type="sie:ItemPedidoSiebel">
+        <xs:annotation>
+          <xs:documentation>lista de Itens de Pedido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

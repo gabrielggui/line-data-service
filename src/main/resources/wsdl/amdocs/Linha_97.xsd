@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Catalogo" elementFormDefault="qualified" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="GruposProduto">
+    <xs:annotation>
+      <xs:documentation>Referencia a entidade GrupoProduto que representa um grupo
+        		de aparelhos com caracteristicas em comum. Por ex: O
+        		Grupo de nome "IPhone 8G" possui os aparelhos "IPhone 8G
+        		preto", "IPhone 8G branco" e "IPhone 8G rosa", onde cada
+        		aparelho é um produto representado na entidade
+        		Produto.xsd</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="grupoAparelho" type="cat:GrupoProduto" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrupoProduto">
+    <xs:annotation>
+      <xs:documentation>Representa um grupo de aparelhos com caracteristicas em
+        		comum. Por ex: O Grupo de nome "IPhone 8G" possui os
+        		aparelhos "IPhone 8G preto", "IPhone 8G branco" e
+        		"IPhone 8G rosa", onde cada aparelho é um produto
+        		representado na entidade Produto.xsd</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo do Grupo de produtos. Grupos de produtos
+                		são por exemplo: o grupo de nome "IPhone 8G"
+                		possui os aparelhos "IPhone 8G preto", "IPhone
+                		8G branco" e "IPhone 8G rosa", onde cada
+                		aparelho é um produto representado na entidade
+                		Produto.xsd</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome do Grupo de produtos. Por exemplo: o grupo
+        				de nome "IPhone 8G" possui os aparelhos "IPhone
+        				8G preto", "IPhone 8G branco" e "IPhone 8G
+        				rosa", onde cada aparelho é um produto
+        				representado na entidade Produto.xsd</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

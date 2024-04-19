@@ -1,0 +1,4 @@
+spring:
+  application.name: line-data-service
+linha:
+  url: http://alsb3-soa/Linha?wsdl

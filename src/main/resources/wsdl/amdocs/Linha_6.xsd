@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gr="http://www.vivo.com.br/MC/Geral">
+  <xs:include schemaLocation="Linha_1.xsd"/>
+  <xs:include schemaLocation="Linha.xsd"/>
+  <xs:include schemaLocation="Linha_7.xsd"/>
+  <xs:include schemaLocation="Linha_8.xsd"/>
+  <xs:include schemaLocation="Linha_9.xsd"/>
+  <xs:include schemaLocation="Linha_10.xsd"/>
+</xs:schema>

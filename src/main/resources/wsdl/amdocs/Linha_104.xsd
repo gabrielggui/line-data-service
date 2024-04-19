@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_76.xsd"/>
+  <xs:complexType name="ValidacaoProduto">
+    <xs:annotation>
+      <xs:documentation>Lista das validações registradas.
+				A lista só será preenchida se houver alguma validação NOK (por isso não são campos obrigatórios).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descrição da mensagem devoldida de acordo com os parêmetros recebidos nas demais variáveis.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código do produto enviado pelo  catálogo WEB.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoProduto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código do produto gerado e controlado na extração.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoRelacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de relação encontrada entre produto / solicitação comercial ou entre produto / produto.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoServico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Origem da incompatibilidade
+						Ex.:
+						PV - Pedido em voo
+						PQ - Parque
+						PE - Pedido Corrente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoValidacaoParque" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo da validação encontrada.
+						Ex.:
+						R - Restritiva
+						I - Informativa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pontoParada" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicará o ponto em que validação parou, conforme regra sequencial do programa.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValidacaoProdutos">
+    <xs:sequence>
+      <xs:element name="validacaoProduto" type="cat:ValidacaoProduto" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

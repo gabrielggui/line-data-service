@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NGIN" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ngi="http://www.vivo.com.br/MC/NGIN">
+  <xs:complexType name="TipoRecarga">
+    <xs:annotation>
+      <xs:documentation>Tipo de recarga, por exemplo: cartao fisico, lojas
+				proprias, bancaria, cartao de credito, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o tipo de recarga. ex: 0
+						ou 1</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de recarga ex: 0 - recarga
+						eventual, 1 - recarga programada</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="150"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TiposRecarga">
+    <xs:sequence>
+      <xs:element name="tipoRecarga" type="ngi:TipoRecarga" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

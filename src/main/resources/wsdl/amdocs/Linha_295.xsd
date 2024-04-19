@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_296.xsd"/>
+  <xs:include schemaLocation="Linha_298.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_82.xsd"/>
+  <xs:complexType name="Contato">
+    <xs:annotation>
+      <xs:documentation>Contatos pessoais de clientes corporativos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um contato do
+						cliente/prospect (idpessoacomunicacao no
+						Vivonet).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoContSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o contato nos sistemas
+						origens, como Atlys, NGIN, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="textoContato" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Texto que identifica o meio para contato.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeContato" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome de contato do representante de um cliente
+						corporativo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="128"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="contatoPreferencial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica qual e o tipo de contato preferencial do
+						cliente, sendo true para contato preferencial.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataUltimaAlteracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de ultima alteracao do registro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoContato" type="ps:TipoContato" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoContato</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cargoContato" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Cargo da pessoa de contato na empresa, apenas
+						para cliente corporativo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroSincronismo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este elemento informa o numero de sincronismo do
+						Altys e o VIVONET</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="textoAdicionalContato" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Texto adicional de um determinado contato. Pode
+						ser utilizado, por exemplo, para o numereo do
+						ramal</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroTransacao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este elemento ser� apenas retorna para clientes
+						Atis</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="relacao" type="ps:RelacaoContato" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que contem informacoes da relacao com o
+						contato</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorContatoLogin" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se ha login para o contato
+						especificado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="autorizaReceberEmail" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador se o contato autoriza o recebimento de
+						email</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sequenciaPreferencial" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica qual a ordem de preferencia
+						do cliente a ser seguida nas tentativas de
+						contato com o mesmo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sistemaOrigem" type="cat:Sistema" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sistema Origem do cadastro do contato,
+						representa o sistema onde foi cadastrado o
+						contato. Referencia a entidade Sistema.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoTelefone" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo de telefone.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroTelefone" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo de telefone.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Contatos">
+    <xs:sequence>
+      <xs:element name="contato" type="ps:Contato" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

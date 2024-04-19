@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	28/2/2008--><xs:schema targetNamespace="http://www.vivo.com.br/MC/Catalogo" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_73.xsd"/>
+  <xs:complexType name="Tecnologia">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das tecnologias: GSM, CDMA.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica a tecnologia, se GSM ou CDMA.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla da tecnologia.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="45"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da tecnologia: GSM ou CDMA.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoFrequencia" type="xs:long" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica a frequencia</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="frequencia" type="xs:long" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Frequencia da Tecnologia 900Mhz,1800Mhz,2100Mhz</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoTecnologiaSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica a tecnologia no sistema
+						origem</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoTipoTransmissao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>0-SEM TRANSMISSAO, 5-HD DIGITAL, 10-DIGITAL,
+						20-ANALOGICO</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipo" type="cat:TipoTecnologia" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que contem as informacoes sobre o tipo
+						de tecnologia do produto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="possuiCobertura" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a tecnologia possui cobertura,
+						true = tecnologia possui cobertura
+						false = tecnologia não possui cobertura</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pontaA" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica o código da Estação associado ao cabo ponta A. (Ex:SPO.PD)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pontaB" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica o código da Estação associado ao cabo ponta B. (Ex:SPO.ZE)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numero" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica o número de sequencia do cabo óptico. Exemplo: 0735</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fibra" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica o número de sequencia do cabo óptico. Exemplo: 409</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="documentoCadastro" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica o documento de criação do equipamento. (Exemplo: ATP 0025/2009)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataDocumento" type="xs:date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data do documento. (Exemplo:2011-04-06T00:00:00-03:00)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Tecnologias">
+    <xs:sequence>
+      <xs:element name="tecnologia" type="cat:Tecnologia" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

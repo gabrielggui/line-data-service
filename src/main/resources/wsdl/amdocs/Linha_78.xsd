@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	7/4/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_79.xsd"/>
+  <xs:complexType name="EstoqueProduto">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos estoques de produtos disponiveis
+				por centro de distribuicao.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um estoque no sistema de
+						Catalogo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdEstoque" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de produtos em estoque</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="7"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="centroDistribuicao" type="cat:CentroDistribuicao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade CanalVenda para
+						identificar os estoques disponiveis do produto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EstoquesProduto">
+    <xs:sequence>
+      <xs:element name="estoqueProduto" type="cat:EstoqueProduto" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

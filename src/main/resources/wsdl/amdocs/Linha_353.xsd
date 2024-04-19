@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:wfw="http://www.vivo.com.br/MC/Workflow" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_116.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_81.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Workflow" schemaLocation="Linha_162.xsd"/>
+  <xs:complexType name="ProcessoAtendimento">
+    <xs:sequence>
+      <xs:element name="atendimento" type="ps:Atendimento" minOccurs="0"/>
+      <xs:element name="pessoa" type="ps:Pessoa" minOccurs="0"/>
+      <xs:element name="acoesWorkflow" type="wfw:AcoesWorkflow" minOccurs="0"/>
+      <xs:element name="motivoAtendimento" type="ps:MotivoAtendimento" minOccurs="0"/>
+      <xs:element name="canaisAtendimento" type="cat:CanaisAtendimento" minOccurs="0"/>
+      <xs:element name="procedencias" type="ps:Procedencias" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

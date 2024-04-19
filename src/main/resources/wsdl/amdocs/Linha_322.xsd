@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_256.xsd"/>
+  <xs:include schemaLocation="Linha_323.xsd"/>
+  <xs:include schemaLocation="Linha_324.xsd"/>
+  <xs:complexType name="LinhaHotLine">
+    <xs:sequence>
+      <xs:element name="motivoHotLine" type="ass:MotivoHotLine" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade MotivoHotline</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="prioridade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao da HotLine</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="motivoSuspensao" type="nfo:MotivoSuspensao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade MotivosSuspensao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataSuspensao" minOccurs="0" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Data efetiva da suspensao do numero de acesso.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linhaBloqueio" type="ass:LinhaBloqueio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia entidade LinhaBloqueio</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinhasHotLine">
+    <xs:sequence>
+      <xs:element name="linhaHotLine" type="ass:LinhaHotLine" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

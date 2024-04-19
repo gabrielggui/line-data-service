@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NGIN" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ngi="http://www.vivo.com.br/MC/NGIN" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_14.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_15.xsd"/>
+  <xs:include schemaLocation="Linha_349.xsd"/>
+  <xs:complexType name="CartaoFisico">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos cartoes fisicos usados para
+				realizar recargas.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="senha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica o numero de senha do cartao fisico.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroSerie" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o numero de serie
+						existente no cartao fisico.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="distribuidor" type="ngi:DistribuidorCartaoFisico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade DistribuidorCartaoFisico.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorFace" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor de face associado a este Voucher</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="lote" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do lote do cartao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCadastro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de cadastro do cartao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataValidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de validade do cartao fisico. Diferente da
+						data de validade dos creditos para o cliente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="uf" type="cat:Uf" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Uf.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="regional" type="sca:Regional" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Regional para identificar
+						o nome da regional do NGIN, como VIVO BA/SE</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CartoesFisicos">
+    <xs:sequence>
+      <xs:element name="cartaoFisico" type="ngi:CartaoFisico" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Created by projeto Venda de Linha Fixa (59352)
+	* Version:		1.0
+	* Date Created:	13/11/2013--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ger="http://www.vivo.com.br/MC/Geral">
+  <xs:complexType name="Indicador">
+    <xs:annotation>
+      <xs:documentation>Elemento responsavel por abstrair qualquer indicador</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descrição  do indicador - exemplos:
+                        - indicaOfertaSpeedySoloFibra 
+                          Criado na demanda 59352 usado pelo SN OfertaLinhaFixa.
+                          Descrição: Indica se buscam as ofertas de Linha W para instalação de Speedy Solo para Fibra 
+                        - indicaOfertaSpeedySoloCobre
+                          Criado na demanda 59352 usado pelo SN OfertaLinhaFixa.
+                          Descrição: Indica se buscam as ofertas de Linha W para instalação de Speedy Solo para Cobre
+                        - indicaOfertaConvergenteFibra
+                          Criado na demanda 59352 usado pelo SN OfertaLinhaFixa.
+                          Descrição: Indica se a oferta é convergente. A camada exigirá a compra de um Speedy FIBRA                                                                                               
+                        - indicaOfertaConvergenteCobre
+                          Criado na demanda 59352 usado pelo SN OfertaLinhaFixa.
+                          Descrição: Indica se a oferta é convergente. O canal/consumidor exigirá a compra de um Speedy ADSL
+                        - indicaOfertaComplementar 
+           				  Criado na demanda 59352 usado pelo SN OfertaLinhaFixa.
+           				  Descrição: Indica se a oferta possui alguma oferta complementar</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="status" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Status do Indicador true ou false.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cdIndicador" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Código do Indicador</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tpIndicador" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo de Indicador</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sqOrdenacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sequencia de ordenação do Indicador</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="vlIndicador" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do Indicador</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numIndicador" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>valor do indicador inteiro</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:int"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Indicadores">
+    <xs:sequence>
+      <xs:element name="indicador" type="ger:Indicador" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

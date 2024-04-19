@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/OrdemVenda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_2.xsd"/>
+  <xs:complexType name="OrdemItemSerial">
+    <xs:sequence>
+      <xs:element name="serial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de serial dos produtos da ordem de venda,
+						podendo ser um IMEI, ESN, ICCID, etc</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="linha" type="ass:Linha" minOccurs="0"/>
+      <xs:element name="statusFaturaSerial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do Status do Serial
+						1- Nao Existe;
+						2 - Existe a Faturar;
+						3 - Existe ja Faturado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdemItensSeriais">
+    <xs:sequence>
+      <xs:element name="ordemItemSerial" type="ov:OrdemItemSerial" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

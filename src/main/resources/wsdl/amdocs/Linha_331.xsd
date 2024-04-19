@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/SCA" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:include schemaLocation="Linha_327.xsd"/>
+  <xs:complexType name="GrupoSistema">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastro dos grupos do sistema. Exemplos de
+				grupos: Vendedor - Loja Propria - SP / Vendedor - Lojas
+				Propria - Leste / Gerente - Lojas Proprias - SP, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do grupo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="horarioDisponibilidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Defini o horario limite de realizacao do login
+						pelo grupo do sistema.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="percentualAlcadaFinanceira" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Defini o percentual de desconto que o grupo
+						cadastrado podera conceder nas operacoes que
+						envolvem vendas.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="6"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="alcadaLiberacaoRestricoes" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Defini quais grupos podem realizar servicos com
+						restricoes (quer seja credito, risco, fraude ou
+						negocio). API aceita valores sim (true) ou
+						nao(false).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="gruposSubordinados" minOccurs="0" type="sca:GruposSistema">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade GruposSistema para definir
+						outros grupos para os quais podera liberar as
+						restricoes.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ipsAutorizados" minOccurs="0" type="sca:IPs">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade IPs para definir quais os
+						ips autorizados para o grupo. Essa informacao
+						sera utilizada oara validar se o IP do local de
+						realizacao do login confere com o IP configurado
+						para o grupo associado ao usuario.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GruposSistema">
+    <xs:sequence>
+      <xs:element name="grupoSistema" type="sca:GrupoSistema" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

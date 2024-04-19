@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:include schemaLocation="Linha_338.xsd"/>
+  <xs:include schemaLocation="Linha_2.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_29.xsd"/>
+  <xs:complexType name="PromocaoLinha">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das promocoes ja associadas ao
+				cliente.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="acao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a promocao impactada eh substitutiva
+						ou exclusiva. S - substituicao (utilizado quando
+						a promocao for automaticamente substituida se a
+						linha optar por se cadastrar); E - exclusividade
+						(utilizado quando a promocao existente impede
+						que a linha se cadastre)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoAcao" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAtivacaoPromocao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que a promocao foi ativada para a linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFimPromocaoCliente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data Fim de Promocao do Cliente na linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataStatusPromocao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de status da promocao na linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="diaVivoPromocao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Dia Vivo da promocao para o cliente. Dia do mes
+						entre 1 e 31. Pode ser nulo caso a promocao nao
+						tenha dia VIVO. E a data de validade de uma
+						promocao a contar da data de subscricao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="eventosPromocao" type="ass:EventosPromocao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>referencia uma lista de evento que a promocao
+						deva sofrer</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linha" minOccurs="0" maxOccurs="1" type="ass:Linha"/>
+      <xs:element name="motivoOperacao" minOccurs="0" maxOccurs="1" type="nfo:MotivoOperacao">
+        <xs:annotation>
+          <xs:documentation>Codigo Motivo ou Razao para alterar o estado da
+						promoção na linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="promocao" type="ass:Promocao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Promocao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusPromocao" type="ass:StatusPromocao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade StatusPromocao para
+						identifica o status vigente para a promocao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="observacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Observacoes gerais sobre o relacionamento de uma
+						promocao á linha</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PromocoesLinha">
+    <xs:sequence>
+      <xs:element name="promocaoLinha" type="ass:PromocaoLinha" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EventoPromocao">
+    <xs:sequence>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>descricao de evento de promocao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EventosPromocao">
+    <xs:sequence>
+      <xs:element name="eventoPromocao" type="ass:EventoPromocao" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_82.xsd"/>
+  <xs:complexType name="StatusAssinatura">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastro dos possiveis status validos para uma
+
+				assinatura.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica o status do assinate. Exemplos: E -
+
+						Ativo, D - Desativo, S - Suspenso.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoStatusSistemaOrigem" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do status no sistema origem. No vivonet
+
+						essa informacao e representada pela sigla.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao codigo do status da assinatura.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="classificacao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Classifica os status, indicando quais sao status
+
+						a linha estaria ativa, cancelada, pre-ativada,
+
+						etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="linhaCancelada" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica os status dos sistemas onde a linha
+
+						estaria cancelada. False - status de nao
+
+						cancelamento de linha; True - status de
+
+						cancelamento de linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sistemaOrigem" type="cat:Sistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sistema.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListaStatusAssinatura">
+    <xs:sequence>
+      <xs:element name="statusAssinatura" type="ass:StatusAssinatura" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.vivo.com.br/SN/Linha" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:lin="http://www.vivo.com.br/SN/Linha">
+  <xsd:complexType name="ParametrosCancelarPortabilidadeLinhaPos">
+    <xsd:sequence>
+      <xsd:element name="numeroAcesso" type="xsd:string" minOccurs="1"/>
+      <xsd:element name="multaQuebraContrato" type="xsd:boolean" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

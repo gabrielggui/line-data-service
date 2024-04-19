@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* Project: Canonico.dm1 * Version: 2.0 * Date Created: 3/3/2008 * Date 
+	Update: 13/04/2011 * Author Update: Michelle Vaz Alves Teixeira--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_205.xsd"/>
+  <xs:include schemaLocation="Linha_206.xsd"/>
+  <xs:include schemaLocation="Linha_2.xsd"/>
+  <xs:complexType name="Saldo">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes de todos os valores de saldos
+				existente para os clientes pre-pagos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="valorSaldo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do saldo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="17"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataValidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de expiracao da validade do saldo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="unidadeSaldo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Unidade do Saldo. Ex: MIN, EVE,MON</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoSaldo" type="ass:TipoSaldo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoSaldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linha" type="ass:Linha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao (detalhes do saldo)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInicioValidade" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>data do inicio da validade de um saldo em uma
+						linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeCaixaSaldo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome da caixa de saldo no billing pré-pago na
+						qual o saldo pertence. Exemplo: NOR (Recarga),
+						HIB (Saldo de
+						franquia), INI (Saldo Inicial)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeGrupo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome do grupo de saldo que determina saldo
+						pertence. Por exemplo: Grupo Bonus são
+						pertencentes os saldos do
+						tipo A, B e C</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="origemCaixaSaldo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>descrição do primeiro evento que originou a
+						criação da caixa de saldo para o cliente.
+						Exemplo: Para o saldo NOR
+						– “Recarga física”
+						Para o saldo HIB – “Franquia Plano Controle”</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoCaixaSaldo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que deverá armazenar o Codigo do nome
+						de
+						caixa saldo referente ao elemento
+						nomeCaixaSaldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoOrigemCaixaSaldo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que deverá armazenar o Codigo Origem de
+						Caixa de Saldo referente ao elemento
+						origemCaixaSaldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoUnidadeSaldo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Descrição da unidade de Saldo ex:
+						MON(Monetario),
+						EVE(Eventos), MIN(Minuto)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorLimiteDiario" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Valor Limite diario</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="17"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorSaldoTotal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Valor total do Saldo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="17"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorSaldoLimiteDiario" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Valor do limite diario do saldo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="17"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataConsultaSaldo" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="valorConsumidoSaldo" type="xs:decimal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor já consumido do saldo contratado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorSaldoDisponivel" type="xs:decimal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do saldo disponivel para consumo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="limiteTotalSaldo" type="xs:decimal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Limite total do saldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tempoDuracaoSaldo" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tempo de duração do saldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ultimaAtualizacaoSaldo" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da última atualização do saldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoPacote" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descrição do produto/pacote que concedeu o saldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ultimaAtualizacaoSaldoCompartilhado" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da última atualização do saldo compartilhado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldoConsumidoAcumulado" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Volume em Mb de consumo do saldo de Rollover na data da consulta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldoConcedidoAcumulado" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Volume em Mb do saldo de RollOver em Mb.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="limiteConcedidoCicloAnterior" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa limite do saldo de Rollover concedido no último ciclo Megabytes (MB).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldoConsumidoCicloAnterior" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa somatória do valor consumido no último ciclo, do saldo de Rollover Megabytes (MB).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="grupoPacote" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica o grupo do pacote</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigo" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa o código do saldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identificadorModoUtilizacao" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento identifica o modo de ultilização do saldo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaSaldoLimitado" type="xs:boolean" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indica o saldo limitado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdeAlteracaoCotaCiclo" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de vezes que a configuração das cotas
+						da conta consultada foi alterada no ciclo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataUltimaAlteracaoCota" type="xs:date" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da última alteração de cota</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="consumoExcedenteConta" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Saldo de rollover</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bonus" type="ass:VolumeSaldo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Saldo de bonus</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pacoteAvulso" type="ass:VolumeSaldo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Saldo de pacote avulso</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="totalConsumoLinha" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Volume em MB de consumo individual da linha no saldo de franquia</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorCotaLinha" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor em MB da cota configurada para linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldoConsumidoAcumuladoLinha" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Volume em MB de consumo individual da linha excedente ao saldo de franquia</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="consumoFranquiaAlwaysOn" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica consumo da franquia do Always On</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="franquiaAlwaysOn" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica consumo da franquia do Always On</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="consumoFranquiaDoubleStream" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica consumo da franquia do Double Stream</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="franquiaDoubleStream" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica franquia do Double Stream</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VolumeSaldo">
+    <xs:sequence>
+      <xs:element name="consumoSaldo" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="totalSaldo" type="xs:string" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Saldos">
+    <xs:sequence>
+      <xs:element name="saldo" type="ass:Saldo" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

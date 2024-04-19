@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda">
+  <xs:include schemaLocation="Linha_76.xsd"/>
+  <xs:include schemaLocation="Linha_27.xsd"/>
+  <xs:include schemaLocation="Linha_217.xsd"/>
+  <xs:include schemaLocation="Linha_21.xsd"/>
+  <xs:include schemaLocation="Linha_22.xsd"/>
+  <xs:complexType name="OfertaItem">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes de todos os itens de oferta
+				possiveis, as combinacoes de planos e modelos e suas
+				formas e condicoes de pagamento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="plano" type="cat:Plano" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Plano.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produto" type="cat:Produto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Produto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contratoFidelizacao" type="cat:ContratoFidelizacao" minOccurs="0"/>
+      <xs:element name="ofertaServicos" type="cat:OfertaServicos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Produto.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servicos" type="cat:Servicos" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>referencia a lista servicos</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OfertaItens">
+    <xs:sequence>
+      <xs:element name="ofertaItem" type="cat:OfertaItem" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

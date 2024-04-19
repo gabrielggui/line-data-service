@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:complexType name="LinhaCompartilhada">
+    <xs:annotation>
+      <xs:documentation>Numero do terminal associado à linha compartilhada.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="numeroLinha" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Numero do Telefone compartilhado.
+						Ex.: DDD + Número.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinhasCompartilhada">
+    <xs:sequence>
+      <xs:element name="linhaCompartilhada" type="ass:LinhaCompartilhada" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

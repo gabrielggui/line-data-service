@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ger="http://www.vivo.com.br/MC/Geral" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda">
+  <xs:include schemaLocation="Linha_216.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/OrdemVenda" schemaLocation="Linha_108.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_193.xsd"/>
+  <xs:include schemaLocation="Linha_31.xsd"/>
+  <xs:include schemaLocation="Linha_72.xsd"/>
+  <xs:complexType name="Oferta">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das matrizes de ofertas validas para
+				a Vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma oferta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da oferta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ofertaItens" type="cat:OfertaItens" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade OfertaItens</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoPedido" type="ov:TipoPedido" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade TipoPedido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valor" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Valor de uma oferta composta por itens de oferta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorProgramaPontos" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>valor da oferta subtraído do desconto subsidiado
+						pelo programa de pontos da Vivo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoPrioridade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo da prioridade da Oferta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="plataforma" minOccurs="0" maxOccurs="1" type="cat:Plataforma">
+        <xs:annotation>
+          <xs:documentation>Plataforma (pre, pos, controle) para a qual a
+						oferta é destinada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tecnologia" minOccurs="0" maxOccurs="1" type="cat:Tecnologia">
+        <xs:annotation>
+          <xs:documentation>Tecnologia (CDMA, GSM, LTE) para a qual a
+						oferta é destinada</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadores" minOccurs="0" maxOccurs="1" type="ger:Indicadores">
+        <xs:annotation>
+          <xs:documentation>Elemento responsavel por abstrair indicador de uma Oferta Fixa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoOfertaSistemaOrigem" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o codigo da Oferta pelo Sistema Origem</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoTipoOferta" minOccurs="0" maxOccurs="1" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o codigo do tipo de oferta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorObrigatoria" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Indicador Obrigatorio</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Ofertas">
+    <xs:sequence>
+      <xs:element name="oferta" type="cat:Oferta" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

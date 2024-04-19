@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:complexType name="SiteCR">
+    <xs:annotation>
+      <xs:documentation>Retornar a lista sites dos consultores de relacionamento como: 
+					Goiania (Site Atento);
+					Em Salvador (Site Atento);
+					Em Porto Alegre (Site Atento);
+					Barao de Limeira (Site Dedic);
+					RJ - Barra da Tijuca (Site Proprio);
+					RJ - Teleporto (Site Atento);
+					Londrina (Site Dedic).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do site do consultor de relacionamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="150"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

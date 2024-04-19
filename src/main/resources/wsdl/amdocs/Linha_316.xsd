@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Estabelecimento" elementFormDefault="qualified" xmlns:est="http://www.vivo.com.br/MC/Estabelecimento" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:complexType name="EmpresaParceira">
+    <xs:sequence>
+      <xs:element name="codigo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo da empresa parceira</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da empresa parceira</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoFilial" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo da filial da empresa parceira</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeFilial" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da filial da empresa parceira</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EmpresasParceiras">
+    <xs:sequence>
+      <xs:element name="empresaParceira" type="est:EmpresaParceira" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

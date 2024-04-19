@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	28/2/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_133.xsd"/>
+  <xs:complexType name="Ciclo">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos ciclos de billing por tipo de
+				pessoa e dia de vencimento.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="diaVencimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Dia de vencimento do ciclo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <!--<xs:totalDigits value="2" />-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo" minOccurs="0" type="xs:string" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o ciclo de faturamento da
+						conta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tiposPessoa" type="ps:TiposPessoa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoPessoa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataInicio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de inicio do ciclo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFim" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fim do ciclo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataVencimentoProrrogado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data Limite de Vencimento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cicloDefault" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o ciclo mencionado eh default (true -
+						ciclo default; false - caso contrário)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 26/09/2011-->
+      <xs:element name="dataVigencia" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+      <!--Elemento criado por Dilmara Matos em 10/11/2011-->
+      <xs:element name="dataEfetivacao" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="dataEnvioMediacao" type="xs:date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de envio a mediação referente ao ciclo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="grupoCiclo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Grupo de ciclo de cobrança.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Ciclos">
+    <xs:sequence>
+      <xs:element name="ciclo" type="ct:Ciclo" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

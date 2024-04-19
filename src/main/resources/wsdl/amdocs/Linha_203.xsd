@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created with Liquid XML Studio Developer Edition (Trial) 8.0.2.1941 (http://www.liquid-technologies.com)--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="Linha_13.xsd"/>
+  <xs:include schemaLocation="Linha_93.xsd"/>
+  <xs:include schemaLocation="Linha_96.xsd"/>
+  <xs:complexType name="Tarifa">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das tarifas dos servicos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="valor" nillable="true">
+        <xs:annotation>
+          <xs:documentation>Valor de um servico, que pode ser uma tarifa
+						(valor unico cobrado para o servico) ou uma
+						assinatura (valor cobrado mensalmente).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoTarifa" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do tipo de tarifa. Ex.: Mensal,
+						Degustacao, Avulso</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="unidadeCusto">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Indica qual eh unidade de custo do servico,
+							se reais, se unidade, etc.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="tipoDebito" nillable="true" type="cat:TipoEncargo">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoEncargo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="seqServicoTarifa">
+        <xs:annotation>
+          <xs:documentation>Identifica a tarifa do servico
+						(SVC_PRICE_SEQ_NBR no Atlys)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="valorSemTaxa">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="tipoTarifaServico" type="cat:TipoTarifaServico">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade TipoTarifaServico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tarifaPreferencial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se a tarifa e a preferencial, sendo
+						true o tarifa preferencial.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1500"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="negociavel" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Indica-se a tarifa negociavel</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorMinimoNegociacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Esse elemento identifica o valor mínimo da
+                		negociação..</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorMaximoNegociacao" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="calculoPreco" type="cat:CalculoPreco" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade CalculoPreco</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Inicio da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="codigo" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="prazoNaoFaturamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <!--Final da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="condicoesPagamento" type="cat:CondicoesPagamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade CondicoesPagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Tarifas">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tarifa" type="cat:Tarifa"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

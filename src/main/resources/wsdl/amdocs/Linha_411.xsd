@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/SN/Linha" xmlns:lin="http://www.vivo.com.br/MC/Assinatura" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_22.xsd"/>
+  <xs:import schemaLocation="Linha_2.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:complexType name="ParametrosTrocarNumeroControlePosPago">
+    <xs:sequence>
+      <xs:element name="linhaAtual" type="lin:Linha"/>
+      <xs:element name="linhaNova" type="lin:Linha"/>
+      <xs:element name="servico" type="cat:Servico" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

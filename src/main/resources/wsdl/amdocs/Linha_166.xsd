@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="AtendimentoAnatel">
+    <xs:sequence>
+      <xs:element name="codigoSolicitacaoAnatel" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Código da solicitação Anatel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataRegistroAnatel" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data do registro na Anatel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataHistoricoAnatel" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Corresponde data e hora de uma acao sobre o
+                		processo da Anatel, como por exemplo Resposta e
+                		Cancelamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/ProgramaPontos" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pp="http://www.vivo.com.br/MC/ProgramaPontos" xmlns:Q1="http://www.vivo.com.br/MC/SCA" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_122.xsd"/>
+  <xs:import schemaLocation="Linha_5.xsd" namespace="http://www.vivo.com.br/MC/SCA"/>
+  <xs:import schemaLocation="Linha_82.xsd" namespace="http://www.vivo.com.br/MC/Catalogo"/>
+  <xs:complexType name="LancamentoPontoBonus">
+    <xs:sequence>
+      <xs:element name="dataLancamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data do Lancamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoLancamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo: Pontos / Bonus</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdLancado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de pontos/bonus lancado</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="09"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de expiracao do lancamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuario" type="Q1:UsuarioSCA" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="qtdUtilizada" maxOccurs="1" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="9"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoLancamento" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>codigo do laçamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoFormaUso" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>tipo da forma de uso</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="gruposBonus" maxOccurs="1" minOccurs="0" type="pp:gruposBonus"/>
+      <xs:element name="qtdExpirada" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>quantidade expirada</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="9"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="infoParceiro" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>informações do parceiro</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaBonus" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>indicador de bonus</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaDisponibilidade" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>indicador de disponibilidade ( 1 = quantidade livre, 2 = quantidade exiparada e 3 = disponivel )</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="linha" maxOccurs="1" minOccurs="0" type="pp:Linha"/>
+      <xs:element name="descricao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descrição do lançamento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sistema" type="cat:Sistema" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>sistema de origem para o PP, Atly ou NGIN</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdDisponivel" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>quantidade disponivel</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="9"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="gruposBonus">
+    <xs:sequence>
+      <xs:element name="grupoBonus" maxOccurs="unbounded" minOccurs="0" type="pp:grupo"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="grupo">
+    <xs:sequence>
+      <xs:element name="nome" maxOccurs="1" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LancamentosPontoBonus">
+    <xs:sequence>
+      <xs:element name="lancamento" type="pp:LancamentoPontoBonus" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="lancamentos" type="pp:LancamentosPontoBonus"/>
+</xs:schema>

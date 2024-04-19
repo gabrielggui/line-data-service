@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* Entidade apresenta dados de contas do Programa de Fidelização da Vivo (Programa de Pontos)
+	Um cliente pode possui N contas no programa e cada conta possui N linhas.
+	* Author:		Michelle Vaz Alves Teixeira
+	* Version:		2.0
+	* Date Updated:	19/04/2011--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/ProgramaPontos" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pp="http://www.vivo.com.br/MC/ProgramaPontos" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_123.xsd"/>
+  <xs:import schemaLocation="Linha_82.xsd" namespace="http://www.vivo.com.br/MC/Catalogo"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Geral" schemaLocation="Linha_7.xsd"/>
+  <xs:complexType name="ProgramaPontos">
+    <xs:annotation>
+      <xs:documentation>Esse complexType trata informações de uma conta do
+        		programa de</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma conta no programa de
+        				pontos.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="8"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoStatus" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo (0 ou 1) que identifica o status da conta
+        				no programa de pontos.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoStatus" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do status da conta, indicando se esta
+        				Ativo ou Desativo. A traducao do codigo
+        				(informacao que a API manda) para a descricao,
+        				sera realizada pelo tradutor de dominios.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdLinhas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de linhas que participam da conta do
+        				programa de pontos.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="9"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdPontos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de pontos existentes na conta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="9"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdPontosBonus" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de pontos na conta vinculados a bonus
+        				de retencao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="9"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTotalPontos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade total de pontos. Somatoria da
+        				qtdPontos com qtdPontosBonus.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdMinimaResgate" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Pontuacao minima para resgate</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="operadora" nillable="true" type="gr:Operadora" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Operadora.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldoDetalhado" type="pp:SaldoDetalhado" minOccurs="0"/>
+      <xs:element name="sistema" type="cat:Sistema" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>sistema de origem para o PP, Atly ou NGIN</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoMotivoBloqueio" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="liberaCombo" type="xs:int" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicacao direta para bloquei do resgate para
+        				combo. Evita que a linha e cpf do cliente sofra
+        				demais consultas do fluxo de resgate como:
+        				Consulta de inadimplecia, consulta de status da
+        				linha e etc. Esse dado bloqueia o cliente para
+        				que efetue o resgate independente da demais
+        				consultas. SIM(libera)=1 (cliente vai para
+        				proximo fluxo de consultas) NAO(Bloqueia) = 0 (O
+        				resgate é bloqueado o fluxo de consultas para
+        				aqui)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="liberaProduto" type="xs:int" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicacao direta para bloquei do resgate para
+        				produto\aparelho\premio. Evita que a linha e cpf
+        				do cliente sofra demais consultas do fluxo de
+        				resgate como: Consulta de inadimplecia, consulta
+        				de status da linha e etc. Esse dado bloqueia o
+        				cliente para que efetue o resgate independente
+        				da demais consultas. SIM(libera)=1 (cliente vai
+        				para proximo fluxo de consultas) NAO(Bloqueia) =
+        				0 (O resgate é bloqueado o fluxo de consultas
+        				para aqui)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="liberaServico" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicacao direta para bloquei do resgate para
+        				servico. Evita que a linha e cpf do cliente
+        				sofra demais consultas do fluxo de resgate como:
+        				Consulta de inadimplecia, consulta de status da
+        				linha e etc. Esse dado bloqueia o cliente para
+        				que efetue o resgate independente da demais
+        				consultas. SIM(libera)=1 (cliente vai para
+        				proximo fluxo de consultas) NAO(Bloqueia) = 0 (O
+        				resgate é bloqueado o fluxo de consultas para
+        				aqui)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linhas" minOccurs="0" maxOccurs="1" type="pp:Linhas">
+        <xs:annotation>
+          <xs:documentation>Referencia ao complex type linhas para
+        				representar o conjunto de linhas pertencentes a
+        				conta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usoBonusRetencaoCombo" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Permite utilizar pontos bonus de retencao para
+        				resgate de combo (combinação de produtos e
+        				servicos em um unico resgate)? SIM = 1 NAO = 2</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usoBonusRetencaoProduto" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Permite utilizar pontos bonus de retencao para
+        				resgate de aparelho\produto\premio? SIM = 1 NAO
+        				= 2</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usoBonusRetencaoServico" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Permite utilizar pontos bonus de retencao para
+        				resgate de servico? SIM = 1 NAO = 2</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Tipo do elemento alterado de int para string por Dilmara Matos em 29/08/2011-->
+      <xs:element name="linhaMaster" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Dentre as N linhas que uma conta do PP pode ter,
+        				uma linha unica é a linha master.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacaoConta" type="xs:date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data da criacao da conta no programa de pontos</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="recebeExtrato" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>indicador se a linha master recebe extrato de
+        				saldo de pontos por email</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoCliente" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo de cliente no conceito do programa de
+        				pontos</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdPontosAtribuidos" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Quantidade de pontos atribuídos.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tempoAtribuicaoPontos" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tempo que deve ser esperado para tentar atribuir estes pontos novamente (Qtde de Horas.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="lancamentosPontoBonus" minOccurs="0" type="pp:LancamentosPontoBonus">
+        <xs:annotation>
+          <xs:documentation>Tipo: Pontos / Bonus</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorPonto" minOccurs="0" maxOccurs="1" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>O valor de pontos para se utilizar em um resgate de acessório</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtPontuacaoLimite" minOccurs="0" maxOccurs="1" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>A quantidade de pontuação limite para se utilizar em um resgate de acessório</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaBloqueio" minOccurs="0" maxOccurs="1" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>Indica se uma operadora e/ou centro de custo está bloqueado ou não para resgate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Pontos">
+    <xs:sequence>
+      <xs:element name="ponto" type="pp:ProgramaPontos" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SaldoDetalhado">
+    <xs:sequence>
+      <xs:element name="qtdPontoAnterior" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Saldo anterior dos pontos calculados</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdBonusAnterior" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Saldo anterior de bonus</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="bonusExclusivoLinha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Bonus exclusivo linha: 1 - exclusivo a linha
+						informada; 2 - exclusivo a outra linha; 0 -
+						nenhuma.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="bonusExclusivoAparelho" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Bonus exclusivo para aparelho: 1 (true) -
+						exclusivo para aparelho; 0 (false) - nenhum.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataMenorValidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da menor validade de pontos</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataMaiorValidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da maior validade de bonus</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Linha">
+    <xs:sequence>
+      <xs:element name="bonusRestrito" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Quantidade de bonus de pontos restrito a linha
+						ao invés de ser restrito a conta.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataFimCarencia" type="xs:date" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="dataHabilitacao" type="xs:date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>data de Habilitação da linha no programa de
+						pontos</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeCliente" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome completo do cliente associado á linha, que
+						faz uso da linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroLinha" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>numero da linha participante</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusLinha" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status da linha em relação a conta do Programa
+						de Pontos 0 = Cancelada 1 = Ativa 2 Suspensa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoLinha" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifica se a linha é pré ou pós, ou o billing
+						responsavel pela linha 1 =Atlys 2 = NGIN</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fidelizado" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>esse campo deve retornar apenas 0 ou 1
+
+						Indica se a linha está fidelizado ou não:
+
+						0 – Não fidelizado
+
+						1 – Fidelizado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Linhas">
+    <xs:annotation>
+      <xs:documentation>Representa o conjunto de linhas de pertencentes a conta</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="linha" type="pp:Linha" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

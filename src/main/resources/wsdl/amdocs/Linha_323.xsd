@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura">
+  <xs:complexType name="MotivoHotLine">
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Cod do motivo da Suspensao. Valores validos sao
+						: COLLECTIONS/CUST SERVICE/FRAUD BLOCK/ FRAUD
+						PREVENT/ PARTIAL BLOCK/ MOVISTAR CTRL/ THRESHOLD
+						CR/ USAGE CONTROL/ VOL THSHLD CR</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao da Razao da Suspensao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoBreve" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Descricao resumida da Razao da Suspensao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoDetalhada" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao detalhada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoBloqueioParcial" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Código do Bloqueio Parcial</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MotivosHotLine">
+    <xs:sequence>
+      <xs:element name="motivoHotLine" type="ass:MotivoHotLine" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

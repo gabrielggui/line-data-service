@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/OrdemVenda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda" xmlns:pes="http://www.vivo.com.br/MC/Pessoa">
+  <xs:import schemaLocation="Linha_40.xsd" namespace="http://www.vivo.com.br/MC/Pessoa"/>
+  <xs:include schemaLocation="Linha_69.xsd"/>
+  <xs:include schemaLocation="Linha_70.xsd"/>
+  <xs:complexType name="NotaFiscal">
+    <xs:sequence>
+      <xs:element name="numeroNF" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero da nota fiscal gerado pelo SAP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataEmissaoNF" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de emissao da nota fiscal.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ordemVenda" type="ov:OrdemVenda" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade OrdemVenda.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numeroSerieNF" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de serie da nota fiscal.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorBaseCalculoICMS" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor para a base de calculo do ICMS</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="porcentagemICMS" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Porcentagem de base de calculo para o ICMS</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorICMS" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor a ser pago correspondente ao ICMS</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorBaseCalculoFUST" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor para a base de calculo do FUST</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="porcentagemFUST" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Porcentagem de base de calculo para o FUST</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorFUST" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor a ser pago correspondente ao FUST</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorBaseCalculoFUNTEL" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor para a base de calculo do FUNTEL</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="porcentagemFUNTEL" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Porcentagem de base de calculo para o FUNTEL</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorFUNTEL" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor a ser pago correspondente ao FUNTEL</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorTotalNF" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total da nota fiscal.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorPagoNF" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor pago pelo cliente na nota fiscal.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAnulacaoNF" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de anulacao da nota fiscal.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cfop" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo fiscal de operacoes</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoHash" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>De acordo com a lei 10703/03, do convenio 115/03
+						que introduziu o Hash Code, tambem conhecido por
+						chave de codificacao digital, deve ser gerada
+						por programa de informatica desenvolvido
+						especificamente para a autenticacao de dados
+						informatizados. A chave de codificacao digital
+						deve ser: I - gerada com base nos seguintes
+						dados constantes do documento fiscal: a) CNPJ ou
+						CPF do destinatario ou do tomador do servico; b)
+						numero do documento fiscal; c) valor total da
+						nota; d) base de calculo do ICMS; e) valor do
+						ICMS; II - obtida com a aplicacao do algoritmo
+						MD5 - "Message Digest" 5, de dominio publico;</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="quitacao" type="ov:Quitacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Quitacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeEmpresa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da empresa emissora da nota fiscal</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="enderecoEmpresa" type="pes:Endereco" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Endereco para identificar
+						o endereco da empresa emissora da nota fiscal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="documentosEmpresa" type="pes:Documentos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Documentos para
+						identificar os documentos, CNPJ e IE, da empresa
+						emissora da nota fiscal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="notaFiscalEletronica" type="ov:NotaFiscalEletronica"/>
+      <xs:element name="dataVencimentoNF" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de vencimento da nota fiscal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusNF" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Status da nota fiscal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataVencimentoAtualNF" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de vencimento atualizada da nota fiscal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NotasFiscais">
+    <xs:sequence>
+      <xs:element name="notaFiscal" type="ov:NotaFiscal" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NotaFiscalEletronica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="chaveAcesso">
+        <xs:annotation>
+          <xs:documentation>Chave de acesso gerada no SAP para nota fiscal
+						eletronica.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="44"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="dataCriacaoChaveAcesso">
+        <xs:annotation>
+          <xs:documentation>Data em que a chave de acesso foi gerada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

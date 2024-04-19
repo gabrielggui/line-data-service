@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Alterado em 22/03/2011
+	 Autor: Michelle Vaz Alves Teixeira
+	 alteração: inclusão de elemento (acaoContigencia)--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:ofe="http://www.vivo.com.br/MC/Oferta">
+  <xs:include schemaLocation="Linha_2.xsd"/>
+  <xs:include schemaLocation="Linha_340.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Oferta" schemaLocation="Linha_339.xsd"/>
+  <xs:complexType name="Promocao">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das promocoes oferecidas para
+				clientes, como promocao dia dos pais, promocao de natal,
+				promocoes de incentivo, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="acaoContigencia" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Descricao das acoes possíveis para a promocoes
+						em regime de contingência. Por ex: Pré Ativar,
+						Cadastrar</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma promocao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoAcaoContigencia" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo das acoes possíveis para a promocoes em
+						regime de contingência. Por ex: Pré Ativar,
+						Cadastrar</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoModalidade" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo para identificação se a promocao eh alta,
+						baixa, troca, migracao, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFimVigencia" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fim de vigencia da promocao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao da promocao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInicioVigencia" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de inicio de vigencia da promocao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="instancia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>numero da instancia</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="modalidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identifica se a promocao eh alta, baixa, troca,
+						migracao, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 26/09/2011   
+			     Esse elemento tem a mesma finalidade do codigo,
+			     foi criado devido ao codigo ser integer-->
+      <xs:element name="codigoPromocao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma promocao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linha" type="ass:Linha" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia a entidade Linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="beneficio" type="ofe:Beneficio" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia a entidade Beneficio</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoRegulamento" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa descricao regulamento da promocao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaAceitePromocao" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indicador de aceite promocao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaConsultaCupons" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indicador de consulta de cupons</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaPromocaoPrecedente" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indicador de promocao precedente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaConsultaPremio" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indicador de consulta de premio</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaConsultaQuestionario" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento indicador de consulta questionario</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoInterno" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa codigo interno da promocao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoPromocaoLegado" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa codigo da promocao no legado</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="areaRegistroPromocao" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento representa area de registro da promocao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Promocoes">
+    <xs:sequence>
+      <xs:element name="promocao" type="ass:Promocao" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

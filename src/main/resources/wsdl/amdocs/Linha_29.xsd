@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:include schemaLocation="Linha_30.xsd"/>
+  <xs:include schemaLocation="Linha_32.xsd"/>
+  <xs:complexType name="MotivoOperacao">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastros dos motivos de operacoes validos para
+				cada sistema de origem. Exemplos de motivos no NGIN:
+					1 - A pedido do cliente
+					2 - Inadimplencia
+					3 - Perda
+					4 - Procedimento Interno
+				Exemplos de motivos no Atlys:
+					FINAL - cancelamento solicitado pelo cliente
+					NPAGT - cliente inadimplente
+					MUESP - mudanca para nordeste ou MG.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o motivo de uma operacao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do motivo da operacao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="80"/> retirado por Dilmara Matos em 12/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="operacao" minOccurs="0" type="nfo:Operacao">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Operacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MotivosOperacao">
+    <xs:sequence>
+      <xs:element name="motivoOperacao" type="nfo:MotivoOperacao" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

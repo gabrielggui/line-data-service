@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/OrdemVenda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_76.xsd"/>
+  <xs:include schemaLocation="Linha_106.xsd"/>
+  <xs:complexType name="ProdutoOrdemVenda">
+    <xs:sequence>
+      <xs:element name="produto" type="cat:Produto" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade produto para identificar
+						os produtos que serao solicitados atraves dessa
+						ordem de venda e as condicoes de pagamento dele.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de produtos requisitado para a ordem
+						de venda.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="19"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ordemItensSeriais" type="ov:OrdemItensSeriais" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade OrdemItemSerial para
+						identificar os seriais existentes na Ordem de
+						Venda.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valor" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do item de pedido da ordem de venda.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="10"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="observacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Observacao do item do pedido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoItemPedido" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo do item do pedido.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="10"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="produtoSimCard" type="ov:ProdutoSimCard"/>
+      <xs:element name="permanencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>identifica o prazo de permanencia do cliente com
+                		o produto escolhido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProdutosOrdemVenda">
+    <xs:sequence>
+      <xs:element name="produtoOrdemVenda" type="ov:ProdutoOrdemVenda" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProdutoSimCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="produto" type="cat:Produto">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade produto para identificar
+						os produtos que serao solicitados atraves dessa
+						ordem de venda e as condicoes de pagamento dele.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="quantidade">
+        <xs:annotation>
+          <xs:documentation>Quantidade de produtos requisitado para a ordem
+						de venda.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="19"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ordemItensSeriais" type="ov:OrdemItensSeriais">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade OrdemItemSerial para
+						identificar os seriais existentes na Ordem de
+						Venda.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="valor">
+        <xs:annotation>
+          <xs:documentation>Valor do item de pedido da ordem de venda.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="10"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

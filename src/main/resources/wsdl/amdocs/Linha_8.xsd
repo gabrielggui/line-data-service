@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Geral" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Paginacao">
+    <xs:annotation>
+      <xs:documentation>Entidade que mantem informacoes necessarias para
+				realizar o controle de paginacao de servicos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="numeroPagina" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica o numero da pagina dos registros que
+						devem ser retornados</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdRegistro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica a quantidade de registros que devem
+						constar em cada pagina</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="registroInicial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero inicial do registro para paginacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="registroFinal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero final do registro para paginacao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

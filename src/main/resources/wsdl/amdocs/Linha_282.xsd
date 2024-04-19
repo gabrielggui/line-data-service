@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Conta" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_82.xsd"/>
+  <xs:include schemaLocation="Linha_119.xsd"/>
+  <xs:include schemaLocation="Linha_283.xsd"/>
+  <xs:include schemaLocation="Linha_284.xsd"/>
+  <xs:complexType name="AnaliseCredito">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes da analise de credito do cliente.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="statusAnaliseCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Caso o valor seja 0, significa que foi
+						realizada. Caso o valor seja 1, significa que a
+						analise de credito nao foi realizada porque o
+						cliente esta com a analise de credito suspensa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="avaliacaoCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Resultado da Avaliacao interna de credito, pode
+						assumir os seguintes valores: P - credito bom; N
+						- credito ruim.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="justificativaAvaliacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Caso o cliente tenha uma avaliacao de credito
+						ruim, esse campo trara a justificativa da
+						avaliacao, a qual sera tambem armazenada no
+						historico de credito do cliente.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAnaliseCreditoInterna" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de analise de credito interna</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorTotalDivida" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor da divida do cliente verificado pela
+						restrição de credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAssinaturasBloqueadasCobranca" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorTotalDividaSAP" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor total da divida existente no sistema SAP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="15"/>
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdDiasVencidosSAP" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Idade da divida, quantidade de dias após
+						vencimento da divida no sistema SAP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdDiasVencidos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Idade da divida, quantidade de dias apos
+						vencimento da divida no sistema Atlys</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAssinaturasCanceladasFraude" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de Assinaturas canceladas por Fraude</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAssinaturasAtivasSuspensasBloqueadas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Soma da quantidade de Assinaturas Ativas,
+						Suspensas e bloqueadas por Fraude</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdFaturasPagas" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de faturas pagas (paidInvcQty no
+						Atlys)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="analiseCreditoParametros" type="ct:AnaliseCreditoParametros" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade AnaliseCreditoParametros</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="resultadoAnaliseCreditoInterna" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="analiseCreditoInternaExecutada" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="motivoClienteBlackList" type="ct:MotivoClienteBlackList" minOccurs="0"/>
+      <xs:element name="validacoesAnaliseCredito" type="ct:ValidacoesAnaliseCredito" minOccurs="0"/>
+      <xs:element name="sistemaOrigem" type="cat:Sistema" minOccurs="0"/>
+      <xs:element name="possuiInformePagamento" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaParcelamentoDivida" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorTotalDividaBoleto" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdDiasVencidosBoleto" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaDividaBoleto" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataDivida" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data da dívida mais antiga</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaContestacaoDivida" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Filtro de Cobrança - contestacao da dívida</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaParcelamentoVencido" minOccurs="0" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Parcelamento Vencido - Indica que um parcelamento está vencido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="idadeFaturaCobrancaRecente" minOccurs="0" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>Elemento representa idade da fatura em cobranca mais recente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="saldoInadFaturaCobrancaRecente" minOccurs="0" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Elemento representa saldo inadimplente da fatura em cobranca mais recente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaExclusaoCobranca" minOccurs="0" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Elemento indica que existe exclusao de cobranca para qualquer nivel de vigencia</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValidacoesAnaliseCredito">
+    <xs:sequence>
+      <xs:element name="validacaoAnaliseCredito" type="ct:ValidacaoAnaliseCredito" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ValidacaoAnaliseCredito">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes referentes a cada validacao efetuada da analise de credito do cliente.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ordemExecucao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Posicao da validacao na sequencia de validacoes.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoValidacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica o tipo da validacao. Pode ser do tipo BLACKLIST,CONSULTAR INADIMPLENCIA POS, 
+						CONSULTAR INADIMPLENCIA CSO, CONSULTAR INADIMPLENCIA, CONSULTAR INADIMPLENCIA ATIS, 
+						PARCELAMENTO FIXA, PARCELAMENTO MOVEL, BOLETO FIXA, DIVIDA MOVEL ou DIVIDA FIXA.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExecucao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data e hora em que a validacao foi executada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="validacaoExecutada" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a validacao foi executada ou nao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="resultadoValidacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Informa o resultado da validacao: Aprovada, Reprovada ou Não Realizada.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="statusValidacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Informa o status da validacao:
+						'A' - Para Aprovada
+						'R' - Para Reprovada
+						'F' - Para Não Realizada</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AnalisesCredito">
+    <xs:annotation>
+      <xs:documentation>Elemento que representa uma lista de analise de credito</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="analiseCredito" type="ct:AnaliseCredito" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Representa uma lista do elemento AnaliseCredito</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

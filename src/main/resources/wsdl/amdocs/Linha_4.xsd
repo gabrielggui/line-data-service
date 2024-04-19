@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/Pessoa" elementFormDefault="qualified" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_124.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_82.xsd"/>
+  <xs:complexType name="ProgramaRelacionamento">
+    <xs:sequence>
+      <xs:element name="cpfCliente" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>CPF do do cliente que possui o Programa de
+						relacionamento. Independente do status no
+						programa (Ativo, Inativo, Suspendo).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAtualizacaoCliente" type="xs:date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data da atualizacao do status referente a
+						inscricao do cliente no Programa de
+						relacionamento. essa data pode representar a
+						data de cadastro da inscricao ou a data de
+						exclusao\cancelamento da inscricao do cliente no
+						programa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCadastroCliente" minOccurs="0" maxOccurs="1" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>data de inscrição do cliente no programa de
+						relacionamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linhaContato" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Linha de Contato é a principal linha
+						participante do programa de um cliente. Ex: Se
+						um cliente possui vinte linhas abaixo do seu CPF
+						participante do programa, ele deve eleger apenas
+						uma para ser a linha de contato. Essa linha será
+						a unica cujo a vivo vai interagir (sms, mms,
+						contato), para tratar assuntos do programa.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linhasPrograma" type="ps:LinhasPrograma" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo complexo uma vez que um Programa de
+						Relacionamento possui um cliente que pode
+						possuir n linhas participantes do programa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeLinha" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Essa entidade referencia a um complexType que
+						compreende uma lista de linhas participantes no
+						PR. Esse elemento apresenta a quantidade de
+						linhas participantes do PR a cada cliente.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="segmentacao" type="ps:Segmentacao" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="sistema" type="cat:Sistema" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade sistema para refletir o
+						sistema que realizou o cadastro do cliente no
+						programa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusParticipacaoCliente" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tempoRelacionamento" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>valor resultante do calculo de tempo de
+						relavcionamento com a Vivo que um cliente
+						possui. Independente se o mesmo já saiu da
+						operadora e voltou N vezes. São considerados
+						parâmetros desde o primeiro relacionamento,</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusCliente" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status do cliente em relacao a participacao ao
+						Programa. Por ex: ATIVO, CANCELADO, INATIVO.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioLinhaContato" type="sca:UsuarioSCA" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>referencia a entidade UsuarioSCA para
+						representar o usuario\atendente Vivo que
+						cadastrou a linha de Contato do cliente no
+						programa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="faturamentoMedioCliente" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="inicioRelacionamento" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Deverá conter a Data do Início de Relacionamento
+						do cliente</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linhaContatoAnterior" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Linha de Contato Anterior</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomePrograma" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome do programa de relacionamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinhaPrograma">
+    <xs:sequence>
+      <xs:element name="linhaParticipante" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>linha participante do programa de relacionamento
+						associado ao CPF</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="logradouro" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>endereco associado a linha e não ao CPF (cada
+						linha pode possuir um endereco)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoLinha" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>tipo de linha participante do programa
+						(PRE-POS-Controle)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Status da linha</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAtivacao" type="xs:date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de ativacao da linha na vivo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numero" type="xs:string" minOccurs="0"/>
+      <xs:element name="complemento" type="xs:string" minOccurs="0"/>
+      <xs:element name="bairro" type="xs:string" minOccurs="0"/>
+      <xs:element name="cep" type="xs:string" minOccurs="0"/>
+      <xs:element name="cidade" type="xs:string" minOccurs="0"/>
+      <xs:element name="uf" type="xs:string" minOccurs="0"/>
+      <!--Elemento Criado por Dilmara Matos em 30/08/2011-->
+      <xs:element name="tipoInscricao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indica se inscricao do cliente no programa foi
+						manual ou automatica</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento Criado por Dilmara Matos em 30/08/2011-->
+      <xs:element name="linhaSolicitante" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Linha que está interagindo com o atendente
+						durante algum procedimento do programa de
+						relacionamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento Criado por Dilmara Matos em 30/08/2011-->
+      <xs:element name="dataCadastro" type="xs:date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>data de inscrição do cliente no programa de
+						relacionamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento Criado por Dilmara Matos em 30/08/2011-->
+      <xs:element name="login" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que idica o Login do usuario que
+						atualizou</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento Criado por Dilmara Matos em 30/08/2011-->
+      <xs:element name="dataAtualizacao" type="xs:date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data da atualizacao do status referente a
+						inscricao do cliente no Programa de
+						relacionamento. essa data pode representar a
+						data de cadastro da inscricao ou a data de
+						exclusao\cancelamento da inscricao do cliente no
+						programa</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusCliente" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Status do cliente em relacao a participacao ao
+						Programa. Por ex: ATIVO, CANCELADO, INATIVO.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="statusParticipacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Retorna o status de participação no programa de
+						relacionamento da linha: 0 não participa; 1
+						participa, -1 - cancelado por solictação. O
+						Cliente pode ser participante do programa, e
+						alguma linha não.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinhasPrograma">
+    <xs:sequence>
+      <xs:element name="linhaPrograma" type="ps:LinhaPrograma" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Entidade criado por Dilmara Matos em 23/08/2011-->
+  <xs:complexType name="ProgramasRelacionamento">
+    <xs:sequence>
+      <xs:element name="programaRelacionamento" type="ps:ProgramaRelacionamento" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

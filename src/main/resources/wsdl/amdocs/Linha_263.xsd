@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created with Liquid XML Studio Developer Edition (Trial) 8.0.2.1941 (http://www.liquid-technologies.com)--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:gr="http://www.vivo.com.br/MC/Geral" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="Linha_6.xsd" namespace="http://www.vivo.com.br/MC/Geral"/>
+  <xs:import schemaLocation="Linha_2.xsd" namespace="http://www.vivo.com.br/MC/Assinatura"/>
+  <xs:include schemaLocation="Linha_29.xsd"/>
+  <xs:include schemaLocation="Linha_143.xsd"/>
+  <xs:include schemaLocation="Linha_264.xsd"/>
+  <xs:include schemaLocation="Linha_265.xsd"/>
+  <xs:include schemaLocation="Linha_266.xsd"/>
+  <xs:include schemaLocation="Linha_270.xsd"/>
+  <xs:include schemaLocation="Linha_271.xsd"/>
+  <xs:complexType name="RetencaoLinha">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes sobre as linhas que participam do
+				processo de retencao.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="linha" type="ass:Linha">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Linha em Assinatura.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="erroProcessamento" type="gr:ErroInfo">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ErroInfo em Geral para
+						identificar erros ocorridos na linha durante o
+						processo de retencao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="cancelarLinha" type="nfo:CancelarLinha">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade MotivoOperacao para
+						indicar quais os motivos de cancelamento da
+						linha.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="codigoSolicitacao">
+        <xs:annotation>
+          <xs:documentation>Codigo da Solicitacao, podendo se o codigo da
+						Solicitacao quando ocorreu um cancelamento ou o
+						codigo para uma oferta de aparelho.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="retencaoLinhaStatus" type="nfo:RetencaoLinhaStatus">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade RetencaoStatusLinha para
+						identificar se durante o processo de retencao a
+						linha foi retida, cancelada ou se esta pendente
+						de cancelamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="retencaoArgumentacoes" type="nfo:RetencaoArgumentacoes">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade RetencaoArgumentacao para
+						identificar quais argumentos foram oferecidos ao
+						cliente no processo de retencao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="navegacao" type="nfo:Navegacao">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade navegacao para identificar
+						a lista de respostas da linha em cada nivel de
+						navegacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RetencaoLinhas">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="retencaoLinha" type="nfo:RetencaoLinha"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CancelarLinha">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes sobre a funcionalidade de
+				cancelamento de linha</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="motivoCancelamentoLinha" type="nfo:MotivoCancelamentoLinha">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade MotivoCancelamentoLinha
+						para indicar quais os motivos de cancelamento da
+						linha.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="tipoCancelamento" type="nfo:TipoCancelamentoRetencao">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoCancelamentoRetencao
+						para indicar se o cancelamento foi definitivo ou
+						programado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="motivoIsencaoMulta" type="nfo:MotivoIsencaoMulta">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoCancelamentoRetencao
+						para indicar se o cancelamento foi definitivo ou
+						programado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

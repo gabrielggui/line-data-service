@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/SGP" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sgp="http://www.vivo.com.br/MC/SGP">
+  <xs:complexType name="Beneficios">
+    <xs:sequence>
+      <xs:element name="beneficio" type="sgp:Beneficio" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Beneficio">
+    <xs:annotation>
+      <xs:documentation>@Deprecated(Utilizar a nova entidade criada no path
+        		Oferta)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>codigo do beneficio</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeBeneficio" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>nome do beneficio que pode ser atrelado a uma
+    					oferta, promocao ou servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoBeneficio" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>descricao do beneficio que pode ser atrelado a
+    					uma oferta, promocao ou servico</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="escolha" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicacao a possibilidade da escolha de um
+    					beneficio</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="observacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>observacoes gerais sobre o beneficio</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="status" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Status do Beneficio</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoLinha" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Tipo de Linha (Pre-Pos-Controle) na qual se
+    					destina o beneficio</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoPublico" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Refere-se ao tipo de publico que o beneficio é
+    					destinado PF=Pessoa ou PJ=Pessoa Juridica</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sistemaOrigem" type="xs:int" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>representa o ID do legado responsavel pelo
+    					beneficio. Por ex: Atlys, NGIN</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

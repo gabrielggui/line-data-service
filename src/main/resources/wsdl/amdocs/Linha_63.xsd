@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Siebel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sie="http://www.vivo.com.br/MC/Siebel">
+  <xs:complexType name="MotivoAcaoPedidoSiebel">
+    <xs:sequence>
+      <xs:element name="descricao" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do Codigo Acao Pedido Siebel que
+						resume em Aprovado ou Reprovado abaixo esta
+						discriminado os status de Aprovado ou Reprovado.
+						APROVADO   AGUARDAR FORMACAO DE HISTORICO
+						INTERNO DE PAGAMENTOS, PARA NOVAS
+						SOLICITACOES,APROVADO   PENDENCIAS DE CREDITO
+						REGULARIZADAS APROVADO   PENDENCIAS DOCUMENTAIS
+						REGULARIZADAS,APROVADO   POR ALCADA,APROVADO  
+						BOM HISTORICO INTERNO APROVADO   BOM HISTORICO
+						NA CONCORRENTE,APROVADO   EM SUBSTITUICAO AO
+						PEDIDO CANCELADO,APROVADO   SAP DENTRO DA
+						POLITICA OU VALORES MEIO T REPROVADO   CNPJ
+						apresenta restricoes de credito
+						externa,REPROVADO   CPF dos socios apresentam
+						restricoes de credito externa REPROVADO   CNPJ
+						ou CPF apresenta debito no Atlys,REPROVADO  
+						CNPJ ou CPF apresenta debito no SAP REPROVADO  
+						CNPJ ou CPF apresenta debito no Atlys e
+						SAP,REPROVADO   CPF e CNPJ dos socios apresentam
+						debito no Atlys REPROVADO   CPF e CNPJ dos
+						socios apresentam debito no SAP,REPROVADO   CPF
+						e CNPJ dos socios apresentam debito no Atlys e
+						SAP REPROVADO   CNPJ e CPF dos socios apresentam
+						restricoes externas e internas,REPROVADO  
+						Documentacao incompleta , ilegivel , rasurada
+						REPROVADO   Solicitado novos documentos ,exceto
+						relatorio visita,balanco   DRE,,REPROVADO  
+						Solicitado Relatorio de visita REPROVADO  
+						Solicitado Demonstrativo de Resultado e Balanco
+						Patrimonial e,ou RAIS,REPROVADO   Empresa sem
+						porte para novas habilitacoes REPROVADO  
+						Cliente novo aguardar pagamento de 3 faturas
+						cheias para formar historico de
+						pagamentos,REPROVADO   Cliente com pontuacao de
+						Score baixa, fora da politica de credito
+						REPROVADO   Novo cliente nao apresentou
+						documentos,REPROVADO   Habilitacao negada
+						segundos criterios de avaliacao de credito da
+						Vivo REPROVADO   SAP fora da politica antes
+						maio 2005 ou valores meio T. Pedido
+						reprovado,REPROVADO   Re analise indevida ,sem
+						regularizacao das pendencias solicitadas pelo
+						credito,. REPROVADO   Cliente possui menos de 6
+						meses de fundacao,REPROVADO   Falta inclusao de
+						sócio no SCC e ou retirada de socio com
+						restritivos REPROVADO   Reprovacao solicitada
+						pela comercial   input errado,REPROVADO  
+						Cliente nao comporta o volume de linhas
+						solicitadas ,documentacao ok e sem restricoes,
+						REPROVADO   Assinatura nao confere com a
+						documentacao apresentada ou nao e do responsavel
+						pelo cliente,REPROVADO   Nao apresentou
+						comprovante de endereco autenticado REPROVADO  
+						Inconsistencia entre o SCC e a documentacao
+						apresentada,REPROVADO   Empresa com alerta em
+						negocios na Serasa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

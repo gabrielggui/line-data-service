@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_11.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Conta" schemaLocation="Linha_231.xsd"/>
+  <xs:include schemaLocation="Linha_40.xsd"/>
+  <xs:include schemaLocation="Linha_133.xsd"/>
+  <xs:include schemaLocation="Linha_126.xsd"/>
+  <xs:include schemaLocation="Linha_293.xsd"/>
+  <xs:include schemaLocation="Linha_294.xsd"/>
+  <xs:include schemaLocation="Linha_295.xsd"/>
+  <xs:include schemaLocation="Linha_195.xsd"/>
+  <xs:include schemaLocation="Linha_299.xsd"/>
+  <xs:include schemaLocation="Linha_300.xsd"/>
+  <xs:include schemaLocation="Linha_301.xsd"/>
+  <xs:include schemaLocation="Linha_302.xsd"/>
+  <xs:include schemaLocation="Linha_303.xsd"/>
+  <xs:include schemaLocation="Linha_124.xsd"/>
+  <xs:include schemaLocation="Linha_304.xsd"/>
+  <xs:include schemaLocation="Linha_155.xsd"/>
+  <xs:include schemaLocation="Linha_116.xsd"/>
+  <xs:include schemaLocation="Linha_118.xsd"/>
+  <xs:include schemaLocation="Linha_51.xsd"/>
+  <xs:include schemaLocation="Linha_305.xsd"/>
+  <xs:include schemaLocation="Linha_306.xsd"/>
+  <xs:include schemaLocation="Linha_311.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Assinatura" schemaLocation="Linha_292.xsd"/>
+  <xs:include schemaLocation="Linha_312.xsd"/>
+  <xs:include schemaLocation="Linha_313.xsd"/>
+  <xs:include schemaLocation="Linha_314.xsd"/>
+  <xs:include schemaLocation="Linha_54.xsd"/>
+  <xs:include schemaLocation="Linha_237.xsd"/>
+  <xs:complexType name="Pessoa">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes cadastrais das pessoas (cliente,
+				prospect, vendedor e usuario) que fazem parte da Vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" nillable="true" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma pessoa (idPessoa do
+						Vivonet)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoDePara" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma pessoa (idPessoaDepara
+						do Vivonet)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="primeiroNome" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Primeiro nome.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <!--Alterado o tamnho de 60 par 500 por Dilmara Matos em 05/08/2011-->
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="500"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sobrenome" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Ultimo nome.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="64" /> retirado por Dilmara Matos em 13/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeCompleto" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome completo do cliente/prospect.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="200" /> retirado por Dilmara Matos em 13/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeFantasia" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome fantasia para clientes/prospects juridicos.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="128"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="razaoSocial" nillable="true" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Razao social da empresa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="128" /> retirado por Dilmara Matos em 18/07/2011-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataNascimento" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de nascimento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFundacao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de fundacao de empresa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="clienteDesde" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data em que a pessoa se tornou cliente na Vivo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeMae" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da mae</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomePai" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do pai.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeGestor" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do gestor.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="128"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaCliente" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a pessoa e cliente ou propesct. 1
+						sendo cliente e 0 sendo prospect.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTotalLinhas" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade total de linhas que o cliente possui.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdLinhasCanceladas" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de linhas canceladas que um cliente
+						possuem.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataFalecimento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de falecimento do cliente/prospect</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="falecimentoInformado" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se a vivo recebeu a informacao de que o
+						cliente faleceu. - true (1 no Servico de
+						enablement) indica falecimento informado; -
+						false (0 no servico de enablement) indica que a
+						vivo nao foi informada sobre o falecimento do
+						cliente/prospect.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataUltimaAlteracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data da ultima alteracao do registro no sistema.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sexo" type="ps:Sexo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sexo</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pais" nillable="true" type="ps:Pais" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do pais de nascimento da pessoa.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoPessoa" nillable="true" type="ps:TipoPessoa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoPessoa.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoCarteira" nillable="true" type="ps:TipoCarteira" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoCarteira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="estadoCivil" nillable="true" type="ps:EstadoCivil" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade EstadoCivil</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="grauInstrucao" nillable="true" type="ps:GrauInstrucao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade GrauInstrucao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="naturezaOcupacao" nillable="true" type="ps:NaturezaOcupacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade NaturezaOcupacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="profissao" nillable="true" type="ps:Profissao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Profissao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoSociedade" nillable="true" type="ps:TipoSociedade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoSociedade.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="classificacaoTributaria" nillable="true" type="ps:ClassificacaoTributaria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ClassificacaoTributaria.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cnae" nillable="true" type="ps:Cnae" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Cnae.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contatosSasCar" nillable="true" type="ps:ContatosSasCar" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ConstatoSasCar.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="uf" type="cat:Uf" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade UF.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sistemaOrigem" type="cat:Sistema" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Campo que identifica o sistema que originou o
+						cadastro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="enderecos" nillable="true" type="ps:Enderecos" minOccurs="0"/>
+      <xs:element name="contatos" nillable="true" type="ps:Contatos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Contato</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="documentos" nillable="true" type="ps:Documentos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Documento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contas" nillable="true" type="ct:Contas" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Conta</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assinaturas" nillable="true" type="ass:Assinaturas" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Assinatura</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usuarioManutencao" type="ps:Usuario" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Usuario para identificar o
+						usuario que realizou o cadastro de uma nova
+						pessoa ou para identificar o usuario que fez
+						alguma alteracao no cadastro.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="atendimentos" type="ps:Atendimentos" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Atendimentos para
+						identificar a lista de possiveis relacionamentos
+						de clientes e prospects com a Vivo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="senhaReinicializar" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Senha de atendimento usada pela URA, VOL e TAV.
+						Indica se a senha deve ser reinicializada. S =
+						Senha a ser reinicializada N = Senha ok B =
+						Senha Bloqueada</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="senhaCriptografada" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Senha criptografada da pessoa.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataCadastro" nillable="true" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de cadastro da pessoa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="gestores" type="ps:Gestores" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Gestor</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="representanteLegal" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do Representante Legal da Pessoa Juridica.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="procurador" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do Procurador da Pessoa Juridica.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAlteracoes" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de Alteracoes no nome da Pessoa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dadoDemografico" type="ps:DadoDemografico" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia entidade DadoDemografico</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qtdContatosSemSucesso" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de contatos sem sucesso realizados</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaPortadorNecessidadeEspecial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o cliente e portador de necessidade
+						Especial (PNE)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoResponsabilidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indicador de responsabilidade P�Responsavel por
+						Pagamento e C-Responsavel pelo Contrato</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeMeio" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Meio do Nome, utilizado no billing pos pago.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--<xs:maxLength value="64" /> retirado por Dilmara Matos em 18/07/2007-->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTempoFuncEmpresa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de Tempo de funcionamento da Empresa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdTempoAtualEmprego" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Quantidade de Tempo do atual emprego</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="residenciaPropria" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Se true, indica que cliente tem residencia
+						propria</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaOrgNacional" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Se true, indica que cliente e uma
+							organizacao nacional. O default e false.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="email" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o email</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cpf" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>numero CPF da Pessoa, aceita caracter especiais
+						como "." ou "-"</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="avisoSms" type="ass:AvisoSms" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia entidade AvisoSms a fim de
+						representar os tipos de recebimentos de sms
+						aceitos pelo cliente/pessoa/prospect.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="telefoneContato1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Telefone de Contato do cliente com o
+						DDD/CNL(codigo nacional de localidade)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="telefoneContato2" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Telefone de Contato do cliente com o
+						DDD/CNL(codigo nacional de localidade)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAlteracaoCadastro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de falecimento do cliente/prospect</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="cnpj" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o cnpj</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoDocumento" type="ps:TipoDocumento" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoDocumento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 04/08/2011-->
+      <xs:element name="rg" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o RG do</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 04/08/2011-->
+      <xs:element name="inscricaoEstadual" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a Inscrição
+						Estadual</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 07/08/2011-->
+      <xs:element name="dataEmissaoRg" type="xs:date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a data emissão do
+						RG</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 07/08/2011-->
+      <xs:element name="orgaoExpRg" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o orgão que efetuou
+						a expedição do RG</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 17/08/2011-->
+      <xs:element name="passaport" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <!--Elemento criado por Dilmara Matos em 17/08/2011-->
+      <xs:element name="telefoneCelular" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Telefone Celular de Contato do cliente com o DDD</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 24/08/2011-->
+      <xs:element name="indicadorAcao" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar qual ação o usuário
+						efetuou no cadastro do cliente.ex: 1= alteração
+						ou 2= exclusão</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricaoHorarioTrabalho" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá indicar a descrição do horario
+						de trabalho(entra/saida)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 15/09/2011-->
+      <xs:element name="ramoAtividade" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar o Ramo de Atividade
+						da PJ</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!--Elemento criado por Dilmara Matos em 15/09/2011-->
+      <xs:element name="opcaoPublicacaoDados" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que irá identificar a opçao de
+						publicação do dados . ex: Direta (João Batista),
+						Inversa (Batista João).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoPessoaSistemaOrigem" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica uma pessoa no sistema
+						origem</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="observacao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Observações adicionais aos dados gerais do
+						assinante</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nomeAssinanteProvisorio" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do assinante caso o terminal seja alugado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeDocumentoPessoa" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Quantidade de documentos da pessoa</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="grauParentesco" type="ps:GrauParentesco" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade GrauParentesco.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="clientesProduto" type="ps:ClientesProduto" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ClientesProduto</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="negocio" type="ps:Negocio" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Negocio</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataUltimaConfirmacaoCadastro" maxOccurs="1" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indicaEstrangeiro" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica se o cliente é um
+						estrangeiro. Se o valor for igual a 1 indica que
+						o cliente é estrangeiro, se diferente de 1 o
+						cliente não é um estrangeiro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoEmpresa" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o código que identifica uma
+						empresa a qual um cliente atis pode fazer parte.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoDepartamento" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Elemento que indica a descricao do
+							Departamento que a PESSOA trabalha</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tratamento" minOccurs="0" maxOccurs="1" type="ps:Tratamento">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Tratamento.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="senhaPessoa" type="ps:Senha" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que referencia a entidade Senha.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="inscricaoMunicipal" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Inscricao Municipal de Pessoa (Juridica)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tokenIdFacebook" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Token ID do facebook.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicadorAcessoFacebook" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicador de acesso ativo através do facebook.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="autorizaReceberSMS" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A Pessoa autoriza receber SMS.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="emails" type="ps:Emails" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Lista de emails.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="aprovacaoCadastro" type="ps:AprovacaoCadastro" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento referencia dados de aprovação de cadastro do cliente.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Pessoas">
+    <xs:sequence>
+      <xs:element name="pessoa" type="ps:Pessoa" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Emails">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Emails da Pessoa.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AprovacaoCadastro">
+    <xs:sequence>
+      <xs:element name="responsavelAprovacao" type="sca:UsuarioSCA" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade UsuarioSCA</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="responsavelReprovacao" type="sca:UsuarioSCA" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a Entidade UsuarioSCA</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataEvento" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome do aprovador</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

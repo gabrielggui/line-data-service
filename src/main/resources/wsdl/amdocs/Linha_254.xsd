@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:complexType name="ItemBloqueio">
+    <xs:annotation>
+      <xs:documentation>Identifica quais sao os itens que devem ser bloqueados,
+				como linha, aparelho ou aparelho e linha.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica se o item para bloqueio eh
+						linha, aparelho ou aparelho e linha.
+						01 - somente linha
+						02 - somente aparelho
+						03 - aparelho e linha</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:enumeration value="01">
+              <xs:annotation>
+                <xs:documentation>Somente linha</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="02">
+              <xs:annotation>
+                <xs:documentation>Somente aparelho</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="03">
+              <xs:annotation>
+                <xs:documentation>Linha e aparelho</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do item de bloqueio.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

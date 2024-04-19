@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:include schemaLocation="Linha_231.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/NFO" schemaLocation="Linha_247.xsd"/>
+  <xs:include schemaLocation="Linha_273.xsd"/>
+  <xs:complexType name="Reversao">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes sobre reversoes de ajustes ou
+				pagamentos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="publicacaoReversao" minOccurs="0" type="ct:PublicacaoFinanceira">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade PublicacaoFinanceira.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataReversao" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Data da reversao</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="motivoReversao" minOccurs="0" type="nfo:MotivoOperacao">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade MotivoOperacao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaReversao" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Flag que informa se o documento foi revertido.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoReversao" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Flag que informa se o documento foi revertido.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

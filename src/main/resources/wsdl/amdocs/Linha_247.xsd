@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfo="http://www.vivo.com.br/MC/NFO">
+  <xs:include schemaLocation="Linha_29.xsd"/>
+  <xs:include schemaLocation="Linha_30.xsd"/>
+  <xs:include schemaLocation="Linha_32.xsd"/>
+  <xs:include schemaLocation="Linha_248.xsd"/>
+  <xs:include schemaLocation="Linha_249.xsd"/>
+  <xs:include schemaLocation="Linha_250.xsd"/>
+  <xs:include schemaLocation="Linha_251.xsd"/>
+  <xs:include schemaLocation="Linha_252.xsd"/>
+  <xs:include schemaLocation="Linha_253.xsd"/>
+  <xs:include schemaLocation="Linha_254.xsd"/>
+  <xs:include schemaLocation="Linha_255.xsd"/>
+  <xs:include schemaLocation="Linha_256.xsd"/>
+  <xs:include schemaLocation="Linha_257.xsd"/>
+  <xs:include schemaLocation="Linha_258.xsd"/>
+  <xs:include schemaLocation="Linha_261.xsd"/>
+  <xs:include schemaLocation="Linha_262.xsd"/>
+  <xs:include schemaLocation="Linha_270.xsd"/>
+</xs:schema>

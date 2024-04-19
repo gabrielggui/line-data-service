@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Conta" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ct="http://www.vivo.com.br/MC/Conta">
+  <xs:include schemaLocation="Linha_280.xsd"/>
+  <xs:complexType name="DocumentoImpressao">
+    <xs:sequence>
+      <xs:element name="nomeArquivo" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoDocImpressao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Documentacao do enum atual 1 - Boleto (Remessa)
+						3 - Segunda Via da Fatura (Copia fiel da
+						primeira via) 4 - Conta Detalhada Possiveis
+						numeros futuros 2 - Boleto Separado SMP (Vivo e
+						LD) 5 - Comprovante Contestacao 6 - Comprovante
+						Contestacao com Boleto (Remessa)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="documentoFaturamento" type="ct:DocumentoFaturamento" minOccurs="0"/>
+      <xs:element name="tipoImagem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo da imagem. Por exemplo: GIF</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--* ER/Studio 7.5 XML Schema Generation
+	* Project:		Canonico.dm1
+	* Version:		1.0
+	* Date Created:	19/3/2008--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda">
+  <xs:import namespace="http://www.vivo.com.br/MC/OrdemVenda" schemaLocation="Linha_95.xsd"/>
+  <xs:complexType name="FormaPagamento">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das formas de pagamento validas, como
+				pagamento a vista, pracelado, comodato etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica a forma de pagamento,
+						podendo ser a vista, parcelado etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sigla" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla que identifica o codigo da forma de
+						pagamento no SAP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da forma de pagamento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="bandeirasCartaoCredito" type="ov:BandeirasCartaoCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade BandeirasCartaoCredito.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorDesconto" minOccurs="0" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Valor em Percentual do Desconto atribuido a forma de pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorMinimoParcela" minOccurs="0" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Valor minimo por parcela na Forma de Pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeMaximaParcelas" minOccurs="0" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>Valor Maximo de Parcelas Configurado na Forma de Pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="condicoesPagamento" type="cat:CondicoesPagamento" minOccurs="0"/>
+      <xs:element name="descricao" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor Maximo de Parcelas Configurado na Forma de Pagamento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descontoICMS" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Desconto de ICMS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FormasPagamento">
+    <xs:sequence>
+      <xs:element name="formaPagamento" type="cat:FormaPagamento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/OrdemVenda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ov="http://www.vivo.com.br/MC/OrdemVenda" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_96.xsd"/>
+  <xs:complexType name="BandeiraCartaoCredito">
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica a bandeira do cartao de
+						credito.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao da bandeira do cartao de credito</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoInstituicaoFinanceira" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Codigo da Instituicao Financeira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codigoSAP" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Codigo da bandeira no SAP</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorMinimoParcela" minOccurs="0" type="xs:decimal">
+        <xs:annotation>
+          <xs:documentation>Valor minimo da parcela configurada para bandeira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linkImagem" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Local onde se encontra a imagem da Bandeira</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="condicoesPagamento" type="cat:CondicoesPagamento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade BandeirasCartaoCredito.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BandeirasCartaoCredito">
+    <xs:sequence>
+      <xs:element name="bandeiraCartaoCredito" type="ov:BandeiraCartaoCredito" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:annotation>
+    <xs:documentation>Entidade que irá armazenar os codigos e descrição dos
+    		codigos referente as midias(sms,chat e email)</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="Midia">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que armazenará o codigo da
+    					Midia(sms,chat e email).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="descricao" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento que ira armazenará a descrição da
+    					midia(sms,chat e email)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Midias">
+    <xs:sequence>
+      <xs:element name="midia" type="cat:Midia" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

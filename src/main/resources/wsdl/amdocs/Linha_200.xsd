@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pedido" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:ped="http://www.vivo.com.br/MC/Pedido" xmlns:Q1="http://www.vivo.com.br/MC/OrdemVenda">
+  <xs:import namespace="http://www.vivo.com.br/MC/Pessoa" schemaLocation="Linha_12.xsd"/>
+  <xs:include schemaLocation="Linha_201.xsd"/>
+  <xs:complexType name="Entrega">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes sobre as entregas de aparelhos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="status" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Status da entrega do pedido</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataPrevisao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de previsao de entrega</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="comprovante" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do comprovante de entrega</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="7"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="observacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Observacao da entrega</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipo" type="ped:TipoEntrega" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoEntrega para
+						identifica se a entrega sera feita de forma
+						convencional, agendada, normal, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="recebedorPedido" type="ps:Pessoa" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pessoa para identificar
+						informacoes da pessoa que recebera o pedido.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="data" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a data efetiva de entrega da entidade
+						Entrega</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Entregas">
+    <xs:sequence>
+      <xs:element name="entrega" type="ped:Entrega" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

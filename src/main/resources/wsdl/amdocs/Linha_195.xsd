@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:import namespace="http://www.vivo.com.br/MC/Catalogo" schemaLocation="Linha_13.xsd"/>
+  <xs:include schemaLocation="Linha_196.xsd"/>
+  <xs:include schemaLocation="Linha_16.xsd"/>
+  <xs:include schemaLocation="Linha_12.xsd"/>
+  <xs:complexType name="Documento">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos documentos, como RG, CPF, CNPJ,
+				etc, necessarios para identificar uma pessoa.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um documento do
+						cliente/prospect (iddocumento no Vivonet).</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoDocSistemaOrigem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um documento do
+						cliente/prospect nos legados, como Atlys ou
+						NGIN.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoPessoaDocumento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Representa o codigo de associacao entre a pessoa
+						e o documento (no vivonet e o campo
+						IdPessoaDocumento)</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroDocumento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do documento da pessoa.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="orgaoEmissor" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Orgao emissor. Usado para quando o tipo de
+						documento for RG.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataEmissao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de emissao do documento.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:date"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataUltimaAlteracao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data de ultima alteracao do registro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoDocumento" type="ps:TipoDocumento" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade TipoDocumento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="uf" type="cat:Uf" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Uf para identificar o
+						estado onde o documento foi emitido</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pais" type="ps:Pais" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Pais para identifica o
+						pais de documentos para clientes estrangeiros.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sistemaOrigem" type="cat:Sistema" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Sistema</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cidade" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da cidade</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAlteracoes" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero de Alteracoes no Documento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="indBloqueioProcon" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o documento informado possui processo
+						de PROCON ou nao: 0: nao possui processo, 1:
+						possui processo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroSincronismo" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Este elemento informa o numero de sincronismo do
+						Altys e o VIVONET</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="infoComplemento" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="numeroBase" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Numero do CPF ou CNPJ principal que se refere
+						este documento, Por exemplo se o CNPJ tivesse o
+						numero: 52438082/0029-55, seria armazenado
+						: 52438082. No caso do CPF 091963448; sempre sem
+						formatac?es. como exemplo o numero:091963448-65
+						seria registrado neste campo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroFilial" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o Numero do CNPJ da Filial,
+						utilizada para Pessoa Juridica. Por exemplo se o
+						CNPJ tivesse o numero: 52438082/0029-55, seria
+						armazenado : 0029, identificando que e a filial
+						0029 da Matriz 52438082.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numeroControle" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Elemento que indica o Digito Verificador do CPF
+						ou CNPJ do proprietario do Documento. Por
+						exemplo se o CNPJ tivesse o numero:
+						52438082/0029-55, seria armazenado apenas o
+						numero: 55. No caso do CPF como exemplo o
+						numero: 091963448-65 seria registrado neste
+						campo apenas 65; sempre sem formatacoes.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Documentos">
+    <xs:sequence>
+      <xs:element name="documento" type="ps:Documento" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

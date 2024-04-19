@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Assinatura" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ass="http://www.vivo.com.br/MC/Assinatura" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <import schemaLocation="Linha_219.xsd" namespace="http://www.vivo.com.br/MC/Catalogo"/>
+  <complexType name="DadosRedeFTTx">
+    <sequence>
+      <element name="OLT" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="OLTPorta" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="idONT" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="OLTCFO" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="OLTFibra" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="ONUPorta" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="VLanDeRede" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="VLanDeUsuario" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="VLANMulticast" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="VLANUnicast" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="VLANAudiencia" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="OPCH" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="CaboSplitter" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="FibraSplitter" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="SlotdaOLT" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="NASPort" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="NASIP" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="Equipamento" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="SlotCliente" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="PortaCliente" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="SlotUpLink" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="PortaUpLink" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="CNL" type="ass:CNL" minOccurs="0" maxOccurs="1"/>
+      <element name="AT" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="equipamentoTerminal" type="cat:Equipamento" minOccurs="0" maxOccurs="1"/>
+      <element name="numeroCaboDistribuidorFTTx" type="string" maxOccurs="1" minOccurs="0"/>
+      <element name="numeroCaboDistribuidorLateralFTTx" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="numeroCaboDistribuidor" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="numeroCaboDistribuidorLateral" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="numeroParDistribuidor" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="codigoFibraCliente" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="numeroCaboAlimentacao" type="string" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="numeroParAlimentador" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="CNL">
+    <sequence>
+      <element name="codigoNacionalLocalidade" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="siglaCodigoNacionalLocalidade" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+</schema>

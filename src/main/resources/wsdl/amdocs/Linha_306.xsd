@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Pessoa" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://www.vivo.com.br/MC/Pessoa">
+  <xs:include schemaLocation="Linha_307.xsd"/>
+  <xs:include schemaLocation="Linha_308.xsd"/>
+  <xs:include schemaLocation="Linha_309.xsd"/>
+  <xs:include schemaLocation="Linha_310.xsd"/>
+  <xs:complexType name="DadoDemografico">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes de dados demograficos de uma
+				pessoa/cliente. Informacoes necessarias para clientes
+				pos-pagos para atender o sistema Atlys.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="segmentoMercado" minOccurs="0" type="ps:SegmentoMercado">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade SegmentoMercado.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ocupacaoProdRural" minOccurs="0" type="ps:OcupacaoProdRural">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade OcupacaoProdRural</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="faixaRenda" type="ps:FaixaRenda" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade FaixaRenda</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="jurisdicao" type="ps:Jurisdicao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Jurisdicao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="indicaOrgNacional" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Se true, indica que cliente eh uma organizacao
+						nacional. O default eh false.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="desativarTelemarketing" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Se true, indica que o cliente deseja ter o
+						servico de telemarketing desabilitado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="desativarMalaDireta" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Se true, indica que o cliente deseja ter o
+						servico de mala direta desabilitado.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoAutomovel" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>codigo do tipo do Automovel, utilizado pelo
+						processo de negocios do Billing Pos Pago</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdEmpregadosCliente" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Quantidade de Empregados que o Cliente
+                    		Possui</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="qtdAcompanhantesCliente" minOccurs="0">
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>Quantidade de pessoas que residem com o Clientes</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

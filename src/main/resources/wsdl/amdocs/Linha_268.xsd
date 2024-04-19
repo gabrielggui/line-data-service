@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/NFO" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:complexType name="TiposArgumento">
+    <xs:annotation>
+      <xs:documentation>Referecia e ntidade TipoArgumento. Representa uma lista
+				de tipos de argumentos. Um tipo de argumento poder ser,
+				por exemplo: Puro, Migrado, Suspenso, etc. Nota: para
+				argumento vide documentation da entidade
+				ArgumentoScriptInteligente</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="tipoArgumento" type="nfo:TipoArgumento" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TipoArgumento">
+    <xs:annotation>
+      <xs:documentation>Representa tipos de argumentos. Um tipo de argumento
+				poder ser, por exemplo: Puro, Migrado, Suspenso, etc. Um
+				Tipo Argumento caracteriza um Argumento Nota: para
+				argumento vide documentation da entidade
+				ArgumentoScriptInteligente</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Sequencial que identifica de forma única um tipo
+						de argumento. Um tipo de argumento poder ser,
+						por exemplo: Puro, Migrado, Suspenso, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome do tipo de argumento que caracteriza um
+						argumento, que compõe um script Inteligente.
+						Nota: Para argumento vide documentation de
+						ArgumentoScriptInteligente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ativo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Flag que identifica se o tipo de argumento está
+						ativo. S - tipo de argumento ativo; N - tipo de
+						argumento inativo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioCriacao" minOccurs="0" maxOccurs="1" type="sca:UsuarioSCA">
+        <xs:annotation>
+          <xs:documentation>Login do usuario que fez a criação do tipo de
+						argumento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data de criacao do tipo de argumento que
+						caracteriza um argumento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioAlteracao" minOccurs="0" maxOccurs="1" type="sca:UsuarioSCA">
+        <xs:annotation>
+          <xs:documentation>Login do usuario que fez alteracoes no tipo de
+						argumento</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAlteracao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Data da ultima alteracao do tipo de argumento
+						que caracteriza um argumento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

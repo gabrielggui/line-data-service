@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Workflow" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wfw="http://www.vivo.com.br/MC/Workflow">
+  <xs:include schemaLocation="Linha_163.xsd"/>
+  <xs:complexType name="AcaoWorkflow">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes das acoes que deve ser tomadas para
+				as atividade de workflow.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="atividade" minOccurs="0" type="wfw:AtividadeWorkflow">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade Atividade</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="funcaoValidacao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da Funcao de Validacao do Processo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AcoesWorkflow">
+    <xs:sequence>
+      <xs:element name="acaoWorkflow" type="wfw:AcaoWorkflow" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

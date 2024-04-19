@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_18.xsd"/>
+  <xs:include schemaLocation="Linha_20.xsd"/>
+  <xs:complexType name="AtributoServico">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos parametros validos para
+				manutencao dos servicos da vivo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um servico no catalogo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome do atributo do servico. No atlys essa
+						informacao esta presenta na coluna
+						SVC_ATTR.SVC_ATTR_NAME.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="sequencial" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo sequencial usado para identificar a ordem
+						que os parametros devem ser informados para o
+						servico, e o mesmo codigo existente no sistema
+						Atlys na coluna SVC_ATTR.SVC_ATTR_SEQ_NBR.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do atributo do servico.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorAssinatura" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor do parametro quando associado a uma linha
+						especifica.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valoresPossiveis" type="cat:ValoresAtributosServ" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade AtributoServicoValor</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="valorAnterior" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Valor anterior do parametro (apos alteracao de
+						valor de um atributo do servico) quando
+						associado a uma linha especifica.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataInicioVigencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data e hora de inicio da vigencia do atributo
+						para a linha</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataExpiracaoVigencia" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>data e hora de termino da vigencia do atributo
+						para a linha.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="obrigatoriedadeParametro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica Obrigatoriedade do parametro True =
+						parametro e obrigatório e False = parametro e
+						opcional</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipoParametro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Tipo do Parametro D = Data, T = Texto, L = Lista
+						de valores, V = Valor monetario, H = Horas e I =
+						Inteiro.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="mascaraValorParametro" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Mascara do Parametro "99/99/9999", "99,99",
+						"99:99"</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="possuiProRata" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Flag de prorateamento de encargo True =
+						VERDADEIRO indica que os encargos sao
+						prorateados e False= FALSO indica que os
+						encargos nao sao prorateados</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <!--Inicio da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="indicadorInformativo" type="xs:boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tipoAtributo" type="cat:TipoAtributo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantidadeMaxima" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation/>
+        </xs:annotation>
+      </xs:element>
+      <!--Final da inclusão de elementos para contemplar CRM Massivo // RSR-->
+      <xs:element name="numeroPares" type="xs:integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Atributo utilizado para identificar o numero de pares que será utilizado para que seja possível a disponibilidade de serviços de banda larga</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="velocidade" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Elemento utilizado para identificar a velocidade de serviços de banda larga</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AtributosServico">
+    <xs:sequence>
+      <xs:element name="atributoServico" type="cat:AtributoServico" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

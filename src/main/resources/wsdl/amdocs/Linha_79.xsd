@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/Catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cat="http://www.vivo.com.br/MC/Catalogo">
+  <xs:include schemaLocation="Linha_80.xsd"/>
+  <xs:complexType name="CentroDistribuicao">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes dos canais de venda da vivo, sejam
+				lojas proprias, dealers ou depositos.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica um centro de distribuicao.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="18"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="siglaSAP" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Sigla que identifica centro de distribuicao no
+						sistema SAP</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255">
+              <!--Alterado o tamanho de 4 para 255,por Dilmara Matos em 28/07/2011-->
+            </xs:maxLength>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Nome da loja Vivo ou dealer.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Alterado o tamanho de 50 para 255,por Dilmara Matos em 28/07/2011-->
+            <xs:maxLength value="255"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="centroDistribuicaoAtivo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Indica se o centro de distribuicao esta ativo
+						(true) ou inativo (false). O servico de
+						enablement retorna S para ativo e N para
+						inativo.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ddd" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo de area do centro de distribuicao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="grupoVenda" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Grupo de venda relacionado ao escritorio de venda</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="escritorioVenda" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Escritorio de Venda da Organizacao de Vendas no Canal de Atendimento</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoCanalDistribuicao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Identificador de Canal de distribuicao</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:long"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="depositos" minOccurs="0" type="cat:Depositos">
+        <xs:annotation>
+          <xs:documentation>Depositos do Centro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CentrosDistribuicao">
+    <xs:sequence>
+      <xs:element name="centroDistribuicao" type="cat:CentroDistribuicao" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created with Liquid XML Studio Developer Edition (Trial) 8.0.10.2115 (http://www.liquid-technologies.com)--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NFO" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="Linha_258.xsd"/>
+  <xs:include schemaLocation="Linha_272.xsd"/>
+  <xs:include schemaLocation="Linha_257.xsd"/>
+  <xs:complexType name="Navegacao">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes a navegacao da linha.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resumoNavegacao">
+        <xs:annotation>
+          <xs:documentation>O conteudo desse campo representa a lista de
+						respostas selecionadas em cada nivel da
+						navegacao, separados por /. Por exemplo:
+						suponhamos que uma linha tenha sido tratada
+						usado a seguinte navegacao: Nivel 1 - Resposta
+						1.1; Nivel 2 - Resposta 2.3; Nivel 3 - Resposta
+						3.2. A descricao do resumo da navegacao sera:
+						Resposta 1.1 / Resposta 2.3 / Resposta 3.2.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="scriptInteligente" type="nfo:ScriptInteligente">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade ScriptInteligente para identificar o 
+                        script que foi executado durante o processo de retencao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="navegacaoDetalhes" type="nfo:NavegacaoDetalhes">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade NavegacaoDetalhe para identificar as perguntas e respostar 
+					feitas para o cliente durante o processo de retencao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NavegacaoDetalhe">
+    <xs:annotation>
+      <xs:documentation>Mantem informacoes da navegacao da linha.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nivel">
+        <xs:annotation>
+          <xs:documentation>Nivel de cada pergunta/resposta</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:totalDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="perguntaScriptInteligente" type="nfo:PerguntaScriptInteligente">
+        <xs:annotation>
+          <xs:documentation>Pergunta feita durante o processo de navegacao.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="respostaScriptInteligente" type="nfo:RespostaScriptInteligente">
+        <xs:annotation>
+          <xs:documentation>Resposta de cada pergunta da navegacao</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NavegacaoDetalhes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="navegacaoDetalhe" type="nfo:NavegacaoDetalhe"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

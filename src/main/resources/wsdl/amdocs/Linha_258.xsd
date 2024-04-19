@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/NFO" elementFormDefault="qualified" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:import namespace="http://www.vivo.com.br/MC/SCA" schemaLocation="Linha_5.xsd"/>
+  <xs:include schemaLocation="Linha_259.xsd"/>
+  <xs:include schemaLocation="Linha_260.xsd"/>
+  <xs:complexType name="PerguntasScriptInteligente">
+    <xs:annotation>
+      <xs:documentation>Lista de perguntas que compoem um script Inteligente
+				(Vide documentation de ScriptInteligente.xsd neste mesmo
+				NameSpace) PerguntasScriptInteligente sao as
+				perguntas/questoes feitas pelo atendente ao cliente na
+				intencao de reter o cliente (processo de retencao). Cada
+				script inteligente leva a uma pergunta inicial Cada
+				pergunta leva a uma lista de respostas Cada resposta
+				leva a uma outra pergunta ou a uma lista de argumentos
+				(ofertas para o cliente)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="perguntaScriptInteligente" type="nfo:PerguntaScriptInteligente" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Lista de perguntas que compoem um script
+						Inteligente (Vide documentation de
+						ScriptInteligente.xsd neste mesmo NameSpace)
+						PerguntasScriptInteligente sao as
+						perguntas/questoes feitas pelo atendente ao
+						cliente na intencao de reter o cliente (processo
+						de retencao). Cada script inteligente leva a uma
+						pergunta inicial Cada pergunta leva a uma lista
+						de respostas Cada resposta leva a uma outra
+						pergunta ou a uma lista de argumentos (ofertas
+						para o cliente)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PerguntaScriptInteligente">
+    <xs:annotation>
+      <xs:documentation>pergunta que compoem um script Inteligente (Vide
+				documentation de ScriptInteligente.xsd neste mesmo
+				NameSpace) PerguntasScriptInteligente sao as
+				perguntas/questoes feitas pelo atendente ao cliente na
+				intencao de reter o cliente (processo de retencao). Cada
+				script inteligente leva a uma pergunta inicial Cada
+				pergunta leva a uma lista de respostas Cada resposta
+				leva a uma outra pergunta ou a uma lista de argumentos
+				(ofertas para o cliente)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo sequencial que identifica unicamente uma
+						pergunta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descritivo da pergunta.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ativo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Flag que representa se determinada pergunta
+						encontra-se ativo para compor um
+						scriptInteligente em um processo de retencao.
+						(para 'scriptInteligente' vide documentation da
+						entidade scriptInteligente.xsd ) Dominio: 'S' '
+						Ativo, 'N' ' Nao Ativo</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioCriacao" minOccurs="0" maxOccurs="1" type="sca:UsuarioSCA">
+        <xs:annotation>
+          <xs:documentation>Referecia a entidade UsuarioSCA (que é a
+						entidade padrao para referenciar usuarios de
+						sistemas). usuarioCriacao trata-se do usuario
+						sistemico que criou a pergunta que compoem
+						script. Nota: para 'pergunta' vide documentation
+						dessa entidade. Para Script vide documentation
+						da entidade ScriptInteligente.xsd deste mesmo
+						namespace</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataCriacao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>data de criacao da pergunta que compoem o script</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="usuarioAlteracao" minOccurs="0" maxOccurs="1" type="sca:UsuarioSCA">
+        <xs:annotation>
+          <xs:documentation>Referecia a entidade UsuarioSCA (que é a
+						entidade padrao para referenciar usuarios de
+						sistemas). usuarioAlteracao trata-se do usuario
+						sistemico que alterou a pergunta que compoem
+						script pela ultima vez. Nota: para 'pergunta'
+						vide documentation dessa entidade. Para Script
+						vide documentation da entidade
+						ScriptInteligente.xsd deste mesmo namespace</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataAlteracao" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>data da ultima alteracao da pergunta que compoem
+						o script</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="listaRespScriptInteligente" minOccurs="0" maxOccurs="1" type="nfo:ListaRespScriptInteligente">
+        <xs:annotation>
+          <xs:documentation>Referencia a entidade
+						'RespostasScriptInteligente'. Tal entidade
+						referencia uma lista de respostas que podem
+						estar associadas a uma pergunta que compoem um
+						scriptInteligente.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

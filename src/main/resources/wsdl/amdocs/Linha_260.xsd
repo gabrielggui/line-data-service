@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.vivo.com.br/MC/NFO" elementFormDefault="qualified" xmlns:nfo="http://www.vivo.com.br/MC/NFO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ListaRespScriptInteligente">
+    <xs:annotation>
+      <xs:documentation>Atributos de uma lista de respostas que podem estar
+        		associadas a uma pergunta que compoem um
+        		scriptInteligente. Para 'scriptInteligente' vide
+        		documentation da entidade ScriptInteligente.xsd</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>ID de uma lista de respostas que compoem um
+                		ScriptInteligente, ou seja, as respostas unicas
+                		e separadas sao registradas na entidade
+                		RespostaScriptInteligente. Nota: . Para
+                		'scriptInteligente' vide documentation da
+                		entidade ScriptInteligente.xsd</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nome" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Nome da lista de respostas associada a pergunta
+                		que compoem o scriptInteligente</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

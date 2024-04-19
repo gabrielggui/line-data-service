@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/SCA" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sca="http://www.vivo.com.br/MC/SCA">
+  <xs:complexType name="IP">
+    <xs:annotation>
+      <xs:documentation>Mantem cadastro de Ips.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="enderecoIP" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Endereco IP.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="voipIP" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Endereco IP do voip.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="voipMascaraIP" minOccurs="0" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Endereço da mascara do IP para rede voip.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IPs">
+    <xs:sequence>
+      <xs:element name="ip" type="sca:IP" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

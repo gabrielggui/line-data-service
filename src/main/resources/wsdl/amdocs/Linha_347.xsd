@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.vivo.com.br/MC/NGIN" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ngi="http://www.vivo.com.br/MC/NGIN">
+  <xs:complexType name="CanalRecarga">
+    <xs:annotation>
+      <xs:documentation>Identifica os possiveis canais de recarga, como Lojas
+				Proprias, Cartao de Credito, Debito Automatico, Cartao
+				Fisico, Banquinha, Manual, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="codigo" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Codigo que identifica o canal de recarga.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao" nillable="true" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Descricao do canal de recarga</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="150"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="dataAtualCanalRecarga" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Data atual no fuso horário canal de Recarga.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:dateTime"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="limiteCredito" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Limite de Crédito configurado pela Vivo para o Canal de Recarga</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="saldoDisponivel" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Saldo Disponível para recarga para o Canal de Recarga</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CanaisRecarga">
+    <xs:sequence>
+      <xs:element name="canalRecarga" type="ngi:CanalRecarga" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
