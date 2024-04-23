@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @Builder
 @XmlRootElement(name = "sistemaOrigem")
 @XmlAccessorType(XmlAccessType.FIELD)

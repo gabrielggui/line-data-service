@@ -9,6 +9,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @Builder
 @XmlRootElement(name = "Linhas", namespace = "http://www.vivo.com.br/MC/Assinatura")
 @XmlAccessorType(XmlAccessType.FIELD)

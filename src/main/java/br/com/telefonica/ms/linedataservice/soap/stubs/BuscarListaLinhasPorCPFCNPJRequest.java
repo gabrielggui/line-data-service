@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @Builder
 @XmlRootElement(name = "buscarListaLinhasPorCPFCNPJRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
