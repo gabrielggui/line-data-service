@@ -1,29 +1,27 @@
-package br.com.telefonica.ms.linedataservice.unit;
+package br.com.telefonica.ms.linedataservice.unit.controller;
 
 import br.com.telefonica.ms.linedataservice.controller.LinhaController;
 import br.com.telefonica.ms.linedataservice.dto.LinhaDTO;
 import br.com.telefonica.ms.linedataservice.service.impl.LinhaServiceImpl;
-import br.com.telefonica.ms.linedataservice.soap.stubs.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.List;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@ExtendWith(SpringExtension.class)
 @WebMvcTest(LinhaController.class)
 public class LinhaControllerTest {
 
@@ -46,24 +44,25 @@ public class LinhaControllerTest {
     }
 
     @Test
-    public void testGetLinhas_validCpfCnpjAndAtivoStatus() throws Exception {
-        when(linhaService.findLinhasByCpfCnpjAndStatusLinha(anyString(), anyString())).thenReturn(linhasDTO);
+    public void testFindLinhasByCpfCnpj_valid() throws Exception {
+        when(linhaService.findLinhasByCpfCnpj(anyString()))
+                .thenReturn(linhasDTO);
 
         mockMvc.perform(get("/linha")
-                        .param("cpf_cnpj", "36587896000105")
-                        .param("status", "ATIVO"))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-
+                        .param("cpf_cnpj", "21666736007")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray());
     }
 
     @Test
-    public void testGetLinhas_invalidCpfCnpj() throws Exception {
-        when(linhaService.findLinhasByCpfCnpjAndStatusLinha(anyString(), anyString())).thenReturn(linhasDTO);
+    public void testFindLinhasByCpfCnpj_withoutCpfCnpj() throws Exception {
+        when(linhaService.findLinhasByCpfCnpj(anyString()))
+                .thenReturn(linhasDTO);
 
         mockMvc.perform(get("/linha")
-                        .param("cpf_cnpj", ""))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
-
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
     }
 
 }
