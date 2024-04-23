@@ -20,13 +20,17 @@ public class CpfUtil {
             return false;
         }
 
+        cpf = cpf.replace(".", "")
+                .replace("-", "");
+
+        if (cpf.length() != 11){
+            return false;
+        }
+
         char firstChar = cpf.charAt(0);
         if (cpf.chars().allMatch(ch -> ch == firstChar)) {
             return false;
         }
-
-        cpf = cpf.replace(".", "");
-        cpf = cpf.replace("-", "");
 
         try {
             Long.parseLong(cpf);

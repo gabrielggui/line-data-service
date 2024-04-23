@@ -21,6 +21,14 @@ public class CnpjUtil {
             return false;
         }
 
+        cnpj = cnpj.replace(".", "")
+                .replace("-", "")
+                .replace("/", "");
+
+        if (cnpj.length() != 14){
+            return false;
+        }
+
         char firstChar = cnpj.charAt(0);
         if (cnpj.chars().allMatch(ch -> ch == firstChar)) {
             return false;
