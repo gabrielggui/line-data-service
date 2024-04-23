@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface LinhaService {
 
-    //LinhasDTO getLinhas(String CpfCnpj);
+    List<LinhaDTO> findLinhasByCpfCnpj(String cpfCnpj);
 
     List<LinhaDTO> findLinhasByCpfCnpjAndStatusLinha(String CpfCnpj, String statusLinha);
 }
