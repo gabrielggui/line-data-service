@@ -21,10 +21,11 @@ public class LinhaUtil {
     }
 
     /**
-     * Method responsible for returning a stream with all phone lines associated with a CPF or CNPJ.
+     * Makes a request to an external web service to retrieve all phone lines associated with a CPF or CNPJ.
      *
-     * @param cpfCnpj the CPF or CNPJ of the client.
-     * @return a stream with all phone lines.
+     * @param cpfCnpj     the client's CPF or CNPJ.
+     * @param statusLinha the status of the phone lines to be returned.
+     * @return a list with all phone lines.
      * @author Gabriel Guilherme (gabriel.guilherme@compasso.com.br)
      */
     public List<Linha> findLinhasByCpfCnpj(String cpfCnpj, StatusLinhaEnum statusLinha) {
@@ -46,6 +47,13 @@ public class LinhaUtil {
         return response;
     }
 
+    /**
+     * Converts a list of "Linha" objects to a list of "LinhaDto" objects.
+     *
+     * @param linhas a list of "Linha" objects to be converted.
+     * @return a list of converted "LinhaDto" objects.
+     * @author Gabriel Guilherme (gabriel.guilherme@compasso.com.br)
+     */
     public List<LinhaDto> mapLinhasToLinhasDtoList(List<Linha> linhas) {
         return linhas.stream().map(LinhaDto::new).toList();
     }

@@ -27,13 +27,14 @@ public class LinhaController {
     }
 
     /**
-     * Retrieve a client's phone lines based on a CPF or CNPJ.
+     * Retrieves a client's phone lines based on the CPF and the line status.
      *
-     * @param cpfCnpj the CPF or CNPJ of the client.
-     * @return The phone lines associated with a CPF or CNPJ.
+     * @param cpf     the client's CPF.
+     * @param statusLinha the status of the phone lines to be returned.
+     * @return The phone lines associated with a given CPF.
      * @author Gabriel Guilherme (gabriel.guilherme@compasso.com.br)
      */
-    @Operation(summary = "Retrieve a client's phone lines based on a CPF or CNPJ.")
+    @Operation(summary = "Retrieves a client's phone lines based on the CPF/CNPJ and the line status.")
     @GetMapping(params = {"cpf"})
     public ResponseEntity<List<LinhaDto>> findLinhasByCpf(
             @CPF @RequestParam("cpf") String cpf,
@@ -43,14 +44,14 @@ public class LinhaController {
     }
 
     /**
-     * Retrieves a client's phone lines based on their CPF or CNPJ and the phone line status.
+     * Retrieves a client's phone lines based on the CNPJ and the line status.
      *
-     * @param cpfCnpj     the client's CPF or CNPJ.
+     * @param cnpj        the client's CNPJ.
      * @param statusLinha the status of the phone lines to be returned.
-     * @return The phone lines associated with a CPF or CNPJ.
+     * @return The phone lines associated with a given CNPJ.
      * @author Gabriel Guilherme (gabriel.guilherme@compasso.com.br)
      */
-    @Operation(summary = "Retrieves a client's phone lines based on their CPF or CNPJ and the phone line status.")
+    @Operation(summary = "Retrieves a client's phone lines based on the CPF/CNPJ and the line status.")
     @GetMapping(params = {"cnpj"})
     public ResponseEntity<List<LinhaDto>> findLinhasByCnpj(
             @CNPJ @RequestParam("cnpj") String cnpj,
