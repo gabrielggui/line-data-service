@@ -1,10 +1,10 @@
 package br.com.telefonica.ms.linedataservice.config;
 
+import feign.codec.Decoder;
+import feign.codec.Encoder;
 import feign.jaxb.JAXBContextFactory;
 import feign.soap.SOAPDecoder;
 import feign.soap.SOAPEncoder;
-import feign.codec.Encoder;
-import feign.codec.Decoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
