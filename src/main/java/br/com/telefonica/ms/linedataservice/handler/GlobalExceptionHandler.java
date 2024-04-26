@@ -1,111 +1,68 @@
 package br.com.telefonica.ms.linedataservice.handler;
 
-import br.com.telefonica.ms.linedataservice.exception.InvalidCpfCnpjException;
-import br.com.telefonica.ms.linedataservice.exception.InvalidStatusLinhaException;
 import feign.RetryableException;
-import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ProblemDetail;
-import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.UnsatisfiedServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    private static final String MISSING_PARAMETER_MESSAGE = "A required parameter is missing or invalid.";
+    private static final String VALIDATION_ERROR_MESSAGE = "Validation error. Please check the input data.";
+    private static final String TYPE_MISMATCH_ERROR_MESSAGE = "Invalid parameter type. Please provide valid data.";
+    private static final String INTERNAL_SERVER_ERROR_MESSAGE = "An error occurred. Please try again later.";
+    private static final String RESOURCE_NOT_FOUND_MESSAGE = "The requested resource was not found.";
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<Object> handleNoResourceFoundException(NoResourceFoundException e) {
+        Map<String, String> errors = createResponse("RESOURCE_NOT_FOUND", RESOURCE_NOT_FOUND_MESSAGE);
+        return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(RetryableException.class)
-    @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
-    public ProblemDetail handleRetryableException(RetryableException e) {
-        var problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.SERVICE_UNAVAILABLE,
-                e.getLocalizedMessage());
-        problemDetail.setProperty("timestamp", Instant.now());
-
-        return problemDetail;
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<Object> handleRetryableException(RetryableException e) {
+        Map<String, String> errors = createResponse("INTERNAL_SERVER_ERROR", INTERNAL_SERVER_ERROR_MESSAGE);
+        return new ResponseEntity<>(errors, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ProblemDetail handleIllegalArgumentException(IllegalArgumentException e) {
-        var problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                e.getLocalizedMessage());
-        problemDetail.setProperty("timestamp", Instant.now());
-
-        return problemDetail;
-    }
-
-    @ExceptionHandler(HandlerMethodValidationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ProblemDetail HandlerMethodValidationException(HandlerMethodValidationException e) {
-        var problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                e.getLocalizedMessage());
-        problemDetail.setProperty("timestamp", Instant.now());
-
-        return problemDetail;
-    }
-
-    @ExceptionHandler(MissingServletRequestParameterException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ProblemDetail handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
-        var problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                e.getLocalizedMessage());
-        problemDetail.setProperty("timestamp", Instant.now());
-
-        return problemDetail;
-    }
-
-    @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ProblemDetail handleConstraintViolationException(ConstraintViolationException e) {
-        var problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                e.getLocalizedMessage());
-        problemDetail.setProperty("timestamp", Instant.now());
-
-        return problemDetail;
+    @ExceptionHandler({HandlerMethodValidationException.class})
+    public ResponseEntity<Object> handleHandlerMethodValidationException(
+            HandlerMethodValidationException ex, WebRequest request) {
+        Map<String, String> errors = createResponse("VALIDATION_ERROR", VALIDATION_ERROR_MESSAGE);
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ProblemDetail handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
-        var problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                e.getLocalizedMessage());
-        problemDetail.setProperty("timestamp", Instant.now());
-
-        return problemDetail;
-    }
-
-    @ExceptionHandler(InvalidCpfCnpjException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ProblemDetail handleInvalidCpfCnpjException(InvalidCpfCnpjException e) {
-        var problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                e.getLocalizedMessage());
-        problemDetail.setProperty("timestamp", Instant.now());
-
-        return problemDetail;
-    }
-
-    @ExceptionHandler(InvalidStatusLinhaException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ProblemDetail handleInvalidStatusLinhaException(InvalidStatusLinhaException e) {
-        var problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                e.getLocalizedMessage());
-        problemDetail.setProperty("timestamp", Instant.now());
-
-        return problemDetail;
+    public ResponseEntity<Object> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
+        Map<String, String> errors = createResponse("TYPE_MISMATCH_ERROR", TYPE_MISMATCH_ERROR_MESSAGE);
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(UnsatisfiedServletRequestParameterException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ProblemDetail handleUnsatisfiedServletRequestParameterException(UnsatisfiedServletRequestParameterException e) {
-        var problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                e.getLocalizedMessage());
-        problemDetail.setProperty("timestamp", Instant.now());
+    public ResponseEntity<Object> handleUnsatisfiedServletRequestParameterException(UnsatisfiedServletRequestParameterException e) {
+        Map<String, String> errors = createResponse("MISSING_PARAMETER", MISSING_PARAMETER_MESSAGE);
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
 
-        return problemDetail;
+    public final Map<String, String> createResponse(String error, String message) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("code", error);
+        errors.put("message", message);
+        return errors;
     }
 }
