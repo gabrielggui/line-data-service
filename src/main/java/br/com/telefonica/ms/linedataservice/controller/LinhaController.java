@@ -5,8 +5,6 @@ import br.com.telefonica.ms.linedataservice.enums.StatusLinhaEnum;
 import br.com.telefonica.ms.linedataservice.service.LinhaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.hibernate.validator.constraints.br.CNPJ;
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,37 +24,12 @@ public class LinhaController {
         this.linhaService = linhaService;
     }
 
-    /**
-     * Retrieves a client's phone lines based on the CPF and the line status.
-     *
-     * @param cpf     the client's CPF.
-     * @param statusLinha the status of the phone lines to be returned.
-     * @return The phone lines associated with a given CPF.
-     * @author Gabriel Guilherme (gabriel.guilherme@compasso.com.br)
-     */
     @Operation(summary = "Retrieves a client's phone lines based on the CPF/CNPJ and the line status.")
-    @GetMapping(params = {"cpf"})
-    public ResponseEntity<List<LinhaDto>> findLinhasByCpf(
-            @CPF @RequestParam("cpf") String cpf,
+    @GetMapping
+    public ResponseEntity<List<LinhaDto>> findLinhas(
+            @RequestParam("cpf_cnpj") String cpfCnpj,
             @RequestParam(required = false, name = "status") StatusLinhaEnum statusLinha) {
-        List<LinhaDto> linhas = linhaService.findLinhasByCpf(cpf, statusLinha);
-        return ResponseEntity.ok().body(linhas);
-    }
-
-    /**
-     * Retrieves a client's phone lines based on the CNPJ and the line status.
-     *
-     * @param cnpj        the client's CNPJ.
-     * @param statusLinha the status of the phone lines to be returned.
-     * @return The phone lines associated with a given CNPJ.
-     * @author Gabriel Guilherme (gabriel.guilherme@compasso.com.br)
-     */
-    @Operation(summary = "Retrieves a client's phone lines based on the CPF/CNPJ and the line status.")
-    @GetMapping(params = {"cnpj"})
-    public ResponseEntity<List<LinhaDto>> findLinhasByCnpj(
-            @CNPJ @RequestParam("cnpj") String cnpj,
-            @RequestParam(required = false, name = "status") StatusLinhaEnum statusLinha) {
-        List<LinhaDto> linhas = linhaService.findLinhasByCnpj(cnpj, statusLinha);
+        var linhas = linhaService.findLinhasDtoByStatusLinha(cpfCnpj, statusLinha);
         return ResponseEntity.ok().body(linhas);
     }
 

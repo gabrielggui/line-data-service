@@ -1,53 +1,50 @@
 package br.com.telefonica.ms.linedataservice.service.impl;
 
+import br.com.telefonica.ms.linedataservice.client.LinhaClient;
 import br.com.telefonica.ms.linedataservice.dto.LinhaDto;
 import br.com.telefonica.ms.linedataservice.enums.StatusLinhaEnum;
 import br.com.telefonica.ms.linedataservice.service.LinhaService;
+import br.com.telefonica.ms.linedataservice.soap.stubs.BuscarListaLinhasPorCPFCNPJRequest;
 import br.com.telefonica.ms.linedataservice.soap.stubs.Linha;
 import br.com.telefonica.ms.linedataservice.util.LinhaUtil;
-import org.hibernate.validator.constraints.br.CNPJ;
-import org.hibernate.validator.constraints.br.CPF;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Validator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
+import java.util.Optional;
 
-@Validated
 @Service
-public class LinhaServiceImpl implements LinhaService {
+public class LinhaServiceImpl implements LinhaService{
 
-    private final LinhaUtil linhaUtil;
+    @Autowired
+    private LinhaClient linhaClient;
 
-    public LinhaServiceImpl(LinhaUtil linhaUtil) {
-        this.linhaUtil = linhaUtil;
+    @Autowired
+    private Validator validator;
+
+    @Override
+    public List<LinhaDto> findLinhasDtoByStatusLinha(String cpfCnpj, StatusLinhaEnum statusLinha) {
+        var response = this.findLinhasByStatusLinha(cpfCnpj, statusLinha);
+        return LinhaUtil.mapLinhasToLinhasDtoList(response);
     }
 
-    /**
-     * Retrieves a client's phone lines based on the CPF and the line status.
-     *
-     * @param cpf     the client's CPF.
-     * @param statusLinha the status of the phone lines to be returned.
-     * @return The phone lines associated with a given CPF.
-     * @author Gabriel Guilherme (gabriel.guilherme@compasso.com.br)
-     */
     @Override
-    public List<LinhaDto> findLinhasByCpf(@CPF String cpf, StatusLinhaEnum statusLinha) {
-        List<Linha> linhas = linhaUtil.findLinhasByCpfCnpj(cpf, statusLinha);
-        return linhaUtil.mapLinhasToLinhasDtoList(linhas);
+    public List<Linha> findLinhasByStatusLinha(String cpfCnpj, StatusLinhaEnum statusLinha) {
+        var response = this.findLinhas(cpfCnpj).orElse(List.of());
+        return LinhaUtil.filterLinhasByStatus(response, statusLinha);
     }
 
-    /**
-     * Retrieves a client's phone lines based on the CNPJ and the line status.
-     *
-     * @param cnpj        the client's CNPJ.
-     * @param statusLinha the status of the phone lines to be returned.
-     * @return The phone lines associated with a given CNPJ.
-     * @author Gabriel Guilherme (gabriel.guilherme@compasso.com.br)
-     */
     @Override
-    public List<LinhaDto> findLinhasByCnpj(@CNPJ String cnpj, StatusLinhaEnum statusLinha) {
-        List<Linha> linhas = linhaUtil.findLinhasByCpfCnpj(cnpj, statusLinha);
-        return linhaUtil.mapLinhasToLinhasDtoList(linhas);
+    public Optional<List<Linha>> findLinhas(String cpfCnpj) {
+        var request = new BuscarListaLinhasPorCPFCNPJRequest(cpfCnpj);
+        var violations = validator.validate(request);
+
+        if (!violations.isEmpty())
+            throw new ConstraintViolationException(violations);
+
+        return Optional.ofNullable(linhaClient.findLinhasByCpfCnpj(request).getLinha());
     }
 
 }
