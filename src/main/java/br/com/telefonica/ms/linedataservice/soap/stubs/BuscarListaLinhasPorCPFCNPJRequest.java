@@ -1,5 +1,6 @@
 package br.com.telefonica.ms.linedataservice.soap.stubs;
 
+import br.com.telefonica.ms.linedataservice.annotation.CpfOrCnpj;
 import lombok.*;
 
 import javax.xml.bind.annotation.*;
@@ -18,6 +19,8 @@ import javax.xml.bind.annotation.*;
                 "numeroCPFCNPJ"
         })
 public class BuscarListaLinhasPorCPFCNPJRequest {
+
+    @CpfOrCnpj
     @XmlElement(required = true)
     private String numeroCPFCNPJ;
 }
