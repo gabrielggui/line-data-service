@@ -1,68 +1,89 @@
 package br.com.telefonica.ms.linedataservice.handler;
 
+import br.com.telefonica.ms.linedataservice.dto.ExceptionMessage;
+import br.com.telefonica.ms.linedataservice.enums.ErrorStatus;
 import feign.RetryableException;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.UnsatisfiedServletRequestParameterException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    private static final String MISSING_PARAMETER_MESSAGE = "A required parameter is missing or invalid.";
-    private static final String VALIDATION_ERROR_MESSAGE = "Validation error. Please check the input data.";
-    private static final String TYPE_MISMATCH_ERROR_MESSAGE = "Invalid parameter type. Please provide valid data.";
-    private static final String INTERNAL_SERVER_ERROR_MESSAGE = "An error occurred. Please try again later.";
-    private static final String RESOURCE_NOT_FOUND_MESSAGE = "The requested resource was not found.";
-
     @ExceptionHandler(NoResourceFoundException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseEntity<Object> handleNoResourceFoundException(NoResourceFoundException e) {
-        Map<String, String> errors = createResponse("RESOURCE_NOT_FOUND", RESOURCE_NOT_FOUND_MESSAGE);
-        return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
+    public ResponseEntity<ExceptionMessage> handleNoResourceFoundException(NoResourceFoundException e) {
+        var response = ExceptionMessage.builder()
+                .code(ErrorStatus.RESOURCE_NOT_FOUND.getCode())
+                .status(ErrorStatus.RESOURCE_NOT_FOUND.getStatus())
+                .message(ErrorStatus.RESOURCE_NOT_FOUND.getMessage())
+                .build();
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(RetryableException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<Object> handleRetryableException(RetryableException e) {
-        Map<String, String> errors = createResponse("INTERNAL_SERVER_ERROR", INTERNAL_SERVER_ERROR_MESSAGE);
-        return new ResponseEntity<>(errors, HttpStatus.INTERNAL_SERVER_ERROR);
+        var response = ExceptionMessage.builder()
+                .code(ErrorStatus.INTERNAL_SERVER_ERROR.getCode())
+                .status(ErrorStatus.INTERNAL_SERVER_ERROR.getStatus())
+                .message(ErrorStatus.INTERNAL_SERVER_ERROR.getMessage())
+                .build();
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler({HandlerMethodValidationException.class})
     public ResponseEntity<Object> handleHandlerMethodValidationException(
             HandlerMethodValidationException ex, WebRequest request) {
-        Map<String, String> errors = createResponse("VALIDATION_ERROR", VALIDATION_ERROR_MESSAGE);
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        var response = ExceptionMessage.builder()
+                .code(ErrorStatus.VALIDATION_ERROR.getCode())
+                .status(ErrorStatus.VALIDATION_ERROR.getStatus())
+                .message(ErrorStatus.VALIDATION_ERROR.getMessage())
+                .build();
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex) {
+        var errorMessage = ex.getConstraintViolations().stream()
+                .map(violation -> violation.getPropertyPath() + ": " + violation.getMessage())
+                .reduce((m1, m2) -> m1 + ", " + m2)
+                .orElse(ErrorStatus.VALIDATION_ERROR.getMessage());
+
+        var response = ExceptionMessage.builder()
+                .code(ErrorStatus.VALIDATION_ERROR.getCode())
+                .status(ErrorStatus.VALIDATION_ERROR.getStatus())
+                .message(errorMessage)
+                .build();
+
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<Object> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
-        Map<String, String> errors = createResponse("TYPE_MISMATCH_ERROR", TYPE_MISMATCH_ERROR_MESSAGE);
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        var response = ExceptionMessage.builder()
+                .code(ErrorStatus.TYPE_MISMATCH_ERROR.getCode())
+                .status(ErrorStatus.TYPE_MISMATCH_ERROR.getStatus())
+                .message(ErrorStatus.TYPE_MISMATCH_ERROR.getMessage())
+                .build();
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(UnsatisfiedServletRequestParameterException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<Object> handleUnsatisfiedServletRequestParameterException(UnsatisfiedServletRequestParameterException e) {
-        Map<String, String> errors = createResponse("MISSING_PARAMETER", MISSING_PARAMETER_MESSAGE);
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-    }
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<Object> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
+        var parameterName = ex.getParameterName();
 
-    public final Map<String, String> createResponse(String error, String message) {
-        Map<String, String> errors = new HashMap<>();
-        errors.put("code", error);
-        errors.put("message", message);
-        return errors;
+        var response = ExceptionMessage.builder()
+                .code(ErrorStatus.MISSING_SERVLET_PARAMETER.getCode())
+                .status(ErrorStatus.MISSING_SERVLET_PARAMETER.getStatus())
+                .message(ErrorStatus.MISSING_SERVLET_PARAMETER.getMessage() + parameterName)
+                .build();
+
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 }
