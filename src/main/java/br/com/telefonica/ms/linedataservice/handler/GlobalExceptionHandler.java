@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(RetryableException.class)
-    public ResponseEntity<Object> handleRetryableException(RetryableException e) {
+    public ResponseEntity<ExceptionMessage> handleRetryableException(RetryableException e) {
         var response = ExceptionMessage.builder()
                 .code(ErrorStatus.INTERNAL_SERVER_ERROR.getCode())
                 .status(ErrorStatus.INTERNAL_SERVER_ERROR.getStatus())
@@ -38,7 +38,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler({HandlerMethodValidationException.class})
-    public ResponseEntity<Object> handleHandlerMethodValidationException(
+    public ResponseEntity<ExceptionMessage> handleHandlerMethodValidationException(
             HandlerMethodValidationException ex, WebRequest request) {
         var response = ExceptionMessage.builder()
                 .code(ErrorStatus.VALIDATION_ERROR.getCode())
@@ -49,7 +49,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex) {
+    public ResponseEntity<ExceptionMessage> handleConstraintViolationException(ConstraintViolationException ex) {
         var errorMessage = ex.getConstraintViolations().stream()
                 .map(violation -> violation.getPropertyPath() + ": " + violation.getMessage())
                 .reduce((m1, m2) -> m1 + ", " + m2)
@@ -65,7 +65,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity<Object> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
+    public ResponseEntity<ExceptionMessage> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
         var response = ExceptionMessage.builder()
                 .code(ErrorStatus.TYPE_MISMATCH_ERROR.getCode())
                 .status(ErrorStatus.TYPE_MISMATCH_ERROR.getStatus())
@@ -75,7 +75,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
-    public ResponseEntity<Object> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
+    public ResponseEntity<ExceptionMessage> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
         var parameterName = ex.getParameterName();
 
         var response = ExceptionMessage.builder()
